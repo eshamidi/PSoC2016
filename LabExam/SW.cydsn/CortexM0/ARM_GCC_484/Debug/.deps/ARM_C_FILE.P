@@ -1,0 +1,16 @@
+E:/school/ECEC304/LabExam/SW.cydsn/CortexM0/ARM_GCC_484/Debug/cyfitter_cfg.o : E:/school/ECEC304/LabExam/SW.cydsn/Generated_Source/PSoC4/CyLFClk.h E:/school/ECEC304/LabExam/SW.cydsn/Generated_Source/PSoC4/CyLib.h E:/school/ECEC304/LabExam/SW.cydsn/Generated_Source/PSoC4/cydevice_trm.h E:/school/ECEC304/LabExam/SW.cydsn/Generated_Source/PSoC4/cyfitter.h E:/school/ECEC304/LabExam/SW.cydsn/Generated_Source/PSoC4/cyfitter_cfg.c E:/school/ECEC304/LabExam/SW.cydsn/Generated_Source/PSoC4/cyfitter_cfg.h E:/school/ECEC304/LabExam/SW.cydsn/Generated_Source/PSoC4/cytypes.h 
+
+E:/school/ECEC304/LabExam/SW.cydsn/Generated_Source/PSoC4/CyLFClk.h : 
+
+E:/school/ECEC304/LabExam/SW.cydsn/Generated_Source/PSoC4/CyLib.h : 
+
+E:/school/ECEC304/LabExam/SW.cydsn/Generated_Source/PSoC4/cydevice_trm.h : 
+
+E:/school/ECEC304/LabExam/SW.cydsn/Generated_Source/PSoC4/cyfitter.h : 
+
+E:/school/ECEC304/LabExam/SW.cydsn/Generated_Source/PSoC4/cyfitter_cfg.c : 
+
+E:/school/ECEC304/LabExam/SW.cydsn/Generated_Source/PSoC4/cyfitter_cfg.h : 
+
+E:/school/ECEC304/LabExam/SW.cydsn/Generated_Source/PSoC4/cytypes.h : 
+

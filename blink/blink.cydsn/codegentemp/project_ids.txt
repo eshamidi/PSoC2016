@@ -1,0 +1,6 @@
+E:\ECEC304\blink\blink.cydsn\blink.cyprj|1207fcba-9a44-4609-8bdf-52a4b3c8378b
+C:\Program Files (x86)\Cypress\PSoC Creator\3.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|23e079ee-5061-4643-bd1b-78ee1ac0dfef
+C:\Program Files (x86)\Cypress\PSoC Creator\3.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|b21ecefa-69e1-4031-8c1a-7778e8d0d8a7
+C:\Program Files (x86)\Cypress\PSoC Creator\3.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|30cb9cb2-68d4-43d0-834c-a160f9ebe114
+C:\Program Files (x86)\Cypress\PSoC Creator\3.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|1efd1c29-7ee6-4b6e-ace0-9eb0e12af122
+E:\ECEC304\UART1.cydsn\UART1.cyprj|da365e40-18ba-4954-ad96-c0c58d46c05d

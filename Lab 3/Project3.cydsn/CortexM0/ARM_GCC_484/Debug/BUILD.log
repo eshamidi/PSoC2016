@@ -1,0 +1,46 @@
+--------------- Build Started: 02/04/2016 13:16:29 Project: Project3, Configuration: ARM GCC 4.8.4 Debug ---------------
+The code generation step is up to date.
+arm-none-eabi-gcc.exe -mcpu=cortex-m0 -mthumb -Wno-main -I. -IGenerated_Source\PSoC4 -Wa,-alh=.\CortexM0\ARM_GCC_484\Debug/main.lst -g -D DEBUG -Wall -ffunction-sections -Og -c .\main.c -o .\CortexM0\ARM_GCC_484\Debug\main.o
+.\main.c: In function 'compareStrings':
+.\main.c:30:21: warning: suggest parentheses around comparison in operand of '&' [-Wparentheses]
+         if( *strpt1 == 0 & *strpt2 ==0){
+                     ^
+.\main.c:21:9: warning: unused variable 'countlen_2' [-Wunused-variable]
+     int countlen_2 =0; 
+         ^
+.\main.c:20:9: warning: unused variable 'countlen_1' [-Wunused-variable]
+     int countlen_1 =0; 
+         ^
+.\main.c: In function 'searchForChar':
+.\main.c:51:13: warning: implicit declaration of function 'PrintInt' [-Wimplicit-function-declaration]
+             PrintInt(pos);
+             ^
+.\main.c: In function 'searchSubString':
+.\main.c:89:24: warning: suggest parentheses around comparison in operand of '|' [-Wparentheses]
+             if(*strpt2 ==0 | *strpt1 == 0){
+                        ^
+.\main.c:74:9: warning: unused variable 'isSSet' [-Wunused-variable]
+     int isSSet = -1; 
+         ^
+.\main.c: At top level:
+.\main.c:153:6: warning: conflicting types for 'PrintInt' [enabled by default]
+ void PrintInt(int b){
+      ^
+.\main.c:51:13: note: previous implicit declaration of 'PrintInt' was here
+             PrintInt(pos);
+             ^
+.\main.c: In function 'main':
+.\main.c:173:22: warning: unknown escape sequence: '\040' [enabled by default]
+ UART_1_UartPutString("\n \r Function to execute (1 for string \ compare, 2 of character search, 3 for sub-string \2 search, or -1 to exit): ");
+                      ^
+.\main.c:169:52: warning: unused variable 'buffer' [-Wunused-variable]
+ char str1[MAX_BUFFER_SIZE], str2[MAX_BUFFER_SIZE], buffer[MAX_BUFFER_SIZE];
+                                                    ^
+arm-none-eabi-ar.exe -rs .\CortexM0\ARM_GCC_484\Debug\Project3.a .\CortexM0\ARM_GCC_484\Debug\cyfitter_cfg.o .\CortexM0\ARM_GCC_484\Debug\UART_1.o .\CortexM0\ARM_GCC_484\Debug\UART_1_SPI_UART.o .\CortexM0\ARM_GCC_484\Debug\UART_1_SPI_UART_INT.o .\CortexM0\ARM_GCC_484\Debug\UART_1_PM.o .\CortexM0\ARM_GCC_484\Debug\UART_1_UART.o .\CortexM0\ARM_GCC_484\Debug\UART_1_BOOT.o .\CortexM0\ARM_GCC_484\Debug\UART_1_UART_BOOT.o .\CortexM0\ARM_GCC_484\Debug\UART_1_SCBCLK.o .\CortexM0\ARM_GCC_484\Debug\UART_1_tx.o .\CortexM0\ARM_GCC_484\Debug\UART_1_rx.o .\CortexM0\ARM_GCC_484\Debug\CyBootAsmGnu.o .\CortexM0\ARM_GCC_484\Debug\CyFlash.o .\CortexM0\ARM_GCC_484\Debug\CyLib.o .\CortexM0\ARM_GCC_484\Debug\cyPm.o .\CortexM0\ARM_GCC_484\Debug\cyutils.o .\CortexM0\ARM_GCC_484\Debug\CyLFClk.o
+arm-none-eabi-ar.exe: creating .\CortexM0\ARM_GCC_484\Debug\Project3.a
+arm-none-eabi-gcc.exe -Wl,--start-group -o .\CortexM0\ARM_GCC_484\Debug\Project3.elf .\CortexM0\ARM_GCC_484\Debug\main.o .\CortexM0\ARM_GCC_484\Debug\cymetadata.o .\CortexM0\ARM_GCC_484\Debug\Cm0Start.o .\CortexM0\ARM_GCC_484\Debug\Project3.a "C:\Program Files (x86)\Cypress\PSoC Creator\3.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM0\ARM_GCC_484\Debug\CyComponentLibrary.a" -mcpu=cortex-m0 -mthumb -g -ffunction-sections -Og -Wl,-Map,.\CortexM0\ARM_GCC_484\Debug/Project3.map -T Generated_Source\PSoC4\cm0gcc.ld -specs=nano.specs -Wl,--gc-sections -Wl,--end-group
+cyelftool.exe -C "E:\school\ECEC304\Lab 3\Project3.cydsn\CortexM0\ARM_GCC_484\Debug\Project3.elf" --flash_row_size 128 --flash_size 32768
+cyelftool.exe -S "E:\school\ECEC304\Lab 3\Project3.cydsn\CortexM0\ARM_GCC_484\Debug\Project3.elf"
+Flash used: 5632 of 32768 bytes (17.2 %).
+SRAM used: 1548 of 4096 bytes (37.8 %). Stack: 1024 bytes. Heap: 128 bytes.
+--------------- Build Succeeded: 02/04/2016 13:16:33 ---------------

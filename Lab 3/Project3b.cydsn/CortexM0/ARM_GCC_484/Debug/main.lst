@@ -1,0 +1,2823 @@
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 1
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"main.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.PrintInt,"ax",%progbits
+  18              		.align	2
+  19              		.global	PrintInt
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	PrintInt, %function
+  23              	PrintInt:
+  24              	.LFB33:
+  25              		.file 1 ".\\main.c"
+   1:.\main.c      **** /* ========================================
+   2:.\main.c      ****  *
+   3:.\main.c      ****  * Copyright YOUR COMPANY, THE YEAR
+   4:.\main.c      ****  * All Rights Reserved
+   5:.\main.c      ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\main.c      ****  *
+   7:.\main.c      ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\main.c      ****  * WHICH IS THE PROPERTY OF your company.
+   9:.\main.c      ****  *
+  10:.\main.c      ****  * ========================================
+  11:.\main.c      **** */
+  12:.\main.c      **** #include <project.h>
+  13:.\main.c      **** #include <stdio.h>
+  14:.\main.c      **** 
+  15:.\main.c      **** void PrintInt(int b){
+  26              		.loc 1 15 0
+  27              		.cfi_startproc
+  28              	.LVL0:
+  29 0000 00B5     		push	{lr}
+  30              		.cfi_def_cfa_offset 4
+  31              		.cfi_offset 14, -4
+  32 0002 85B0     		sub	sp, sp, #20
+  33              		.cfi_def_cfa_offset 24
+  34 0004 021C     		mov	r2, r0
+  16:.\main.c      ****     char buf[10];
+  17:.\main.c      ****     sprintf(buf, "%d", b); 
+  35              		.loc 1 17 0
+  36 0006 01A8     		add	r0, sp, #4
+  37              	.LVL1:
+  38 0008 0349     		ldr	r1, .L2
+  39 000a FFF7FEFF 		bl	sprintf
+  40              	.LVL2:
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 2
+
+
+  18:.\main.c      ****     UART_1_UartPutString(buf);
+  41              		.loc 1 18 0
+  42 000e 01A8     		add	r0, sp, #4
+  43 0010 FFF7FEFF 		bl	UART_1_UartPutString
+  44              	.LVL3:
+  19:.\main.c      **** 
+  20:.\main.c      **** }
+  45              		.loc 1 20 0
+  46 0014 05B0     		add	sp, sp, #20
+  47              		@ sp needed
+  48 0016 00BD     		pop	{pc}
+  49              	.L3:
+  50              		.align	2
+  51              	.L2:
+  52 0018 00000000 		.word	.LC0
+  53              		.cfi_endproc
+  54              	.LFE33:
+  55              		.size	PrintInt, .-PrintInt
+  56              		.section	.text.readString,"ax",%progbits
+  57              		.align	2
+  58              		.global	readString
+  59              		.code	16
+  60              		.thumb_func
+  61              		.type	readString, %function
+  62              	readString:
+  63              	.LFB34:
+  21:.\main.c      **** 
+  22:.\main.c      **** 
+  23:.\main.c      **** 
+  24:.\main.c      **** void readString(char *buffer)
+  25:.\main.c      **** {
+  64              		.loc 1 25 0
+  65              		.cfi_startproc
+  66              	.LVL4:
+  67 0000 38B5     		push	{r3, r4, r5, lr}
+  68              		.cfi_def_cfa_offset 16
+  69              		.cfi_offset 3, -16
+  70              		.cfi_offset 4, -12
+  71              		.cfi_offset 5, -8
+  72              		.cfi_offset 14, -4
+  73 0002 051C     		mov	r5, r0
+  74              	.LVL5:
+  75              	.L8:
+  26:.\main.c      **** uint32 rxData;
+  27:.\main.c      **** char *ptr = buffer;
+  28:.\main.c      ****     
+  29:.\main.c      **** for(;;){
+  30:.\main.c      ****     rxData = UART_1_UartGetChar();
+  76              		.loc 1 30 0
+  77 0004 FFF7FEFF 		bl	UART_1_UartGetChar
+  78              	.LVL6:
+  79 0008 041E     		sub	r4, r0, #0
+  80              	.LVL7:
+  31:.\main.c      ****     if(rxData){
+  81              		.loc 1 31 0
+  82 000a FBD0     		beq	.L8
+  32:.\main.c      ****         UART_1_UartPutChar(rxData); /* Echo character. */
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 3
+
+
+  83              		.loc 1 32 0
+  84 000c FFF7FEFF 		bl	UART_1_SpiUartWriteTxData
+  85              	.LVL8:
+  33:.\main.c      ****         /* On a carriage return, null terminate the string
+  34:.\main.c      ****         and break out of the loop. */
+  35:.\main.c      ****         if(rxData == 13){
+  86              		.loc 1 35 0
+  87 0010 0D2C     		cmp	r4, #13
+  88 0012 02D1     		bne	.L6
+  36:.\main.c      ****         *ptr = 0;
+  89              		.loc 1 36 0
+  90 0014 0023     		mov	r3, #0
+  91 0016 2B70     		strb	r3, [r5]
+  92 0018 02E0     		b	.L9
+  93              	.L6:
+  37:.\main.c      ****         break;
+  38:.\main.c      ****         }
+  39:.\main.c      **** *ptr = rxData;
+  94              		.loc 1 39 0
+  95 001a 2C70     		strb	r4, [r5]
+  40:.\main.c      **** ptr++;
+  96              		.loc 1 40 0
+  97 001c 0135     		add	r5, r5, #1
+  98              	.LVL9:
+  99 001e F1E7     		b	.L8
+ 100              	.L9:
+  41:.\main.c      **** }
+  42:.\main.c      **** }
+  43:.\main.c      **** }
+ 101              		.loc 1 43 0
+ 102              		@ sp needed
+ 103              	.LVL10:
+ 104              	.LVL11:
+ 105 0020 38BD     		pop	{r3, r4, r5, pc}
+ 106              		.cfi_endproc
+ 107              	.LFE34:
+ 108              		.size	readString, .-readString
+ 109 0022 C046     		.section	.text.CountWords,"ax",%progbits
+ 110              		.align	2
+ 111              		.global	CountWords
+ 112              		.code	16
+ 113              		.thumb_func
+ 114              		.type	CountWords, %function
+ 115              	CountWords:
+ 116              	.LFB35:
+  44:.\main.c      **** 
+  45:.\main.c      **** 
+  46:.\main.c      **** int CountWords(char *str1){
+ 117              		.loc 1 46 0
+ 118              		.cfi_startproc
+ 119              	.LVL12:
+ 120 0000 10B5     		push	{r4, lr}
+ 121              		.cfi_def_cfa_offset 8
+ 122              		.cfi_offset 4, -8
+ 123              		.cfi_offset 14, -4
+ 124              	.LVL13:
+  47:.\main.c      ****     int WordCt = 0; 
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 4
+
+
+ 125              		.loc 1 47 0
+ 126 0002 0024     		mov	r4, #0
+  48:.\main.c      **** 
+  49:.\main.c      **** //while string is not 0
+  50:.\main.c      ****     while(*str1 != 0){
+ 127              		.loc 1 50 0
+ 128 0004 07E0     		b	.L15
+ 129              	.LVL14:
+ 130              	.L14:
+  51:.\main.c      ****         //if char is not a space...
+  52:.\main.c      ****         if(*str1 != 32){
+ 131              		.loc 1 52 0
+ 132 0006 202B     		cmp	r3, #32
+ 133 0008 05D0     		beq	.L15
+  53:.\main.c      ****             //advance...if space, word
+  54:.\main.c      ****             str1++;
+ 134              		.loc 1 54 0
+ 135 000a 0130     		add	r0, r0, #1
+ 136              	.LVL15:
+  55:.\main.c      ****             if(*str1 == 32){
+ 137              		.loc 1 55 0
+ 138 000c 0378     		ldrb	r3, [r0]
+ 139 000e 202B     		cmp	r3, #32
+ 140 0010 01D1     		bne	.L15
+  56:.\main.c      ****             WordCt++;
+ 141              		.loc 1 56 0
+ 142 0012 0134     		add	r4, r4, #1
+ 143              	.LVL16:
+  57:.\main.c      ****             str1++; 
+ 144              		.loc 1 57 0
+ 145 0014 0130     		add	r0, r0, #1
+ 146              	.LVL17:
+ 147              	.L15:
+  50:.\main.c      ****     while(*str1 != 0){
+ 148              		.loc 1 50 0 discriminator 1
+ 149 0016 0378     		ldrb	r3, [r0]
+ 150 0018 002B     		cmp	r3, #0
+ 151 001a F4D1     		bne	.L14
+  58:.\main.c      ****             }
+  59:.\main.c      ****         }
+  60:.\main.c      ****     }
+  61:.\main.c      ****     UART_1_UartPutString("\n \r Your text has ");  
+ 152              		.loc 1 61 0
+ 153 001c 0548     		ldr	r0, .L16
+ 154              	.LVL18:
+ 155 001e FFF7FEFF 		bl	UART_1_UartPutString
+ 156              	.LVL19:
+  62:.\main.c      ****     PrintInt(WordCt); 
+ 157              		.loc 1 62 0
+ 158 0022 201C     		mov	r0, r4
+ 159 0024 FFF7FEFF 		bl	PrintInt
+ 160              	.LVL20:
+  63:.\main.c      ****     UART_1_UartPutString(" words. "); 
+ 161              		.loc 1 63 0
+ 162 0028 0348     		ldr	r0, .L16+4
+ 163 002a FFF7FEFF 		bl	UART_1_UartPutString
+ 164              	.LVL21:
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 5
+
+
+  64:.\main.c      ****     return WordCt; 
+  65:.\main.c      ****     
+  66:.\main.c      ****     
+  67:.\main.c      **** }
+ 165              		.loc 1 67 0
+ 166 002e 201C     		mov	r0, r4
+ 167              		@ sp needed
+ 168              	.LVL22:
+ 169 0030 10BD     		pop	{r4, pc}
+ 170              	.L17:
+ 171 0032 C046     		.align	2
+ 172              	.L16:
+ 173 0034 04000000 		.word	.LC2
+ 174 0038 18000000 		.word	.LC4
+ 175              		.cfi_endproc
+ 176              	.LFE35:
+ 177              		.size	CountWords, .-CountWords
+ 178              		.section	.text.LongWords,"ax",%progbits
+ 179              		.align	2
+ 180              		.global	LongWords
+ 181              		.code	16
+ 182              		.thumb_func
+ 183              		.type	LongWords, %function
+ 184              	LongWords:
+ 185              	.LFB36:
+  68:.\main.c      **** 
+  69:.\main.c      **** 
+  70:.\main.c      **** void LongWords(char *str1, int WD_CT){
+ 186              		.loc 1 70 0
+ 187              		.cfi_startproc
+ 188              	.LVL23:
+ 189 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 190              		.cfi_def_cfa_offset 20
+ 191              		.cfi_offset 4, -20
+ 192              		.cfi_offset 5, -16
+ 193              		.cfi_offset 6, -12
+ 194              		.cfi_offset 7, -8
+ 195              		.cfi_offset 14, -4
+ 196 0002 4746     		mov	r7, r8
+ 197 0004 80B4     		push	{r7}
+ 198              		.cfi_def_cfa_offset 24
+ 199              		.cfi_offset 8, -24
+ 200 0006 00AF     		add	r7, sp, #0
+ 201              		.cfi_def_cfa_register 7
+ 202 0008 0E1C     		mov	r6, r1
+ 203              	.LVL24:
+  71:.\main.c      ****     int WordLet[WD_CT];
+ 204              		.loc 1 71 0
+ 205 000a 8B00     		lsl	r3, r1, #2
+ 206 000c 0A33     		add	r3, r3, #10
+ 207 000e DB08     		lsr	r3, r3, #3
+ 208 0010 DB00     		lsl	r3, r3, #3
+ 209 0012 6A46     		mov	r2, sp
+ 210 0014 D21A     		sub	r2, r2, r3
+ 211 0016 9546     		mov	sp, r2
+ 212 0018 6D46     		mov	r5, sp
+ 213              	.LVL25:
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 6
+
+
+  72:.\main.c      ****     int pos = 0; 
+  73:.\main.c      ****     int WD_LN = 0;
+ 214              		.loc 1 73 0
+ 215 001a 0022     		mov	r2, #0
+ 216              	.LVL26:
+  72:.\main.c      ****     int pos = 0; 
+ 217              		.loc 1 72 0
+ 218 001c 0021     		mov	r1, #0
+ 219              	.LVL27:
+  74:.\main.c      ****     
+  75:.\main.c      ****     //store length of words in array as long as word count
+  76:.\main.c      ****     while(*str1 != 0){
+  77:.\main.c      ****         if(*str1 != 32){
+  78:.\main.c      ****             WD_LN++;
+  79:.\main.c      ****         }
+  80:.\main.c      ****         
+  81:.\main.c      ****         if(*str1 == 32){
+  82:.\main.c      ****             WordLet[pos] = WD_LN;
+  83:.\main.c      ****             pos++;
+  84:.\main.c      ****             WD_LN = 0; 
+ 220              		.loc 1 84 0
+ 221 001e 0024     		mov	r4, #0
+  76:.\main.c      ****     while(*str1 != 0){
+ 222              		.loc 1 76 0
+ 223 0020 09E0     		b	.L19
+ 224              	.LVL28:
+ 225              	.L22:
+  77:.\main.c      ****         if(*str1 != 32){
+ 226              		.loc 1 77 0
+ 227 0022 202B     		cmp	r3, #32
+ 228 0024 00D0     		beq	.L20
+  78:.\main.c      ****             WD_LN++;
+ 229              		.loc 1 78 0
+ 230 0026 0132     		add	r2, r2, #1
+ 231              	.LVL29:
+ 232              	.L20:
+  81:.\main.c      ****         if(*str1 == 32){
+ 233              		.loc 1 81 0
+ 234 0028 202B     		cmp	r3, #32
+ 235 002a 03D1     		bne	.L21
+  82:.\main.c      ****             WordLet[pos] = WD_LN;
+ 236              		.loc 1 82 0
+ 237 002c 8B00     		lsl	r3, r1, #2
+ 238 002e 5A51     		str	r2, [r3, r5]
+  83:.\main.c      ****             pos++;
+ 239              		.loc 1 83 0
+ 240 0030 0131     		add	r1, r1, #1
+ 241              	.LVL30:
+ 242              		.loc 1 84 0
+ 243 0032 221C     		mov	r2, r4
+ 244              	.LVL31:
+ 245              	.L21:
+  85:.\main.c      ****         }
+  86:.\main.c      ****         str1++;
+ 246              		.loc 1 86 0
+ 247 0034 0130     		add	r0, r0, #1
+ 248              	.LVL32:
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 7
+
+
+ 249              	.L19:
+  76:.\main.c      ****     while(*str1 != 0){
+ 250              		.loc 1 76 0 discriminator 1
+ 251 0036 0378     		ldrb	r3, [r0]
+ 252 0038 002B     		cmp	r3, #0
+ 253 003a F2D1     		bne	.L22
+ 254 003c 0024     		mov	r4, #0
+  87:.\main.c      ****     }
+  88:.\main.c      **** //print number of letters in each word     
+  89:.\main.c      ****   for (pos = 0; pos < WD_CT; pos++)
+  90:.\main.c      ****   {
+  91:.\main.c      ****   PrintInt(WordLet[pos]);
+  92:.\main.c      ****   UART_1_UartPutString("  "); 
+ 255              		.loc 1 92 0
+ 256 003e 154B     		ldr	r3, .L28
+ 257 0040 9846     		mov	r8, r3
+ 258 0042 07E0     		b	.L23
+ 259              	.LVL33:
+ 260              	.L24:
+  91:.\main.c      ****   PrintInt(WordLet[pos]);
+ 261              		.loc 1 91 0 discriminator 2
+ 262 0044 A300     		lsl	r3, r4, #2
+ 263 0046 5859     		ldr	r0, [r3, r5]
+ 264 0048 FFF7FEFF 		bl	PrintInt
+ 265              	.LVL34:
+ 266              		.loc 1 92 0 discriminator 2
+ 267 004c 4046     		mov	r0, r8
+ 268 004e FFF7FEFF 		bl	UART_1_UartPutString
+ 269              	.LVL35:
+  89:.\main.c      ****   for (pos = 0; pos < WD_CT; pos++)
+ 270              		.loc 1 89 0 discriminator 2
+ 271 0052 0134     		add	r4, r4, #1
+ 272              	.LVL36:
+ 273              	.L23:
+  89:.\main.c      ****   for (pos = 0; pos < WD_CT; pos++)
+ 274              		.loc 1 89 0 is_stmt 0 discriminator 1
+ 275 0054 B442     		cmp	r4, r6
+ 276 0056 F5DB     		blt	.L24
+  93:.\main.c      ****   }    
+  94:.\main.c      **** 
+  95:.\main.c      ****     
+  96:.\main.c      ****     //find max value from array
+  97:.\main.c      ****   int max = WordLet[0];
+ 277              		.loc 1 97 0 is_stmt 1
+ 278 0058 2968     		ldr	r1, [r5]
+ 279              	.LVL37:
+  98:.\main.c      ****   int max_loc = 0; 
+ 280              		.loc 1 98 0
+ 281 005a 0020     		mov	r0, #0
+  99:.\main.c      **** 
+ 100:.\main.c      ****   for (pos = 1; pos < WD_CT; pos++)
+ 282              		.loc 1 100 0
+ 283 005c 0123     		mov	r3, #1
+ 284 005e 06E0     		b	.L25
+ 285              	.LVL38:
+ 286              	.L27:
+ 101:.\main.c      ****   {
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 8
+
+
+ 102:.\main.c      ****     if (WordLet[pos] > max)
+ 287              		.loc 1 102 0
+ 288 0060 9A00     		lsl	r2, r3, #2
+ 289 0062 5259     		ldr	r2, [r2, r5]
+ 290 0064 8A42     		cmp	r2, r1
+ 291 0066 01DD     		ble	.L26
+ 292              	.LVL39:
+ 103:.\main.c      ****     {
+ 104:.\main.c      ****        max  = WordLet[pos];
+ 105:.\main.c      ****        max_loc = pos+1;
+ 293              		.loc 1 105 0
+ 294 0068 581C     		add	r0, r3, #1
+ 295              	.LVL40:
+ 104:.\main.c      ****        max  = WordLet[pos];
+ 296              		.loc 1 104 0
+ 297 006a 111C     		mov	r1, r2
+ 298              	.LVL41:
+ 299              	.L26:
+ 100:.\main.c      ****   for (pos = 1; pos < WD_CT; pos++)
+ 300              		.loc 1 100 0
+ 301 006c 0133     		add	r3, r3, #1
+ 302              	.LVL42:
+ 303              	.L25:
+ 100:.\main.c      ****   for (pos = 1; pos < WD_CT; pos++)
+ 304              		.loc 1 100 0 is_stmt 0 discriminator 1
+ 305 006e B342     		cmp	r3, r6
+ 306 0070 F6DB     		blt	.L27
+ 106:.\main.c      ****     }
+ 107:.\main.c      ****   }
+ 108:.\main.c      ****   int maximum = WordLet[max_loc - 1];
+ 307              		.loc 1 108 0 is_stmt 1
+ 308 0072 0138     		sub	r0, r0, #1
+ 309              	.LVL43:
+ 310 0074 8000     		lsl	r0, r0, #2
+ 311              	.LVL44:
+ 312 0076 4459     		ldr	r4, [r0, r5]
+ 313              	.LVL45:
+ 109:.\main.c      ****     UART_1_UartPutString("\n \r Your longest word has ");  
+ 314              		.loc 1 109 0
+ 315 0078 0748     		ldr	r0, .L28+4
+ 316 007a FFF7FEFF 		bl	UART_1_UartPutString
+ 317              	.LVL46:
+ 110:.\main.c      ****     PrintInt(maximum);
+ 318              		.loc 1 110 0
+ 319 007e 201C     		mov	r0, r4
+ 320 0080 FFF7FEFF 		bl	PrintInt
+ 321              	.LVL47:
+ 111:.\main.c      ****     UART_1_UartPutString(" letters. ");  
+ 322              		.loc 1 111 0
+ 323 0084 0548     		ldr	r0, .L28+8
+ 324 0086 FFF7FEFF 		bl	UART_1_UartPutString
+ 325              	.LVL48:
+ 112:.\main.c      ****     
+ 113:.\main.c      ****     
+ 114:.\main.c      ****     
+ 115:.\main.c      **** }
+ 326              		.loc 1 115 0
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 9
+
+
+ 327 008a BD46     		mov	sp, r7
+ 328              		@ sp needed
+ 329              	.LVL49:
+ 330              	.LVL50:
+ 331              	.LVL51:
+ 332 008c 04BC     		pop	{r2}
+ 333 008e 9046     		mov	r8, r2
+ 334 0090 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 335              	.L29:
+ 336 0092 C046     		.align	2
+ 337              	.L28:
+ 338 0094 24000000 		.word	.LC6
+ 339 0098 28000000 		.word	.LC8
+ 340 009c 44000000 		.word	.LC10
+ 341              		.cfi_endproc
+ 342              	.LFE36:
+ 343              		.size	LongWords, .-LongWords
+ 344              		.section	.text.VowelWords,"ax",%progbits
+ 345              		.align	2
+ 346              		.global	VowelWords
+ 347              		.code	16
+ 348              		.thumb_func
+ 349              		.type	VowelWords, %function
+ 350              	VowelWords:
+ 351              	.LFB37:
+ 116:.\main.c      **** 
+ 117:.\main.c      **** 
+ 118:.\main.c      **** void VowelWords(char *str1, int WD_CT){
+ 352              		.loc 1 118 0
+ 353              		.cfi_startproc
+ 354              	.LVL52:
+ 355 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 356              		.cfi_def_cfa_offset 24
+ 357              		.cfi_offset 3, -24
+ 358              		.cfi_offset 4, -20
+ 359              		.cfi_offset 5, -16
+ 360              		.cfi_offset 6, -12
+ 361              		.cfi_offset 7, -8
+ 362              		.cfi_offset 14, -4
+ 363 0002 5F46     		mov	r7, fp
+ 364 0004 5646     		mov	r6, r10
+ 365 0006 4D46     		mov	r5, r9
+ 366 0008 4446     		mov	r4, r8
+ 367 000a F0B4     		push	{r4, r5, r6, r7}
+ 368              		.cfi_def_cfa_offset 40
+ 369              		.cfi_offset 8, -40
+ 370              		.cfi_offset 9, -36
+ 371              		.cfi_offset 10, -32
+ 372              		.cfi_offset 11, -28
+ 373 000c 00AF     		add	r7, sp, #0
+ 374              		.cfi_def_cfa_register 7
+ 375 000e 0E1C     		mov	r6, r1
+ 376              	.LVL53:
+ 119:.\main.c      ****  int VowLet[WD_CT];
+ 377              		.loc 1 119 0
+ 378 0010 8B00     		lsl	r3, r1, #2
+ 379 0012 0A33     		add	r3, r3, #10
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 10
+
+
+ 380 0014 DB08     		lsr	r3, r3, #3
+ 381 0016 DB00     		lsl	r3, r3, #3
+ 382 0018 6946     		mov	r1, sp
+ 383              	.LVL54:
+ 384 001a C91A     		sub	r1, r1, r3
+ 385 001c 8D46     		mov	sp, r1
+ 386 001e 6D46     		mov	r5, sp
+ 387              	.LVL55:
+ 120:.\main.c      ****     int pos = 0; 
+ 121:.\main.c      ****     int VW_CT = 0;
+ 388              		.loc 1 121 0
+ 389 0020 0022     		mov	r2, #0
+ 390 0022 9346     		mov	fp, r2
+ 120:.\main.c      ****     int pos = 0; 
+ 391              		.loc 1 120 0
+ 392 0024 9446     		mov	ip, r2
+ 122:.\main.c      ****     
+ 123:.\main.c      ****     //store length of words in array as long as word count
+ 124:.\main.c      ****     while(*str1 != 0){
+ 125:.\main.c      ****         if((*str1 == 65) | (*str1 == 97) //A, a 
+ 126:.\main.c      ****          | (*str1 == 69) | (*str1 == 101) // E, e
+ 127:.\main.c      ****          | (*str1 == 73) | (*str1 == 105) // I, i
+ 128:.\main.c      ****          | (*str1 == 79) | (*str1 == 111) // O, o
+ 129:.\main.c      ****          | (*str1 == 85) | (*str1 == 117)){  //U, u
+ 130:.\main.c      ****             VW_CT++;
+ 131:.\main.c      ****         }        
+ 132:.\main.c      ****         if(*str1 == 32){
+ 133:.\main.c      ****             VowLet[pos] = VW_CT;
+ 134:.\main.c      ****             pos++;
+ 135:.\main.c      ****             VW_CT = 0; 
+ 393              		.loc 1 135 0
+ 394 0026 9046     		mov	r8, r2
+ 124:.\main.c      ****     while(*str1 != 0){
+ 395              		.loc 1 124 0
+ 396 0028 46E0     		b	.L31
+ 397              	.LVL56:
+ 398              	.L34:
+ 125:.\main.c      ****         if((*str1 == 65) | (*str1 == 97) //A, a 
+ 399              		.loc 1 125 0
+ 400 002a 1A1C     		mov	r2, r3
+ 401 002c 413A     		sub	r2, r2, #65
+ 402 002e 5142     		neg	r1, r2
+ 403 0030 4A41     		adc	r2, r2, r1
+ 404 0032 6121     		mov	r1, #97
+ 405 0034 4942     		neg	r1, r1
+ 406 0036 C918     		add	r1, r1, r3
+ 407 0038 4C42     		neg	r4, r1
+ 408 003a 4C41     		adc	r4, r4, r1
+ 409 003c 2243     		orr	r2, r4
+ 126:.\main.c      ****          | (*str1 == 69) | (*str1 == 101) // E, e
+ 410              		.loc 1 126 0
+ 411 003e 4521     		mov	r1, #69
+ 412 0040 4942     		neg	r1, r1
+ 413 0042 C918     		add	r1, r1, r3
+ 414 0044 4C42     		neg	r4, r1
+ 415 0046 4C41     		adc	r4, r4, r1
+ 416 0048 2243     		orr	r2, r4
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 11
+
+
+ 417 004a 6521     		mov	r1, #101
+ 418 004c 4942     		neg	r1, r1
+ 419 004e C918     		add	r1, r1, r3
+ 420 0050 4C42     		neg	r4, r1
+ 421 0052 4C41     		adc	r4, r4, r1
+ 422 0054 2243     		orr	r2, r4
+ 127:.\main.c      ****          | (*str1 == 73) | (*str1 == 105) // I, i
+ 423              		.loc 1 127 0
+ 424 0056 4921     		mov	r1, #73
+ 425 0058 4942     		neg	r1, r1
+ 426 005a C918     		add	r1, r1, r3
+ 427 005c 4C42     		neg	r4, r1
+ 428 005e 4C41     		adc	r4, r4, r1
+ 429 0060 2243     		orr	r2, r4
+ 430 0062 6921     		mov	r1, #105
+ 431 0064 4942     		neg	r1, r1
+ 432 0066 C918     		add	r1, r1, r3
+ 433 0068 4C42     		neg	r4, r1
+ 434 006a 4C41     		adc	r4, r4, r1
+ 435 006c 2243     		orr	r2, r4
+ 128:.\main.c      ****          | (*str1 == 79) | (*str1 == 111) // O, o
+ 436              		.loc 1 128 0
+ 437 006e 4F21     		mov	r1, #79
+ 438 0070 4942     		neg	r1, r1
+ 439 0072 C918     		add	r1, r1, r3
+ 440 0074 4C42     		neg	r4, r1
+ 441 0076 4C41     		adc	r4, r4, r1
+ 442 0078 2243     		orr	r2, r4
+ 443 007a 6F21     		mov	r1, #111
+ 444 007c 4942     		neg	r1, r1
+ 445 007e C918     		add	r1, r1, r3
+ 446 0080 4C42     		neg	r4, r1
+ 447 0082 4C41     		adc	r4, r4, r1
+ 448 0084 2243     		orr	r2, r4
+ 129:.\main.c      ****          | (*str1 == 85) | (*str1 == 117)){  //U, u
+ 449              		.loc 1 129 0
+ 450 0086 5521     		mov	r1, #85
+ 451 0088 4942     		neg	r1, r1
+ 452 008a C918     		add	r1, r1, r3
+ 453 008c 4C42     		neg	r4, r1
+ 454 008e 4C41     		adc	r4, r4, r1
+ 455 0090 2243     		orr	r2, r4
+ 456 0092 7521     		mov	r1, #117
+ 457 0094 4942     		neg	r1, r1
+ 458 0096 C918     		add	r1, r1, r3
+ 459 0098 4C42     		neg	r4, r1
+ 460 009a 4C41     		adc	r4, r4, r1
+ 461 009c 2243     		orr	r2, r4
+ 125:.\main.c      ****         if((*str1 == 65) | (*str1 == 97) //A, a 
+ 462              		.loc 1 125 0
+ 463 009e 01D0     		beq	.L32
+ 130:.\main.c      ****             VW_CT++;
+ 464              		.loc 1 130 0
+ 465 00a0 0121     		mov	r1, #1
+ 466 00a2 8B44     		add	fp, fp, r1
+ 467              	.LVL57:
+ 468              	.L32:
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 12
+
+
+ 132:.\main.c      ****         if(*str1 == 32){
+ 469              		.loc 1 132 0
+ 470 00a4 202B     		cmp	r3, #32
+ 471 00a6 06D1     		bne	.L33
+ 133:.\main.c      ****             VowLet[pos] = VW_CT;
+ 472              		.loc 1 133 0
+ 473 00a8 6246     		mov	r2, ip
+ 474 00aa 9300     		lsl	r3, r2, #2
+ 475 00ac 5C46     		mov	r4, fp
+ 476 00ae 5C51     		str	r4, [r3, r5]
+ 134:.\main.c      ****             pos++;
+ 477              		.loc 1 134 0
+ 478 00b0 0121     		mov	r1, #1
+ 479 00b2 8C44     		add	ip, ip, r1
+ 480              	.LVL58:
+ 481              		.loc 1 135 0
+ 482 00b4 C346     		mov	fp, r8
+ 483              	.LVL59:
+ 484              	.L33:
+ 136:.\main.c      ****         }
+ 137:.\main.c      ****         str1++;
+ 485              		.loc 1 137 0
+ 486 00b6 0130     		add	r0, r0, #1
+ 487              	.LVL60:
+ 488              	.L31:
+ 124:.\main.c      ****     while(*str1 != 0){
+ 489              		.loc 1 124 0 discriminator 1
+ 490 00b8 0378     		ldrb	r3, [r0]
+ 491 00ba 002B     		cmp	r3, #0
+ 492 00bc B5D1     		bne	.L34
+ 493 00be 0024     		mov	r4, #0
+ 138:.\main.c      ****     }
+ 139:.\main.c      ****     
+ 140:.\main.c      ****     
+ 141:.\main.c      ****   for (pos = 0; pos < WD_CT; pos++)
+ 142:.\main.c      ****   {
+ 143:.\main.c      ****   PrintInt(VowLet[pos]);
+ 144:.\main.c      ****   UART_1_UartPutString("  "); 
+ 494              		.loc 1 144 0
+ 495 00c0 194A     		ldr	r2, .L40
+ 496 00c2 9046     		mov	r8, r2
+ 497 00c4 07E0     		b	.L35
+ 498              	.LVL61:
+ 499              	.L36:
+ 143:.\main.c      ****   PrintInt(VowLet[pos]);
+ 500              		.loc 1 143 0 discriminator 2
+ 501 00c6 A300     		lsl	r3, r4, #2
+ 502 00c8 5859     		ldr	r0, [r3, r5]
+ 503 00ca FFF7FEFF 		bl	PrintInt
+ 504              	.LVL62:
+ 505              		.loc 1 144 0 discriminator 2
+ 506 00ce 4046     		mov	r0, r8
+ 507 00d0 FFF7FEFF 		bl	UART_1_UartPutString
+ 508              	.LVL63:
+ 141:.\main.c      ****   for (pos = 0; pos < WD_CT; pos++)
+ 509              		.loc 1 141 0 discriminator 2
+ 510 00d4 0134     		add	r4, r4, #1
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 13
+
+
+ 511              	.LVL64:
+ 512              	.L35:
+ 141:.\main.c      ****   for (pos = 0; pos < WD_CT; pos++)
+ 513              		.loc 1 141 0 is_stmt 0 discriminator 1
+ 514 00d6 B442     		cmp	r4, r6
+ 515 00d8 F5DB     		blt	.L36
+ 145:.\main.c      ****   }    
+ 146:.\main.c      **** 
+ 147:.\main.c      ****   int max = VowLet[0];
+ 516              		.loc 1 147 0 is_stmt 1
+ 517 00da 2968     		ldr	r1, [r5]
+ 518              	.LVL65:
+ 148:.\main.c      ****   int max_loc = 0; 
+ 519              		.loc 1 148 0
+ 520 00dc 0024     		mov	r4, #0
+ 149:.\main.c      **** 
+ 150:.\main.c      ****   for (pos = 1; pos < WD_CT; pos++)
+ 521              		.loc 1 150 0
+ 522 00de 0123     		mov	r3, #1
+ 523 00e0 06E0     		b	.L37
+ 524              	.LVL66:
+ 525              	.L39:
+ 151:.\main.c      ****   {
+ 152:.\main.c      ****     if (VowLet[pos] > max)
+ 526              		.loc 1 152 0
+ 527 00e2 9A00     		lsl	r2, r3, #2
+ 528 00e4 5259     		ldr	r2, [r2, r5]
+ 529 00e6 8A42     		cmp	r2, r1
+ 530 00e8 01DD     		ble	.L38
+ 531              	.LVL67:
+ 153:.\main.c      ****     {
+ 154:.\main.c      ****        max  = VowLet[pos];
+ 155:.\main.c      ****        max_loc = pos+1;
+ 532              		.loc 1 155 0
+ 533 00ea 5C1C     		add	r4, r3, #1
+ 534              	.LVL68:
+ 154:.\main.c      ****        max  = VowLet[pos];
+ 535              		.loc 1 154 0
+ 536 00ec 111C     		mov	r1, r2
+ 537              	.LVL69:
+ 538              	.L38:
+ 150:.\main.c      ****   for (pos = 1; pos < WD_CT; pos++)
+ 539              		.loc 1 150 0
+ 540 00ee 0133     		add	r3, r3, #1
+ 541              	.LVL70:
+ 542              	.L37:
+ 150:.\main.c      ****   for (pos = 1; pos < WD_CT; pos++)
+ 543              		.loc 1 150 0 is_stmt 0 discriminator 1
+ 544 00f0 B342     		cmp	r3, r6
+ 545 00f2 F6DB     		blt	.L39
+ 156:.\main.c      ****     }
+ 157:.\main.c      ****   }
+ 158:.\main.c      ****   int maximum = VowLet[max_loc - 1];
+ 546              		.loc 1 158 0 is_stmt 1
+ 547 00f4 631E     		sub	r3, r4, #1
+ 548              	.LVL71:
+ 549 00f6 9B00     		lsl	r3, r3, #2
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 14
+
+
+ 550 00f8 5D59     		ldr	r5, [r3, r5]
+ 551              	.LVL72:
+ 159:.\main.c      ****     UART_1_UartPutString("\n \r Word ");  
+ 552              		.loc 1 159 0
+ 553 00fa 0C48     		ldr	r0, .L40+4
+ 554 00fc FFF7FEFF 		bl	UART_1_UartPutString
+ 555              	.LVL73:
+ 160:.\main.c      ****     PrintInt(max_loc);
+ 556              		.loc 1 160 0
+ 557 0100 201C     		mov	r0, r4
+ 558 0102 FFF7FEFF 		bl	PrintInt
+ 559              	.LVL74:
+ 161:.\main.c      ****     UART_1_UartPutString(" has the most vowels. It has ");  
+ 560              		.loc 1 161 0
+ 561 0106 0A48     		ldr	r0, .L40+8
+ 562 0108 FFF7FEFF 		bl	UART_1_UartPutString
+ 563              	.LVL75:
+ 162:.\main.c      ****     PrintInt(maximum);
+ 564              		.loc 1 162 0
+ 565 010c 281C     		mov	r0, r5
+ 566 010e FFF7FEFF 		bl	PrintInt
+ 567              	.LVL76:
+ 163:.\main.c      ****     UART_1_UartPutString(". \n \r ");
+ 568              		.loc 1 163 0
+ 569 0112 0848     		ldr	r0, .L40+12
+ 570 0114 FFF7FEFF 		bl	UART_1_UartPutString
+ 571              	.LVL77:
+ 164:.\main.c      ****     
+ 165:.\main.c      ****     
+ 166:.\main.c      **** }
+ 572              		.loc 1 166 0
+ 573 0118 BD46     		mov	sp, r7
+ 574              	.LVL78:
+ 575              		@ sp needed
+ 576              	.LVL79:
+ 577              	.LVL80:
+ 578              	.LVL81:
+ 579              	.LVL82:
+ 580 011a 3CBC     		pop	{r2, r3, r4, r5}
+ 581 011c 9046     		mov	r8, r2
+ 582 011e 9946     		mov	r9, r3
+ 583 0120 A246     		mov	r10, r4
+ 584 0122 AB46     		mov	fp, r5
+ 585 0124 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 586              	.L41:
+ 587 0126 C046     		.align	2
+ 588              	.L40:
+ 589 0128 24000000 		.word	.LC6
+ 590 012c 50000000 		.word	.LC13
+ 591 0130 5C000000 		.word	.LC15
+ 592 0134 7C000000 		.word	.LC17
+ 593              		.cfi_endproc
+ 594              	.LFE37:
+ 595              		.size	VowelWords, .-VowelWords
+ 596              		.section	.text.main,"ax",%progbits
+ 597              		.align	2
+ 598              		.global	main
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 15
+
+
+ 599              		.code	16
+ 600              		.thumb_func
+ 601              		.type	main, %function
+ 602              	main:
+ 603              	.LFB38:
+ 167:.\main.c      **** 
+ 168:.\main.c      **** 
+ 169:.\main.c      **** 
+ 170:.\main.c      **** 
+ 171:.\main.c      **** 
+ 172:.\main.c      **** 
+ 173:.\main.c      **** int main()
+ 174:.\main.c      **** {
+ 604              		.loc 1 174 0
+ 605              		.cfi_startproc
+ 606 0000 10B5     		push	{r4, lr}
+ 607              		.cfi_def_cfa_offset 8
+ 608              		.cfi_offset 4, -8
+ 609              		.cfi_offset 14, -4
+ 610 0002 86B0     		sub	sp, sp, #24
+ 611              		.cfi_def_cfa_offset 32
+ 175:.\main.c      ****     CyGlobalIntEnable; /* Enable global interrupts. */
+ 612              		.loc 1 175 0
+ 613              	@ 175 ".\main.c" 1
+ 614 0004 62B6     		CPSIE   i
+ 615              	@ 0 "" 2
+ 176:.\main.c      ****     UART_1_Start(); /* Start the UART component. */
+ 616              		.loc 1 176 0
+ 617              		.code	16
+ 618 0006 FFF7FEFF 		bl	UART_1_Start
+ 619              	.LVL83:
+ 177:.\main.c      ****     int WordCount = 0;
+ 178:.\main.c      ****     int MAX_BUFFER_SIZE = 20; 
+ 179:.\main.c      ****     char str1[MAX_BUFFER_SIZE];
+ 180:.\main.c      ****     
+ 181:.\main.c      ****     
+ 182:.\main.c      ****     UART_1_UartPutString("\n \r Enter in a line of text.");    
+ 620              		.loc 1 182 0
+ 621 000a 0A48     		ldr	r0, .L43
+ 622 000c FFF7FEFF 		bl	UART_1_UartPutString
+ 623              	.LVL84:
+ 183:.\main.c      ****     readString(str1);
+ 624              		.loc 1 183 0
+ 625 0010 01A8     		add	r0, sp, #4
+ 626              	.LVL85:
+ 627 0012 FFF7FEFF 		bl	readString
+ 628              	.LVL86:
+ 184:.\main.c      ****     WordCount = CountWords(str1);
+ 629              		.loc 1 184 0
+ 630 0016 01A8     		add	r0, sp, #4
+ 631              	.LVL87:
+ 632 0018 FFF7FEFF 		bl	CountWords
+ 633              	.LVL88:
+ 634 001c 041C     		mov	r4, r0
+ 635              	.LVL89:
+ 185:.\main.c      ****     LongWords(str1, WordCount);
+ 636              		.loc 1 185 0
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 16
+
+
+ 637 001e 01A8     		add	r0, sp, #4
+ 638              	.LVL90:
+ 639 0020 211C     		mov	r1, r4
+ 640 0022 FFF7FEFF 		bl	LongWords
+ 641              	.LVL91:
+ 186:.\main.c      ****     VowelWords(str1, WordCount);
+ 642              		.loc 1 186 0
+ 643 0026 01A8     		add	r0, sp, #4
+ 644              	.LVL92:
+ 645 0028 211C     		mov	r1, r4
+ 646 002a FFF7FEFF 		bl	VowelWords
+ 647              	.LVL93:
+ 187:.\main.c      ****     
+ 188:.\main.c      **** }
+ 648              		.loc 1 188 0
+ 649 002e 06B0     		add	sp, sp, #24
+ 650              		@ sp needed
+ 651              	.LVL94:
+ 652 0030 10BD     		pop	{r4, pc}
+ 653              	.L44:
+ 654 0032 C046     		.align	2
+ 655              	.L43:
+ 656 0034 84000000 		.word	.LC19
+ 657              		.cfi_endproc
+ 658              	.LFE38:
+ 659              		.size	main, .-main
+ 660              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 661              		.align	2
+ 662              	.LC0:
+ 663 0000 256400   		.ascii	"%d\000"
+ 664 0003 00       		.space	1
+ 665              	.LC2:
+ 666 0004 0A200D20 		.ascii	"\012 \015 Your text has \000"
+ 666      596F7572 
+ 666      20746578 
+ 666      74206861 
+ 666      732000
+ 667 0017 00       		.space	1
+ 668              	.LC4:
+ 669 0018 20776F72 		.ascii	" words. \000"
+ 669      64732E20 
+ 669      00
+ 670 0021 000000   		.space	3
+ 671              	.LC6:
+ 672 0024 202000   		.ascii	"  \000"
+ 673 0027 00       		.space	1
+ 674              	.LC8:
+ 675 0028 0A200D20 		.ascii	"\012 \015 Your longest word has \000"
+ 675      596F7572 
+ 675      206C6F6E 
+ 675      67657374 
+ 675      20776F72 
+ 676 0043 00       		.space	1
+ 677              	.LC10:
+ 678 0044 206C6574 		.ascii	" letters. \000"
+ 678      74657273 
+ 678      2E2000
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 17
+
+
+ 679 004f 00       		.space	1
+ 680              	.LC13:
+ 681 0050 0A200D20 		.ascii	"\012 \015 Word \000"
+ 681      576F7264 
+ 681      2000
+ 682 005a 0000     		.space	2
+ 683              	.LC15:
+ 684 005c 20686173 		.ascii	" has the most vowels. It has \000"
+ 684      20746865 
+ 684      206D6F73 
+ 684      7420766F 
+ 684      77656C73 
+ 685 007a 0000     		.space	2
+ 686              	.LC17:
+ 687 007c 2E200A20 		.ascii	". \012 \015 \000"
+ 687      0D2000
+ 688 0083 00       		.space	1
+ 689              	.LC19:
+ 690 0084 0A200D20 		.ascii	"\012 \015 Enter in a line of text.\000"
+ 690      456E7465 
+ 690      7220696E 
+ 690      2061206C 
+ 690      696E6520 
+ 691 00a1 000000   		.text
+ 692              	.Letext0:
+ 693              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 694              		.file 3 "Generated_Source\\PSoC4/UART_1_SPI_UART.h"
+ 695              		.file 4 "c:\\program files (x86)\\cypress\\psoc creator\\3.2\\psoc creator\\import\\gnu\\arm\\4.8.
+ 696              		.file 5 "Generated_Source\\PSoC4/UART_1.h"
+ 697              		.section	.debug_info,"",%progbits
+ 698              	.Ldebug_info0:
+ 699 0000 5B050000 		.4byte	0x55b
+ 700 0004 0400     		.2byte	0x4
+ 701 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 702 000a 04       		.byte	0x4
+ 703 000b 01       		.uleb128 0x1
+ 704 000c 71010000 		.4byte	.LASF35
+ 705 0010 01       		.byte	0x1
+ 706 0011 61000000 		.4byte	.LASF36
+ 707 0015 DD000000 		.4byte	.LASF37
+ 708 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 709 001d 00000000 		.4byte	0
+ 710 0021 00000000 		.4byte	.Ldebug_line0
+ 711 0025 02       		.uleb128 0x2
+ 712 0026 01       		.byte	0x1
+ 713 0027 06       		.byte	0x6
+ 714 0028 3A020000 		.4byte	.LASF0
+ 715 002c 02       		.uleb128 0x2
+ 716 002d 01       		.byte	0x1
+ 717 002e 08       		.byte	0x8
+ 718 002f 8C000000 		.4byte	.LASF1
+ 719 0033 02       		.uleb128 0x2
+ 720 0034 02       		.byte	0x2
+ 721 0035 05       		.byte	0x5
+ 722 0036 11020000 		.4byte	.LASF2
+ 723 003a 02       		.uleb128 0x2
+ 724 003b 02       		.byte	0x2
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 18
+
+
+ 725 003c 07       		.byte	0x7
+ 726 003d 2D000000 		.4byte	.LASF3
+ 727 0041 02       		.uleb128 0x2
+ 728 0042 04       		.byte	0x4
+ 729 0043 05       		.byte	0x5
+ 730 0044 2A020000 		.4byte	.LASF4
+ 731 0048 02       		.uleb128 0x2
+ 732 0049 04       		.byte	0x4
+ 733 004a 07       		.byte	0x7
+ 734 004b 05010000 		.4byte	.LASF5
+ 735 004f 02       		.uleb128 0x2
+ 736 0050 08       		.byte	0x8
+ 737 0051 05       		.byte	0x5
+ 738 0052 FE010000 		.4byte	.LASF6
+ 739 0056 02       		.uleb128 0x2
+ 740 0057 08       		.byte	0x8
+ 741 0058 07       		.byte	0x7
+ 742 0059 50010000 		.4byte	.LASF7
+ 743 005d 03       		.uleb128 0x3
+ 744 005e 04       		.byte	0x4
+ 745 005f 05       		.byte	0x5
+ 746 0060 696E7400 		.ascii	"int\000"
+ 747 0064 02       		.uleb128 0x2
+ 748 0065 04       		.byte	0x4
+ 749 0066 07       		.byte	0x7
+ 750 0067 40000000 		.4byte	.LASF8
+ 751 006b 04       		.uleb128 0x4
+ 752 006c 3C010000 		.4byte	.LASF11
+ 753 0070 02       		.byte	0x2
+ 754 0071 C3       		.byte	0xc3
+ 755 0072 48000000 		.4byte	0x48
+ 756 0076 02       		.uleb128 0x2
+ 757 0077 04       		.byte	0x4
+ 758 0078 04       		.byte	0x4
+ 759 0079 6A000000 		.4byte	.LASF9
+ 760 007d 02       		.uleb128 0x2
+ 761 007e 08       		.byte	0x8
+ 762 007f 04       		.byte	0x4
+ 763 0080 53000000 		.4byte	.LASF10
+ 764 0084 04       		.uleb128 0x4
+ 765 0085 9A000000 		.4byte	.LASF12
+ 766 0089 02       		.byte	0x2
+ 767 008a D2       		.byte	0xd2
+ 768 008b 8F000000 		.4byte	0x8f
+ 769 008f 02       		.uleb128 0x2
+ 770 0090 01       		.byte	0x1
+ 771 0091 08       		.byte	0x8
+ 772 0092 0C020000 		.4byte	.LASF13
+ 773 0096 02       		.uleb128 0x2
+ 774 0097 04       		.byte	0x4
+ 775 0098 07       		.byte	0x7
+ 776 0099 F5010000 		.4byte	.LASF14
+ 777 009d 05       		.uleb128 0x5
+ 778 009e 04       		.byte	0x4
+ 779 009f 8F000000 		.4byte	0x8f
+ 780 00a3 05       		.uleb128 0x5
+ 781 00a4 04       		.byte	0x4
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 19
+
+
+ 782 00a5 A9000000 		.4byte	0xa9
+ 783 00a9 06       		.uleb128 0x6
+ 784 00aa 8F000000 		.4byte	0x8f
+ 785 00ae 07       		.uleb128 0x7
+ 786 00af AA000000 		.4byte	.LASF15
+ 787 00b3 01       		.byte	0x1
+ 788 00b4 0F       		.byte	0xf
+ 789 00b5 00000000 		.4byte	.LFB33
+ 790 00b9 1C000000 		.4byte	.LFE33-.LFB33
+ 791 00bd 01       		.uleb128 0x1
+ 792 00be 9C       		.byte	0x9c
+ 793 00bf 13010000 		.4byte	0x113
+ 794 00c3 08       		.uleb128 0x8
+ 795 00c4 6200     		.ascii	"b\000"
+ 796 00c6 01       		.byte	0x1
+ 797 00c7 0F       		.byte	0xf
+ 798 00c8 5D000000 		.4byte	0x5d
+ 799 00cc 00000000 		.4byte	.LLST0
+ 800 00d0 09       		.uleb128 0x9
+ 801 00d1 62756600 		.ascii	"buf\000"
+ 802 00d5 01       		.byte	0x1
+ 803 00d6 10       		.byte	0x10
+ 804 00d7 13010000 		.4byte	0x113
+ 805 00db 02       		.uleb128 0x2
+ 806 00dc 91       		.byte	0x91
+ 807 00dd 6C       		.sleb128 -20
+ 808 00de 0A       		.uleb128 0xa
+ 809 00df 0E000000 		.4byte	.LVL2
+ 810 00e3 01050000 		.4byte	0x501
+ 811 00e7 02010000 		.4byte	0x102
+ 812 00eb 0B       		.uleb128 0xb
+ 813 00ec 01       		.uleb128 0x1
+ 814 00ed 52       		.byte	0x52
+ 815 00ee 03       		.uleb128 0x3
+ 816 00ef F3       		.byte	0xf3
+ 817 00f0 01       		.uleb128 0x1
+ 818 00f1 50       		.byte	0x50
+ 819 00f2 0B       		.uleb128 0xb
+ 820 00f3 01       		.uleb128 0x1
+ 821 00f4 51       		.byte	0x51
+ 822 00f5 05       		.uleb128 0x5
+ 823 00f6 03       		.byte	0x3
+ 824 00f7 00000000 		.4byte	.LC0
+ 825 00fb 0B       		.uleb128 0xb
+ 826 00fc 01       		.uleb128 0x1
+ 827 00fd 50       		.byte	0x50
+ 828 00fe 02       		.uleb128 0x2
+ 829 00ff 91       		.byte	0x91
+ 830 0100 6C       		.sleb128 -20
+ 831 0101 00       		.byte	0
+ 832 0102 0C       		.uleb128 0xc
+ 833 0103 14000000 		.4byte	.LVL3
+ 834 0107 1C050000 		.4byte	0x51c
+ 835 010b 0B       		.uleb128 0xb
+ 836 010c 01       		.uleb128 0x1
+ 837 010d 50       		.byte	0x50
+ 838 010e 02       		.uleb128 0x2
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 20
+
+
+ 839 010f 91       		.byte	0x91
+ 840 0110 6C       		.sleb128 -20
+ 841 0111 00       		.byte	0
+ 842 0112 00       		.byte	0
+ 843 0113 0D       		.uleb128 0xd
+ 844 0114 8F000000 		.4byte	0x8f
+ 845 0118 23010000 		.4byte	0x123
+ 846 011c 0E       		.uleb128 0xe
+ 847 011d 96000000 		.4byte	0x96
+ 848 0121 09       		.byte	0x9
+ 849 0122 00       		.byte	0
+ 850 0123 07       		.uleb128 0x7
+ 851 0124 76000000 		.4byte	.LASF16
+ 852 0128 01       		.byte	0x1
+ 853 0129 18       		.byte	0x18
+ 854 012a 00000000 		.4byte	.LFB34
+ 855 012e 22000000 		.4byte	.LFE34-.LFB34
+ 856 0132 01       		.uleb128 0x1
+ 857 0133 9C       		.byte	0x9c
+ 858 0134 7F010000 		.4byte	0x17f
+ 859 0138 0F       		.uleb128 0xf
+ 860 0139 1B020000 		.4byte	.LASF17
+ 861 013d 01       		.byte	0x1
+ 862 013e 18       		.byte	0x18
+ 863 013f 9D000000 		.4byte	0x9d
+ 864 0143 2C000000 		.4byte	.LLST1
+ 865 0147 10       		.uleb128 0x10
+ 866 0148 D6000000 		.4byte	.LASF18
+ 867 014c 01       		.byte	0x1
+ 868 014d 1A       		.byte	0x1a
+ 869 014e 6B000000 		.4byte	0x6b
+ 870 0152 4D000000 		.4byte	.LLST2
+ 871 0156 11       		.uleb128 0x11
+ 872 0157 70747200 		.ascii	"ptr\000"
+ 873 015b 01       		.byte	0x1
+ 874 015c 1B       		.byte	0x1b
+ 875 015d 9D000000 		.4byte	0x9d
+ 876 0161 6B000000 		.4byte	.LLST3
+ 877 0165 12       		.uleb128 0x12
+ 878 0166 08000000 		.4byte	.LVL6
+ 879 016a 39050000 		.4byte	0x539
+ 880 016e 0C       		.uleb128 0xc
+ 881 016f 10000000 		.4byte	.LVL8
+ 882 0173 45050000 		.4byte	0x545
+ 883 0177 0B       		.uleb128 0xb
+ 884 0178 01       		.uleb128 0x1
+ 885 0179 50       		.byte	0x50
+ 886 017a 02       		.uleb128 0x2
+ 887 017b 74       		.byte	0x74
+ 888 017c 00       		.sleb128 0
+ 889 017d 00       		.byte	0
+ 890 017e 00       		.byte	0
+ 891 017f 13       		.uleb128 0x13
+ 892 0180 81000000 		.4byte	.LASF38
+ 893 0184 01       		.byte	0x1
+ 894 0185 2E       		.byte	0x2e
+ 895 0186 5D000000 		.4byte	0x5d
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 21
+
+
+ 896 018a 00000000 		.4byte	.LFB35
+ 897 018e 3C000000 		.4byte	.LFE35-.LFB35
+ 898 0192 01       		.uleb128 0x1
+ 899 0193 9C       		.byte	0x9c
+ 900 0194 F5010000 		.4byte	0x1f5
+ 901 0198 0F       		.uleb128 0xf
+ 902 0199 1D010000 		.4byte	.LASF19
+ 903 019d 01       		.byte	0x1
+ 904 019e 2E       		.byte	0x2e
+ 905 019f 9D000000 		.4byte	0x9d
+ 906 01a3 7E000000 		.4byte	.LLST4
+ 907 01a7 10       		.uleb128 0x10
+ 908 01a8 33020000 		.4byte	.LASF20
+ 909 01ac 01       		.byte	0x1
+ 910 01ad 2F       		.byte	0x2f
+ 911 01ae 5D000000 		.4byte	0x5d
+ 912 01b2 9C000000 		.4byte	.LLST5
+ 913 01b6 0A       		.uleb128 0xa
+ 914 01b7 22000000 		.4byte	.LVL19
+ 915 01bb 1C050000 		.4byte	0x51c
+ 916 01bf CD010000 		.4byte	0x1cd
+ 917 01c3 0B       		.uleb128 0xb
+ 918 01c4 01       		.uleb128 0x1
+ 919 01c5 50       		.byte	0x50
+ 920 01c6 05       		.uleb128 0x5
+ 921 01c7 03       		.byte	0x3
+ 922 01c8 04000000 		.4byte	.LC2
+ 923 01cc 00       		.byte	0
+ 924 01cd 0A       		.uleb128 0xa
+ 925 01ce 28000000 		.4byte	.LVL20
+ 926 01d2 AE000000 		.4byte	0xae
+ 927 01d6 E1010000 		.4byte	0x1e1
+ 928 01da 0B       		.uleb128 0xb
+ 929 01db 01       		.uleb128 0x1
+ 930 01dc 50       		.byte	0x50
+ 931 01dd 02       		.uleb128 0x2
+ 932 01de 74       		.byte	0x74
+ 933 01df 00       		.sleb128 0
+ 934 01e0 00       		.byte	0
+ 935 01e1 0C       		.uleb128 0xc
+ 936 01e2 2E000000 		.4byte	.LVL21
+ 937 01e6 1C050000 		.4byte	0x51c
+ 938 01ea 0B       		.uleb128 0xb
+ 939 01eb 01       		.uleb128 0x1
+ 940 01ec 50       		.byte	0x50
+ 941 01ed 05       		.uleb128 0x5
+ 942 01ee 03       		.byte	0x3
+ 943 01ef 18000000 		.4byte	.LC4
+ 944 01f3 00       		.byte	0
+ 945 01f4 00       		.byte	0
+ 946 01f5 07       		.uleb128 0x7
+ 947 01f6 A0000000 		.4byte	.LASF21
+ 948 01fa 01       		.byte	0x1
+ 949 01fb 46       		.byte	0x46
+ 950 01fc 00000000 		.4byte	.LFB36
+ 951 0200 A0000000 		.4byte	.LFE36-.LFB36
+ 952 0204 01       		.uleb128 0x1
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 22
+
+
+ 953 0205 9C       		.byte	0x9c
+ 954 0206 E7020000 		.4byte	0x2e7
+ 955 020a 0F       		.uleb128 0xf
+ 956 020b 1D010000 		.4byte	.LASF19
+ 957 020f 01       		.byte	0x1
+ 958 0210 46       		.byte	0x46
+ 959 0211 9D000000 		.4byte	0x9d
+ 960 0215 C6000000 		.4byte	.LLST6
+ 961 0219 0F       		.uleb128 0xf
+ 962 021a 17010000 		.4byte	.LASF22
+ 963 021e 01       		.byte	0x1
+ 964 021f 46       		.byte	0x46
+ 965 0220 5D000000 		.4byte	0x5d
+ 966 0224 E4000000 		.4byte	.LLST7
+ 967 0228 14       		.uleb128 0x14
+ 968 0229 FA020000 		.4byte	0x2fa
+ 969 022d 10010000 		.4byte	.LLST8
+ 970 0231 10       		.uleb128 0x10
+ 971 0232 48010000 		.4byte	.LASF23
+ 972 0236 01       		.byte	0x1
+ 973 0237 47       		.byte	0x47
+ 974 0238 E7020000 		.4byte	0x2e7
+ 975 023c 42010000 		.4byte	.LLST9
+ 976 0240 11       		.uleb128 0x11
+ 977 0241 706F7300 		.ascii	"pos\000"
+ 978 0245 01       		.byte	0x1
+ 979 0246 48       		.byte	0x48
+ 980 0247 5D000000 		.4byte	0x5d
+ 981 024b 62010000 		.4byte	.LLST10
+ 982 024f 10       		.uleb128 0x10
+ 983 0250 4D000000 		.4byte	.LASF24
+ 984 0254 01       		.byte	0x1
+ 985 0255 49       		.byte	0x49
+ 986 0256 5D000000 		.4byte	0x5d
+ 987 025a A3010000 		.4byte	.LLST11
+ 988 025e 11       		.uleb128 0x11
+ 989 025f 6D617800 		.ascii	"max\000"
+ 990 0263 01       		.byte	0x1
+ 991 0264 61       		.byte	0x61
+ 992 0265 5D000000 		.4byte	0x5d
+ 993 0269 D9010000 		.4byte	.LLST12
+ 994 026d 10       		.uleb128 0x10
+ 995 026e ED010000 		.4byte	.LASF25
+ 996 0272 01       		.byte	0x1
+ 997 0273 62       		.byte	0x62
+ 998 0274 5D000000 		.4byte	0x5d
+ 999 0278 02020000 		.4byte	.LLST13
+ 1000 027c 10       		.uleb128 0x10
+ 1001 027d 22020000 		.4byte	.LASF26
+ 1002 0281 01       		.byte	0x1
+ 1003 0282 6C       		.byte	0x6c
+ 1004 0283 5D000000 		.4byte	0x5d
+ 1005 0287 2E020000 		.4byte	.LLST14
+ 1006 028b 12       		.uleb128 0x12
+ 1007 028c 4C000000 		.4byte	.LVL34
+ 1008 0290 AE000000 		.4byte	0xae
+ 1009 0294 0A       		.uleb128 0xa
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 23
+
+
+ 1010 0295 52000000 		.4byte	.LVL35
+ 1011 0299 1C050000 		.4byte	0x51c
+ 1012 029d A8020000 		.4byte	0x2a8
+ 1013 02a1 0B       		.uleb128 0xb
+ 1014 02a2 01       		.uleb128 0x1
+ 1015 02a3 50       		.byte	0x50
+ 1016 02a4 02       		.uleb128 0x2
+ 1017 02a5 78       		.byte	0x78
+ 1018 02a6 00       		.sleb128 0
+ 1019 02a7 00       		.byte	0
+ 1020 02a8 0A       		.uleb128 0xa
+ 1021 02a9 7E000000 		.4byte	.LVL46
+ 1022 02ad 1C050000 		.4byte	0x51c
+ 1023 02b1 BF020000 		.4byte	0x2bf
+ 1024 02b5 0B       		.uleb128 0xb
+ 1025 02b6 01       		.uleb128 0x1
+ 1026 02b7 50       		.byte	0x50
+ 1027 02b8 05       		.uleb128 0x5
+ 1028 02b9 03       		.byte	0x3
+ 1029 02ba 28000000 		.4byte	.LC8
+ 1030 02be 00       		.byte	0
+ 1031 02bf 0A       		.uleb128 0xa
+ 1032 02c0 84000000 		.4byte	.LVL47
+ 1033 02c4 AE000000 		.4byte	0xae
+ 1034 02c8 D3020000 		.4byte	0x2d3
+ 1035 02cc 0B       		.uleb128 0xb
+ 1036 02cd 01       		.uleb128 0x1
+ 1037 02ce 50       		.byte	0x50
+ 1038 02cf 02       		.uleb128 0x2
+ 1039 02d0 74       		.byte	0x74
+ 1040 02d1 00       		.sleb128 0
+ 1041 02d2 00       		.byte	0
+ 1042 02d3 0C       		.uleb128 0xc
+ 1043 02d4 8A000000 		.4byte	.LVL48
+ 1044 02d8 1C050000 		.4byte	0x51c
+ 1045 02dc 0B       		.uleb128 0xb
+ 1046 02dd 01       		.uleb128 0x1
+ 1047 02de 50       		.byte	0x50
+ 1048 02df 05       		.uleb128 0x5
+ 1049 02e0 03       		.byte	0x3
+ 1050 02e1 44000000 		.4byte	.LC10
+ 1051 02e5 00       		.byte	0
+ 1052 02e6 00       		.byte	0
+ 1053 02e7 0D       		.uleb128 0xd
+ 1054 02e8 5D000000 		.4byte	0x5d
+ 1055 02ec FA020000 		.4byte	0x2fa
+ 1056 02f0 15       		.uleb128 0x15
+ 1057 02f1 96000000 		.4byte	0x96
+ 1058 02f5 28020000 		.4byte	0x228
+ 1059 02f9 00       		.byte	0
+ 1060 02fa 06       		.uleb128 0x6
+ 1061 02fb 96000000 		.4byte	0x96
+ 1062 02ff 07       		.uleb128 0x7
+ 1063 0300 0D000000 		.4byte	.LASF27
+ 1064 0304 01       		.byte	0x1
+ 1065 0305 76       		.byte	0x76
+ 1066 0306 00000000 		.4byte	.LFB37
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 24
+
+
+ 1067 030a 38010000 		.4byte	.LFE37-.LFB37
+ 1068 030e 01       		.uleb128 0x1
+ 1069 030f 9C       		.byte	0x9c
+ 1070 0310 1C040000 		.4byte	0x41c
+ 1071 0314 0F       		.uleb128 0xf
+ 1072 0315 1D010000 		.4byte	.LASF19
+ 1073 0319 01       		.byte	0x1
+ 1074 031a 76       		.byte	0x76
+ 1075 031b 9D000000 		.4byte	0x9d
+ 1076 031f 41020000 		.4byte	.LLST15
+ 1077 0323 0F       		.uleb128 0xf
+ 1078 0324 17010000 		.4byte	.LASF22
+ 1079 0328 01       		.byte	0x1
+ 1080 0329 76       		.byte	0x76
+ 1081 032a 5D000000 		.4byte	0x5d
+ 1082 032e 5F020000 		.4byte	.LLST16
+ 1083 0332 14       		.uleb128 0x14
+ 1084 0333 2F040000 		.4byte	0x42f
+ 1085 0337 8B020000 		.4byte	.LLST17
+ 1086 033b 10       		.uleb128 0x10
+ 1087 033c 5A000000 		.4byte	.LASF28
+ 1088 0340 01       		.byte	0x1
+ 1089 0341 77       		.byte	0x77
+ 1090 0342 1C040000 		.4byte	0x41c
+ 1091 0346 BD020000 		.4byte	.LLST18
+ 1092 034a 11       		.uleb128 0x11
+ 1093 034b 706F7300 		.ascii	"pos\000"
+ 1094 034f 01       		.byte	0x1
+ 1095 0350 78       		.byte	0x78
+ 1096 0351 5D000000 		.4byte	0x5d
+ 1097 0355 E9020000 		.4byte	.LLST19
+ 1098 0359 10       		.uleb128 0x10
+ 1099 035a 70000000 		.4byte	.LASF29
+ 1100 035e 01       		.byte	0x1
+ 1101 035f 79       		.byte	0x79
+ 1102 0360 5D000000 		.4byte	0x5d
+ 1103 0364 2A030000 		.4byte	.LLST20
+ 1104 0368 11       		.uleb128 0x11
+ 1105 0369 6D617800 		.ascii	"max\000"
+ 1106 036d 01       		.byte	0x1
+ 1107 036e 93       		.byte	0x93
+ 1108 036f 5D000000 		.4byte	0x5d
+ 1109 0373 60030000 		.4byte	.LLST21
+ 1110 0377 10       		.uleb128 0x10
+ 1111 0378 ED010000 		.4byte	.LASF25
+ 1112 037c 01       		.byte	0x1
+ 1113 037d 94       		.byte	0x94
+ 1114 037e 5D000000 		.4byte	0x5d
+ 1115 0382 89030000 		.4byte	.LLST22
+ 1116 0386 10       		.uleb128 0x10
+ 1117 0387 22020000 		.4byte	.LASF26
+ 1118 038b 01       		.byte	0x1
+ 1119 038c 9E       		.byte	0x9e
+ 1120 038d 5D000000 		.4byte	0x5d
+ 1121 0391 A8030000 		.4byte	.LLST23
+ 1122 0395 12       		.uleb128 0x12
+ 1123 0396 CE000000 		.4byte	.LVL62
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 25
+
+
+ 1124 039a AE000000 		.4byte	0xae
+ 1125 039e 0A       		.uleb128 0xa
+ 1126 039f D4000000 		.4byte	.LVL63
+ 1127 03a3 1C050000 		.4byte	0x51c
+ 1128 03a7 B2030000 		.4byte	0x3b2
+ 1129 03ab 0B       		.uleb128 0xb
+ 1130 03ac 01       		.uleb128 0x1
+ 1131 03ad 50       		.byte	0x50
+ 1132 03ae 02       		.uleb128 0x2
+ 1133 03af 78       		.byte	0x78
+ 1134 03b0 00       		.sleb128 0
+ 1135 03b1 00       		.byte	0
+ 1136 03b2 0A       		.uleb128 0xa
+ 1137 03b3 00010000 		.4byte	.LVL73
+ 1138 03b7 1C050000 		.4byte	0x51c
+ 1139 03bb C9030000 		.4byte	0x3c9
+ 1140 03bf 0B       		.uleb128 0xb
+ 1141 03c0 01       		.uleb128 0x1
+ 1142 03c1 50       		.byte	0x50
+ 1143 03c2 05       		.uleb128 0x5
+ 1144 03c3 03       		.byte	0x3
+ 1145 03c4 50000000 		.4byte	.LC13
+ 1146 03c8 00       		.byte	0
+ 1147 03c9 0A       		.uleb128 0xa
+ 1148 03ca 06010000 		.4byte	.LVL74
+ 1149 03ce AE000000 		.4byte	0xae
+ 1150 03d2 DD030000 		.4byte	0x3dd
+ 1151 03d6 0B       		.uleb128 0xb
+ 1152 03d7 01       		.uleb128 0x1
+ 1153 03d8 50       		.byte	0x50
+ 1154 03d9 02       		.uleb128 0x2
+ 1155 03da 74       		.byte	0x74
+ 1156 03db 00       		.sleb128 0
+ 1157 03dc 00       		.byte	0
+ 1158 03dd 0A       		.uleb128 0xa
+ 1159 03de 0C010000 		.4byte	.LVL75
+ 1160 03e2 1C050000 		.4byte	0x51c
+ 1161 03e6 F4030000 		.4byte	0x3f4
+ 1162 03ea 0B       		.uleb128 0xb
+ 1163 03eb 01       		.uleb128 0x1
+ 1164 03ec 50       		.byte	0x50
+ 1165 03ed 05       		.uleb128 0x5
+ 1166 03ee 03       		.byte	0x3
+ 1167 03ef 5C000000 		.4byte	.LC15
+ 1168 03f3 00       		.byte	0
+ 1169 03f4 0A       		.uleb128 0xa
+ 1170 03f5 12010000 		.4byte	.LVL76
+ 1171 03f9 AE000000 		.4byte	0xae
+ 1172 03fd 08040000 		.4byte	0x408
+ 1173 0401 0B       		.uleb128 0xb
+ 1174 0402 01       		.uleb128 0x1
+ 1175 0403 50       		.byte	0x50
+ 1176 0404 02       		.uleb128 0x2
+ 1177 0405 75       		.byte	0x75
+ 1178 0406 00       		.sleb128 0
+ 1179 0407 00       		.byte	0
+ 1180 0408 0C       		.uleb128 0xc
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 26
+
+
+ 1181 0409 18010000 		.4byte	.LVL77
+ 1182 040d 1C050000 		.4byte	0x51c
+ 1183 0411 0B       		.uleb128 0xb
+ 1184 0412 01       		.uleb128 0x1
+ 1185 0413 50       		.byte	0x50
+ 1186 0414 05       		.uleb128 0x5
+ 1187 0415 03       		.byte	0x3
+ 1188 0416 7C000000 		.4byte	.LC17
+ 1189 041a 00       		.byte	0
+ 1190 041b 00       		.byte	0
+ 1191 041c 0D       		.uleb128 0xd
+ 1192 041d 5D000000 		.4byte	0x5d
+ 1193 0421 2F040000 		.4byte	0x42f
+ 1194 0425 15       		.uleb128 0x15
+ 1195 0426 96000000 		.4byte	0x96
+ 1196 042a 32030000 		.4byte	0x332
+ 1197 042e 00       		.byte	0
+ 1198 042f 06       		.uleb128 0x6
+ 1199 0430 96000000 		.4byte	0x96
+ 1200 0434 16       		.uleb128 0x16
+ 1201 0435 43010000 		.4byte	.LASF30
+ 1202 0439 01       		.byte	0x1
+ 1203 043a AD       		.byte	0xad
+ 1204 043b 5D000000 		.4byte	0x5d
+ 1205 043f 00000000 		.4byte	.LFB38
+ 1206 0443 38000000 		.4byte	.LFE38-.LFB38
+ 1207 0447 01       		.uleb128 0x1
+ 1208 0448 9C       		.byte	0x9c
+ 1209 0449 F0040000 		.4byte	0x4f0
+ 1210 044d 10       		.uleb128 0x10
+ 1211 044e 67010000 		.4byte	.LASF31
+ 1212 0452 01       		.byte	0x1
+ 1213 0453 B1       		.byte	0xb1
+ 1214 0454 5D000000 		.4byte	0x5d
+ 1215 0458 BB030000 		.4byte	.LLST24
+ 1216 045c 17       		.uleb128 0x17
+ 1217 045d B3000000 		.4byte	.LASF32
+ 1218 0461 01       		.byte	0x1
+ 1219 0462 B2       		.byte	0xb2
+ 1220 0463 5D000000 		.4byte	0x5d
+ 1221 0467 14       		.byte	0x14
+ 1222 0468 10       		.uleb128 0x10
+ 1223 0469 1D010000 		.4byte	.LASF19
+ 1224 046d 01       		.byte	0x1
+ 1225 046e B3       		.byte	0xb3
+ 1226 046f F0040000 		.4byte	0x4f0
+ 1227 0473 E5030000 		.4byte	.LLST25
+ 1228 0477 12       		.uleb128 0x12
+ 1229 0478 0A000000 		.4byte	.LVL83
+ 1230 047c 57050000 		.4byte	0x557
+ 1231 0480 0A       		.uleb128 0xa
+ 1232 0481 10000000 		.4byte	.LVL84
+ 1233 0485 1C050000 		.4byte	0x51c
+ 1234 0489 97040000 		.4byte	0x497
+ 1235 048d 0B       		.uleb128 0xb
+ 1236 048e 01       		.uleb128 0x1
+ 1237 048f 50       		.byte	0x50
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 27
+
+
+ 1238 0490 05       		.uleb128 0x5
+ 1239 0491 03       		.byte	0x3
+ 1240 0492 84000000 		.4byte	.LC19
+ 1241 0496 00       		.byte	0
+ 1242 0497 0A       		.uleb128 0xa
+ 1243 0498 16000000 		.4byte	.LVL86
+ 1244 049c 23010000 		.4byte	0x123
+ 1245 04a0 AB040000 		.4byte	0x4ab
+ 1246 04a4 0B       		.uleb128 0xb
+ 1247 04a5 01       		.uleb128 0x1
+ 1248 04a6 50       		.byte	0x50
+ 1249 04a7 02       		.uleb128 0x2
+ 1250 04a8 91       		.byte	0x91
+ 1251 04a9 64       		.sleb128 -28
+ 1252 04aa 00       		.byte	0
+ 1253 04ab 0A       		.uleb128 0xa
+ 1254 04ac 1C000000 		.4byte	.LVL88
+ 1255 04b0 7F010000 		.4byte	0x17f
+ 1256 04b4 BF040000 		.4byte	0x4bf
+ 1257 04b8 0B       		.uleb128 0xb
+ 1258 04b9 01       		.uleb128 0x1
+ 1259 04ba 50       		.byte	0x50
+ 1260 04bb 02       		.uleb128 0x2
+ 1261 04bc 91       		.byte	0x91
+ 1262 04bd 64       		.sleb128 -28
+ 1263 04be 00       		.byte	0
+ 1264 04bf 0A       		.uleb128 0xa
+ 1265 04c0 26000000 		.4byte	.LVL91
+ 1266 04c4 F5010000 		.4byte	0x1f5
+ 1267 04c8 D9040000 		.4byte	0x4d9
+ 1268 04cc 0B       		.uleb128 0xb
+ 1269 04cd 01       		.uleb128 0x1
+ 1270 04ce 51       		.byte	0x51
+ 1271 04cf 02       		.uleb128 0x2
+ 1272 04d0 74       		.byte	0x74
+ 1273 04d1 00       		.sleb128 0
+ 1274 04d2 0B       		.uleb128 0xb
+ 1275 04d3 01       		.uleb128 0x1
+ 1276 04d4 50       		.byte	0x50
+ 1277 04d5 02       		.uleb128 0x2
+ 1278 04d6 91       		.byte	0x91
+ 1279 04d7 64       		.sleb128 -28
+ 1280 04d8 00       		.byte	0
+ 1281 04d9 0C       		.uleb128 0xc
+ 1282 04da 2E000000 		.4byte	.LVL93
+ 1283 04de FF020000 		.4byte	0x2ff
+ 1284 04e2 0B       		.uleb128 0xb
+ 1285 04e3 01       		.uleb128 0x1
+ 1286 04e4 51       		.byte	0x51
+ 1287 04e5 02       		.uleb128 0x2
+ 1288 04e6 74       		.byte	0x74
+ 1289 04e7 00       		.sleb128 0
+ 1290 04e8 0B       		.uleb128 0xb
+ 1291 04e9 01       		.uleb128 0x1
+ 1292 04ea 50       		.byte	0x50
+ 1293 04eb 02       		.uleb128 0x2
+ 1294 04ec 91       		.byte	0x91
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 28
+
+
+ 1295 04ed 64       		.sleb128 -28
+ 1296 04ee 00       		.byte	0
+ 1297 04ef 00       		.byte	0
+ 1298 04f0 0D       		.uleb128 0xd
+ 1299 04f1 8F000000 		.4byte	0x8f
+ 1300 04f5 01050000 		.4byte	0x501
+ 1301 04f9 18       		.uleb128 0x18
+ 1302 04fa 96000000 		.4byte	0x96
+ 1303 04fe 01       		.uleb128 0x1
+ 1304 04ff 43       		.byte	0x43
+ 1305 0500 00       		.byte	0
+ 1306 0501 19       		.uleb128 0x19
+ 1307 0502 46020000 		.4byte	.LASF39
+ 1308 0506 04       		.byte	0x4
+ 1309 0507 D9       		.byte	0xd9
+ 1310 0508 5D000000 		.4byte	0x5d
+ 1311 050c 1C050000 		.4byte	0x51c
+ 1312 0510 1A       		.uleb128 0x1a
+ 1313 0511 9D000000 		.4byte	0x9d
+ 1314 0515 1A       		.uleb128 0x1a
+ 1315 0516 A3000000 		.4byte	0xa3
+ 1316 051a 1B       		.uleb128 0x1b
+ 1317 051b 00       		.byte	0
+ 1318 051c 1C       		.uleb128 0x1c
+ 1319 051d 18000000 		.4byte	.LASF33
+ 1320 0521 03       		.byte	0x3
+ 1321 0522 7701     		.2byte	0x177
+ 1322 0524 2E050000 		.4byte	0x52e
+ 1323 0528 1A       		.uleb128 0x1a
+ 1324 0529 2E050000 		.4byte	0x52e
+ 1325 052d 00       		.byte	0
+ 1326 052e 05       		.uleb128 0x5
+ 1327 052f 04       		.byte	0x4
+ 1328 0530 34050000 		.4byte	0x534
+ 1329 0534 06       		.uleb128 0x6
+ 1330 0535 84000000 		.4byte	0x84
+ 1331 0539 1D       		.uleb128 0x1d
+ 1332 053a C3000000 		.4byte	.LASF40
+ 1333 053e 03       		.byte	0x3
+ 1334 053f 6A01     		.2byte	0x16a
+ 1335 0541 6B000000 		.4byte	0x6b
+ 1336 0545 1C       		.uleb128 0x1c
+ 1337 0546 22010000 		.4byte	.LASF34
+ 1338 054a 03       		.byte	0x3
+ 1339 054b 8C01     		.2byte	0x18c
+ 1340 054d 57050000 		.4byte	0x557
+ 1341 0551 1A       		.uleb128 0x1a
+ 1342 0552 6B000000 		.4byte	0x6b
+ 1343 0556 00       		.byte	0
+ 1344 0557 1E       		.uleb128 0x1e
+ 1345 0558 00000000 		.4byte	.LASF41
+ 1346 055c 05       		.byte	0x5
+ 1347 055d 68       		.byte	0x68
+ 1348 055e 00       		.byte	0
+ 1349              		.section	.debug_abbrev,"",%progbits
+ 1350              	.Ldebug_abbrev0:
+ 1351 0000 01       		.uleb128 0x1
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 29
+
+
+ 1352 0001 11       		.uleb128 0x11
+ 1353 0002 01       		.byte	0x1
+ 1354 0003 25       		.uleb128 0x25
+ 1355 0004 0E       		.uleb128 0xe
+ 1356 0005 13       		.uleb128 0x13
+ 1357 0006 0B       		.uleb128 0xb
+ 1358 0007 03       		.uleb128 0x3
+ 1359 0008 0E       		.uleb128 0xe
+ 1360 0009 1B       		.uleb128 0x1b
+ 1361 000a 0E       		.uleb128 0xe
+ 1362 000b 55       		.uleb128 0x55
+ 1363 000c 17       		.uleb128 0x17
+ 1364 000d 11       		.uleb128 0x11
+ 1365 000e 01       		.uleb128 0x1
+ 1366 000f 10       		.uleb128 0x10
+ 1367 0010 17       		.uleb128 0x17
+ 1368 0011 00       		.byte	0
+ 1369 0012 00       		.byte	0
+ 1370 0013 02       		.uleb128 0x2
+ 1371 0014 24       		.uleb128 0x24
+ 1372 0015 00       		.byte	0
+ 1373 0016 0B       		.uleb128 0xb
+ 1374 0017 0B       		.uleb128 0xb
+ 1375 0018 3E       		.uleb128 0x3e
+ 1376 0019 0B       		.uleb128 0xb
+ 1377 001a 03       		.uleb128 0x3
+ 1378 001b 0E       		.uleb128 0xe
+ 1379 001c 00       		.byte	0
+ 1380 001d 00       		.byte	0
+ 1381 001e 03       		.uleb128 0x3
+ 1382 001f 24       		.uleb128 0x24
+ 1383 0020 00       		.byte	0
+ 1384 0021 0B       		.uleb128 0xb
+ 1385 0022 0B       		.uleb128 0xb
+ 1386 0023 3E       		.uleb128 0x3e
+ 1387 0024 0B       		.uleb128 0xb
+ 1388 0025 03       		.uleb128 0x3
+ 1389 0026 08       		.uleb128 0x8
+ 1390 0027 00       		.byte	0
+ 1391 0028 00       		.byte	0
+ 1392 0029 04       		.uleb128 0x4
+ 1393 002a 16       		.uleb128 0x16
+ 1394 002b 00       		.byte	0
+ 1395 002c 03       		.uleb128 0x3
+ 1396 002d 0E       		.uleb128 0xe
+ 1397 002e 3A       		.uleb128 0x3a
+ 1398 002f 0B       		.uleb128 0xb
+ 1399 0030 3B       		.uleb128 0x3b
+ 1400 0031 0B       		.uleb128 0xb
+ 1401 0032 49       		.uleb128 0x49
+ 1402 0033 13       		.uleb128 0x13
+ 1403 0034 00       		.byte	0
+ 1404 0035 00       		.byte	0
+ 1405 0036 05       		.uleb128 0x5
+ 1406 0037 0F       		.uleb128 0xf
+ 1407 0038 00       		.byte	0
+ 1408 0039 0B       		.uleb128 0xb
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 30
+
+
+ 1409 003a 0B       		.uleb128 0xb
+ 1410 003b 49       		.uleb128 0x49
+ 1411 003c 13       		.uleb128 0x13
+ 1412 003d 00       		.byte	0
+ 1413 003e 00       		.byte	0
+ 1414 003f 06       		.uleb128 0x6
+ 1415 0040 26       		.uleb128 0x26
+ 1416 0041 00       		.byte	0
+ 1417 0042 49       		.uleb128 0x49
+ 1418 0043 13       		.uleb128 0x13
+ 1419 0044 00       		.byte	0
+ 1420 0045 00       		.byte	0
+ 1421 0046 07       		.uleb128 0x7
+ 1422 0047 2E       		.uleb128 0x2e
+ 1423 0048 01       		.byte	0x1
+ 1424 0049 3F       		.uleb128 0x3f
+ 1425 004a 19       		.uleb128 0x19
+ 1426 004b 03       		.uleb128 0x3
+ 1427 004c 0E       		.uleb128 0xe
+ 1428 004d 3A       		.uleb128 0x3a
+ 1429 004e 0B       		.uleb128 0xb
+ 1430 004f 3B       		.uleb128 0x3b
+ 1431 0050 0B       		.uleb128 0xb
+ 1432 0051 27       		.uleb128 0x27
+ 1433 0052 19       		.uleb128 0x19
+ 1434 0053 11       		.uleb128 0x11
+ 1435 0054 01       		.uleb128 0x1
+ 1436 0055 12       		.uleb128 0x12
+ 1437 0056 06       		.uleb128 0x6
+ 1438 0057 40       		.uleb128 0x40
+ 1439 0058 18       		.uleb128 0x18
+ 1440 0059 9742     		.uleb128 0x2117
+ 1441 005b 19       		.uleb128 0x19
+ 1442 005c 01       		.uleb128 0x1
+ 1443 005d 13       		.uleb128 0x13
+ 1444 005e 00       		.byte	0
+ 1445 005f 00       		.byte	0
+ 1446 0060 08       		.uleb128 0x8
+ 1447 0061 05       		.uleb128 0x5
+ 1448 0062 00       		.byte	0
+ 1449 0063 03       		.uleb128 0x3
+ 1450 0064 08       		.uleb128 0x8
+ 1451 0065 3A       		.uleb128 0x3a
+ 1452 0066 0B       		.uleb128 0xb
+ 1453 0067 3B       		.uleb128 0x3b
+ 1454 0068 0B       		.uleb128 0xb
+ 1455 0069 49       		.uleb128 0x49
+ 1456 006a 13       		.uleb128 0x13
+ 1457 006b 02       		.uleb128 0x2
+ 1458 006c 17       		.uleb128 0x17
+ 1459 006d 00       		.byte	0
+ 1460 006e 00       		.byte	0
+ 1461 006f 09       		.uleb128 0x9
+ 1462 0070 34       		.uleb128 0x34
+ 1463 0071 00       		.byte	0
+ 1464 0072 03       		.uleb128 0x3
+ 1465 0073 08       		.uleb128 0x8
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 31
+
+
+ 1466 0074 3A       		.uleb128 0x3a
+ 1467 0075 0B       		.uleb128 0xb
+ 1468 0076 3B       		.uleb128 0x3b
+ 1469 0077 0B       		.uleb128 0xb
+ 1470 0078 49       		.uleb128 0x49
+ 1471 0079 13       		.uleb128 0x13
+ 1472 007a 02       		.uleb128 0x2
+ 1473 007b 18       		.uleb128 0x18
+ 1474 007c 00       		.byte	0
+ 1475 007d 00       		.byte	0
+ 1476 007e 0A       		.uleb128 0xa
+ 1477 007f 898201   		.uleb128 0x4109
+ 1478 0082 01       		.byte	0x1
+ 1479 0083 11       		.uleb128 0x11
+ 1480 0084 01       		.uleb128 0x1
+ 1481 0085 31       		.uleb128 0x31
+ 1482 0086 13       		.uleb128 0x13
+ 1483 0087 01       		.uleb128 0x1
+ 1484 0088 13       		.uleb128 0x13
+ 1485 0089 00       		.byte	0
+ 1486 008a 00       		.byte	0
+ 1487 008b 0B       		.uleb128 0xb
+ 1488 008c 8A8201   		.uleb128 0x410a
+ 1489 008f 00       		.byte	0
+ 1490 0090 02       		.uleb128 0x2
+ 1491 0091 18       		.uleb128 0x18
+ 1492 0092 9142     		.uleb128 0x2111
+ 1493 0094 18       		.uleb128 0x18
+ 1494 0095 00       		.byte	0
+ 1495 0096 00       		.byte	0
+ 1496 0097 0C       		.uleb128 0xc
+ 1497 0098 898201   		.uleb128 0x4109
+ 1498 009b 01       		.byte	0x1
+ 1499 009c 11       		.uleb128 0x11
+ 1500 009d 01       		.uleb128 0x1
+ 1501 009e 31       		.uleb128 0x31
+ 1502 009f 13       		.uleb128 0x13
+ 1503 00a0 00       		.byte	0
+ 1504 00a1 00       		.byte	0
+ 1505 00a2 0D       		.uleb128 0xd
+ 1506 00a3 01       		.uleb128 0x1
+ 1507 00a4 01       		.byte	0x1
+ 1508 00a5 49       		.uleb128 0x49
+ 1509 00a6 13       		.uleb128 0x13
+ 1510 00a7 01       		.uleb128 0x1
+ 1511 00a8 13       		.uleb128 0x13
+ 1512 00a9 00       		.byte	0
+ 1513 00aa 00       		.byte	0
+ 1514 00ab 0E       		.uleb128 0xe
+ 1515 00ac 21       		.uleb128 0x21
+ 1516 00ad 00       		.byte	0
+ 1517 00ae 49       		.uleb128 0x49
+ 1518 00af 13       		.uleb128 0x13
+ 1519 00b0 2F       		.uleb128 0x2f
+ 1520 00b1 0B       		.uleb128 0xb
+ 1521 00b2 00       		.byte	0
+ 1522 00b3 00       		.byte	0
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 32
+
+
+ 1523 00b4 0F       		.uleb128 0xf
+ 1524 00b5 05       		.uleb128 0x5
+ 1525 00b6 00       		.byte	0
+ 1526 00b7 03       		.uleb128 0x3
+ 1527 00b8 0E       		.uleb128 0xe
+ 1528 00b9 3A       		.uleb128 0x3a
+ 1529 00ba 0B       		.uleb128 0xb
+ 1530 00bb 3B       		.uleb128 0x3b
+ 1531 00bc 0B       		.uleb128 0xb
+ 1532 00bd 49       		.uleb128 0x49
+ 1533 00be 13       		.uleb128 0x13
+ 1534 00bf 02       		.uleb128 0x2
+ 1535 00c0 17       		.uleb128 0x17
+ 1536 00c1 00       		.byte	0
+ 1537 00c2 00       		.byte	0
+ 1538 00c3 10       		.uleb128 0x10
+ 1539 00c4 34       		.uleb128 0x34
+ 1540 00c5 00       		.byte	0
+ 1541 00c6 03       		.uleb128 0x3
+ 1542 00c7 0E       		.uleb128 0xe
+ 1543 00c8 3A       		.uleb128 0x3a
+ 1544 00c9 0B       		.uleb128 0xb
+ 1545 00ca 3B       		.uleb128 0x3b
+ 1546 00cb 0B       		.uleb128 0xb
+ 1547 00cc 49       		.uleb128 0x49
+ 1548 00cd 13       		.uleb128 0x13
+ 1549 00ce 02       		.uleb128 0x2
+ 1550 00cf 17       		.uleb128 0x17
+ 1551 00d0 00       		.byte	0
+ 1552 00d1 00       		.byte	0
+ 1553 00d2 11       		.uleb128 0x11
+ 1554 00d3 34       		.uleb128 0x34
+ 1555 00d4 00       		.byte	0
+ 1556 00d5 03       		.uleb128 0x3
+ 1557 00d6 08       		.uleb128 0x8
+ 1558 00d7 3A       		.uleb128 0x3a
+ 1559 00d8 0B       		.uleb128 0xb
+ 1560 00d9 3B       		.uleb128 0x3b
+ 1561 00da 0B       		.uleb128 0xb
+ 1562 00db 49       		.uleb128 0x49
+ 1563 00dc 13       		.uleb128 0x13
+ 1564 00dd 02       		.uleb128 0x2
+ 1565 00de 17       		.uleb128 0x17
+ 1566 00df 00       		.byte	0
+ 1567 00e0 00       		.byte	0
+ 1568 00e1 12       		.uleb128 0x12
+ 1569 00e2 898201   		.uleb128 0x4109
+ 1570 00e5 00       		.byte	0
+ 1571 00e6 11       		.uleb128 0x11
+ 1572 00e7 01       		.uleb128 0x1
+ 1573 00e8 31       		.uleb128 0x31
+ 1574 00e9 13       		.uleb128 0x13
+ 1575 00ea 00       		.byte	0
+ 1576 00eb 00       		.byte	0
+ 1577 00ec 13       		.uleb128 0x13
+ 1578 00ed 2E       		.uleb128 0x2e
+ 1579 00ee 01       		.byte	0x1
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 33
+
+
+ 1580 00ef 3F       		.uleb128 0x3f
+ 1581 00f0 19       		.uleb128 0x19
+ 1582 00f1 03       		.uleb128 0x3
+ 1583 00f2 0E       		.uleb128 0xe
+ 1584 00f3 3A       		.uleb128 0x3a
+ 1585 00f4 0B       		.uleb128 0xb
+ 1586 00f5 3B       		.uleb128 0x3b
+ 1587 00f6 0B       		.uleb128 0xb
+ 1588 00f7 27       		.uleb128 0x27
+ 1589 00f8 19       		.uleb128 0x19
+ 1590 00f9 49       		.uleb128 0x49
+ 1591 00fa 13       		.uleb128 0x13
+ 1592 00fb 11       		.uleb128 0x11
+ 1593 00fc 01       		.uleb128 0x1
+ 1594 00fd 12       		.uleb128 0x12
+ 1595 00fe 06       		.uleb128 0x6
+ 1596 00ff 40       		.uleb128 0x40
+ 1597 0100 18       		.uleb128 0x18
+ 1598 0101 9742     		.uleb128 0x2117
+ 1599 0103 19       		.uleb128 0x19
+ 1600 0104 01       		.uleb128 0x1
+ 1601 0105 13       		.uleb128 0x13
+ 1602 0106 00       		.byte	0
+ 1603 0107 00       		.byte	0
+ 1604 0108 14       		.uleb128 0x14
+ 1605 0109 34       		.uleb128 0x34
+ 1606 010a 00       		.byte	0
+ 1607 010b 34       		.uleb128 0x34
+ 1608 010c 19       		.uleb128 0x19
+ 1609 010d 49       		.uleb128 0x49
+ 1610 010e 13       		.uleb128 0x13
+ 1611 010f 02       		.uleb128 0x2
+ 1612 0110 17       		.uleb128 0x17
+ 1613 0111 00       		.byte	0
+ 1614 0112 00       		.byte	0
+ 1615 0113 15       		.uleb128 0x15
+ 1616 0114 21       		.uleb128 0x21
+ 1617 0115 00       		.byte	0
+ 1618 0116 49       		.uleb128 0x49
+ 1619 0117 13       		.uleb128 0x13
+ 1620 0118 2F       		.uleb128 0x2f
+ 1621 0119 13       		.uleb128 0x13
+ 1622 011a 00       		.byte	0
+ 1623 011b 00       		.byte	0
+ 1624 011c 16       		.uleb128 0x16
+ 1625 011d 2E       		.uleb128 0x2e
+ 1626 011e 01       		.byte	0x1
+ 1627 011f 3F       		.uleb128 0x3f
+ 1628 0120 19       		.uleb128 0x19
+ 1629 0121 03       		.uleb128 0x3
+ 1630 0122 0E       		.uleb128 0xe
+ 1631 0123 3A       		.uleb128 0x3a
+ 1632 0124 0B       		.uleb128 0xb
+ 1633 0125 3B       		.uleb128 0x3b
+ 1634 0126 0B       		.uleb128 0xb
+ 1635 0127 49       		.uleb128 0x49
+ 1636 0128 13       		.uleb128 0x13
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 34
+
+
+ 1637 0129 11       		.uleb128 0x11
+ 1638 012a 01       		.uleb128 0x1
+ 1639 012b 12       		.uleb128 0x12
+ 1640 012c 06       		.uleb128 0x6
+ 1641 012d 40       		.uleb128 0x40
+ 1642 012e 18       		.uleb128 0x18
+ 1643 012f 9742     		.uleb128 0x2117
+ 1644 0131 19       		.uleb128 0x19
+ 1645 0132 01       		.uleb128 0x1
+ 1646 0133 13       		.uleb128 0x13
+ 1647 0134 00       		.byte	0
+ 1648 0135 00       		.byte	0
+ 1649 0136 17       		.uleb128 0x17
+ 1650 0137 34       		.uleb128 0x34
+ 1651 0138 00       		.byte	0
+ 1652 0139 03       		.uleb128 0x3
+ 1653 013a 0E       		.uleb128 0xe
+ 1654 013b 3A       		.uleb128 0x3a
+ 1655 013c 0B       		.uleb128 0xb
+ 1656 013d 3B       		.uleb128 0x3b
+ 1657 013e 0B       		.uleb128 0xb
+ 1658 013f 49       		.uleb128 0x49
+ 1659 0140 13       		.uleb128 0x13
+ 1660 0141 1C       		.uleb128 0x1c
+ 1661 0142 0B       		.uleb128 0xb
+ 1662 0143 00       		.byte	0
+ 1663 0144 00       		.byte	0
+ 1664 0145 18       		.uleb128 0x18
+ 1665 0146 21       		.uleb128 0x21
+ 1666 0147 00       		.byte	0
+ 1667 0148 49       		.uleb128 0x49
+ 1668 0149 13       		.uleb128 0x13
+ 1669 014a 2F       		.uleb128 0x2f
+ 1670 014b 18       		.uleb128 0x18
+ 1671 014c 00       		.byte	0
+ 1672 014d 00       		.byte	0
+ 1673 014e 19       		.uleb128 0x19
+ 1674 014f 2E       		.uleb128 0x2e
+ 1675 0150 01       		.byte	0x1
+ 1676 0151 3F       		.uleb128 0x3f
+ 1677 0152 19       		.uleb128 0x19
+ 1678 0153 03       		.uleb128 0x3
+ 1679 0154 0E       		.uleb128 0xe
+ 1680 0155 3A       		.uleb128 0x3a
+ 1681 0156 0B       		.uleb128 0xb
+ 1682 0157 3B       		.uleb128 0x3b
+ 1683 0158 0B       		.uleb128 0xb
+ 1684 0159 27       		.uleb128 0x27
+ 1685 015a 19       		.uleb128 0x19
+ 1686 015b 49       		.uleb128 0x49
+ 1687 015c 13       		.uleb128 0x13
+ 1688 015d 3C       		.uleb128 0x3c
+ 1689 015e 19       		.uleb128 0x19
+ 1690 015f 01       		.uleb128 0x1
+ 1691 0160 13       		.uleb128 0x13
+ 1692 0161 00       		.byte	0
+ 1693 0162 00       		.byte	0
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 35
+
+
+ 1694 0163 1A       		.uleb128 0x1a
+ 1695 0164 05       		.uleb128 0x5
+ 1696 0165 00       		.byte	0
+ 1697 0166 49       		.uleb128 0x49
+ 1698 0167 13       		.uleb128 0x13
+ 1699 0168 00       		.byte	0
+ 1700 0169 00       		.byte	0
+ 1701 016a 1B       		.uleb128 0x1b
+ 1702 016b 18       		.uleb128 0x18
+ 1703 016c 00       		.byte	0
+ 1704 016d 00       		.byte	0
+ 1705 016e 00       		.byte	0
+ 1706 016f 1C       		.uleb128 0x1c
+ 1707 0170 2E       		.uleb128 0x2e
+ 1708 0171 01       		.byte	0x1
+ 1709 0172 3F       		.uleb128 0x3f
+ 1710 0173 19       		.uleb128 0x19
+ 1711 0174 03       		.uleb128 0x3
+ 1712 0175 0E       		.uleb128 0xe
+ 1713 0176 3A       		.uleb128 0x3a
+ 1714 0177 0B       		.uleb128 0xb
+ 1715 0178 3B       		.uleb128 0x3b
+ 1716 0179 05       		.uleb128 0x5
+ 1717 017a 27       		.uleb128 0x27
+ 1718 017b 19       		.uleb128 0x19
+ 1719 017c 3C       		.uleb128 0x3c
+ 1720 017d 19       		.uleb128 0x19
+ 1721 017e 01       		.uleb128 0x1
+ 1722 017f 13       		.uleb128 0x13
+ 1723 0180 00       		.byte	0
+ 1724 0181 00       		.byte	0
+ 1725 0182 1D       		.uleb128 0x1d
+ 1726 0183 2E       		.uleb128 0x2e
+ 1727 0184 00       		.byte	0
+ 1728 0185 3F       		.uleb128 0x3f
+ 1729 0186 19       		.uleb128 0x19
+ 1730 0187 03       		.uleb128 0x3
+ 1731 0188 0E       		.uleb128 0xe
+ 1732 0189 3A       		.uleb128 0x3a
+ 1733 018a 0B       		.uleb128 0xb
+ 1734 018b 3B       		.uleb128 0x3b
+ 1735 018c 05       		.uleb128 0x5
+ 1736 018d 27       		.uleb128 0x27
+ 1737 018e 19       		.uleb128 0x19
+ 1738 018f 49       		.uleb128 0x49
+ 1739 0190 13       		.uleb128 0x13
+ 1740 0191 3C       		.uleb128 0x3c
+ 1741 0192 19       		.uleb128 0x19
+ 1742 0193 00       		.byte	0
+ 1743 0194 00       		.byte	0
+ 1744 0195 1E       		.uleb128 0x1e
+ 1745 0196 2E       		.uleb128 0x2e
+ 1746 0197 00       		.byte	0
+ 1747 0198 3F       		.uleb128 0x3f
+ 1748 0199 19       		.uleb128 0x19
+ 1749 019a 03       		.uleb128 0x3
+ 1750 019b 0E       		.uleb128 0xe
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 36
+
+
+ 1751 019c 3A       		.uleb128 0x3a
+ 1752 019d 0B       		.uleb128 0xb
+ 1753 019e 3B       		.uleb128 0x3b
+ 1754 019f 0B       		.uleb128 0xb
+ 1755 01a0 27       		.uleb128 0x27
+ 1756 01a1 19       		.uleb128 0x19
+ 1757 01a2 3C       		.uleb128 0x3c
+ 1758 01a3 19       		.uleb128 0x19
+ 1759 01a4 00       		.byte	0
+ 1760 01a5 00       		.byte	0
+ 1761 01a6 00       		.byte	0
+ 1762              		.section	.debug_loc,"",%progbits
+ 1763              	.Ldebug_loc0:
+ 1764              	.LLST0:
+ 1765 0000 00000000 		.4byte	.LVL0
+ 1766 0004 08000000 		.4byte	.LVL1
+ 1767 0008 0100     		.2byte	0x1
+ 1768 000a 50       		.byte	0x50
+ 1769 000b 08000000 		.4byte	.LVL1
+ 1770 000f 0D000000 		.4byte	.LVL2-1
+ 1771 0013 0100     		.2byte	0x1
+ 1772 0015 52       		.byte	0x52
+ 1773 0016 0D000000 		.4byte	.LVL2-1
+ 1774 001a 1C000000 		.4byte	.LFE33
+ 1775 001e 0400     		.2byte	0x4
+ 1776 0020 F3       		.byte	0xf3
+ 1777 0021 01       		.uleb128 0x1
+ 1778 0022 50       		.byte	0x50
+ 1779 0023 9F       		.byte	0x9f
+ 1780 0024 00000000 		.4byte	0
+ 1781 0028 00000000 		.4byte	0
+ 1782              	.LLST1:
+ 1783 002c 00000000 		.4byte	.LVL4
+ 1784 0030 04000000 		.4byte	.LVL5
+ 1785 0034 0100     		.2byte	0x1
+ 1786 0036 50       		.byte	0x50
+ 1787 0037 04000000 		.4byte	.LVL5
+ 1788 003b 22000000 		.4byte	.LFE34
+ 1789 003f 0400     		.2byte	0x4
+ 1790 0041 F3       		.byte	0xf3
+ 1791 0042 01       		.uleb128 0x1
+ 1792 0043 50       		.byte	0x50
+ 1793 0044 9F       		.byte	0x9f
+ 1794 0045 00000000 		.4byte	0
+ 1795 0049 00000000 		.4byte	0
+ 1796              	.LLST2:
+ 1797 004d 0A000000 		.4byte	.LVL7
+ 1798 0051 0F000000 		.4byte	.LVL8-1
+ 1799 0055 0100     		.2byte	0x1
+ 1800 0057 50       		.byte	0x50
+ 1801 0058 0F000000 		.4byte	.LVL8-1
+ 1802 005c 20000000 		.4byte	.LVL10
+ 1803 0060 0100     		.2byte	0x1
+ 1804 0062 54       		.byte	0x54
+ 1805 0063 00000000 		.4byte	0
+ 1806 0067 00000000 		.4byte	0
+ 1807              	.LLST3:
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 37
+
+
+ 1808 006b 04000000 		.4byte	.LVL5
+ 1809 006f 20000000 		.4byte	.LVL11
+ 1810 0073 0100     		.2byte	0x1
+ 1811 0075 55       		.byte	0x55
+ 1812 0076 00000000 		.4byte	0
+ 1813 007a 00000000 		.4byte	0
+ 1814              	.LLST4:
+ 1815 007e 00000000 		.4byte	.LVL12
+ 1816 0082 0C000000 		.4byte	.LVL15
+ 1817 0086 0100     		.2byte	0x1
+ 1818 0088 50       		.byte	0x50
+ 1819 0089 0C000000 		.4byte	.LVL15
+ 1820 008d 1E000000 		.4byte	.LVL18
+ 1821 0091 0100     		.2byte	0x1
+ 1822 0093 50       		.byte	0x50
+ 1823 0094 00000000 		.4byte	0
+ 1824 0098 00000000 		.4byte	0
+ 1825              	.LLST5:
+ 1826 009c 02000000 		.4byte	.LVL13
+ 1827 00a0 06000000 		.4byte	.LVL14
+ 1828 00a4 0200     		.2byte	0x2
+ 1829 00a6 30       		.byte	0x30
+ 1830 00a7 9F       		.byte	0x9f
+ 1831 00a8 06000000 		.4byte	.LVL14
+ 1832 00ac 30000000 		.4byte	.LVL22
+ 1833 00b0 0100     		.2byte	0x1
+ 1834 00b2 54       		.byte	0x54
+ 1835 00b3 30000000 		.4byte	.LVL22
+ 1836 00b7 3C000000 		.4byte	.LFE35
+ 1837 00bb 0100     		.2byte	0x1
+ 1838 00bd 50       		.byte	0x50
+ 1839 00be 00000000 		.4byte	0
+ 1840 00c2 00000000 		.4byte	0
+ 1841              	.LLST6:
+ 1842 00c6 00000000 		.4byte	.LVL23
+ 1843 00ca 36000000 		.4byte	.LVL32
+ 1844 00ce 0100     		.2byte	0x1
+ 1845 00d0 50       		.byte	0x50
+ 1846 00d1 36000000 		.4byte	.LVL32
+ 1847 00d5 44000000 		.4byte	.LVL33
+ 1848 00d9 0100     		.2byte	0x1
+ 1849 00db 50       		.byte	0x50
+ 1850 00dc 00000000 		.4byte	0
+ 1851 00e0 00000000 		.4byte	0
+ 1852              	.LLST7:
+ 1853 00e4 00000000 		.4byte	.LVL23
+ 1854 00e8 1E000000 		.4byte	.LVL27
+ 1855 00ec 0100     		.2byte	0x1
+ 1856 00ee 51       		.byte	0x51
+ 1857 00ef 1E000000 		.4byte	.LVL27
+ 1858 00f3 8C000000 		.4byte	.LVL51
+ 1859 00f7 0100     		.2byte	0x1
+ 1860 00f9 56       		.byte	0x56
+ 1861 00fa 8C000000 		.4byte	.LVL51
+ 1862 00fe A0000000 		.4byte	.LFE36
+ 1863 0102 0400     		.2byte	0x4
+ 1864 0104 F3       		.byte	0xf3
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 38
+
+
+ 1865 0105 01       		.uleb128 0x1
+ 1866 0106 51       		.byte	0x51
+ 1867 0107 9F       		.byte	0x9f
+ 1868 0108 00000000 		.4byte	0
+ 1869 010c 00000000 		.4byte	0
+ 1870              	.LLST8:
+ 1871 0110 0A000000 		.4byte	.LVL24
+ 1872 0114 1E000000 		.4byte	.LVL27
+ 1873 0118 0300     		.2byte	0x3
+ 1874 011a 71       		.byte	0x71
+ 1875 011b 7F       		.sleb128 -1
+ 1876 011c 9F       		.byte	0x9f
+ 1877 011d 1E000000 		.4byte	.LVL27
+ 1878 0121 8C000000 		.4byte	.LVL51
+ 1879 0125 0300     		.2byte	0x3
+ 1880 0127 76       		.byte	0x76
+ 1881 0128 7F       		.sleb128 -1
+ 1882 0129 9F       		.byte	0x9f
+ 1883 012a 8C000000 		.4byte	.LVL51
+ 1884 012e A0000000 		.4byte	.LFE36
+ 1885 0132 0600     		.2byte	0x6
+ 1886 0134 F3       		.byte	0xf3
+ 1887 0135 01       		.uleb128 0x1
+ 1888 0136 51       		.byte	0x51
+ 1889 0137 31       		.byte	0x31
+ 1890 0138 1C       		.byte	0x1c
+ 1891 0139 9F       		.byte	0x9f
+ 1892 013a 00000000 		.4byte	0
+ 1893 013e 00000000 		.4byte	0
+ 1894              	.LLST9:
+ 1895 0142 1A000000 		.4byte	.LVL25
+ 1896 0146 1C000000 		.4byte	.LVL26
+ 1897 014a 0200     		.2byte	0x2
+ 1898 014c 72       		.byte	0x72
+ 1899 014d 00       		.sleb128 0
+ 1900 014e 1C000000 		.4byte	.LVL26
+ 1901 0152 8C000000 		.4byte	.LVL50
+ 1902 0156 0200     		.2byte	0x2
+ 1903 0158 75       		.byte	0x75
+ 1904 0159 00       		.sleb128 0
+ 1905 015a 00000000 		.4byte	0
+ 1906 015e 00000000 		.4byte	0
+ 1907              	.LLST10:
+ 1908 0162 1A000000 		.4byte	.LVL25
+ 1909 0166 22000000 		.4byte	.LVL28
+ 1910 016a 0200     		.2byte	0x2
+ 1911 016c 30       		.byte	0x30
+ 1912 016d 9F       		.byte	0x9f
+ 1913 016e 22000000 		.4byte	.LVL28
+ 1914 0172 44000000 		.4byte	.LVL33
+ 1915 0176 0100     		.2byte	0x1
+ 1916 0178 51       		.byte	0x51
+ 1917 0179 44000000 		.4byte	.LVL33
+ 1918 017d 5A000000 		.4byte	.LVL37
+ 1919 0181 0100     		.2byte	0x1
+ 1920 0183 54       		.byte	0x54
+ 1921 0184 5A000000 		.4byte	.LVL37
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 39
+
+
+ 1922 0188 60000000 		.4byte	.LVL38
+ 1923 018c 0200     		.2byte	0x2
+ 1924 018e 31       		.byte	0x31
+ 1925 018f 9F       		.byte	0x9f
+ 1926 0190 60000000 		.4byte	.LVL38
+ 1927 0194 7D000000 		.4byte	.LVL46-1
+ 1928 0198 0100     		.2byte	0x1
+ 1929 019a 53       		.byte	0x53
+ 1930 019b 00000000 		.4byte	0
+ 1931 019f 00000000 		.4byte	0
+ 1932              	.LLST11:
+ 1933 01a3 1A000000 		.4byte	.LVL25
+ 1934 01a7 22000000 		.4byte	.LVL28
+ 1935 01ab 0200     		.2byte	0x2
+ 1936 01ad 30       		.byte	0x30
+ 1937 01ae 9F       		.byte	0x9f
+ 1938 01af 22000000 		.4byte	.LVL28
+ 1939 01b3 32000000 		.4byte	.LVL30
+ 1940 01b7 0100     		.2byte	0x1
+ 1941 01b9 52       		.byte	0x52
+ 1942 01ba 32000000 		.4byte	.LVL30
+ 1943 01be 34000000 		.4byte	.LVL31
+ 1944 01c2 0200     		.2byte	0x2
+ 1945 01c4 30       		.byte	0x30
+ 1946 01c5 9F       		.byte	0x9f
+ 1947 01c6 34000000 		.4byte	.LVL31
+ 1948 01ca 44000000 		.4byte	.LVL33
+ 1949 01ce 0100     		.2byte	0x1
+ 1950 01d0 52       		.byte	0x52
+ 1951 01d1 00000000 		.4byte	0
+ 1952 01d5 00000000 		.4byte	0
+ 1953              	.LLST12:
+ 1954 01d9 5A000000 		.4byte	.LVL37
+ 1955 01dd 68000000 		.4byte	.LVL39
+ 1956 01e1 0100     		.2byte	0x1
+ 1957 01e3 51       		.byte	0x51
+ 1958 01e4 68000000 		.4byte	.LVL39
+ 1959 01e8 6C000000 		.4byte	.LVL41
+ 1960 01ec 0100     		.2byte	0x1
+ 1961 01ee 52       		.byte	0x52
+ 1962 01ef 6C000000 		.4byte	.LVL41
+ 1963 01f3 7D000000 		.4byte	.LVL46-1
+ 1964 01f7 0100     		.2byte	0x1
+ 1965 01f9 51       		.byte	0x51
+ 1966 01fa 00000000 		.4byte	0
+ 1967 01fe 00000000 		.4byte	0
+ 1968              	.LLST13:
+ 1969 0202 5A000000 		.4byte	.LVL37
+ 1970 0206 60000000 		.4byte	.LVL38
+ 1971 020a 0200     		.2byte	0x2
+ 1972 020c 30       		.byte	0x30
+ 1973 020d 9F       		.byte	0x9f
+ 1974 020e 60000000 		.4byte	.LVL38
+ 1975 0212 74000000 		.4byte	.LVL43
+ 1976 0216 0100     		.2byte	0x1
+ 1977 0218 50       		.byte	0x50
+ 1978 0219 74000000 		.4byte	.LVL43
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 40
+
+
+ 1979 021d 76000000 		.4byte	.LVL44
+ 1980 0221 0300     		.2byte	0x3
+ 1981 0223 70       		.byte	0x70
+ 1982 0224 01       		.sleb128 1
+ 1983 0225 9F       		.byte	0x9f
+ 1984 0226 00000000 		.4byte	0
+ 1985 022a 00000000 		.4byte	0
+ 1986              	.LLST14:
+ 1987 022e 78000000 		.4byte	.LVL45
+ 1988 0232 8C000000 		.4byte	.LVL49
+ 1989 0236 0100     		.2byte	0x1
+ 1990 0238 54       		.byte	0x54
+ 1991 0239 00000000 		.4byte	0
+ 1992 023d 00000000 		.4byte	0
+ 1993              	.LLST15:
+ 1994 0241 00000000 		.4byte	.LVL52
+ 1995 0245 B8000000 		.4byte	.LVL60
+ 1996 0249 0100     		.2byte	0x1
+ 1997 024b 50       		.byte	0x50
+ 1998 024c B8000000 		.4byte	.LVL60
+ 1999 0250 C6000000 		.4byte	.LVL61
+ 2000 0254 0100     		.2byte	0x1
+ 2001 0256 50       		.byte	0x50
+ 2002 0257 00000000 		.4byte	0
+ 2003 025b 00000000 		.4byte	0
+ 2004              	.LLST16:
+ 2005 025f 00000000 		.4byte	.LVL52
+ 2006 0263 1A000000 		.4byte	.LVL54
+ 2007 0267 0100     		.2byte	0x1
+ 2008 0269 51       		.byte	0x51
+ 2009 026a 1A000000 		.4byte	.LVL54
+ 2010 026e 1A010000 		.4byte	.LVL81
+ 2011 0272 0100     		.2byte	0x1
+ 2012 0274 56       		.byte	0x56
+ 2013 0275 1A010000 		.4byte	.LVL81
+ 2014 0279 38010000 		.4byte	.LFE37
+ 2015 027d 0400     		.2byte	0x4
+ 2016 027f F3       		.byte	0xf3
+ 2017 0280 01       		.uleb128 0x1
+ 2018 0281 51       		.byte	0x51
+ 2019 0282 9F       		.byte	0x9f
+ 2020 0283 00000000 		.4byte	0
+ 2021 0287 00000000 		.4byte	0
+ 2022              	.LLST17:
+ 2023 028b 10000000 		.4byte	.LVL53
+ 2024 028f 1A000000 		.4byte	.LVL54
+ 2025 0293 0300     		.2byte	0x3
+ 2026 0295 71       		.byte	0x71
+ 2027 0296 7F       		.sleb128 -1
+ 2028 0297 9F       		.byte	0x9f
+ 2029 0298 1A000000 		.4byte	.LVL54
+ 2030 029c 1A010000 		.4byte	.LVL81
+ 2031 02a0 0300     		.2byte	0x3
+ 2032 02a2 76       		.byte	0x76
+ 2033 02a3 7F       		.sleb128 -1
+ 2034 02a4 9F       		.byte	0x9f
+ 2035 02a5 1A010000 		.4byte	.LVL81
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 41
+
+
+ 2036 02a9 38010000 		.4byte	.LFE37
+ 2037 02ad 0600     		.2byte	0x6
+ 2038 02af F3       		.byte	0xf3
+ 2039 02b0 01       		.uleb128 0x1
+ 2040 02b1 51       		.byte	0x51
+ 2041 02b2 31       		.byte	0x31
+ 2042 02b3 1C       		.byte	0x1c
+ 2043 02b4 9F       		.byte	0x9f
+ 2044 02b5 00000000 		.4byte	0
+ 2045 02b9 00000000 		.4byte	0
+ 2046              	.LLST18:
+ 2047 02bd 20000000 		.4byte	.LVL55
+ 2048 02c1 2A000000 		.4byte	.LVL56
+ 2049 02c5 0200     		.2byte	0x2
+ 2050 02c7 71       		.byte	0x71
+ 2051 02c8 00       		.sleb128 0
+ 2052 02c9 2A000000 		.4byte	.LVL56
+ 2053 02cd FA000000 		.4byte	.LVL72
+ 2054 02d1 0200     		.2byte	0x2
+ 2055 02d3 75       		.byte	0x75
+ 2056 02d4 00       		.sleb128 0
+ 2057 02d5 FA000000 		.4byte	.LVL72
+ 2058 02d9 1A010000 		.4byte	.LVL78
+ 2059 02dd 0200     		.2byte	0x2
+ 2060 02df 7D       		.byte	0x7d
+ 2061 02e0 00       		.sleb128 0
+ 2062 02e1 00000000 		.4byte	0
+ 2063 02e5 00000000 		.4byte	0
+ 2064              	.LLST19:
+ 2065 02e9 20000000 		.4byte	.LVL55
+ 2066 02ed 2A000000 		.4byte	.LVL56
+ 2067 02f1 0200     		.2byte	0x2
+ 2068 02f3 30       		.byte	0x30
+ 2069 02f4 9F       		.byte	0x9f
+ 2070 02f5 2A000000 		.4byte	.LVL56
+ 2071 02f9 C6000000 		.4byte	.LVL61
+ 2072 02fd 0100     		.2byte	0x1
+ 2073 02ff 5C       		.byte	0x5c
+ 2074 0300 C6000000 		.4byte	.LVL61
+ 2075 0304 DC000000 		.4byte	.LVL65
+ 2076 0308 0100     		.2byte	0x1
+ 2077 030a 54       		.byte	0x54
+ 2078 030b DC000000 		.4byte	.LVL65
+ 2079 030f E2000000 		.4byte	.LVL66
+ 2080 0313 0200     		.2byte	0x2
+ 2081 0315 31       		.byte	0x31
+ 2082 0316 9F       		.byte	0x9f
+ 2083 0317 E2000000 		.4byte	.LVL66
+ 2084 031b F6000000 		.4byte	.LVL71
+ 2085 031f 0100     		.2byte	0x1
+ 2086 0321 53       		.byte	0x53
+ 2087 0322 00000000 		.4byte	0
+ 2088 0326 00000000 		.4byte	0
+ 2089              	.LLST20:
+ 2090 032a 20000000 		.4byte	.LVL55
+ 2091 032e 2A000000 		.4byte	.LVL56
+ 2092 0332 0200     		.2byte	0x2
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 42
+
+
+ 2093 0334 30       		.byte	0x30
+ 2094 0335 9F       		.byte	0x9f
+ 2095 0336 2A000000 		.4byte	.LVL56
+ 2096 033a B4000000 		.4byte	.LVL58
+ 2097 033e 0100     		.2byte	0x1
+ 2098 0340 5B       		.byte	0x5b
+ 2099 0341 B4000000 		.4byte	.LVL58
+ 2100 0345 B6000000 		.4byte	.LVL59
+ 2101 0349 0200     		.2byte	0x2
+ 2102 034b 30       		.byte	0x30
+ 2103 034c 9F       		.byte	0x9f
+ 2104 034d B6000000 		.4byte	.LVL59
+ 2105 0351 1A010000 		.4byte	.LVL82
+ 2106 0355 0100     		.2byte	0x1
+ 2107 0357 5B       		.byte	0x5b
+ 2108 0358 00000000 		.4byte	0
+ 2109 035c 00000000 		.4byte	0
+ 2110              	.LLST21:
+ 2111 0360 DC000000 		.4byte	.LVL65
+ 2112 0364 EA000000 		.4byte	.LVL67
+ 2113 0368 0100     		.2byte	0x1
+ 2114 036a 51       		.byte	0x51
+ 2115 036b EA000000 		.4byte	.LVL67
+ 2116 036f EE000000 		.4byte	.LVL69
+ 2117 0373 0100     		.2byte	0x1
+ 2118 0375 52       		.byte	0x52
+ 2119 0376 EE000000 		.4byte	.LVL69
+ 2120 037a FF000000 		.4byte	.LVL73-1
+ 2121 037e 0100     		.2byte	0x1
+ 2122 0380 51       		.byte	0x51
+ 2123 0381 00000000 		.4byte	0
+ 2124 0385 00000000 		.4byte	0
+ 2125              	.LLST22:
+ 2126 0389 DC000000 		.4byte	.LVL65
+ 2127 038d E2000000 		.4byte	.LVL66
+ 2128 0391 0200     		.2byte	0x2
+ 2129 0393 30       		.byte	0x30
+ 2130 0394 9F       		.byte	0x9f
+ 2131 0395 E2000000 		.4byte	.LVL66
+ 2132 0399 1A010000 		.4byte	.LVL79
+ 2133 039d 0100     		.2byte	0x1
+ 2134 039f 54       		.byte	0x54
+ 2135 03a0 00000000 		.4byte	0
+ 2136 03a4 00000000 		.4byte	0
+ 2137              	.LLST23:
+ 2138 03a8 FA000000 		.4byte	.LVL72
+ 2139 03ac 1A010000 		.4byte	.LVL80
+ 2140 03b0 0100     		.2byte	0x1
+ 2141 03b2 55       		.byte	0x55
+ 2142 03b3 00000000 		.4byte	0
+ 2143 03b7 00000000 		.4byte	0
+ 2144              	.LLST24:
+ 2145 03bb 0A000000 		.4byte	.LVL83
+ 2146 03bf 1E000000 		.4byte	.LVL89
+ 2147 03c3 0200     		.2byte	0x2
+ 2148 03c5 30       		.byte	0x30
+ 2149 03c6 9F       		.byte	0x9f
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 43
+
+
+ 2150 03c7 1E000000 		.4byte	.LVL89
+ 2151 03cb 20000000 		.4byte	.LVL90
+ 2152 03cf 0100     		.2byte	0x1
+ 2153 03d1 50       		.byte	0x50
+ 2154 03d2 20000000 		.4byte	.LVL90
+ 2155 03d6 30000000 		.4byte	.LVL94
+ 2156 03da 0100     		.2byte	0x1
+ 2157 03dc 54       		.byte	0x54
+ 2158 03dd 00000000 		.4byte	0
+ 2159 03e1 00000000 		.4byte	0
+ 2160              	.LLST25:
+ 2161 03e5 0A000000 		.4byte	.LVL83
+ 2162 03e9 12000000 		.4byte	.LVL85
+ 2163 03ed 0200     		.2byte	0x2
+ 2164 03ef 91       		.byte	0x91
+ 2165 03f0 64       		.sleb128 -28
+ 2166 03f1 12000000 		.4byte	.LVL85
+ 2167 03f5 15000000 		.4byte	.LVL86-1
+ 2168 03f9 0200     		.2byte	0x2
+ 2169 03fb 70       		.byte	0x70
+ 2170 03fc 00       		.sleb128 0
+ 2171 03fd 15000000 		.4byte	.LVL86-1
+ 2172 0401 18000000 		.4byte	.LVL87
+ 2173 0405 0200     		.2byte	0x2
+ 2174 0407 91       		.byte	0x91
+ 2175 0408 64       		.sleb128 -28
+ 2176 0409 18000000 		.4byte	.LVL87
+ 2177 040d 1B000000 		.4byte	.LVL88-1
+ 2178 0411 0200     		.2byte	0x2
+ 2179 0413 70       		.byte	0x70
+ 2180 0414 00       		.sleb128 0
+ 2181 0415 1B000000 		.4byte	.LVL88-1
+ 2182 0419 20000000 		.4byte	.LVL90
+ 2183 041d 0200     		.2byte	0x2
+ 2184 041f 91       		.byte	0x91
+ 2185 0420 64       		.sleb128 -28
+ 2186 0421 20000000 		.4byte	.LVL90
+ 2187 0425 25000000 		.4byte	.LVL91-1
+ 2188 0429 0200     		.2byte	0x2
+ 2189 042b 70       		.byte	0x70
+ 2190 042c 00       		.sleb128 0
+ 2191 042d 25000000 		.4byte	.LVL91-1
+ 2192 0431 28000000 		.4byte	.LVL92
+ 2193 0435 0200     		.2byte	0x2
+ 2194 0437 91       		.byte	0x91
+ 2195 0438 64       		.sleb128 -28
+ 2196 0439 28000000 		.4byte	.LVL92
+ 2197 043d 2D000000 		.4byte	.LVL93-1
+ 2198 0441 0200     		.2byte	0x2
+ 2199 0443 70       		.byte	0x70
+ 2200 0444 00       		.sleb128 0
+ 2201 0445 2D000000 		.4byte	.LVL93-1
+ 2202 0449 38000000 		.4byte	.LFE38
+ 2203 044d 0200     		.2byte	0x2
+ 2204 044f 91       		.byte	0x91
+ 2205 0450 64       		.sleb128 -28
+ 2206 0451 00000000 		.4byte	0
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 44
+
+
+ 2207 0455 00000000 		.4byte	0
+ 2208              		.section	.debug_aranges,"",%progbits
+ 2209 0000 44000000 		.4byte	0x44
+ 2210 0004 0200     		.2byte	0x2
+ 2211 0006 00000000 		.4byte	.Ldebug_info0
+ 2212 000a 04       		.byte	0x4
+ 2213 000b 00       		.byte	0
+ 2214 000c 0000     		.2byte	0
+ 2215 000e 0000     		.2byte	0
+ 2216 0010 00000000 		.4byte	.LFB33
+ 2217 0014 1C000000 		.4byte	.LFE33-.LFB33
+ 2218 0018 00000000 		.4byte	.LFB34
+ 2219 001c 22000000 		.4byte	.LFE34-.LFB34
+ 2220 0020 00000000 		.4byte	.LFB35
+ 2221 0024 3C000000 		.4byte	.LFE35-.LFB35
+ 2222 0028 00000000 		.4byte	.LFB36
+ 2223 002c A0000000 		.4byte	.LFE36-.LFB36
+ 2224 0030 00000000 		.4byte	.LFB37
+ 2225 0034 38010000 		.4byte	.LFE37-.LFB37
+ 2226 0038 00000000 		.4byte	.LFB38
+ 2227 003c 38000000 		.4byte	.LFE38-.LFB38
+ 2228 0040 00000000 		.4byte	0
+ 2229 0044 00000000 		.4byte	0
+ 2230              		.section	.debug_ranges,"",%progbits
+ 2231              	.Ldebug_ranges0:
+ 2232 0000 00000000 		.4byte	.LFB33
+ 2233 0004 1C000000 		.4byte	.LFE33
+ 2234 0008 00000000 		.4byte	.LFB34
+ 2235 000c 22000000 		.4byte	.LFE34
+ 2236 0010 00000000 		.4byte	.LFB35
+ 2237 0014 3C000000 		.4byte	.LFE35
+ 2238 0018 00000000 		.4byte	.LFB36
+ 2239 001c A0000000 		.4byte	.LFE36
+ 2240 0020 00000000 		.4byte	.LFB37
+ 2241 0024 38010000 		.4byte	.LFE37
+ 2242 0028 00000000 		.4byte	.LFB38
+ 2243 002c 38000000 		.4byte	.LFE38
+ 2244 0030 00000000 		.4byte	0
+ 2245 0034 00000000 		.4byte	0
+ 2246              		.section	.debug_line,"",%progbits
+ 2247              	.Ldebug_line0:
+ 2248 0000 EE010000 		.section	.debug_str,"MS",%progbits,1
+ 2248      0200D700 
+ 2248      00000201 
+ 2248      FB0E0D00 
+ 2248      01010101 
+ 2249              	.LASF41:
+ 2250 0000 55415254 		.ascii	"UART_1_Start\000"
+ 2250      5F315F53 
+ 2250      74617274 
+ 2250      00
+ 2251              	.LASF27:
+ 2252 000d 566F7765 		.ascii	"VowelWords\000"
+ 2252      6C576F72 
+ 2252      647300
+ 2253              	.LASF33:
+ 2254 0018 55415254 		.ascii	"UART_1_UartPutString\000"
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 45
+
+
+ 2254      5F315F55 
+ 2254      61727450 
+ 2254      75745374 
+ 2254      72696E67 
+ 2255              	.LASF3:
+ 2256 002d 73686F72 		.ascii	"short unsigned int\000"
+ 2256      7420756E 
+ 2256      7369676E 
+ 2256      65642069 
+ 2256      6E7400
+ 2257              	.LASF8:
+ 2258 0040 756E7369 		.ascii	"unsigned int\000"
+ 2258      676E6564 
+ 2258      20696E74 
+ 2258      00
+ 2259              	.LASF24:
+ 2260 004d 57445F4C 		.ascii	"WD_LN\000"
+ 2260      4E00
+ 2261              	.LASF10:
+ 2262 0053 646F7562 		.ascii	"double\000"
+ 2262      6C6500
+ 2263              	.LASF28:
+ 2264 005a 566F774C 		.ascii	"VowLet\000"
+ 2264      657400
+ 2265              	.LASF36:
+ 2266 0061 2E5C6D61 		.ascii	".\\main.c\000"
+ 2266      696E2E63 
+ 2266      00
+ 2267              	.LASF9:
+ 2268 006a 666C6F61 		.ascii	"float\000"
+ 2268      7400
+ 2269              	.LASF29:
+ 2270 0070 56575F43 		.ascii	"VW_CT\000"
+ 2270      5400
+ 2271              	.LASF16:
+ 2272 0076 72656164 		.ascii	"readString\000"
+ 2272      53747269 
+ 2272      6E6700
+ 2273              	.LASF38:
+ 2274 0081 436F756E 		.ascii	"CountWords\000"
+ 2274      74576F72 
+ 2274      647300
+ 2275              	.LASF1:
+ 2276 008c 756E7369 		.ascii	"unsigned char\000"
+ 2276      676E6564 
+ 2276      20636861 
+ 2276      7200
+ 2277              	.LASF12:
+ 2278 009a 63686172 		.ascii	"char8\000"
+ 2278      3800
+ 2279              	.LASF21:
+ 2280 00a0 4C6F6E67 		.ascii	"LongWords\000"
+ 2280      576F7264 
+ 2280      7300
+ 2281              	.LASF15:
+ 2282 00aa 5072696E 		.ascii	"PrintInt\000"
+ 2282      74496E74 
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 46
+
+
+ 2282      00
+ 2283              	.LASF32:
+ 2284 00b3 4D41585F 		.ascii	"MAX_BUFFER_SIZE\000"
+ 2284      42554646 
+ 2284      45525F53 
+ 2284      495A4500 
+ 2285              	.LASF40:
+ 2286 00c3 55415254 		.ascii	"UART_1_UartGetChar\000"
+ 2286      5F315F55 
+ 2286      61727447 
+ 2286      65744368 
+ 2286      617200
+ 2287              	.LASF18:
+ 2288 00d6 72784461 		.ascii	"rxData\000"
+ 2288      746100
+ 2289              	.LASF37:
+ 2290 00dd 453A5C73 		.ascii	"E:\\school\\ECEC304\\Lab 3\\Project3b.cydsn\000"
+ 2290      63686F6F 
+ 2290      6C5C4543 
+ 2290      45433330 
+ 2290      345C4C61 
+ 2291              	.LASF5:
+ 2292 0105 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2292      20756E73 
+ 2292      69676E65 
+ 2292      6420696E 
+ 2292      7400
+ 2293              	.LASF22:
+ 2294 0117 57445F43 		.ascii	"WD_CT\000"
+ 2294      5400
+ 2295              	.LASF19:
+ 2296 011d 73747231 		.ascii	"str1\000"
+ 2296      00
+ 2297              	.LASF34:
+ 2298 0122 55415254 		.ascii	"UART_1_SpiUartWriteTxData\000"
+ 2298      5F315F53 
+ 2298      70695561 
+ 2298      72745772 
+ 2298      69746554 
+ 2299              	.LASF11:
+ 2300 013c 75696E74 		.ascii	"uint32\000"
+ 2300      333200
+ 2301              	.LASF30:
+ 2302 0143 6D61696E 		.ascii	"main\000"
+ 2302      00
+ 2303              	.LASF23:
+ 2304 0148 576F7264 		.ascii	"WordLet\000"
+ 2304      4C657400 
+ 2305              	.LASF7:
+ 2306 0150 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2306      206C6F6E 
+ 2306      6720756E 
+ 2306      7369676E 
+ 2306      65642069 
+ 2307              	.LASF31:
+ 2308 0167 576F7264 		.ascii	"WordCount\000"
+ 2308      436F756E 
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 47
+
+
+ 2308      7400
+ 2309              	.LASF35:
+ 2310 0171 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 2310      4320342E 
+ 2310      382E3420 
+ 2310      32303134 
+ 2310      30353236 
+ 2311 01a4 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 2311      20726576 
+ 2311      6973696F 
+ 2311      6E203231 
+ 2311      31333538 
+ 2312 01d7 67202D66 		.ascii	"g -ffunction-sections\000"
+ 2312      66756E63 
+ 2312      74696F6E 
+ 2312      2D736563 
+ 2312      74696F6E 
+ 2313              	.LASF25:
+ 2314 01ed 6D61785F 		.ascii	"max_loc\000"
+ 2314      6C6F6300 
+ 2315              	.LASF14:
+ 2316 01f5 73697A65 		.ascii	"sizetype\000"
+ 2316      74797065 
+ 2316      00
+ 2317              	.LASF6:
+ 2318 01fe 6C6F6E67 		.ascii	"long long int\000"
+ 2318      206C6F6E 
+ 2318      6720696E 
+ 2318      7400
+ 2319              	.LASF13:
+ 2320 020c 63686172 		.ascii	"char\000"
+ 2320      00
+ 2321              	.LASF2:
+ 2322 0211 73686F72 		.ascii	"short int\000"
+ 2322      7420696E 
+ 2322      7400
+ 2323              	.LASF17:
+ 2324 021b 62756666 		.ascii	"buffer\000"
+ 2324      657200
+ 2325              	.LASF26:
+ 2326 0222 6D617869 		.ascii	"maximum\000"
+ 2326      6D756D00 
+ 2327              	.LASF4:
+ 2328 022a 6C6F6E67 		.ascii	"long int\000"
+ 2328      20696E74 
+ 2328      00
+ 2329              	.LASF20:
+ 2330 0233 576F7264 		.ascii	"WordCt\000"
+ 2330      437400
+ 2331              	.LASF0:
+ 2332 023a 7369676E 		.ascii	"signed char\000"
+ 2332      65642063 
+ 2332      68617200 
+ 2333              	.LASF39:
+ 2334 0246 73707269 		.ascii	"sprintf\000"
+ 2334      6E746600 
+ 2335              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoS5QoE.s 			page 48
+
+

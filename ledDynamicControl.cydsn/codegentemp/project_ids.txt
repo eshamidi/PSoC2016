@@ -1,0 +1,5 @@
+F:\ECEC304\ledDynamicControl.cydsn\ledDynamicControl.cyprj|9efdd7b9-80b4-4640-b9ea-15e05f7a71c0
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|e63242a0-dbfd-4048-b239-15f1767ee031
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|ec581a5b-329e-453c-88e4-8cd13f535b83
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|d281f34a-aa7d-42d5-883f-550815d3ded6
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|5f5b55cd-16a2-4775-abbb-f3a327c0f52d

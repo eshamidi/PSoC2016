@@ -1,0 +1,8 @@
+E:\school\ECEC304\Lab 3\Project3.cydsn\Project3.cyprj|01c01383-63ba-4a9f-994a-21903e254fb5
+C:\Program Files (x86)\Cypress\PSoC Creator\3.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|4e43924c-22a6-4621-bc80-323ce0b5e39e
+C:\Program Files (x86)\Cypress\PSoC Creator\3.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|d0fee736-de13-4674-a57c-d1eb558c525b
+C:\Program Files (x86)\Cypress\PSoC Creator\3.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|6a43c9ab-7ba6-4eae-abd2-e3ed283839c6
+C:\Program Files (x86)\Cypress\PSoC Creator\3.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|5445c7f2-c2d4-477b-880d-2e33104028b3
+E:\school\ECEC304\Lab 3\Project3b.cydsn\Project3b.cyprj|d54d1fa1-8e90-45d9-9446-0283c131c9d4
+E:\school\ECEC304\Lab 3\palindrome.cydsn\palindrome.cyprj|455c5dea-ddb6-41ee-bfc0-87d07c67f3dc
+E:\school\ECEC304\Lab 3\Checksum.cydsn\Checksum.cyprj|455c08d9-4ea5-47ba-879a-45e3bd063b39

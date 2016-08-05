@@ -1,0 +1,15 @@
+--------------- Build Started: 02/02/2016 16:49:50 Project: Project3b, Configuration: ARM GCC 4.8.4 Debug ---------------
+The code generation step is up to date.
+arm-none-eabi-gcc.exe -mcpu=cortex-m0 -mthumb -Wno-main -I. -IGenerated_Source\PSoC4 -Wa,-alh=.\CortexM0\ARM_GCC_484\Debug/main.lst -g -D DEBUG -Wall -ffunction-sections -Og -c .\main.c -o .\CortexM0\ARM_GCC_484\Debug\main.o
+.\main.c: In function 'main':
+.\main.c:188:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+arm-none-eabi-ar.exe -rs .\CortexM0\ARM_GCC_484\Debug\Project3b.a .\CortexM0\ARM_GCC_484\Debug\cyfitter_cfg.o .\CortexM0\ARM_GCC_484\Debug\UART_1.o .\CortexM0\ARM_GCC_484\Debug\UART_1_SPI_UART.o .\CortexM0\ARM_GCC_484\Debug\UART_1_SPI_UART_INT.o .\CortexM0\ARM_GCC_484\Debug\UART_1_PM.o .\CortexM0\ARM_GCC_484\Debug\UART_1_UART.o .\CortexM0\ARM_GCC_484\Debug\UART_1_BOOT.o .\CortexM0\ARM_GCC_484\Debug\UART_1_UART_BOOT.o .\CortexM0\ARM_GCC_484\Debug\UART_1_SCBCLK.o .\CortexM0\ARM_GCC_484\Debug\UART_1_tx.o .\CortexM0\ARM_GCC_484\Debug\UART_1_rx.o .\CortexM0\ARM_GCC_484\Debug\CyBootAsmGnu.o .\CortexM0\ARM_GCC_484\Debug\CyFlash.o .\CortexM0\ARM_GCC_484\Debug\CyLib.o .\CortexM0\ARM_GCC_484\Debug\cyPm.o .\CortexM0\ARM_GCC_484\Debug\cyutils.o .\CortexM0\ARM_GCC_484\Debug\CyLFClk.o
+arm-none-eabi-ar.exe: creating .\CortexM0\ARM_GCC_484\Debug\Project3b.a
+arm-none-eabi-gcc.exe -Wl,--start-group -o .\CortexM0\ARM_GCC_484\Debug\Project3b.elf .\CortexM0\ARM_GCC_484\Debug\main.o .\CortexM0\ARM_GCC_484\Debug\cymetadata.o .\CortexM0\ARM_GCC_484\Debug\Cm0Start.o .\CortexM0\ARM_GCC_484\Debug\Project3b.a "C:\Program Files (x86)\Cypress\PSoC Creator\3.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM0\ARM_GCC_484\Debug\CyComponentLibrary.a" -mcpu=cortex-m0 -mthumb -g -ffunction-sections -Og -Wl,-Map,.\CortexM0\ARM_GCC_484\Debug/Project3b.map -T Generated_Source\PSoC4\cm0gcc.ld -specs=nano.specs -Wl,--gc-sections -Wl,--end-group
+cyelftool.exe -C "E:\school\ECEC304\Lab 3\Project3b.cydsn\CortexM0\ARM_GCC_484\Debug\Project3b.elf" --flash_row_size 128 --flash_size 32768
+cyelftool.exe -S "E:\school\ECEC304\Lab 3\Project3b.cydsn\CortexM0\ARM_GCC_484\Debug\Project3b.elf"
+Flash used: 5248 of 32768 bytes (16.0 %).
+SRAM used: 1548 of 4096 bytes (37.8 %). Stack: 1024 bytes. Heap: 128 bytes.
+--------------- Build Succeeded: 02/02/2016 16:49:54 ---------------

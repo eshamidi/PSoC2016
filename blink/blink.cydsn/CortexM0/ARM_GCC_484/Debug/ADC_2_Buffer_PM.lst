@@ -1,0 +1,851 @@
+ARM GAS  C:\Users\EGH35~1.DRE\AppData\Local\Temp\cc1FU5Kr.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 1
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"ADC_2_Buffer_PM.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.ADC_2_Buffer_SaveConfig,"ax",%progbits
+  18              		.align	2
+  19              		.global	ADC_2_Buffer_SaveConfig
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	ADC_2_Buffer_SaveConfig, %function
+  23              	ADC_2_Buffer_SaveConfig:
+  24              	.LFB0:
+  25              		.file 1 ".\\Generated_Source\\PSoC4\\ADC_2_Buffer_PM.c"
+   1:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** * File Name: ADC_2_Buffer_PM.c
+   3:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** * Version 1.10
+   4:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *
+   5:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** * Description:
+   6:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *  This file provides the power management source code to the API for the
+   7:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *  Opamp (Analog Buffer) component.
+   8:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *
+   9:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *
+  10:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** ********************************************************************************
+  11:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** * Copyright 2013-2014, Cypress Semiconductor Corporation.  All rights reserved.
+  12:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** * You may use this file only in accordance with the license, terms, conditions,
+  13:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  14:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** * the software package with which this file was provided.
+  15:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *******************************************************************************/
+  16:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** 
+  17:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** #include "ADC_2_Buffer.h"
+  18:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** 
+  19:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** #if(!ADC_2_Buffer_CHECK_DEEPSLEEP_SUPPORT)
+  20:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c ****     static ADC_2_Buffer_BACKUP_STRUCT ADC_2_Buffer_backup =
+  21:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c ****     {
+  22:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c ****         0u, /* enableState */
+  23:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c ****     };
+  24:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** #endif /* (ADC_2_Buffer_CHECK_DEEPSLEEP_SUPPORT) */
+  25:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** 
+  26:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** 
+  27:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** /*******************************************************************************
+  28:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** * Function Name: ADC_2_Buffer_SaveConfig
+  29:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** ********************************************************************************
+  30:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *
+  31:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** * Summary:
+  32:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *  Empty function. Included for consistency with other components.
+ARM GAS  C:\Users\EGH35~1.DRE\AppData\Local\Temp\cc1FU5Kr.s 			page 2
+
+
+  33:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *
+  34:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** * Parameters:
+  35:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *  None
+  36:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *
+  37:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** * Return:
+  38:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *  None
+  39:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *
+  40:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *******************************************************************************/
+  41:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** void ADC_2_Buffer_SaveConfig(void)
+  42:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** {
+  26              		.loc 1 42 0
+  27              		.cfi_startproc
+  43:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** 
+  44:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** }
+  28              		.loc 1 44 0
+  29              		@ sp needed
+  30 0000 7047     		bx	lr
+  31              		.cfi_endproc
+  32              	.LFE0:
+  33              		.size	ADC_2_Buffer_SaveConfig, .-ADC_2_Buffer_SaveConfig
+  34 0002 C046     		.section	.text.ADC_2_Buffer_RestoreConfig,"ax",%progbits
+  35              		.align	2
+  36              		.global	ADC_2_Buffer_RestoreConfig
+  37              		.code	16
+  38              		.thumb_func
+  39              		.type	ADC_2_Buffer_RestoreConfig, %function
+  40              	ADC_2_Buffer_RestoreConfig:
+  41              	.LFB1:
+  45:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** 
+  46:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** 
+  47:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** /*******************************************************************************
+  48:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** * Function Name: ADC_2_Buffer_RestoreConfig
+  49:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** ********************************************************************************
+  50:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *
+  51:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** * Summary:
+  52:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *  Empty function. Included for consistency with other components.
+  53:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *
+  54:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** * Parameters:
+  55:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *  None
+  56:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *
+  57:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** * Return:
+  58:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *  None
+  59:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *
+  60:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *******************************************************************************/
+  61:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** void ADC_2_Buffer_RestoreConfig(void)
+  62:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** {
+  42              		.loc 1 62 0
+  43              		.cfi_startproc
+  63:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c ****     
+  64:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** }
+  44              		.loc 1 64 0
+  45              		@ sp needed
+  46 0000 7047     		bx	lr
+  47              		.cfi_endproc
+  48              	.LFE1:
+  49              		.size	ADC_2_Buffer_RestoreConfig, .-ADC_2_Buffer_RestoreConfig
+  50 0002 C046     		.section	.text.ADC_2_Buffer_Sleep,"ax",%progbits
+ARM GAS  C:\Users\EGH35~1.DRE\AppData\Local\Temp\cc1FU5Kr.s 			page 3
+
+
+  51              		.align	2
+  52              		.global	ADC_2_Buffer_Sleep
+  53              		.code	16
+  54              		.thumb_func
+  55              		.type	ADC_2_Buffer_Sleep, %function
+  56              	ADC_2_Buffer_Sleep:
+  57              	.LFB2:
+  65:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** 
+  66:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** 
+  67:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** /*******************************************************************************
+  68:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** * Function Name: ADC_2_Buffer_Sleep
+  69:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** ********************************************************************************
+  70:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *
+  71:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** * Summary:
+  72:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *  This is the preferred API to prepare the component for sleep. The Sleep() API 
+  73:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *  saves the current component state. Call the Sleep() function before calling the 
+  74:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *  CySysPmDeepSleep() or the CySysPmHibernate() functions. The "Deep sleep operation" 
+  75:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *  option has an influence on this function implementation.
+  76:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *
+  77:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** * Parameters:
+  78:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *  None
+  79:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *
+  80:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** * Return:
+  81:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *  None
+  82:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *
+  83:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** * Global variables:
+  84:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *  ADC_2_Buffer_backup: The structure field 'enableState' is modified
+  85:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *  depending on the enable state of the block before entering the sleep mode.
+  86:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *
+  87:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *******************************************************************************/
+  88:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** void ADC_2_Buffer_Sleep(void)
+  89:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** {
+  58              		.loc 1 89 0
+  59              		.cfi_startproc
+  60 0000 08B5     		push	{r3, lr}
+  61              		.cfi_def_cfa_offset 8
+  62              		.cfi_offset 3, -8
+  63              		.cfi_offset 14, -4
+  90:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** #if(!ADC_2_Buffer_CHECK_DEEPSLEEP_SUPPORT)
+  91:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c ****     if(ADC_2_Buffer_CHECK_PWR_MODE_OFF)
+  64              		.loc 1 91 0
+  65 0002 074B     		ldr	r3, .L6
+  66 0004 1B68     		ldr	r3, [r3]
+  67 0006 9A07     		lsl	r2, r3, #30
+  68 0008 05D0     		beq	.L4
+  92:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c ****     {
+  93:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c ****         ADC_2_Buffer_backup.enableState = 1u;
+  69              		.loc 1 93 0
+  70 000a 0122     		mov	r2, #1
+  71 000c 054B     		ldr	r3, .L6+4
+  72 000e 1A70     		strb	r2, [r3]
+  94:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c ****         ADC_2_Buffer_Stop();
+  73              		.loc 1 94 0
+  74 0010 FFF7FEFF 		bl	ADC_2_Buffer_Stop
+  75              	.LVL0:
+  76 0014 02E0     		b	.L3
+  77              	.L4:
+ARM GAS  C:\Users\EGH35~1.DRE\AppData\Local\Temp\cc1FU5Kr.s 			page 4
+
+
+  95:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c ****     }
+  96:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c ****     else /* The component is disabled */
+  97:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c ****     {
+  98:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c ****         ADC_2_Buffer_backup.enableState = 0u;
+  78              		.loc 1 98 0
+  79 0016 0022     		mov	r2, #0
+  80 0018 024B     		ldr	r3, .L6+4
+  81 001a 1A70     		strb	r2, [r3]
+  82              	.L3:
+  99:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c ****     }
+ 100:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** #endif /* (ADC_2_Buffer_CHECK_DEEPSLEEP_SUPPORT) */
+ 101:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** }
+  83              		.loc 1 101 0
+  84              		@ sp needed
+  85 001c 08BD     		pop	{r3, pc}
+  86              	.L7:
+  87 001e C046     		.align	2
+  88              	.L6:
+  89 0020 08001040 		.word	1074790408
+  90 0024 00000000 		.word	.LANCHOR0
+  91              		.cfi_endproc
+  92              	.LFE2:
+  93              		.size	ADC_2_Buffer_Sleep, .-ADC_2_Buffer_Sleep
+  94              		.section	.text.ADC_2_Buffer_Wakeup,"ax",%progbits
+  95              		.align	2
+  96              		.global	ADC_2_Buffer_Wakeup
+  97              		.code	16
+  98              		.thumb_func
+  99              		.type	ADC_2_Buffer_Wakeup, %function
+ 100              	ADC_2_Buffer_Wakeup:
+ 101              	.LFB3:
+ 102:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** 
+ 103:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** 
+ 104:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** /*******************************************************************************
+ 105:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** * Function Name: ADC_2_Buffer_Wakeup
+ 106:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** ********************************************************************************
+ 107:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *
+ 108:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** * Summary:
+ 109:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *  This is the preferred API to restore the component to the state when Sleep() 
+ 110:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *  is called. If the component has been enabled before the Sleep() function is 
+ 111:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *  called, the Wakeup() function will also re-enable the component.
+ 112:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *  The "Deep sleep operation" option has an influence on this function
+ 113:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *  implementation.
+ 114:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *
+ 115:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** * Parameters:
+ 116:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *  None
+ 117:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *
+ 118:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** * Return:
+ 119:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *  None
+ 120:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *
+ 121:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** * Global variables:
+ 122:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *  ADC_2_Buffer_backup: The structure field 'enableState' is used to
+ 123:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *  restore the enable state of block after wakeup from sleep mode.
+ 124:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *
+ 125:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** *******************************************************************************/
+ 126:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** void ADC_2_Buffer_Wakeup(void)
+ 127:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** {
+ARM GAS  C:\Users\EGH35~1.DRE\AppData\Local\Temp\cc1FU5Kr.s 			page 5
+
+
+ 102              		.loc 1 127 0
+ 103              		.cfi_startproc
+ 104 0000 08B5     		push	{r3, lr}
+ 105              		.cfi_def_cfa_offset 8
+ 106              		.cfi_offset 3, -8
+ 107              		.cfi_offset 14, -4
+ 128:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** #if(!ADC_2_Buffer_CHECK_DEEPSLEEP_SUPPORT)
+ 129:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c ****     if(0u != ADC_2_Buffer_backup.enableState)
+ 108              		.loc 1 129 0
+ 109 0002 034B     		ldr	r3, .L10
+ 110 0004 1B78     		ldrb	r3, [r3]
+ 111 0006 002B     		cmp	r3, #0
+ 112 0008 01D0     		beq	.L8
+ 130:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c ****     {
+ 131:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c ****         /* Enable Opamp's operation */
+ 132:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c ****         ADC_2_Buffer_Enable();
+ 113              		.loc 1 132 0
+ 114 000a FFF7FEFF 		bl	ADC_2_Buffer_Enable
+ 115              	.LVL1:
+ 116              	.L8:
+ 133:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c ****     } /* Do nothing if Opamp was disabled before */
+ 134:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** #endif /* (ADC_2_Buffer_CHECK_DEEPSLEEP_SUPPORT) */
+ 135:.\Generated_Source\PSoC4/ADC_2_Buffer_PM.c **** }
+ 117              		.loc 1 135 0
+ 118              		@ sp needed
+ 119 000e 08BD     		pop	{r3, pc}
+ 120              	.L11:
+ 121              		.align	2
+ 122              	.L10:
+ 123 0010 00000000 		.word	.LANCHOR0
+ 124              		.cfi_endproc
+ 125              	.LFE3:
+ 126              		.size	ADC_2_Buffer_Wakeup, .-ADC_2_Buffer_Wakeup
+ 127              		.bss
+ 128              		.align	2
+ 129              		.set	.LANCHOR0,. + 0
+ 130              		.type	ADC_2_Buffer_backup, %object
+ 131              		.size	ADC_2_Buffer_backup, 1
+ 132              	ADC_2_Buffer_backup:
+ 133 0000 00       		.space	1
+ 134 0001 000000   		.text
+ 135              	.Letext0:
+ 136              		.file 2 ".\\Generated_Source\\PSoC4\\cytypes.h"
+ 137              		.file 3 ".\\Generated_Source\\PSoC4\\ADC_2_Buffer.h"
+ 138              		.section	.debug_info,"",%progbits
+ 139              	.Ldebug_info0:
+ 140 0000 43010000 		.4byte	0x143
+ 141 0004 0400     		.2byte	0x4
+ 142 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 143 000a 04       		.byte	0x4
+ 144 000b 01       		.uleb128 0x1
+ 145 000c 21010000 		.4byte	.LASF22
+ 146 0010 01       		.byte	0x1
+ 147 0011 1A000000 		.4byte	.LASF23
+ 148 0015 C5000000 		.4byte	.LASF24
+ 149 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 150 001d 00000000 		.4byte	0
+ARM GAS  C:\Users\EGH35~1.DRE\AppData\Local\Temp\cc1FU5Kr.s 			page 6
+
+
+ 151 0021 00000000 		.4byte	.Ldebug_line0
+ 152 0025 02       		.uleb128 0x2
+ 153 0026 01       		.byte	0x1
+ 154 0027 06       		.byte	0x6
+ 155 0028 1C020000 		.4byte	.LASF0
+ 156 002c 02       		.uleb128 0x2
+ 157 002d 01       		.byte	0x1
+ 158 002e 08       		.byte	0x8
+ 159 002f 70000000 		.4byte	.LASF1
+ 160 0033 02       		.uleb128 0x2
+ 161 0034 02       		.byte	0x2
+ 162 0035 05       		.byte	0x5
+ 163 0036 CB010000 		.4byte	.LASF2
+ 164 003a 02       		.uleb128 0x2
+ 165 003b 02       		.byte	0x2
+ 166 003c 07       		.byte	0x7
+ 167 003d 90000000 		.4byte	.LASF3
+ 168 0041 02       		.uleb128 0x2
+ 169 0042 04       		.byte	0x4
+ 170 0043 05       		.byte	0x5
+ 171 0044 DB010000 		.4byte	.LASF4
+ 172 0048 02       		.uleb128 0x2
+ 173 0049 04       		.byte	0x4
+ 174 004a 07       		.byte	0x7
+ 175 004b 7E000000 		.4byte	.LASF5
+ 176 004f 02       		.uleb128 0x2
+ 177 0050 08       		.byte	0x8
+ 178 0051 05       		.byte	0x5
+ 179 0052 B8010000 		.4byte	.LASF6
+ 180 0056 02       		.uleb128 0x2
+ 181 0057 08       		.byte	0x8
+ 182 0058 07       		.byte	0x7
+ 183 0059 0A010000 		.4byte	.LASF7
+ 184 005d 03       		.uleb128 0x3
+ 185 005e 04       		.byte	0x4
+ 186 005f 05       		.byte	0x5
+ 187 0060 696E7400 		.ascii	"int\000"
+ 188 0064 02       		.uleb128 0x2
+ 189 0065 04       		.byte	0x4
+ 190 0066 07       		.byte	0x7
+ 191 0067 FD000000 		.4byte	.LASF8
+ 192 006b 04       		.uleb128 0x4
+ 193 006c D5010000 		.4byte	.LASF9
+ 194 0070 02       		.byte	0x2
+ 195 0071 C1       		.byte	0xc1
+ 196 0072 2C000000 		.4byte	0x2c
+ 197 0076 04       		.uleb128 0x4
+ 198 0077 F6000000 		.4byte	.LASF10
+ 199 007b 02       		.byte	0x2
+ 200 007c C3       		.byte	0xc3
+ 201 007d 48000000 		.4byte	0x48
+ 202 0081 02       		.uleb128 0x2
+ 203 0082 04       		.byte	0x4
+ 204 0083 04       		.byte	0x4
+ 205 0084 6A000000 		.4byte	.LASF11
+ 206 0088 02       		.uleb128 0x2
+ 207 0089 08       		.byte	0x8
+ARM GAS  C:\Users\EGH35~1.DRE\AppData\Local\Temp\cc1FU5Kr.s 			page 7
+
+
+ 208 008a 04       		.byte	0x4
+ 209 008b BE000000 		.4byte	.LASF12
+ 210 008f 02       		.uleb128 0x2
+ 211 0090 01       		.byte	0x1
+ 212 0091 08       		.byte	0x8
+ 213 0092 C6010000 		.4byte	.LASF13
+ 214 0096 05       		.uleb128 0x5
+ 215 0097 00000000 		.4byte	.LASF14
+ 216 009b 02       		.byte	0x2
+ 217 009c 6D01     		.2byte	0x16d
+ 218 009e A2000000 		.4byte	0xa2
+ 219 00a2 06       		.uleb128 0x6
+ 220 00a3 76000000 		.4byte	0x76
+ 221 00a7 07       		.uleb128 0x7
+ 222 00a8 01       		.byte	0x1
+ 223 00a9 03       		.byte	0x3
+ 224 00aa 1E       		.byte	0x1e
+ 225 00ab BC000000 		.4byte	0xbc
+ 226 00af 08       		.uleb128 0x8
+ 227 00b0 E4010000 		.4byte	.LASF25
+ 228 00b4 03       		.byte	0x3
+ 229 00b5 20       		.byte	0x20
+ 230 00b6 6B000000 		.4byte	0x6b
+ 231 00ba 00       		.byte	0
+ 232 00bb 00       		.byte	0
+ 233 00bc 04       		.uleb128 0x4
+ 234 00bd 9D010000 		.4byte	.LASF15
+ 235 00c1 03       		.byte	0x3
+ 236 00c2 21       		.byte	0x21
+ 237 00c3 A7000000 		.4byte	0xa7
+ 238 00c7 09       		.uleb128 0x9
+ 239 00c8 F0010000 		.4byte	.LASF16
+ 240 00cc 01       		.byte	0x1
+ 241 00cd 29       		.byte	0x29
+ 242 00ce 00000000 		.4byte	.LFB0
+ 243 00d2 02000000 		.4byte	.LFE0-.LFB0
+ 244 00d6 01       		.uleb128 0x1
+ 245 00d7 9C       		.byte	0x9c
+ 246 00d8 09       		.uleb128 0x9
+ 247 00d9 A3000000 		.4byte	.LASF17
+ 248 00dd 01       		.byte	0x1
+ 249 00de 3D       		.byte	0x3d
+ 250 00df 00000000 		.4byte	.LFB1
+ 251 00e3 02000000 		.4byte	.LFE1-.LFB1
+ 252 00e7 01       		.uleb128 0x1
+ 253 00e8 9C       		.byte	0x9c
+ 254 00e9 0A       		.uleb128 0xa
+ 255 00ea 45000000 		.4byte	.LASF18
+ 256 00ee 01       		.byte	0x1
+ 257 00ef 58       		.byte	0x58
+ 258 00f0 00000000 		.4byte	.LFB2
+ 259 00f4 28000000 		.4byte	.LFE2-.LFB2
+ 260 00f8 01       		.uleb128 0x1
+ 261 00f9 9C       		.byte	0x9c
+ 262 00fa 08010000 		.4byte	0x108
+ 263 00fe 0B       		.uleb128 0xb
+ 264 00ff 14000000 		.4byte	.LVL0
+ARM GAS  C:\Users\EGH35~1.DRE\AppData\Local\Temp\cc1FU5Kr.s 			page 8
+
+
+ 265 0103 38010000 		.4byte	0x138
+ 266 0107 00       		.byte	0
+ 267 0108 0A       		.uleb128 0xa
+ 268 0109 06000000 		.4byte	.LASF19
+ 269 010d 01       		.byte	0x1
+ 270 010e 7E       		.byte	0x7e
+ 271 010f 00000000 		.4byte	.LFB3
+ 272 0113 14000000 		.4byte	.LFE3-.LFB3
+ 273 0117 01       		.uleb128 0x1
+ 274 0118 9C       		.byte	0x9c
+ 275 0119 27010000 		.4byte	0x127
+ 276 011d 0B       		.uleb128 0xb
+ 277 011e 0E000000 		.4byte	.LVL1
+ 278 0122 3F010000 		.4byte	0x13f
+ 279 0126 00       		.byte	0
+ 280 0127 0C       		.uleb128 0xc
+ 281 0128 08020000 		.4byte	.LASF26
+ 282 012c 01       		.byte	0x1
+ 283 012d 14       		.byte	0x14
+ 284 012e BC000000 		.4byte	0xbc
+ 285 0132 05       		.uleb128 0x5
+ 286 0133 03       		.byte	0x3
+ 287 0134 00000000 		.4byte	ADC_2_Buffer_backup
+ 288 0138 0D       		.uleb128 0xd
+ 289 0139 58000000 		.4byte	.LASF20
+ 290 013d 03       		.byte	0x3
+ 291 013e 2A       		.byte	0x2a
+ 292 013f 0D       		.uleb128 0xd
+ 293 0140 E2000000 		.4byte	.LASF21
+ 294 0144 03       		.byte	0x3
+ 295 0145 28       		.byte	0x28
+ 296 0146 00       		.byte	0
+ 297              		.section	.debug_abbrev,"",%progbits
+ 298              	.Ldebug_abbrev0:
+ 299 0000 01       		.uleb128 0x1
+ 300 0001 11       		.uleb128 0x11
+ 301 0002 01       		.byte	0x1
+ 302 0003 25       		.uleb128 0x25
+ 303 0004 0E       		.uleb128 0xe
+ 304 0005 13       		.uleb128 0x13
+ 305 0006 0B       		.uleb128 0xb
+ 306 0007 03       		.uleb128 0x3
+ 307 0008 0E       		.uleb128 0xe
+ 308 0009 1B       		.uleb128 0x1b
+ 309 000a 0E       		.uleb128 0xe
+ 310 000b 55       		.uleb128 0x55
+ 311 000c 17       		.uleb128 0x17
+ 312 000d 11       		.uleb128 0x11
+ 313 000e 01       		.uleb128 0x1
+ 314 000f 10       		.uleb128 0x10
+ 315 0010 17       		.uleb128 0x17
+ 316 0011 00       		.byte	0
+ 317 0012 00       		.byte	0
+ 318 0013 02       		.uleb128 0x2
+ 319 0014 24       		.uleb128 0x24
+ 320 0015 00       		.byte	0
+ 321 0016 0B       		.uleb128 0xb
+ARM GAS  C:\Users\EGH35~1.DRE\AppData\Local\Temp\cc1FU5Kr.s 			page 9
+
+
+ 322 0017 0B       		.uleb128 0xb
+ 323 0018 3E       		.uleb128 0x3e
+ 324 0019 0B       		.uleb128 0xb
+ 325 001a 03       		.uleb128 0x3
+ 326 001b 0E       		.uleb128 0xe
+ 327 001c 00       		.byte	0
+ 328 001d 00       		.byte	0
+ 329 001e 03       		.uleb128 0x3
+ 330 001f 24       		.uleb128 0x24
+ 331 0020 00       		.byte	0
+ 332 0021 0B       		.uleb128 0xb
+ 333 0022 0B       		.uleb128 0xb
+ 334 0023 3E       		.uleb128 0x3e
+ 335 0024 0B       		.uleb128 0xb
+ 336 0025 03       		.uleb128 0x3
+ 337 0026 08       		.uleb128 0x8
+ 338 0027 00       		.byte	0
+ 339 0028 00       		.byte	0
+ 340 0029 04       		.uleb128 0x4
+ 341 002a 16       		.uleb128 0x16
+ 342 002b 00       		.byte	0
+ 343 002c 03       		.uleb128 0x3
+ 344 002d 0E       		.uleb128 0xe
+ 345 002e 3A       		.uleb128 0x3a
+ 346 002f 0B       		.uleb128 0xb
+ 347 0030 3B       		.uleb128 0x3b
+ 348 0031 0B       		.uleb128 0xb
+ 349 0032 49       		.uleb128 0x49
+ 350 0033 13       		.uleb128 0x13
+ 351 0034 00       		.byte	0
+ 352 0035 00       		.byte	0
+ 353 0036 05       		.uleb128 0x5
+ 354 0037 16       		.uleb128 0x16
+ 355 0038 00       		.byte	0
+ 356 0039 03       		.uleb128 0x3
+ 357 003a 0E       		.uleb128 0xe
+ 358 003b 3A       		.uleb128 0x3a
+ 359 003c 0B       		.uleb128 0xb
+ 360 003d 3B       		.uleb128 0x3b
+ 361 003e 05       		.uleb128 0x5
+ 362 003f 49       		.uleb128 0x49
+ 363 0040 13       		.uleb128 0x13
+ 364 0041 00       		.byte	0
+ 365 0042 00       		.byte	0
+ 366 0043 06       		.uleb128 0x6
+ 367 0044 35       		.uleb128 0x35
+ 368 0045 00       		.byte	0
+ 369 0046 49       		.uleb128 0x49
+ 370 0047 13       		.uleb128 0x13
+ 371 0048 00       		.byte	0
+ 372 0049 00       		.byte	0
+ 373 004a 07       		.uleb128 0x7
+ 374 004b 13       		.uleb128 0x13
+ 375 004c 01       		.byte	0x1
+ 376 004d 0B       		.uleb128 0xb
+ 377 004e 0B       		.uleb128 0xb
+ 378 004f 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\EGH35~1.DRE\AppData\Local\Temp\cc1FU5Kr.s 			page 10
+
+
+ 379 0050 0B       		.uleb128 0xb
+ 380 0051 3B       		.uleb128 0x3b
+ 381 0052 0B       		.uleb128 0xb
+ 382 0053 01       		.uleb128 0x1
+ 383 0054 13       		.uleb128 0x13
+ 384 0055 00       		.byte	0
+ 385 0056 00       		.byte	0
+ 386 0057 08       		.uleb128 0x8
+ 387 0058 0D       		.uleb128 0xd
+ 388 0059 00       		.byte	0
+ 389 005a 03       		.uleb128 0x3
+ 390 005b 0E       		.uleb128 0xe
+ 391 005c 3A       		.uleb128 0x3a
+ 392 005d 0B       		.uleb128 0xb
+ 393 005e 3B       		.uleb128 0x3b
+ 394 005f 0B       		.uleb128 0xb
+ 395 0060 49       		.uleb128 0x49
+ 396 0061 13       		.uleb128 0x13
+ 397 0062 38       		.uleb128 0x38
+ 398 0063 0B       		.uleb128 0xb
+ 399 0064 00       		.byte	0
+ 400 0065 00       		.byte	0
+ 401 0066 09       		.uleb128 0x9
+ 402 0067 2E       		.uleb128 0x2e
+ 403 0068 00       		.byte	0
+ 404 0069 3F       		.uleb128 0x3f
+ 405 006a 19       		.uleb128 0x19
+ 406 006b 03       		.uleb128 0x3
+ 407 006c 0E       		.uleb128 0xe
+ 408 006d 3A       		.uleb128 0x3a
+ 409 006e 0B       		.uleb128 0xb
+ 410 006f 3B       		.uleb128 0x3b
+ 411 0070 0B       		.uleb128 0xb
+ 412 0071 27       		.uleb128 0x27
+ 413 0072 19       		.uleb128 0x19
+ 414 0073 11       		.uleb128 0x11
+ 415 0074 01       		.uleb128 0x1
+ 416 0075 12       		.uleb128 0x12
+ 417 0076 06       		.uleb128 0x6
+ 418 0077 40       		.uleb128 0x40
+ 419 0078 18       		.uleb128 0x18
+ 420 0079 9742     		.uleb128 0x2117
+ 421 007b 19       		.uleb128 0x19
+ 422 007c 00       		.byte	0
+ 423 007d 00       		.byte	0
+ 424 007e 0A       		.uleb128 0xa
+ 425 007f 2E       		.uleb128 0x2e
+ 426 0080 01       		.byte	0x1
+ 427 0081 3F       		.uleb128 0x3f
+ 428 0082 19       		.uleb128 0x19
+ 429 0083 03       		.uleb128 0x3
+ 430 0084 0E       		.uleb128 0xe
+ 431 0085 3A       		.uleb128 0x3a
+ 432 0086 0B       		.uleb128 0xb
+ 433 0087 3B       		.uleb128 0x3b
+ 434 0088 0B       		.uleb128 0xb
+ 435 0089 27       		.uleb128 0x27
+ARM GAS  C:\Users\EGH35~1.DRE\AppData\Local\Temp\cc1FU5Kr.s 			page 11
+
+
+ 436 008a 19       		.uleb128 0x19
+ 437 008b 11       		.uleb128 0x11
+ 438 008c 01       		.uleb128 0x1
+ 439 008d 12       		.uleb128 0x12
+ 440 008e 06       		.uleb128 0x6
+ 441 008f 40       		.uleb128 0x40
+ 442 0090 18       		.uleb128 0x18
+ 443 0091 9742     		.uleb128 0x2117
+ 444 0093 19       		.uleb128 0x19
+ 445 0094 01       		.uleb128 0x1
+ 446 0095 13       		.uleb128 0x13
+ 447 0096 00       		.byte	0
+ 448 0097 00       		.byte	0
+ 449 0098 0B       		.uleb128 0xb
+ 450 0099 898201   		.uleb128 0x4109
+ 451 009c 00       		.byte	0
+ 452 009d 11       		.uleb128 0x11
+ 453 009e 01       		.uleb128 0x1
+ 454 009f 31       		.uleb128 0x31
+ 455 00a0 13       		.uleb128 0x13
+ 456 00a1 00       		.byte	0
+ 457 00a2 00       		.byte	0
+ 458 00a3 0C       		.uleb128 0xc
+ 459 00a4 34       		.uleb128 0x34
+ 460 00a5 00       		.byte	0
+ 461 00a6 03       		.uleb128 0x3
+ 462 00a7 0E       		.uleb128 0xe
+ 463 00a8 3A       		.uleb128 0x3a
+ 464 00a9 0B       		.uleb128 0xb
+ 465 00aa 3B       		.uleb128 0x3b
+ 466 00ab 0B       		.uleb128 0xb
+ 467 00ac 49       		.uleb128 0x49
+ 468 00ad 13       		.uleb128 0x13
+ 469 00ae 02       		.uleb128 0x2
+ 470 00af 18       		.uleb128 0x18
+ 471 00b0 00       		.byte	0
+ 472 00b1 00       		.byte	0
+ 473 00b2 0D       		.uleb128 0xd
+ 474 00b3 2E       		.uleb128 0x2e
+ 475 00b4 00       		.byte	0
+ 476 00b5 3F       		.uleb128 0x3f
+ 477 00b6 19       		.uleb128 0x19
+ 478 00b7 03       		.uleb128 0x3
+ 479 00b8 0E       		.uleb128 0xe
+ 480 00b9 3A       		.uleb128 0x3a
+ 481 00ba 0B       		.uleb128 0xb
+ 482 00bb 3B       		.uleb128 0x3b
+ 483 00bc 0B       		.uleb128 0xb
+ 484 00bd 27       		.uleb128 0x27
+ 485 00be 19       		.uleb128 0x19
+ 486 00bf 3C       		.uleb128 0x3c
+ 487 00c0 19       		.uleb128 0x19
+ 488 00c1 00       		.byte	0
+ 489 00c2 00       		.byte	0
+ 490 00c3 00       		.byte	0
+ 491              		.section	.debug_aranges,"",%progbits
+ 492 0000 34000000 		.4byte	0x34
+ARM GAS  C:\Users\EGH35~1.DRE\AppData\Local\Temp\cc1FU5Kr.s 			page 12
+
+
+ 493 0004 0200     		.2byte	0x2
+ 494 0006 00000000 		.4byte	.Ldebug_info0
+ 495 000a 04       		.byte	0x4
+ 496 000b 00       		.byte	0
+ 497 000c 0000     		.2byte	0
+ 498 000e 0000     		.2byte	0
+ 499 0010 00000000 		.4byte	.LFB0
+ 500 0014 02000000 		.4byte	.LFE0-.LFB0
+ 501 0018 00000000 		.4byte	.LFB1
+ 502 001c 02000000 		.4byte	.LFE1-.LFB1
+ 503 0020 00000000 		.4byte	.LFB2
+ 504 0024 28000000 		.4byte	.LFE2-.LFB2
+ 505 0028 00000000 		.4byte	.LFB3
+ 506 002c 14000000 		.4byte	.LFE3-.LFB3
+ 507 0030 00000000 		.4byte	0
+ 508 0034 00000000 		.4byte	0
+ 509              		.section	.debug_ranges,"",%progbits
+ 510              	.Ldebug_ranges0:
+ 511 0000 00000000 		.4byte	.LFB0
+ 512 0004 02000000 		.4byte	.LFE0
+ 513 0008 00000000 		.4byte	.LFB1
+ 514 000c 02000000 		.4byte	.LFE1
+ 515 0010 00000000 		.4byte	.LFB2
+ 516 0014 28000000 		.4byte	.LFE2
+ 517 0018 00000000 		.4byte	.LFB3
+ 518 001c 14000000 		.4byte	.LFE3
+ 519 0020 00000000 		.4byte	0
+ 520 0024 00000000 		.4byte	0
+ 521              		.section	.debug_line,"",%progbits
+ 522              	.Ldebug_line0:
+ 523 0000 AE000000 		.section	.debug_str,"MS",%progbits,1
+ 523      02006000 
+ 523      00000201 
+ 523      FB0E0D00 
+ 523      01010101 
+ 524              	.LASF14:
+ 525 0000 72656733 		.ascii	"reg32\000"
+ 525      3200
+ 526              	.LASF19:
+ 527 0006 4144435F 		.ascii	"ADC_2_Buffer_Wakeup\000"
+ 527      325F4275 
+ 527      66666572 
+ 527      5F57616B 
+ 527      65757000 
+ 528              	.LASF23:
+ 529 001a 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\ADC_2_Buffer_PM.c\000"
+ 529      6E657261 
+ 529      7465645F 
+ 529      536F7572 
+ 529      63655C50 
+ 530              	.LASF18:
+ 531 0045 4144435F 		.ascii	"ADC_2_Buffer_Sleep\000"
+ 531      325F4275 
+ 531      66666572 
+ 531      5F536C65 
+ 531      657000
+ 532              	.LASF20:
+ARM GAS  C:\Users\EGH35~1.DRE\AppData\Local\Temp\cc1FU5Kr.s 			page 13
+
+
+ 533 0058 4144435F 		.ascii	"ADC_2_Buffer_Stop\000"
+ 533      325F4275 
+ 533      66666572 
+ 533      5F53746F 
+ 533      7000
+ 534              	.LASF11:
+ 535 006a 666C6F61 		.ascii	"float\000"
+ 535      7400
+ 536              	.LASF1:
+ 537 0070 756E7369 		.ascii	"unsigned char\000"
+ 537      676E6564 
+ 537      20636861 
+ 537      7200
+ 538              	.LASF5:
+ 539 007e 6C6F6E67 		.ascii	"long unsigned int\000"
+ 539      20756E73 
+ 539      69676E65 
+ 539      6420696E 
+ 539      7400
+ 540              	.LASF3:
+ 541 0090 73686F72 		.ascii	"short unsigned int\000"
+ 541      7420756E 
+ 541      7369676E 
+ 541      65642069 
+ 541      6E7400
+ 542              	.LASF17:
+ 543 00a3 4144435F 		.ascii	"ADC_2_Buffer_RestoreConfig\000"
+ 543      325F4275 
+ 543      66666572 
+ 543      5F526573 
+ 543      746F7265 
+ 544              	.LASF12:
+ 545 00be 646F7562 		.ascii	"double\000"
+ 545      6C6500
+ 546              	.LASF24:
+ 547 00c5 453A5C45 		.ascii	"E:\\ECEC304\\blink\\blink.cydsn\000"
+ 547      43454333 
+ 547      30345C62 
+ 547      6C696E6B 
+ 547      5C626C69 
+ 548              	.LASF21:
+ 549 00e2 4144435F 		.ascii	"ADC_2_Buffer_Enable\000"
+ 549      325F4275 
+ 549      66666572 
+ 549      5F456E61 
+ 549      626C6500 
+ 550              	.LASF10:
+ 551 00f6 75696E74 		.ascii	"uint32\000"
+ 551      333200
+ 552              	.LASF8:
+ 553 00fd 756E7369 		.ascii	"unsigned int\000"
+ 553      676E6564 
+ 553      20696E74 
+ 553      00
+ 554              	.LASF7:
+ 555 010a 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 555      206C6F6E 
+ARM GAS  C:\Users\EGH35~1.DRE\AppData\Local\Temp\cc1FU5Kr.s 			page 14
+
+
+ 555      6720756E 
+ 555      7369676E 
+ 555      65642069 
+ 556              	.LASF22:
+ 557 0121 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 557      4320342E 
+ 557      382E3420 
+ 557      32303134 
+ 557      30353236 
+ 558 0154 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 558      20726576 
+ 558      6973696F 
+ 558      6E203231 
+ 558      31333538 
+ 559 0187 67202D66 		.ascii	"g -ffunction-sections\000"
+ 559      66756E63 
+ 559      74696F6E 
+ 559      2D736563 
+ 559      74696F6E 
+ 560              	.LASF15:
+ 561 019d 4144435F 		.ascii	"ADC_2_Buffer_BACKUP_STRUCT\000"
+ 561      325F4275 
+ 561      66666572 
+ 561      5F424143 
+ 561      4B55505F 
+ 562              	.LASF6:
+ 563 01b8 6C6F6E67 		.ascii	"long long int\000"
+ 563      206C6F6E 
+ 563      6720696E 
+ 563      7400
+ 564              	.LASF13:
+ 565 01c6 63686172 		.ascii	"char\000"
+ 565      00
+ 566              	.LASF2:
+ 567 01cb 73686F72 		.ascii	"short int\000"
+ 567      7420696E 
+ 567      7400
+ 568              	.LASF9:
+ 569 01d5 75696E74 		.ascii	"uint8\000"
+ 569      3800
+ 570              	.LASF4:
+ 571 01db 6C6F6E67 		.ascii	"long int\000"
+ 571      20696E74 
+ 571      00
+ 572              	.LASF25:
+ 573 01e4 656E6162 		.ascii	"enableState\000"
+ 573      6C655374 
+ 573      61746500 
+ 574              	.LASF16:
+ 575 01f0 4144435F 		.ascii	"ADC_2_Buffer_SaveConfig\000"
+ 575      325F4275 
+ 575      66666572 
+ 575      5F536176 
+ 575      65436F6E 
+ 576              	.LASF26:
+ 577 0208 4144435F 		.ascii	"ADC_2_Buffer_backup\000"
+ 577      325F4275 
+ARM GAS  C:\Users\EGH35~1.DRE\AppData\Local\Temp\cc1FU5Kr.s 			page 15
+
+
+ 577      66666572 
+ 577      5F626163 
+ 577      6B757000 
+ 578              	.LASF0:
+ 579 021c 7369676E 		.ascii	"signed char\000"
+ 579      65642063 
+ 579      68617200 
+ 580              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

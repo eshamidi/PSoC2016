@@ -1,0 +1,8 @@
+E:\school\ECEC304\Lab 4\BlinkSec.cydsn\BlinkSec.cyprj|e9f52828-f4e7-4169-ac9e-edeac8d498aa
+C:\Program Files (x86)\Cypress\PSoC Creator\3.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|04047abb-39f3-457c-b967-8ad87013a242
+C:\Program Files (x86)\Cypress\PSoC Creator\3.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|d8e08dfd-43c3-47ed-9efa-6aa96f7b2dba
+C:\Program Files (x86)\Cypress\PSoC Creator\3.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|dfc49f5c-9986-4312-a8d6-43d4cfc53a1a
+C:\Program Files (x86)\Cypress\PSoC Creator\3.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|3625bc4f-1561-4bfd-93cd-faa245aaa80a
+E:\school\ECEC304\Lab 4\uartint.cydsn\uartint.cyprj|33fd95d4-1f10-4137-940d-8beb7d13101b
+E:\school\ECEC304\Lab 4\Clock.cydsn\Clock.cyprj|915177fc-f848-43ad-9d8e-b4968502217d
+E:\school\ECEC304\Lab 4\tictoc.cydsn\tictoc.cyprj|da017f21-b686-4df8-835b-35cdf1bf31dd

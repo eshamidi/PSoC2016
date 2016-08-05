@@ -1,0 +1,1606 @@
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoGNQi4.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 1
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"main.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.global	__aeabi_idivmod
+  18              		.section	.text.CheckSum,"ax",%progbits
+  19              		.align	2
+  20              		.global	CheckSum
+  21              		.code	16
+  22              		.thumb_func
+  23              		.type	CheckSum, %function
+  24              	CheckSum:
+  25              	.LFB33:
+  26              		.file 1 ".\\main.c"
+   1:.\main.c      **** /* ========================================
+   2:.\main.c      ****  *
+   3:.\main.c      ****  * Copyright YOUR COMPANY, THE YEAR
+   4:.\main.c      ****  * All Rights Reserved
+   5:.\main.c      ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\main.c      ****  *
+   7:.\main.c      ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\main.c      ****  * WHICH IS THE PROPERTY OF your company.
+   9:.\main.c      ****  *
+  10:.\main.c      ****  * ========================================
+  11:.\main.c      **** */
+  12:.\main.c      **** #include <project.h>
+  13:.\main.c      **** #include <stdio.h>
+  14:.\main.c      **** 
+  15:.\main.c      **** void CheckSum(int *ch){
+  27              		.loc 1 15 0
+  28              		.cfi_startproc
+  29              	.LVL0:
+  30 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+  31              		.cfi_def_cfa_offset 24
+  32              		.cfi_offset 3, -24
+  33              		.cfi_offset 4, -20
+  34              		.cfi_offset 5, -16
+  35              		.cfi_offset 6, -12
+  36              		.cfi_offset 7, -8
+  37              		.cfi_offset 14, -4
+  38 0002 4F46     		mov	r7, r9
+  39 0004 4646     		mov	r6, r8
+  40 0006 C0B4     		push	{r6, r7}
+  41              		.cfi_def_cfa_offset 32
+  42              		.cfi_offset 8, -32
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoGNQi4.s 			page 2
+
+
+  43              		.cfi_offset 9, -28
+  44 0008 061C     		mov	r6, r0
+  45              	.LVL1:
+  16:.\main.c      ****     
+  17:.\main.c      ****     int acc = 0;
+  18:.\main.c      ****     int *strpt1 = ch;
+  46              		.loc 1 18 0
+  47 000a 041C     		mov	r4, r0
+  17:.\main.c      ****     int acc = 0;
+  48              		.loc 1 17 0
+  49 000c 0025     		mov	r5, #0
+  19:.\main.c      ****     int dblvar = 0;
+  20:.\main.c      ****     int c_sum[20];
+  21:.\main.c      ****     int adv = 0;  
+  22:.\main.c      ****     
+  23:.\main.c      ****     
+  24:.\main.c      ****     while(*strpt1 != 0){ 
+  25:.\main.c      ****     
+  26:.\main.c      ****         // odd digit case - modulus 
+  27:.\main.c      ****     if(((strpt1-ch) % 2) == 1){
+  50              		.loc 1 27 0
+  51 000e 0127     		mov	r7, #1
+  28:.\main.c      ****         
+  29:.\main.c      ****         dblvar = (*strpt1-48) *2; //multiply by 2 
+  30:.\main.c      ****         if(dblvar >= 10){ //if greater than 10, subtract 10 add 1 
+  31:.\main.c      ****         dblvar = dblvar - 10 + 1;
+  32:.\main.c      ****         //PrintInt(dblvar);
+  33:.\main.c      ****         UART_1_UartPutString(" ");
+  34:.\main.c      ****         }
+  35:.\main.c      ****         acc+= dblvar; //accumulator variable adds result
+  36:.\main.c      ****                    
+  37:.\main.c      ****         }
+  38:.\main.c      ****         
+  39:.\main.c      ****     else{
+  40:.\main.c      ****         acc+= *strpt1 - 48;
+  41:.\main.c      ****         //PrintInt(*strpt1 - 48);
+  42:.\main.c      ****         UART_1_UartPutString(" ");
+  52              		.loc 1 42 0
+  53 0010 184B     		ldr	r3, .L9
+  54 0012 9846     		mov	r8, r3
+  24:.\main.c      ****     while(*strpt1 != 0){ 
+  55              		.loc 1 24 0
+  56 0014 1AE0     		b	.L2
+  57              	.LVL2:
+  58              	.L6:
+  27:.\main.c      ****     if(((strpt1-ch) % 2) == 1){
+  59              		.loc 1 27 0
+  60 0016 A21B     		sub	r2, r4, r6
+  61 0018 9110     		asr	r1, r2, #2
+  62 001a D20F     		lsr	r2, r2, #31
+  63 001c 8918     		add	r1, r1, r2
+  64 001e 3940     		and	r1, r7
+  65 0020 8A1A     		sub	r2, r1, r2
+  66 0022 012A     		cmp	r2, #1
+  67 0024 0CD1     		bne	.L3
+  29:.\main.c      ****         dblvar = (*strpt1-48) *2; //multiply by 2 
+  68              		.loc 1 29 0
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoGNQi4.s 			page 3
+
+
+  69 0026 303B     		sub	r3, r3, #48
+  70 0028 5B00     		lsl	r3, r3, #1
+  71 002a 9946     		mov	r9, r3
+  72              	.LVL3:
+  30:.\main.c      ****         if(dblvar >= 10){ //if greater than 10, subtract 10 add 1 
+  73              		.loc 1 30 0
+  74 002c 092B     		cmp	r3, #9
+  75 002e 05DD     		ble	.L4
+  31:.\main.c      ****         dblvar = dblvar - 10 + 1;
+  76              		.loc 1 31 0
+  77 0030 0923     		mov	r3, #9
+  78              	.LVL4:
+  79 0032 5B42     		neg	r3, r3
+  80 0034 9944     		add	r9, r9, r3
+  81              	.LVL5:
+  33:.\main.c      ****         UART_1_UartPutString(" ");
+  82              		.loc 1 33 0
+  83 0036 0F48     		ldr	r0, .L9
+  84 0038 FFF7FEFF 		bl	UART_1_UartPutString
+  85              	.LVL6:
+  86              	.L4:
+  35:.\main.c      ****         acc+= dblvar; //accumulator variable adds result
+  87              		.loc 1 35 0
+  88 003c 4D44     		add	r5, r5, r9
+  89              	.LVL7:
+  90 003e 04E0     		b	.L5
+  91              	.LVL8:
+  92              	.L3:
+  40:.\main.c      ****         acc+= *strpt1 - 48;
+  93              		.loc 1 40 0
+  94 0040 303B     		sub	r3, r3, #48
+  95 0042 ED18     		add	r5, r5, r3
+  96              	.LVL9:
+  97              		.loc 1 42 0
+  98 0044 4046     		mov	r0, r8
+  99 0046 FFF7FEFF 		bl	UART_1_UartPutString
+ 100              	.LVL10:
+ 101              	.L5:
+  43:.\main.c      ****         
+  44:.\main.c      ****     }
+  45:.\main.c      ****     strpt1++;     
+ 102              		.loc 1 45 0
+ 103 004a 0434     		add	r4, r4, #4
+ 104              	.LVL11:
+ 105              	.L2:
+  24:.\main.c      ****     while(*strpt1 != 0){ 
+ 106              		.loc 1 24 0 discriminator 1
+ 107 004c 2368     		ldr	r3, [r4]
+ 108 004e 002B     		cmp	r3, #0
+ 109 0050 E1D1     		bne	.L6
+  46:.\main.c      ****         
+  47:.\main.c      ****     }
+  48:.\main.c      ****     
+  49:.\main.c      ****     
+  50:.\main.c      ****     if(acc % 10 == 0){
+ 110              		.loc 1 50 0
+ 111 0052 281C     		mov	r0, r5
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoGNQi4.s 			page 4
+
+
+ 112 0054 0A21     		mov	r1, #10
+ 113 0056 FFF7FEFF 		bl	__aeabi_idivmod
+ 114              	.LVL12:
+ 115 005a 0029     		cmp	r1, #0
+ 116 005c 03D1     		bne	.L7
+  51:.\main.c      ****     UART_1_UartPutString("\n \r The number is valid. ");    
+ 117              		.loc 1 51 0
+ 118 005e 0648     		ldr	r0, .L9+4
+ 119 0060 FFF7FEFF 		bl	UART_1_UartPutString
+ 120              	.LVL13:
+ 121 0064 02E0     		b	.L1
+ 122              	.L7:
+  52:.\main.c      ****     }
+  53:.\main.c      ****     else{
+  54:.\main.c      ****      UART_1_UartPutString("\n \r The number is not valid. ");    
+ 123              		.loc 1 54 0
+ 124 0066 0548     		ldr	r0, .L9+8
+ 125 0068 FFF7FEFF 		bl	UART_1_UartPutString
+ 126              	.LVL14:
+ 127              	.L1:
+  55:.\main.c      ****     }
+  56:.\main.c      ****     
+  57:.\main.c      ****     
+  58:.\main.c      **** }
+ 128              		.loc 1 58 0
+ 129              		@ sp needed
+ 130              	.LVL15:
+ 131              	.LVL16:
+ 132              	.LVL17:
+ 133 006c 0CBC     		pop	{r2, r3}
+ 134 006e 9046     		mov	r8, r2
+ 135 0070 9946     		mov	r9, r3
+ 136 0072 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 137              	.L10:
+ 138              		.align	2
+ 139              	.L9:
+ 140 0074 00000000 		.word	.LC0
+ 141 0078 04000000 		.word	.LC2
+ 142 007c 20000000 		.word	.LC4
+ 143              		.cfi_endproc
+ 144              	.LFE33:
+ 145              		.size	CheckSum, .-CheckSum
+ 146              		.section	.text.PrintInt,"ax",%progbits
+ 147              		.align	2
+ 148              		.global	PrintInt
+ 149              		.code	16
+ 150              		.thumb_func
+ 151              		.type	PrintInt, %function
+ 152              	PrintInt:
+ 153              	.LFB34:
+  59:.\main.c      **** 
+  60:.\main.c      **** void PrintInt(int b){
+ 154              		.loc 1 60 0
+ 155              		.cfi_startproc
+ 156              	.LVL18:
+ 157 0000 00B5     		push	{lr}
+ 158              		.cfi_def_cfa_offset 4
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoGNQi4.s 			page 5
+
+
+ 159              		.cfi_offset 14, -4
+ 160 0002 85B0     		sub	sp, sp, #20
+ 161              		.cfi_def_cfa_offset 24
+ 162 0004 021C     		mov	r2, r0
+  61:.\main.c      ****     char buf[10];
+  62:.\main.c      ****     sprintf(buf, "%d", b); 
+ 163              		.loc 1 62 0
+ 164 0006 01A8     		add	r0, sp, #4
+ 165              	.LVL19:
+ 166 0008 0349     		ldr	r1, .L12
+ 167 000a FFF7FEFF 		bl	sprintf
+ 168              	.LVL20:
+  63:.\main.c      ****     UART_1_UartPutString(buf);
+ 169              		.loc 1 63 0
+ 170 000e 01A8     		add	r0, sp, #4
+ 171 0010 FFF7FEFF 		bl	UART_1_UartPutString
+ 172              	.LVL21:
+  64:.\main.c      **** 
+  65:.\main.c      **** }
+ 173              		.loc 1 65 0
+ 174 0014 05B0     		add	sp, sp, #20
+ 175              		@ sp needed
+ 176 0016 00BD     		pop	{pc}
+ 177              	.L13:
+ 178              		.align	2
+ 179              	.L12:
+ 180 0018 40000000 		.word	.LC6
+ 181              		.cfi_endproc
+ 182              	.LFE34:
+ 183              		.size	PrintInt, .-PrintInt
+ 184              		.section	.text.readString,"ax",%progbits
+ 185              		.align	2
+ 186              		.global	readString
+ 187              		.code	16
+ 188              		.thumb_func
+ 189              		.type	readString, %function
+ 190              	readString:
+ 191              	.LFB35:
+  66:.\main.c      **** 
+  67:.\main.c      **** 
+  68:.\main.c      **** void readString(int *buffer)
+  69:.\main.c      **** {
+ 192              		.loc 1 69 0
+ 193              		.cfi_startproc
+ 194              	.LVL22:
+ 195 0000 38B5     		push	{r3, r4, r5, lr}
+ 196              		.cfi_def_cfa_offset 16
+ 197              		.cfi_offset 3, -16
+ 198              		.cfi_offset 4, -12
+ 199              		.cfi_offset 5, -8
+ 200              		.cfi_offset 14, -4
+ 201 0002 051C     		mov	r5, r0
+ 202              	.LVL23:
+ 203              	.L18:
+  70:.\main.c      **** uint32 rxData;
+  71:.\main.c      **** int *ptr = buffer;
+  72:.\main.c      ****     
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoGNQi4.s 			page 6
+
+
+  73:.\main.c      **** for(;;){
+  74:.\main.c      ****     rxData = UART_1_UartGetChar();
+ 204              		.loc 1 74 0
+ 205 0004 FFF7FEFF 		bl	UART_1_UartGetChar
+ 206              	.LVL24:
+ 207 0008 041E     		sub	r4, r0, #0
+ 208              	.LVL25:
+  75:.\main.c      ****     if(rxData){
+ 209              		.loc 1 75 0
+ 210 000a FBD0     		beq	.L18
+  76:.\main.c      ****         UART_1_UartPutChar(rxData); /* Echo character. */
+ 211              		.loc 1 76 0
+ 212 000c FFF7FEFF 		bl	UART_1_SpiUartWriteTxData
+ 213              	.LVL26:
+  77:.\main.c      ****         /* On a carriage return, null terminate the string
+  78:.\main.c      ****         and break out of the loop. */
+  79:.\main.c      ****         if(rxData == 13){
+ 214              		.loc 1 79 0
+ 215 0010 0D2C     		cmp	r4, #13
+ 216 0012 02D1     		bne	.L16
+  80:.\main.c      ****         *ptr = 0;
+ 217              		.loc 1 80 0
+ 218 0014 0023     		mov	r3, #0
+ 219 0016 2B60     		str	r3, [r5]
+ 220 0018 01E0     		b	.L19
+ 221              	.L16:
+  81:.\main.c      ****         break;
+  82:.\main.c      ****         }
+  83:.\main.c      **** *ptr = rxData;
+ 222              		.loc 1 83 0
+ 223 001a 10C5     		stmia	r5!, {r4}
+ 224              	.LVL27:
+ 225 001c F2E7     		b	.L18
+ 226              	.L19:
+  84:.\main.c      **** ptr++;
+  85:.\main.c      **** }
+  86:.\main.c      **** }
+  87:.\main.c      **** }
+ 227              		.loc 1 87 0
+ 228              		@ sp needed
+ 229              	.LVL28:
+ 230              	.LVL29:
+ 231 001e 38BD     		pop	{r3, r4, r5, pc}
+ 232              		.cfi_endproc
+ 233              	.LFE35:
+ 234              		.size	readString, .-readString
+ 235              		.section	.text.main,"ax",%progbits
+ 236              		.align	2
+ 237              		.global	main
+ 238              		.code	16
+ 239              		.thumb_func
+ 240              		.type	main, %function
+ 241              	main:
+ 242              	.LFB36:
+  88:.\main.c      **** 
+  89:.\main.c      **** 
+  90:.\main.c      **** int main()
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoGNQi4.s 			page 7
+
+
+  91:.\main.c      **** {
+ 243              		.loc 1 91 0
+ 244              		.cfi_startproc
+ 245 0000 10B5     		push	{r4, lr}
+ 246              		.cfi_def_cfa_offset 8
+ 247              		.cfi_offset 4, -8
+ 248              		.cfi_offset 14, -4
+ 249 0002 94B0     		sub	sp, sp, #80
+ 250              		.cfi_def_cfa_offset 88
+  92:.\main.c      ****     CyGlobalIntEnable;      /* Enable global interrupts */
+ 251              		.loc 1 92 0
+ 252              	@ 92 ".\main.c" 1
+ 253 0004 62B6     		CPSIE   i
+ 254              	@ 0 "" 2
+  93:.\main.c      ****     UART_1_Start(); /* Start the UART component. */
+ 255              		.loc 1 93 0
+ 256              		.code	16
+ 257 0006 FFF7FEFF 		bl	UART_1_Start
+ 258              	.LVL30:
+  94:.\main.c      ****     int choice[20];
+  95:.\main.c      ****     
+  96:.\main.c      ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+  97:.\main.c      ****     while(choice){
+  98:.\main.c      ****         
+  99:.\main.c      ****     UART_1_UartPutString("\n \r Enter the number you'd like to check with the formula: ");
+ 259              		.loc 1 99 0
+ 260 000a 054C     		ldr	r4, .L22
+ 261              	.L21:
+ 262              		.loc 1 99 0 is_stmt 0 discriminator 1
+ 263 000c 201C     		mov	r0, r4
+ 264 000e FFF7FEFF 		bl	UART_1_UartPutString
+ 265              	.LVL31:
+ 100:.\main.c      ****     readString(choice); //take in address of choice variable, set it to what user enters
+ 266              		.loc 1 100 0 is_stmt 1 discriminator 1
+ 267 0012 6846     		mov	r0, sp
+ 268 0014 FFF7FEFF 		bl	readString
+ 269              	.LVL32:
+ 101:.\main.c      ****     CheckSum(choice); 
+ 270              		.loc 1 101 0 discriminator 1
+ 271 0018 6846     		mov	r0, sp
+ 272 001a FFF7FEFF 		bl	CheckSum
+ 273              	.LVL33:
+ 274 001e F5E7     		b	.L21
+ 275              	.L23:
+ 276              		.align	2
+ 277              	.L22:
+ 278 0020 44000000 		.word	.LC8
+ 279              		.cfi_endproc
+ 280              	.LFE36:
+ 281              		.size	main, .-main
+ 282              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 283              		.align	2
+ 284              	.LC0:
+ 285 0000 2000     		.ascii	" \000"
+ 286 0002 0000     		.space	2
+ 287              	.LC2:
+ 288 0004 0A200D20 		.ascii	"\012 \015 The number is valid. \000"
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoGNQi4.s 			page 8
+
+
+ 288      54686520 
+ 288      6E756D62 
+ 288      65722069 
+ 288      73207661 
+ 289 001e 0000     		.space	2
+ 290              	.LC4:
+ 291 0020 0A200D20 		.ascii	"\012 \015 The number is not valid. \000"
+ 291      54686520 
+ 291      6E756D62 
+ 291      65722069 
+ 291      73206E6F 
+ 292 003e 0000     		.space	2
+ 293              	.LC6:
+ 294 0040 256400   		.ascii	"%d\000"
+ 295 0043 00       		.space	1
+ 296              	.LC8:
+ 297 0044 0A200D20 		.ascii	"\012 \015 Enter the number you'd like to check with"
+ 297      456E7465 
+ 297      72207468 
+ 297      65206E75 
+ 297      6D626572 
+ 298 0071 20746865 		.ascii	" the formula: \000"
+ 298      20666F72 
+ 298      6D756C61 
+ 298      3A2000
+ 299              		.text
+ 300              	.Letext0:
+ 301              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 302              		.file 3 "Generated_Source\\PSoC4/UART_1_SPI_UART.h"
+ 303              		.file 4 "c:\\program files (x86)\\cypress\\psoc creator\\3.2\\psoc creator\\import\\gnu\\arm\\4.8.
+ 304              		.file 5 "Generated_Source\\PSoC4/UART_1.h"
+ 305              		.section	.debug_info,"",%progbits
+ 306              	.Ldebug_info0:
+ 307 0000 13030000 		.4byte	0x313
+ 308 0004 0400     		.2byte	0x4
+ 309 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 310 000a 04       		.byte	0x4
+ 311 000b 01       		.uleb128 0x1
+ 312 000c 27010000 		.4byte	.LASF26
+ 313 0010 01       		.byte	0x1
+ 314 0011 E4000000 		.4byte	.LASF27
+ 315 0015 BD000000 		.4byte	.LASF28
+ 316 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 317 001d 00000000 		.4byte	0
+ 318 0021 00000000 		.4byte	.Ldebug_line0
+ 319 0025 02       		.uleb128 0x2
+ 320 0026 01       		.byte	0x1
+ 321 0027 06       		.byte	0x6
+ 322 0028 E6010000 		.4byte	.LASF0
+ 323 002c 02       		.uleb128 0x2
+ 324 002d 01       		.byte	0x1
+ 325 002e 08       		.byte	0x8
+ 326 002f 79000000 		.4byte	.LASF1
+ 327 0033 02       		.uleb128 0x2
+ 328 0034 02       		.byte	0x2
+ 329 0035 05       		.byte	0x5
+ 330 0036 C5010000 		.4byte	.LASF2
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoGNQi4.s 			page 9
+
+
+ 331 003a 02       		.uleb128 0x2
+ 332 003b 02       		.byte	0x2
+ 333 003c 07       		.byte	0x7
+ 334 003d 2B000000 		.4byte	.LASF3
+ 335 0041 02       		.uleb128 0x2
+ 336 0042 04       		.byte	0x4
+ 337 0043 05       		.byte	0x5
+ 338 0044 DD010000 		.4byte	.LASF4
+ 339 0048 02       		.uleb128 0x2
+ 340 0049 04       		.byte	0x4
+ 341 004a 07       		.byte	0x7
+ 342 004b 96000000 		.4byte	.LASF5
+ 343 004f 02       		.uleb128 0x2
+ 344 0050 08       		.byte	0x8
+ 345 0051 05       		.byte	0x5
+ 346 0052 B2010000 		.4byte	.LASF6
+ 347 0056 02       		.uleb128 0x2
+ 348 0057 08       		.byte	0x8
+ 349 0058 07       		.byte	0x7
+ 350 0059 62000000 		.4byte	.LASF7
+ 351 005d 03       		.uleb128 0x3
+ 352 005e 04       		.byte	0x4
+ 353 005f 05       		.byte	0x5
+ 354 0060 696E7400 		.ascii	"int\000"
+ 355 0064 02       		.uleb128 0x2
+ 356 0065 04       		.byte	0x4
+ 357 0066 07       		.byte	0x7
+ 358 0067 13010000 		.4byte	.LASF8
+ 359 006b 04       		.uleb128 0x4
+ 360 006c 07010000 		.4byte	.LASF11
+ 361 0070 02       		.byte	0x2
+ 362 0071 C3       		.byte	0xc3
+ 363 0072 48000000 		.4byte	0x48
+ 364 0076 02       		.uleb128 0x2
+ 365 0077 04       		.byte	0x4
+ 366 0078 04       		.byte	0x4
+ 367 0079 5C000000 		.4byte	.LASF9
+ 368 007d 02       		.uleb128 0x2
+ 369 007e 08       		.byte	0x8
+ 370 007f 04       		.byte	0x4
+ 371 0080 B6000000 		.4byte	.LASF10
+ 372 0084 04       		.uleb128 0x4
+ 373 0085 87000000 		.4byte	.LASF12
+ 374 0089 02       		.byte	0x2
+ 375 008a D2       		.byte	0xd2
+ 376 008b 8F000000 		.4byte	0x8f
+ 377 008f 02       		.uleb128 0x2
+ 378 0090 01       		.byte	0x1
+ 379 0091 08       		.byte	0x8
+ 380 0092 C0010000 		.4byte	.LASF13
+ 381 0096 02       		.uleb128 0x2
+ 382 0097 04       		.byte	0x4
+ 383 0098 07       		.byte	0x7
+ 384 0099 A9010000 		.4byte	.LASF14
+ 385 009d 05       		.uleb128 0x5
+ 386 009e 04       		.byte	0x4
+ 387 009f 8F000000 		.4byte	0x8f
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoGNQi4.s 			page 10
+
+
+ 388 00a3 05       		.uleb128 0x5
+ 389 00a4 04       		.byte	0x4
+ 390 00a5 A9000000 		.4byte	0xa9
+ 391 00a9 06       		.uleb128 0x6
+ 392 00aa 8F000000 		.4byte	0x8f
+ 393 00ae 07       		.uleb128 0x7
+ 394 00af 0D000000 		.4byte	.LASF17
+ 395 00b3 01       		.byte	0x1
+ 396 00b4 0F       		.byte	0xf
+ 397 00b5 00000000 		.4byte	.LFB33
+ 398 00b9 80000000 		.4byte	.LFE33-.LFB33
+ 399 00bd 01       		.uleb128 0x1
+ 400 00be 9C       		.byte	0x9c
+ 401 00bf 68010000 		.4byte	0x168
+ 402 00c3 08       		.uleb128 0x8
+ 403 00c4 636800   		.ascii	"ch\000"
+ 404 00c7 01       		.byte	0x1
+ 405 00c8 0F       		.byte	0xf
+ 406 00c9 68010000 		.4byte	0x168
+ 407 00cd 00000000 		.4byte	.LLST0
+ 408 00d1 09       		.uleb128 0x9
+ 409 00d2 61636300 		.ascii	"acc\000"
+ 410 00d6 01       		.byte	0x1
+ 411 00d7 11       		.byte	0x11
+ 412 00d8 5D000000 		.4byte	0x5d
+ 413 00dc 2C000000 		.4byte	.LLST1
+ 414 00e0 0A       		.uleb128 0xa
+ 415 00e1 A8000000 		.4byte	.LASF15
+ 416 00e5 01       		.byte	0x1
+ 417 00e6 12       		.byte	0x12
+ 418 00e7 68010000 		.4byte	0x168
+ 419 00eb 4B000000 		.4byte	.LLST2
+ 420 00ef 0A       		.uleb128 0xa
+ 421 00f0 20010000 		.4byte	.LASF16
+ 422 00f4 01       		.byte	0x1
+ 423 00f5 13       		.byte	0x13
+ 424 00f6 5D000000 		.4byte	0x5d
+ 425 00fa 69000000 		.4byte	.LLST3
+ 426 00fe 0B       		.uleb128 0xb
+ 427 00ff A3010000 		.4byte	.LASF29
+ 428 0103 01       		.byte	0x1
+ 429 0104 14       		.byte	0x14
+ 430 0105 6E010000 		.4byte	0x16e
+ 431 0109 0C       		.uleb128 0xc
+ 432 010a 61647600 		.ascii	"adv\000"
+ 433 010e 01       		.byte	0x1
+ 434 010f 15       		.byte	0x15
+ 435 0110 5D000000 		.4byte	0x5d
+ 436 0114 00       		.byte	0
+ 437 0115 0D       		.uleb128 0xd
+ 438 0116 3C000000 		.4byte	.LVL6
+ 439 011a B9020000 		.4byte	0x2b9
+ 440 011e 29010000 		.4byte	0x129
+ 441 0122 0E       		.uleb128 0xe
+ 442 0123 01       		.uleb128 0x1
+ 443 0124 50       		.byte	0x50
+ 444 0125 02       		.uleb128 0x2
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoGNQi4.s 			page 11
+
+
+ 445 0126 78       		.byte	0x78
+ 446 0127 00       		.sleb128 0
+ 447 0128 00       		.byte	0
+ 448 0129 0D       		.uleb128 0xd
+ 449 012a 4A000000 		.4byte	.LVL10
+ 450 012e B9020000 		.4byte	0x2b9
+ 451 0132 3D010000 		.4byte	0x13d
+ 452 0136 0E       		.uleb128 0xe
+ 453 0137 01       		.uleb128 0x1
+ 454 0138 50       		.byte	0x50
+ 455 0139 02       		.uleb128 0x2
+ 456 013a 78       		.byte	0x78
+ 457 013b 00       		.sleb128 0
+ 458 013c 00       		.byte	0
+ 459 013d 0D       		.uleb128 0xd
+ 460 013e 64000000 		.4byte	.LVL13
+ 461 0142 B9020000 		.4byte	0x2b9
+ 462 0146 54010000 		.4byte	0x154
+ 463 014a 0E       		.uleb128 0xe
+ 464 014b 01       		.uleb128 0x1
+ 465 014c 50       		.byte	0x50
+ 466 014d 05       		.uleb128 0x5
+ 467 014e 03       		.byte	0x3
+ 468 014f 04000000 		.4byte	.LC2
+ 469 0153 00       		.byte	0
+ 470 0154 0F       		.uleb128 0xf
+ 471 0155 6C000000 		.4byte	.LVL14
+ 472 0159 B9020000 		.4byte	0x2b9
+ 473 015d 0E       		.uleb128 0xe
+ 474 015e 01       		.uleb128 0x1
+ 475 015f 50       		.byte	0x50
+ 476 0160 05       		.uleb128 0x5
+ 477 0161 03       		.byte	0x3
+ 478 0162 20000000 		.4byte	.LC4
+ 479 0166 00       		.byte	0
+ 480 0167 00       		.byte	0
+ 481 0168 05       		.uleb128 0x5
+ 482 0169 04       		.byte	0x4
+ 483 016a 5D000000 		.4byte	0x5d
+ 484 016e 10       		.uleb128 0x10
+ 485 016f 5D000000 		.4byte	0x5d
+ 486 0173 7E010000 		.4byte	0x17e
+ 487 0177 11       		.uleb128 0x11
+ 488 0178 96000000 		.4byte	0x96
+ 489 017c 13       		.byte	0x13
+ 490 017d 00       		.byte	0
+ 491 017e 12       		.uleb128 0x12
+ 492 017f 8D000000 		.4byte	.LASF18
+ 493 0183 01       		.byte	0x1
+ 494 0184 3C       		.byte	0x3c
+ 495 0185 00000000 		.4byte	.LFB34
+ 496 0189 1C000000 		.4byte	.LFE34-.LFB34
+ 497 018d 01       		.uleb128 0x1
+ 498 018e 9C       		.byte	0x9c
+ 499 018f E3010000 		.4byte	0x1e3
+ 500 0193 08       		.uleb128 0x8
+ 501 0194 6200     		.ascii	"b\000"
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoGNQi4.s 			page 12
+
+
+ 502 0196 01       		.byte	0x1
+ 503 0197 3C       		.byte	0x3c
+ 504 0198 5D000000 		.4byte	0x5d
+ 505 019c 93000000 		.4byte	.LLST4
+ 506 01a0 13       		.uleb128 0x13
+ 507 01a1 62756600 		.ascii	"buf\000"
+ 508 01a5 01       		.byte	0x1
+ 509 01a6 3D       		.byte	0x3d
+ 510 01a7 E3010000 		.4byte	0x1e3
+ 511 01ab 02       		.uleb128 0x2
+ 512 01ac 91       		.byte	0x91
+ 513 01ad 6C       		.sleb128 -20
+ 514 01ae 0D       		.uleb128 0xd
+ 515 01af 0E000000 		.4byte	.LVL20
+ 516 01b3 D6020000 		.4byte	0x2d6
+ 517 01b7 D2010000 		.4byte	0x1d2
+ 518 01bb 0E       		.uleb128 0xe
+ 519 01bc 01       		.uleb128 0x1
+ 520 01bd 52       		.byte	0x52
+ 521 01be 03       		.uleb128 0x3
+ 522 01bf F3       		.byte	0xf3
+ 523 01c0 01       		.uleb128 0x1
+ 524 01c1 50       		.byte	0x50
+ 525 01c2 0E       		.uleb128 0xe
+ 526 01c3 01       		.uleb128 0x1
+ 527 01c4 51       		.byte	0x51
+ 528 01c5 05       		.uleb128 0x5
+ 529 01c6 03       		.byte	0x3
+ 530 01c7 40000000 		.4byte	.LC6
+ 531 01cb 0E       		.uleb128 0xe
+ 532 01cc 01       		.uleb128 0x1
+ 533 01cd 50       		.byte	0x50
+ 534 01ce 02       		.uleb128 0x2
+ 535 01cf 91       		.byte	0x91
+ 536 01d0 6C       		.sleb128 -20
+ 537 01d1 00       		.byte	0
+ 538 01d2 0F       		.uleb128 0xf
+ 539 01d3 14000000 		.4byte	.LVL21
+ 540 01d7 B9020000 		.4byte	0x2b9
+ 541 01db 0E       		.uleb128 0xe
+ 542 01dc 01       		.uleb128 0x1
+ 543 01dd 50       		.byte	0x50
+ 544 01de 02       		.uleb128 0x2
+ 545 01df 91       		.byte	0x91
+ 546 01e0 6C       		.sleb128 -20
+ 547 01e1 00       		.byte	0
+ 548 01e2 00       		.byte	0
+ 549 01e3 10       		.uleb128 0x10
+ 550 01e4 8F000000 		.4byte	0x8f
+ 551 01e8 F3010000 		.4byte	0x1f3
+ 552 01ec 11       		.uleb128 0x11
+ 553 01ed 96000000 		.4byte	0x96
+ 554 01f1 09       		.byte	0x9
+ 555 01f2 00       		.byte	0
+ 556 01f3 12       		.uleb128 0x12
+ 557 01f4 3E000000 		.4byte	.LASF19
+ 558 01f8 01       		.byte	0x1
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoGNQi4.s 			page 13
+
+
+ 559 01f9 44       		.byte	0x44
+ 560 01fa 00000000 		.4byte	.LFB35
+ 561 01fe 20000000 		.4byte	.LFE35-.LFB35
+ 562 0202 01       		.uleb128 0x1
+ 563 0203 9C       		.byte	0x9c
+ 564 0204 4F020000 		.4byte	0x24f
+ 565 0208 14       		.uleb128 0x14
+ 566 0209 CF010000 		.4byte	.LASF20
+ 567 020d 01       		.byte	0x1
+ 568 020e 44       		.byte	0x44
+ 569 020f 68010000 		.4byte	0x168
+ 570 0213 BF000000 		.4byte	.LLST5
+ 571 0217 0A       		.uleb128 0xa
+ 572 0218 AF000000 		.4byte	.LASF21
+ 573 021c 01       		.byte	0x1
+ 574 021d 46       		.byte	0x46
+ 575 021e 6B000000 		.4byte	0x6b
+ 576 0222 E0000000 		.4byte	.LLST6
+ 577 0226 09       		.uleb128 0x9
+ 578 0227 70747200 		.ascii	"ptr\000"
+ 579 022b 01       		.byte	0x1
+ 580 022c 47       		.byte	0x47
+ 581 022d 68010000 		.4byte	0x168
+ 582 0231 FE000000 		.4byte	.LLST7
+ 583 0235 15       		.uleb128 0x15
+ 584 0236 08000000 		.4byte	.LVL24
+ 585 023a F1020000 		.4byte	0x2f1
+ 586 023e 0F       		.uleb128 0xf
+ 587 023f 10000000 		.4byte	.LVL26
+ 588 0243 FD020000 		.4byte	0x2fd
+ 589 0247 0E       		.uleb128 0xe
+ 590 0248 01       		.uleb128 0x1
+ 591 0249 50       		.byte	0x50
+ 592 024a 02       		.uleb128 0x2
+ 593 024b 74       		.byte	0x74
+ 594 024c 00       		.sleb128 0
+ 595 024d 00       		.byte	0
+ 596 024e 00       		.byte	0
+ 597 024f 16       		.uleb128 0x16
+ 598 0250 0E010000 		.4byte	.LASF22
+ 599 0254 01       		.byte	0x1
+ 600 0255 5A       		.byte	0x5a
+ 601 0256 5D000000 		.4byte	0x5d
+ 602 025a 00000000 		.4byte	.LFB36
+ 603 025e 24000000 		.4byte	.LFE36-.LFB36
+ 604 0262 01       		.uleb128 0x1
+ 605 0263 9C       		.byte	0x9c
+ 606 0264 B9020000 		.4byte	0x2b9
+ 607 0268 17       		.uleb128 0x17
+ 608 0269 D6010000 		.4byte	.LASF23
+ 609 026d 01       		.byte	0x1
+ 610 026e 5E       		.byte	0x5e
+ 611 026f 6E010000 		.4byte	0x16e
+ 612 0273 03       		.uleb128 0x3
+ 613 0274 91       		.byte	0x91
+ 614 0275 A87F     		.sleb128 -88
+ 615 0277 15       		.uleb128 0x15
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoGNQi4.s 			page 14
+
+
+ 616 0278 0A000000 		.4byte	.LVL30
+ 617 027c 0F030000 		.4byte	0x30f
+ 618 0280 0D       		.uleb128 0xd
+ 619 0281 12000000 		.4byte	.LVL31
+ 620 0285 B9020000 		.4byte	0x2b9
+ 621 0289 94020000 		.4byte	0x294
+ 622 028d 0E       		.uleb128 0xe
+ 623 028e 01       		.uleb128 0x1
+ 624 028f 50       		.byte	0x50
+ 625 0290 02       		.uleb128 0x2
+ 626 0291 74       		.byte	0x74
+ 627 0292 00       		.sleb128 0
+ 628 0293 00       		.byte	0
+ 629 0294 0D       		.uleb128 0xd
+ 630 0295 18000000 		.4byte	.LVL32
+ 631 0299 F3010000 		.4byte	0x1f3
+ 632 029d A8020000 		.4byte	0x2a8
+ 633 02a1 0E       		.uleb128 0xe
+ 634 02a2 01       		.uleb128 0x1
+ 635 02a3 50       		.byte	0x50
+ 636 02a4 02       		.uleb128 0x2
+ 637 02a5 7D       		.byte	0x7d
+ 638 02a6 00       		.sleb128 0
+ 639 02a7 00       		.byte	0
+ 640 02a8 0F       		.uleb128 0xf
+ 641 02a9 1E000000 		.4byte	.LVL33
+ 642 02ad AE000000 		.4byte	0xae
+ 643 02b1 0E       		.uleb128 0xe
+ 644 02b2 01       		.uleb128 0x1
+ 645 02b3 50       		.byte	0x50
+ 646 02b4 02       		.uleb128 0x2
+ 647 02b5 7D       		.byte	0x7d
+ 648 02b6 00       		.sleb128 0
+ 649 02b7 00       		.byte	0
+ 650 02b8 00       		.byte	0
+ 651 02b9 18       		.uleb128 0x18
+ 652 02ba 16000000 		.4byte	.LASF24
+ 653 02be 03       		.byte	0x3
+ 654 02bf 7701     		.2byte	0x177
+ 655 02c1 CB020000 		.4byte	0x2cb
+ 656 02c5 19       		.uleb128 0x19
+ 657 02c6 CB020000 		.4byte	0x2cb
+ 658 02ca 00       		.byte	0
+ 659 02cb 05       		.uleb128 0x5
+ 660 02cc 04       		.byte	0x4
+ 661 02cd D1020000 		.4byte	0x2d1
+ 662 02d1 06       		.uleb128 0x6
+ 663 02d2 84000000 		.4byte	0x84
+ 664 02d6 1A       		.uleb128 0x1a
+ 665 02d7 F2010000 		.4byte	.LASF30
+ 666 02db 04       		.byte	0x4
+ 667 02dc D9       		.byte	0xd9
+ 668 02dd 5D000000 		.4byte	0x5d
+ 669 02e1 F1020000 		.4byte	0x2f1
+ 670 02e5 19       		.uleb128 0x19
+ 671 02e6 9D000000 		.4byte	0x9d
+ 672 02ea 19       		.uleb128 0x19
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoGNQi4.s 			page 15
+
+
+ 673 02eb A3000000 		.4byte	0xa3
+ 674 02ef 1B       		.uleb128 0x1b
+ 675 02f0 00       		.byte	0
+ 676 02f1 1C       		.uleb128 0x1c
+ 677 02f2 49000000 		.4byte	.LASF31
+ 678 02f6 03       		.byte	0x3
+ 679 02f7 6A01     		.2byte	0x16a
+ 680 02f9 6B000000 		.4byte	0x6b
+ 681 02fd 18       		.uleb128 0x18
+ 682 02fe ED000000 		.4byte	.LASF25
+ 683 0302 03       		.byte	0x3
+ 684 0303 8C01     		.2byte	0x18c
+ 685 0305 0F030000 		.4byte	0x30f
+ 686 0309 19       		.uleb128 0x19
+ 687 030a 6B000000 		.4byte	0x6b
+ 688 030e 00       		.byte	0
+ 689 030f 1D       		.uleb128 0x1d
+ 690 0310 00000000 		.4byte	.LASF32
+ 691 0314 05       		.byte	0x5
+ 692 0315 68       		.byte	0x68
+ 693 0316 00       		.byte	0
+ 694              		.section	.debug_abbrev,"",%progbits
+ 695              	.Ldebug_abbrev0:
+ 696 0000 01       		.uleb128 0x1
+ 697 0001 11       		.uleb128 0x11
+ 698 0002 01       		.byte	0x1
+ 699 0003 25       		.uleb128 0x25
+ 700 0004 0E       		.uleb128 0xe
+ 701 0005 13       		.uleb128 0x13
+ 702 0006 0B       		.uleb128 0xb
+ 703 0007 03       		.uleb128 0x3
+ 704 0008 0E       		.uleb128 0xe
+ 705 0009 1B       		.uleb128 0x1b
+ 706 000a 0E       		.uleb128 0xe
+ 707 000b 55       		.uleb128 0x55
+ 708 000c 17       		.uleb128 0x17
+ 709 000d 11       		.uleb128 0x11
+ 710 000e 01       		.uleb128 0x1
+ 711 000f 10       		.uleb128 0x10
+ 712 0010 17       		.uleb128 0x17
+ 713 0011 00       		.byte	0
+ 714 0012 00       		.byte	0
+ 715 0013 02       		.uleb128 0x2
+ 716 0014 24       		.uleb128 0x24
+ 717 0015 00       		.byte	0
+ 718 0016 0B       		.uleb128 0xb
+ 719 0017 0B       		.uleb128 0xb
+ 720 0018 3E       		.uleb128 0x3e
+ 721 0019 0B       		.uleb128 0xb
+ 722 001a 03       		.uleb128 0x3
+ 723 001b 0E       		.uleb128 0xe
+ 724 001c 00       		.byte	0
+ 725 001d 00       		.byte	0
+ 726 001e 03       		.uleb128 0x3
+ 727 001f 24       		.uleb128 0x24
+ 728 0020 00       		.byte	0
+ 729 0021 0B       		.uleb128 0xb
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoGNQi4.s 			page 16
+
+
+ 730 0022 0B       		.uleb128 0xb
+ 731 0023 3E       		.uleb128 0x3e
+ 732 0024 0B       		.uleb128 0xb
+ 733 0025 03       		.uleb128 0x3
+ 734 0026 08       		.uleb128 0x8
+ 735 0027 00       		.byte	0
+ 736 0028 00       		.byte	0
+ 737 0029 04       		.uleb128 0x4
+ 738 002a 16       		.uleb128 0x16
+ 739 002b 00       		.byte	0
+ 740 002c 03       		.uleb128 0x3
+ 741 002d 0E       		.uleb128 0xe
+ 742 002e 3A       		.uleb128 0x3a
+ 743 002f 0B       		.uleb128 0xb
+ 744 0030 3B       		.uleb128 0x3b
+ 745 0031 0B       		.uleb128 0xb
+ 746 0032 49       		.uleb128 0x49
+ 747 0033 13       		.uleb128 0x13
+ 748 0034 00       		.byte	0
+ 749 0035 00       		.byte	0
+ 750 0036 05       		.uleb128 0x5
+ 751 0037 0F       		.uleb128 0xf
+ 752 0038 00       		.byte	0
+ 753 0039 0B       		.uleb128 0xb
+ 754 003a 0B       		.uleb128 0xb
+ 755 003b 49       		.uleb128 0x49
+ 756 003c 13       		.uleb128 0x13
+ 757 003d 00       		.byte	0
+ 758 003e 00       		.byte	0
+ 759 003f 06       		.uleb128 0x6
+ 760 0040 26       		.uleb128 0x26
+ 761 0041 00       		.byte	0
+ 762 0042 49       		.uleb128 0x49
+ 763 0043 13       		.uleb128 0x13
+ 764 0044 00       		.byte	0
+ 765 0045 00       		.byte	0
+ 766 0046 07       		.uleb128 0x7
+ 767 0047 2E       		.uleb128 0x2e
+ 768 0048 01       		.byte	0x1
+ 769 0049 3F       		.uleb128 0x3f
+ 770 004a 19       		.uleb128 0x19
+ 771 004b 03       		.uleb128 0x3
+ 772 004c 0E       		.uleb128 0xe
+ 773 004d 3A       		.uleb128 0x3a
+ 774 004e 0B       		.uleb128 0xb
+ 775 004f 3B       		.uleb128 0x3b
+ 776 0050 0B       		.uleb128 0xb
+ 777 0051 27       		.uleb128 0x27
+ 778 0052 19       		.uleb128 0x19
+ 779 0053 11       		.uleb128 0x11
+ 780 0054 01       		.uleb128 0x1
+ 781 0055 12       		.uleb128 0x12
+ 782 0056 06       		.uleb128 0x6
+ 783 0057 40       		.uleb128 0x40
+ 784 0058 18       		.uleb128 0x18
+ 785 0059 9642     		.uleb128 0x2116
+ 786 005b 19       		.uleb128 0x19
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoGNQi4.s 			page 17
+
+
+ 787 005c 01       		.uleb128 0x1
+ 788 005d 13       		.uleb128 0x13
+ 789 005e 00       		.byte	0
+ 790 005f 00       		.byte	0
+ 791 0060 08       		.uleb128 0x8
+ 792 0061 05       		.uleb128 0x5
+ 793 0062 00       		.byte	0
+ 794 0063 03       		.uleb128 0x3
+ 795 0064 08       		.uleb128 0x8
+ 796 0065 3A       		.uleb128 0x3a
+ 797 0066 0B       		.uleb128 0xb
+ 798 0067 3B       		.uleb128 0x3b
+ 799 0068 0B       		.uleb128 0xb
+ 800 0069 49       		.uleb128 0x49
+ 801 006a 13       		.uleb128 0x13
+ 802 006b 02       		.uleb128 0x2
+ 803 006c 17       		.uleb128 0x17
+ 804 006d 00       		.byte	0
+ 805 006e 00       		.byte	0
+ 806 006f 09       		.uleb128 0x9
+ 807 0070 34       		.uleb128 0x34
+ 808 0071 00       		.byte	0
+ 809 0072 03       		.uleb128 0x3
+ 810 0073 08       		.uleb128 0x8
+ 811 0074 3A       		.uleb128 0x3a
+ 812 0075 0B       		.uleb128 0xb
+ 813 0076 3B       		.uleb128 0x3b
+ 814 0077 0B       		.uleb128 0xb
+ 815 0078 49       		.uleb128 0x49
+ 816 0079 13       		.uleb128 0x13
+ 817 007a 02       		.uleb128 0x2
+ 818 007b 17       		.uleb128 0x17
+ 819 007c 00       		.byte	0
+ 820 007d 00       		.byte	0
+ 821 007e 0A       		.uleb128 0xa
+ 822 007f 34       		.uleb128 0x34
+ 823 0080 00       		.byte	0
+ 824 0081 03       		.uleb128 0x3
+ 825 0082 0E       		.uleb128 0xe
+ 826 0083 3A       		.uleb128 0x3a
+ 827 0084 0B       		.uleb128 0xb
+ 828 0085 3B       		.uleb128 0x3b
+ 829 0086 0B       		.uleb128 0xb
+ 830 0087 49       		.uleb128 0x49
+ 831 0088 13       		.uleb128 0x13
+ 832 0089 02       		.uleb128 0x2
+ 833 008a 17       		.uleb128 0x17
+ 834 008b 00       		.byte	0
+ 835 008c 00       		.byte	0
+ 836 008d 0B       		.uleb128 0xb
+ 837 008e 34       		.uleb128 0x34
+ 838 008f 00       		.byte	0
+ 839 0090 03       		.uleb128 0x3
+ 840 0091 0E       		.uleb128 0xe
+ 841 0092 3A       		.uleb128 0x3a
+ 842 0093 0B       		.uleb128 0xb
+ 843 0094 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoGNQi4.s 			page 18
+
+
+ 844 0095 0B       		.uleb128 0xb
+ 845 0096 49       		.uleb128 0x49
+ 846 0097 13       		.uleb128 0x13
+ 847 0098 00       		.byte	0
+ 848 0099 00       		.byte	0
+ 849 009a 0C       		.uleb128 0xc
+ 850 009b 34       		.uleb128 0x34
+ 851 009c 00       		.byte	0
+ 852 009d 03       		.uleb128 0x3
+ 853 009e 08       		.uleb128 0x8
+ 854 009f 3A       		.uleb128 0x3a
+ 855 00a0 0B       		.uleb128 0xb
+ 856 00a1 3B       		.uleb128 0x3b
+ 857 00a2 0B       		.uleb128 0xb
+ 858 00a3 49       		.uleb128 0x49
+ 859 00a4 13       		.uleb128 0x13
+ 860 00a5 1C       		.uleb128 0x1c
+ 861 00a6 0B       		.uleb128 0xb
+ 862 00a7 00       		.byte	0
+ 863 00a8 00       		.byte	0
+ 864 00a9 0D       		.uleb128 0xd
+ 865 00aa 898201   		.uleb128 0x4109
+ 866 00ad 01       		.byte	0x1
+ 867 00ae 11       		.uleb128 0x11
+ 868 00af 01       		.uleb128 0x1
+ 869 00b0 31       		.uleb128 0x31
+ 870 00b1 13       		.uleb128 0x13
+ 871 00b2 01       		.uleb128 0x1
+ 872 00b3 13       		.uleb128 0x13
+ 873 00b4 00       		.byte	0
+ 874 00b5 00       		.byte	0
+ 875 00b6 0E       		.uleb128 0xe
+ 876 00b7 8A8201   		.uleb128 0x410a
+ 877 00ba 00       		.byte	0
+ 878 00bb 02       		.uleb128 0x2
+ 879 00bc 18       		.uleb128 0x18
+ 880 00bd 9142     		.uleb128 0x2111
+ 881 00bf 18       		.uleb128 0x18
+ 882 00c0 00       		.byte	0
+ 883 00c1 00       		.byte	0
+ 884 00c2 0F       		.uleb128 0xf
+ 885 00c3 898201   		.uleb128 0x4109
+ 886 00c6 01       		.byte	0x1
+ 887 00c7 11       		.uleb128 0x11
+ 888 00c8 01       		.uleb128 0x1
+ 889 00c9 31       		.uleb128 0x31
+ 890 00ca 13       		.uleb128 0x13
+ 891 00cb 00       		.byte	0
+ 892 00cc 00       		.byte	0
+ 893 00cd 10       		.uleb128 0x10
+ 894 00ce 01       		.uleb128 0x1
+ 895 00cf 01       		.byte	0x1
+ 896 00d0 49       		.uleb128 0x49
+ 897 00d1 13       		.uleb128 0x13
+ 898 00d2 01       		.uleb128 0x1
+ 899 00d3 13       		.uleb128 0x13
+ 900 00d4 00       		.byte	0
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoGNQi4.s 			page 19
+
+
+ 901 00d5 00       		.byte	0
+ 902 00d6 11       		.uleb128 0x11
+ 903 00d7 21       		.uleb128 0x21
+ 904 00d8 00       		.byte	0
+ 905 00d9 49       		.uleb128 0x49
+ 906 00da 13       		.uleb128 0x13
+ 907 00db 2F       		.uleb128 0x2f
+ 908 00dc 0B       		.uleb128 0xb
+ 909 00dd 00       		.byte	0
+ 910 00de 00       		.byte	0
+ 911 00df 12       		.uleb128 0x12
+ 912 00e0 2E       		.uleb128 0x2e
+ 913 00e1 01       		.byte	0x1
+ 914 00e2 3F       		.uleb128 0x3f
+ 915 00e3 19       		.uleb128 0x19
+ 916 00e4 03       		.uleb128 0x3
+ 917 00e5 0E       		.uleb128 0xe
+ 918 00e6 3A       		.uleb128 0x3a
+ 919 00e7 0B       		.uleb128 0xb
+ 920 00e8 3B       		.uleb128 0x3b
+ 921 00e9 0B       		.uleb128 0xb
+ 922 00ea 27       		.uleb128 0x27
+ 923 00eb 19       		.uleb128 0x19
+ 924 00ec 11       		.uleb128 0x11
+ 925 00ed 01       		.uleb128 0x1
+ 926 00ee 12       		.uleb128 0x12
+ 927 00ef 06       		.uleb128 0x6
+ 928 00f0 40       		.uleb128 0x40
+ 929 00f1 18       		.uleb128 0x18
+ 930 00f2 9742     		.uleb128 0x2117
+ 931 00f4 19       		.uleb128 0x19
+ 932 00f5 01       		.uleb128 0x1
+ 933 00f6 13       		.uleb128 0x13
+ 934 00f7 00       		.byte	0
+ 935 00f8 00       		.byte	0
+ 936 00f9 13       		.uleb128 0x13
+ 937 00fa 34       		.uleb128 0x34
+ 938 00fb 00       		.byte	0
+ 939 00fc 03       		.uleb128 0x3
+ 940 00fd 08       		.uleb128 0x8
+ 941 00fe 3A       		.uleb128 0x3a
+ 942 00ff 0B       		.uleb128 0xb
+ 943 0100 3B       		.uleb128 0x3b
+ 944 0101 0B       		.uleb128 0xb
+ 945 0102 49       		.uleb128 0x49
+ 946 0103 13       		.uleb128 0x13
+ 947 0104 02       		.uleb128 0x2
+ 948 0105 18       		.uleb128 0x18
+ 949 0106 00       		.byte	0
+ 950 0107 00       		.byte	0
+ 951 0108 14       		.uleb128 0x14
+ 952 0109 05       		.uleb128 0x5
+ 953 010a 00       		.byte	0
+ 954 010b 03       		.uleb128 0x3
+ 955 010c 0E       		.uleb128 0xe
+ 956 010d 3A       		.uleb128 0x3a
+ 957 010e 0B       		.uleb128 0xb
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoGNQi4.s 			page 20
+
+
+ 958 010f 3B       		.uleb128 0x3b
+ 959 0110 0B       		.uleb128 0xb
+ 960 0111 49       		.uleb128 0x49
+ 961 0112 13       		.uleb128 0x13
+ 962 0113 02       		.uleb128 0x2
+ 963 0114 17       		.uleb128 0x17
+ 964 0115 00       		.byte	0
+ 965 0116 00       		.byte	0
+ 966 0117 15       		.uleb128 0x15
+ 967 0118 898201   		.uleb128 0x4109
+ 968 011b 00       		.byte	0
+ 969 011c 11       		.uleb128 0x11
+ 970 011d 01       		.uleb128 0x1
+ 971 011e 31       		.uleb128 0x31
+ 972 011f 13       		.uleb128 0x13
+ 973 0120 00       		.byte	0
+ 974 0121 00       		.byte	0
+ 975 0122 16       		.uleb128 0x16
+ 976 0123 2E       		.uleb128 0x2e
+ 977 0124 01       		.byte	0x1
+ 978 0125 3F       		.uleb128 0x3f
+ 979 0126 19       		.uleb128 0x19
+ 980 0127 03       		.uleb128 0x3
+ 981 0128 0E       		.uleb128 0xe
+ 982 0129 3A       		.uleb128 0x3a
+ 983 012a 0B       		.uleb128 0xb
+ 984 012b 3B       		.uleb128 0x3b
+ 985 012c 0B       		.uleb128 0xb
+ 986 012d 49       		.uleb128 0x49
+ 987 012e 13       		.uleb128 0x13
+ 988 012f 11       		.uleb128 0x11
+ 989 0130 01       		.uleb128 0x1
+ 990 0131 12       		.uleb128 0x12
+ 991 0132 06       		.uleb128 0x6
+ 992 0133 40       		.uleb128 0x40
+ 993 0134 18       		.uleb128 0x18
+ 994 0135 9742     		.uleb128 0x2117
+ 995 0137 19       		.uleb128 0x19
+ 996 0138 01       		.uleb128 0x1
+ 997 0139 13       		.uleb128 0x13
+ 998 013a 00       		.byte	0
+ 999 013b 00       		.byte	0
+ 1000 013c 17       		.uleb128 0x17
+ 1001 013d 34       		.uleb128 0x34
+ 1002 013e 00       		.byte	0
+ 1003 013f 03       		.uleb128 0x3
+ 1004 0140 0E       		.uleb128 0xe
+ 1005 0141 3A       		.uleb128 0x3a
+ 1006 0142 0B       		.uleb128 0xb
+ 1007 0143 3B       		.uleb128 0x3b
+ 1008 0144 0B       		.uleb128 0xb
+ 1009 0145 49       		.uleb128 0x49
+ 1010 0146 13       		.uleb128 0x13
+ 1011 0147 02       		.uleb128 0x2
+ 1012 0148 18       		.uleb128 0x18
+ 1013 0149 00       		.byte	0
+ 1014 014a 00       		.byte	0
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoGNQi4.s 			page 21
+
+
+ 1015 014b 18       		.uleb128 0x18
+ 1016 014c 2E       		.uleb128 0x2e
+ 1017 014d 01       		.byte	0x1
+ 1018 014e 3F       		.uleb128 0x3f
+ 1019 014f 19       		.uleb128 0x19
+ 1020 0150 03       		.uleb128 0x3
+ 1021 0151 0E       		.uleb128 0xe
+ 1022 0152 3A       		.uleb128 0x3a
+ 1023 0153 0B       		.uleb128 0xb
+ 1024 0154 3B       		.uleb128 0x3b
+ 1025 0155 05       		.uleb128 0x5
+ 1026 0156 27       		.uleb128 0x27
+ 1027 0157 19       		.uleb128 0x19
+ 1028 0158 3C       		.uleb128 0x3c
+ 1029 0159 19       		.uleb128 0x19
+ 1030 015a 01       		.uleb128 0x1
+ 1031 015b 13       		.uleb128 0x13
+ 1032 015c 00       		.byte	0
+ 1033 015d 00       		.byte	0
+ 1034 015e 19       		.uleb128 0x19
+ 1035 015f 05       		.uleb128 0x5
+ 1036 0160 00       		.byte	0
+ 1037 0161 49       		.uleb128 0x49
+ 1038 0162 13       		.uleb128 0x13
+ 1039 0163 00       		.byte	0
+ 1040 0164 00       		.byte	0
+ 1041 0165 1A       		.uleb128 0x1a
+ 1042 0166 2E       		.uleb128 0x2e
+ 1043 0167 01       		.byte	0x1
+ 1044 0168 3F       		.uleb128 0x3f
+ 1045 0169 19       		.uleb128 0x19
+ 1046 016a 03       		.uleb128 0x3
+ 1047 016b 0E       		.uleb128 0xe
+ 1048 016c 3A       		.uleb128 0x3a
+ 1049 016d 0B       		.uleb128 0xb
+ 1050 016e 3B       		.uleb128 0x3b
+ 1051 016f 0B       		.uleb128 0xb
+ 1052 0170 27       		.uleb128 0x27
+ 1053 0171 19       		.uleb128 0x19
+ 1054 0172 49       		.uleb128 0x49
+ 1055 0173 13       		.uleb128 0x13
+ 1056 0174 3C       		.uleb128 0x3c
+ 1057 0175 19       		.uleb128 0x19
+ 1058 0176 01       		.uleb128 0x1
+ 1059 0177 13       		.uleb128 0x13
+ 1060 0178 00       		.byte	0
+ 1061 0179 00       		.byte	0
+ 1062 017a 1B       		.uleb128 0x1b
+ 1063 017b 18       		.uleb128 0x18
+ 1064 017c 00       		.byte	0
+ 1065 017d 00       		.byte	0
+ 1066 017e 00       		.byte	0
+ 1067 017f 1C       		.uleb128 0x1c
+ 1068 0180 2E       		.uleb128 0x2e
+ 1069 0181 00       		.byte	0
+ 1070 0182 3F       		.uleb128 0x3f
+ 1071 0183 19       		.uleb128 0x19
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoGNQi4.s 			page 22
+
+
+ 1072 0184 03       		.uleb128 0x3
+ 1073 0185 0E       		.uleb128 0xe
+ 1074 0186 3A       		.uleb128 0x3a
+ 1075 0187 0B       		.uleb128 0xb
+ 1076 0188 3B       		.uleb128 0x3b
+ 1077 0189 05       		.uleb128 0x5
+ 1078 018a 27       		.uleb128 0x27
+ 1079 018b 19       		.uleb128 0x19
+ 1080 018c 49       		.uleb128 0x49
+ 1081 018d 13       		.uleb128 0x13
+ 1082 018e 3C       		.uleb128 0x3c
+ 1083 018f 19       		.uleb128 0x19
+ 1084 0190 00       		.byte	0
+ 1085 0191 00       		.byte	0
+ 1086 0192 1D       		.uleb128 0x1d
+ 1087 0193 2E       		.uleb128 0x2e
+ 1088 0194 00       		.byte	0
+ 1089 0195 3F       		.uleb128 0x3f
+ 1090 0196 19       		.uleb128 0x19
+ 1091 0197 03       		.uleb128 0x3
+ 1092 0198 0E       		.uleb128 0xe
+ 1093 0199 3A       		.uleb128 0x3a
+ 1094 019a 0B       		.uleb128 0xb
+ 1095 019b 3B       		.uleb128 0x3b
+ 1096 019c 0B       		.uleb128 0xb
+ 1097 019d 27       		.uleb128 0x27
+ 1098 019e 19       		.uleb128 0x19
+ 1099 019f 3C       		.uleb128 0x3c
+ 1100 01a0 19       		.uleb128 0x19
+ 1101 01a1 00       		.byte	0
+ 1102 01a2 00       		.byte	0
+ 1103 01a3 00       		.byte	0
+ 1104              		.section	.debug_loc,"",%progbits
+ 1105              	.Ldebug_loc0:
+ 1106              	.LLST0:
+ 1107 0000 00000000 		.4byte	.LVL0
+ 1108 0004 16000000 		.4byte	.LVL2
+ 1109 0008 0100     		.2byte	0x1
+ 1110 000a 50       		.byte	0x50
+ 1111 000b 16000000 		.4byte	.LVL2
+ 1112 000f 6C000000 		.4byte	.LVL17
+ 1113 0013 0100     		.2byte	0x1
+ 1114 0015 56       		.byte	0x56
+ 1115 0016 6C000000 		.4byte	.LVL17
+ 1116 001a 80000000 		.4byte	.LFE33
+ 1117 001e 0400     		.2byte	0x4
+ 1118 0020 F3       		.byte	0xf3
+ 1119 0021 01       		.uleb128 0x1
+ 1120 0022 50       		.byte	0x50
+ 1121 0023 9F       		.byte	0x9f
+ 1122 0024 00000000 		.4byte	0
+ 1123 0028 00000000 		.4byte	0
+ 1124              	.LLST1:
+ 1125 002c 0A000000 		.4byte	.LVL1
+ 1126 0030 16000000 		.4byte	.LVL2
+ 1127 0034 0200     		.2byte	0x2
+ 1128 0036 30       		.byte	0x30
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoGNQi4.s 			page 23
+
+
+ 1129 0037 9F       		.byte	0x9f
+ 1130 0038 16000000 		.4byte	.LVL2
+ 1131 003c 6C000000 		.4byte	.LVL16
+ 1132 0040 0100     		.2byte	0x1
+ 1133 0042 55       		.byte	0x55
+ 1134 0043 00000000 		.4byte	0
+ 1135 0047 00000000 		.4byte	0
+ 1136              	.LLST2:
+ 1137 004b 0A000000 		.4byte	.LVL1
+ 1138 004f 16000000 		.4byte	.LVL2
+ 1139 0053 0100     		.2byte	0x1
+ 1140 0055 50       		.byte	0x50
+ 1141 0056 16000000 		.4byte	.LVL2
+ 1142 005a 6C000000 		.4byte	.LVL15
+ 1143 005e 0100     		.2byte	0x1
+ 1144 0060 54       		.byte	0x54
+ 1145 0061 00000000 		.4byte	0
+ 1146 0065 00000000 		.4byte	0
+ 1147              	.LLST3:
+ 1148 0069 0A000000 		.4byte	.LVL1
+ 1149 006d 16000000 		.4byte	.LVL2
+ 1150 0071 0200     		.2byte	0x2
+ 1151 0073 30       		.byte	0x30
+ 1152 0074 9F       		.byte	0x9f
+ 1153 0075 2C000000 		.4byte	.LVL3
+ 1154 0079 32000000 		.4byte	.LVL4
+ 1155 007d 0100     		.2byte	0x1
+ 1156 007f 53       		.byte	0x53
+ 1157 0080 32000000 		.4byte	.LVL4
+ 1158 0084 40000000 		.4byte	.LVL8
+ 1159 0088 0100     		.2byte	0x1
+ 1160 008a 59       		.byte	0x59
+ 1161 008b 00000000 		.4byte	0
+ 1162 008f 00000000 		.4byte	0
+ 1163              	.LLST4:
+ 1164 0093 00000000 		.4byte	.LVL18
+ 1165 0097 08000000 		.4byte	.LVL19
+ 1166 009b 0100     		.2byte	0x1
+ 1167 009d 50       		.byte	0x50
+ 1168 009e 08000000 		.4byte	.LVL19
+ 1169 00a2 0D000000 		.4byte	.LVL20-1
+ 1170 00a6 0100     		.2byte	0x1
+ 1171 00a8 52       		.byte	0x52
+ 1172 00a9 0D000000 		.4byte	.LVL20-1
+ 1173 00ad 1C000000 		.4byte	.LFE34
+ 1174 00b1 0400     		.2byte	0x4
+ 1175 00b3 F3       		.byte	0xf3
+ 1176 00b4 01       		.uleb128 0x1
+ 1177 00b5 50       		.byte	0x50
+ 1178 00b6 9F       		.byte	0x9f
+ 1179 00b7 00000000 		.4byte	0
+ 1180 00bb 00000000 		.4byte	0
+ 1181              	.LLST5:
+ 1182 00bf 00000000 		.4byte	.LVL22
+ 1183 00c3 04000000 		.4byte	.LVL23
+ 1184 00c7 0100     		.2byte	0x1
+ 1185 00c9 50       		.byte	0x50
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoGNQi4.s 			page 24
+
+
+ 1186 00ca 04000000 		.4byte	.LVL23
+ 1187 00ce 20000000 		.4byte	.LFE35
+ 1188 00d2 0400     		.2byte	0x4
+ 1189 00d4 F3       		.byte	0xf3
+ 1190 00d5 01       		.uleb128 0x1
+ 1191 00d6 50       		.byte	0x50
+ 1192 00d7 9F       		.byte	0x9f
+ 1193 00d8 00000000 		.4byte	0
+ 1194 00dc 00000000 		.4byte	0
+ 1195              	.LLST6:
+ 1196 00e0 0A000000 		.4byte	.LVL25
+ 1197 00e4 0F000000 		.4byte	.LVL26-1
+ 1198 00e8 0100     		.2byte	0x1
+ 1199 00ea 50       		.byte	0x50
+ 1200 00eb 0F000000 		.4byte	.LVL26-1
+ 1201 00ef 1E000000 		.4byte	.LVL28
+ 1202 00f3 0100     		.2byte	0x1
+ 1203 00f5 54       		.byte	0x54
+ 1204 00f6 00000000 		.4byte	0
+ 1205 00fa 00000000 		.4byte	0
+ 1206              	.LLST7:
+ 1207 00fe 04000000 		.4byte	.LVL23
+ 1208 0102 1E000000 		.4byte	.LVL29
+ 1209 0106 0100     		.2byte	0x1
+ 1210 0108 55       		.byte	0x55
+ 1211 0109 00000000 		.4byte	0
+ 1212 010d 00000000 		.4byte	0
+ 1213              		.section	.debug_aranges,"",%progbits
+ 1214 0000 34000000 		.4byte	0x34
+ 1215 0004 0200     		.2byte	0x2
+ 1216 0006 00000000 		.4byte	.Ldebug_info0
+ 1217 000a 04       		.byte	0x4
+ 1218 000b 00       		.byte	0
+ 1219 000c 0000     		.2byte	0
+ 1220 000e 0000     		.2byte	0
+ 1221 0010 00000000 		.4byte	.LFB33
+ 1222 0014 80000000 		.4byte	.LFE33-.LFB33
+ 1223 0018 00000000 		.4byte	.LFB34
+ 1224 001c 1C000000 		.4byte	.LFE34-.LFB34
+ 1225 0020 00000000 		.4byte	.LFB35
+ 1226 0024 20000000 		.4byte	.LFE35-.LFB35
+ 1227 0028 00000000 		.4byte	.LFB36
+ 1228 002c 24000000 		.4byte	.LFE36-.LFB36
+ 1229 0030 00000000 		.4byte	0
+ 1230 0034 00000000 		.4byte	0
+ 1231              		.section	.debug_ranges,"",%progbits
+ 1232              	.Ldebug_ranges0:
+ 1233 0000 00000000 		.4byte	.LFB33
+ 1234 0004 80000000 		.4byte	.LFE33
+ 1235 0008 00000000 		.4byte	.LFB34
+ 1236 000c 1C000000 		.4byte	.LFE34
+ 1237 0010 00000000 		.4byte	.LFB35
+ 1238 0014 20000000 		.4byte	.LFE35
+ 1239 0018 00000000 		.4byte	.LFB36
+ 1240 001c 24000000 		.4byte	.LFE36
+ 1241 0020 00000000 		.4byte	0
+ 1242 0024 00000000 		.4byte	0
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoGNQi4.s 			page 25
+
+
+ 1243              		.section	.debug_line,"",%progbits
+ 1244              	.Ldebug_line0:
+ 1245 0000 5A010000 		.section	.debug_str,"MS",%progbits,1
+ 1245      0200D700 
+ 1245      00000201 
+ 1245      FB0E0D00 
+ 1245      01010101 
+ 1246              	.LASF32:
+ 1247 0000 55415254 		.ascii	"UART_1_Start\000"
+ 1247      5F315F53 
+ 1247      74617274 
+ 1247      00
+ 1248              	.LASF17:
+ 1249 000d 43686563 		.ascii	"CheckSum\000"
+ 1249      6B53756D 
+ 1249      00
+ 1250              	.LASF24:
+ 1251 0016 55415254 		.ascii	"UART_1_UartPutString\000"
+ 1251      5F315F55 
+ 1251      61727450 
+ 1251      75745374 
+ 1251      72696E67 
+ 1252              	.LASF3:
+ 1253 002b 73686F72 		.ascii	"short unsigned int\000"
+ 1253      7420756E 
+ 1253      7369676E 
+ 1253      65642069 
+ 1253      6E7400
+ 1254              	.LASF19:
+ 1255 003e 72656164 		.ascii	"readString\000"
+ 1255      53747269 
+ 1255      6E6700
+ 1256              	.LASF31:
+ 1257 0049 55415254 		.ascii	"UART_1_UartGetChar\000"
+ 1257      5F315F55 
+ 1257      61727447 
+ 1257      65744368 
+ 1257      617200
+ 1258              	.LASF9:
+ 1259 005c 666C6F61 		.ascii	"float\000"
+ 1259      7400
+ 1260              	.LASF7:
+ 1261 0062 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1261      206C6F6E 
+ 1261      6720756E 
+ 1261      7369676E 
+ 1261      65642069 
+ 1262              	.LASF1:
+ 1263 0079 756E7369 		.ascii	"unsigned char\000"
+ 1263      676E6564 
+ 1263      20636861 
+ 1263      7200
+ 1264              	.LASF12:
+ 1265 0087 63686172 		.ascii	"char8\000"
+ 1265      3800
+ 1266              	.LASF18:
+ 1267 008d 5072696E 		.ascii	"PrintInt\000"
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoGNQi4.s 			page 26
+
+
+ 1267      74496E74 
+ 1267      00
+ 1268              	.LASF5:
+ 1269 0096 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1269      20756E73 
+ 1269      69676E65 
+ 1269      6420696E 
+ 1269      7400
+ 1270              	.LASF15:
+ 1271 00a8 73747270 		.ascii	"strpt1\000"
+ 1271      743100
+ 1272              	.LASF21:
+ 1273 00af 72784461 		.ascii	"rxData\000"
+ 1273      746100
+ 1274              	.LASF10:
+ 1275 00b6 646F7562 		.ascii	"double\000"
+ 1275      6C6500
+ 1276              	.LASF28:
+ 1277 00bd 453A5C73 		.ascii	"E:\\school\\ECEC304\\Lab 3\\Checksum.cydsn\000"
+ 1277      63686F6F 
+ 1277      6C5C4543 
+ 1277      45433330 
+ 1277      345C4C61 
+ 1278              	.LASF27:
+ 1279 00e4 2E5C6D61 		.ascii	".\\main.c\000"
+ 1279      696E2E63 
+ 1279      00
+ 1280              	.LASF25:
+ 1281 00ed 55415254 		.ascii	"UART_1_SpiUartWriteTxData\000"
+ 1281      5F315F53 
+ 1281      70695561 
+ 1281      72745772 
+ 1281      69746554 
+ 1282              	.LASF11:
+ 1283 0107 75696E74 		.ascii	"uint32\000"
+ 1283      333200
+ 1284              	.LASF22:
+ 1285 010e 6D61696E 		.ascii	"main\000"
+ 1285      00
+ 1286              	.LASF8:
+ 1287 0113 756E7369 		.ascii	"unsigned int\000"
+ 1287      676E6564 
+ 1287      20696E74 
+ 1287      00
+ 1288              	.LASF16:
+ 1289 0120 64626C76 		.ascii	"dblvar\000"
+ 1289      617200
+ 1290              	.LASF26:
+ 1291 0127 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 1291      4320342E 
+ 1291      382E3420 
+ 1291      32303134 
+ 1291      30353236 
+ 1292 015a 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 1292      20726576 
+ 1292      6973696F 
+ 1292      6E203231 
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccoGNQi4.s 			page 27
+
+
+ 1292      31333538 
+ 1293 018d 67202D66 		.ascii	"g -ffunction-sections\000"
+ 1293      66756E63 
+ 1293      74696F6E 
+ 1293      2D736563 
+ 1293      74696F6E 
+ 1294              	.LASF29:
+ 1295 01a3 635F7375 		.ascii	"c_sum\000"
+ 1295      6D00
+ 1296              	.LASF14:
+ 1297 01a9 73697A65 		.ascii	"sizetype\000"
+ 1297      74797065 
+ 1297      00
+ 1298              	.LASF6:
+ 1299 01b2 6C6F6E67 		.ascii	"long long int\000"
+ 1299      206C6F6E 
+ 1299      6720696E 
+ 1299      7400
+ 1300              	.LASF13:
+ 1301 01c0 63686172 		.ascii	"char\000"
+ 1301      00
+ 1302              	.LASF2:
+ 1303 01c5 73686F72 		.ascii	"short int\000"
+ 1303      7420696E 
+ 1303      7400
+ 1304              	.LASF20:
+ 1305 01cf 62756666 		.ascii	"buffer\000"
+ 1305      657200
+ 1306              	.LASF23:
+ 1307 01d6 63686F69 		.ascii	"choice\000"
+ 1307      636500
+ 1308              	.LASF4:
+ 1309 01dd 6C6F6E67 		.ascii	"long int\000"
+ 1309      20696E74 
+ 1309      00
+ 1310              	.LASF0:
+ 1311 01e6 7369676E 		.ascii	"signed char\000"
+ 1311      65642063 
+ 1311      68617200 
+ 1312              	.LASF30:
+ 1313 01f2 73707269 		.ascii	"sprintf\000"
+ 1313      6E746600 
+ 1314              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

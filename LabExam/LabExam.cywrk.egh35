@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CyXmlSerializer>
+<!--This file is machine generated and read. It is not intended to be edited by hand.-->
+<!--Due to this, there is no schema for this file.-->
+<CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtWrkspcCustomData" version="4">
+<CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997 type_name="CyDesigner.Common.Base.CyCustomData" version="2">
+<userData>
+<dataGuid v="1b906a0f-a7b6-4e4d-a428-82f98b53cb35">
+<CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35 type_name="CyDesigner.Common.ProjMgmt.GUI.CyExplorerWindow+CyExplorerWindowState" version="3" SelectedTab="Source">
+<TreeKeys>
+<v>Source</v>
+<v>Components</v>
+<v>Output</v>
+</TreeKeys>
+<TreeStates>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="LabExam\LabExam\Source Files\main.c">
+<ExpandedNodeIds>
+<v>LabExam</v>
+<v>LabExam\LabExam</v>
+<v>LabExam\LabExam\TopDesign</v>
+<v>LabExam\LabExam\LabExam.cydwr</v>
+<v>LabExam\LabExam\Header Files</v>
+<v>LabExam\LabExam\Source Files</v>
+<v>LabExam\LabExam\Source Files\main.c</v>
+<v>LabExam\LabExam\Generated_Source</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\Clock_1</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\Clock_1\Clock_1.c</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\Clock_1\Clock_1.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_boot</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_boot\cm0gcc.ld</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_boot\Cm0Iar.icf</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_boot\Cm0RealView.scat</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_boot\Cm0Start.c</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_boot\core_cm0.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_boot\core_cm0_psoc4.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_boot\core_cmFunc.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_boot\core_cmInstr.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_boot\CyBootAsmGnu.s</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_boot\CyBootAsmIar.s</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_boot\CyBootAsmRv.s</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_boot\CyFlash.c</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_boot\CyFlash.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_boot\CyLib.c</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_boot\CyLib.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_boot\cypins.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_boot\cyPm.c</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_boot\cyPm.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_boot\cytypes.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_boot\cyutils.c</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_lfclk</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_lfclk\CyLFClk.c</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_lfclk\CyLFClk.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\isr_1</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\isr_1\isr_1.c</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\isr_1\isr_1.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\LED_PIN</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\LED_PIN\LED_PIN.c</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\LED_PIN\LED_PIN.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\LED_PIN\LED_PIN_aliases.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\PWM_1</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\PWM_1\PWM_1.c</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\PWM_1\PWM_1.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\PWM_1\PWM_1_PM.c</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\Timer_1</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\Timer_1\Timer_1.c</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\Timer_1\Timer_1.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\Timer_1\Timer_1_PM.c</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\UART_1</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\UART_1\UART_1.c</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\UART_1\UART_1.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\UART_1\UART_1_BOOT.c</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\UART_1\UART_1_BOOT.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\UART_1\UART_1_PINS.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\UART_1\UART_1_PM.c</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\UART_1\UART_1_PVT.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\UART_1\UART_1_SPI_UART.c</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\UART_1\UART_1_SPI_UART.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\UART_1\UART_1_SPI_UART_INT.c</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\UART_1\UART_1_SPI_UART_PVT.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\UART_1\UART_1_UART.c</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\UART_1\UART_1_UART_BOOT.c</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\UART_1_rx</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\UART_1_rx\UART_1_rx.c</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\UART_1_rx\UART_1_rx.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\UART_1_rx\UART_1_rx_aliases.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\UART_1_SCBCLK</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\UART_1_SCBCLK\UART_1_SCBCLK.c</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\UART_1_SCBCLK\UART_1_SCBCLK.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\UART_1_tx</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\UART_1_tx\UART_1_tx.c</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\UART_1_tx\UART_1_tx.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\UART_1_tx\UART_1_tx_aliases.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cydevice_trm.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cydevicegnu_trm.inc</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cydeviceiar_trm.inc</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cydevicerv_trm.inc</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cydisabledsheets.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cyfitter.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cyfitter_cfg.c</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cyfitter_cfg.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cyfittergnu.inc</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cyfitteriar.inc</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cyfitterrv.inc</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cymetadata.c</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\project.h</v>
+<v>LabExam\SW</v>
+<v>LabExam\SW\TopDesign</v>
+<v>LabExam\SW\SW.cydwr</v>
+<v>LabExam\SW\Header Files</v>
+<v>LabExam\SW\Source Files</v>
+<v>LabExam\SW\Source Files\main.c</v>
+<v>LabExam\SW\Generated_Source</v>
+<v>LabExam\SW\Generated_Source\PSoC4</v>
+<v>LabExam\SW\Generated_Source\PSoC4\cy_boot</v>
+<v>LabExam\SW\Generated_Source\PSoC4\cy_boot\cm0gcc.ld</v>
+<v>LabExam\SW\Generated_Source\PSoC4\cy_boot\Cm0Iar.icf</v>
+<v>LabExam\SW\Generated_Source\PSoC4\cy_boot\Cm0RealView.scat</v>
+<v>LabExam\SW\Generated_Source\PSoC4\cy_boot\Cm0Start.c</v>
+<v>LabExam\SW\Generated_Source\PSoC4\cy_boot\core_cm0.h</v>
+<v>LabExam\SW\Generated_Source\PSoC4\cy_boot\core_cm0_psoc4.h</v>
+<v>LabExam\SW\Generated_Source\PSoC4\cy_boot\core_cmFunc.h</v>
+<v>LabExam\SW\Generated_Source\PSoC4\cy_boot\core_cmInstr.h</v>
+<v>LabExam\SW\Generated_Source\PSoC4\cy_boot\CyBootAsmGnu.s</v>
+<v>LabExam\SW\Generated_Source\PSoC4\cy_boot\CyBootAsmIar.s</v>
+<v>LabExam\SW\Generated_Source\PSoC4\cy_boot\CyBootAsmRv.s</v>
+<v>LabExam\SW\Generated_Source\PSoC4\cy_boot\CyFlash.c</v>
+<v>LabExam\SW\Generated_Source\PSoC4\cy_boot\CyFlash.h</v>
+<v>LabExam\SW\Generated_Source\PSoC4\cy_boot\CyLib.c</v>
+<v>LabExam\SW\Generated_Source\PSoC4\cy_boot\CyLib.h</v>
+<v>LabExam\SW\Generated_Source\PSoC4\cy_boot\cypins.h</v>
+<v>LabExam\SW\Generated_Source\PSoC4\cy_boot\cyPm.c</v>
+<v>LabExam\SW\Generated_Source\PSoC4\cy_boot\cyPm.h</v>
+<v>LabExam\SW\Generated_Source\PSoC4\cy_boot\cytypes.h</v>
+<v>LabExam\SW\Generated_Source\PSoC4\cy_boot\cyutils.c</v>
+<v>LabExam\SW\Generated_Source\PSoC4\cy_lfclk</v>
+<v>LabExam\SW\Generated_Source\PSoC4\cy_lfclk\CyLFClk.c</v>
+<v>LabExam\SW\Generated_Source\PSoC4\cy_lfclk\CyLFClk.h</v>
+<v>LabExam\SW\Generated_Source\PSoC4\isr_1</v>
+<v>LabExam\SW\Generated_Source\PSoC4\isr_1\isr_1.c</v>
+<v>LabExam\SW\Generated_Source\PSoC4\isr_1\isr_1.h</v>
+<v>LabExam\SW\Generated_Source\PSoC4\isr_2</v>
+<v>LabExam\SW\Generated_Source\PSoC4\isr_2\isr_2.c</v>
+<v>LabExam\SW\Generated_Source\PSoC4\isr_2\isr_2.h</v>
+<v>LabExam\SW\Generated_Source\PSoC4\LED_PIN</v>
+<v>LabExam\SW\Generated_Source\PSoC4\LED_PIN\LED_PIN.c</v>
+<v>LabExam\SW\Generated_Source\PSoC4\LED_PIN\LED_PIN.h</v>
+<v>LabExam\SW\Generated_Source\PSoC4\LED_PIN\LED_PIN_aliases.h</v>
+<v>LabExam\SW\Generated_Source\PSoC4\SW</v>
+<v>LabExam\SW\Generated_Source\PSoC4\SW\SW.c</v>
+<v>LabExam\SW\Generated_Source\PSoC4\SW\SW.h</v>
+<v>LabExam\SW\Generated_Source\PSoC4\SW\SW_aliases.h</v>
+<v>LabExam\SW\Generated_Source\PSoC4\Timer_1</v>
+<v>LabExam\SW\Generated_Source\PSoC4\Timer_1\Timer_1.c</v>
+<v>LabExam\SW\Generated_Source\PSoC4\Timer_1\Timer_1.h</v>
+<v>LabExam\SW\Generated_Source\PSoC4\Timer_1\Timer_1_PM.c</v>
+<v>LabExam\SW\Generated_Source\PSoC4\timer_clock</v>
+<v>LabExam\SW\Generated_Source\PSoC4\timer_clock\timer_clock.c</v>
+<v>LabExam\SW\Generated_Source\PSoC4\timer_clock\timer_clock.h</v>
+<v>LabExam\SW\Generated_Source\PSoC4\UART_1</v>
+<v>LabExam\SW\Generated_Source\PSoC4\UART_1\UART_1.c</v>
+<v>LabExam\SW\Generated_Source\PSoC4\UART_1\UART_1.h</v>
+<v>LabExam\SW\Generated_Source\PSoC4\UART_1\UART_1_BOOT.c</v>
+<v>LabExam\SW\Generated_Source\PSoC4\UART_1\UART_1_BOOT.h</v>
+<v>LabExam\SW\Generated_Source\PSoC4\UART_1\UART_1_PINS.h</v>
+<v>LabExam\SW\Generated_Source\PSoC4\UART_1\UART_1_PM.c</v>
+<v>LabExam\SW\Generated_Source\PSoC4\UART_1\UART_1_PVT.h</v>
+<v>LabExam\SW\Generated_Source\PSoC4\UART_1\UART_1_SPI_UART.c</v>
+<v>LabExam\SW\Generated_Source\PSoC4\UART_1\UART_1_SPI_UART.h</v>
+<v>LabExam\SW\Generated_Source\PSoC4\UART_1\UART_1_SPI_UART_INT.c</v>
+<v>LabExam\SW\Generated_Source\PSoC4\UART_1\UART_1_SPI_UART_PVT.h</v>
+<v>LabExam\SW\Generated_Source\PSoC4\UART_1\UART_1_UART.c</v>
+<v>LabExam\SW\Generated_Source\PSoC4\UART_1\UART_1_UART_BOOT.c</v>
+<v>LabExam\SW\Generated_Source\PSoC4\UART_1_rx</v>
+<v>LabExam\SW\Generated_Source\PSoC4\UART_1_rx\UART_1_rx.c</v>
+<v>LabExam\SW\Generated_Source\PSoC4\UART_1_rx\UART_1_rx.h</v>
+<v>LabExam\SW\Generated_Source\PSoC4\UART_1_rx\UART_1_rx_aliases.h</v>
+<v>LabExam\SW\Generated_Source\PSoC4\UART_1_SCBCLK</v>
+<v>LabExam\SW\Generated_Source\PSoC4\UART_1_SCBCLK\UART_1_SCBCLK.c</v>
+<v>LabExam\SW\Generated_Source\PSoC4\UART_1_SCBCLK\UART_1_SCBCLK.h</v>
+<v>LabExam\SW\Generated_Source\PSoC4\UART_1_tx</v>
+<v>LabExam\SW\Generated_Source\PSoC4\UART_1_tx\UART_1_tx.c</v>
+<v>LabExam\SW\Generated_Source\PSoC4\UART_1_tx\UART_1_tx.h</v>
+<v>LabExam\SW\Generated_Source\PSoC4\UART_1_tx\UART_1_tx_aliases.h</v>
+<v>LabExam\SW\Generated_Source\PSoC4\cydevice_trm.h</v>
+<v>LabExam\SW\Generated_Source\PSoC4\cydevicegnu_trm.inc</v>
+<v>LabExam\SW\Generated_Source\PSoC4\cydeviceiar_trm.inc</v>
+<v>LabExam\SW\Generated_Source\PSoC4\cydevicerv_trm.inc</v>
+<v>LabExam\SW\Generated_Source\PSoC4\cydisabledsheets.h</v>
+<v>LabExam\SW\Generated_Source\PSoC4\cyfitter.h</v>
+<v>LabExam\SW\Generated_Source\PSoC4\cyfitter_cfg.c</v>
+<v>LabExam\SW\Generated_Source\PSoC4\cyfitter_cfg.h</v>
+<v>LabExam\SW\Generated_Source\PSoC4\cyfittergnu.inc</v>
+<v>LabExam\SW\Generated_Source\PSoC4\cyfitteriar.inc</v>
+<v>LabExam\SW\Generated_Source\PSoC4\cyfitterrv.inc</v>
+<v>LabExam\SW\Generated_Source\PSoC4\cymetadata.c</v>
+<v>LabExam\SW\Generated_Source\PSoC4\project.h</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>LabExam</v>
+<v>LabExam\LabExam</v>
+<v>LabExam\LabExam\TopDesign</v>
+<v>LabExam\LabExam\LabExam.cydwr</v>
+<v>LabExam\LabExam\Header Files</v>
+<v>LabExam\LabExam\Source Files</v>
+<v>LabExam\LabExam\Source Files\main.c</v>
+<v>LabExam\LabExam\Generated_Source</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\Clock_1</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\Clock_1\Clock_1.c</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\Clock_1\Clock_1.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_boot</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_boot\cm0gcc.ld</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_boot\Cm0Iar.icf</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_boot\Cm0RealView.scat</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_boot\Cm0Start.c</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_boot\core_cm0.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_boot\core_cm0_psoc4.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_boot\core_cmFunc.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_boot\core_cmInstr.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_boot\CyBootAsmGnu.s</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_boot\CyBootAsmIar.s</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_boot\CyBootAsmRv.s</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_boot\CyFlash.c</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_boot\CyFlash.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_boot\CyLib.c</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_boot\CyLib.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_boot\cypins.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_boot\cyPm.c</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_boot\cyPm.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_boot\cytypes.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_boot\cyutils.c</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_lfclk</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_lfclk\CyLFClk.c</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\cy_lfclk\CyLFClk.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\isr_1</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\isr_1\isr_1.c</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\isr_1\isr_1.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\LED_PIN</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\LED_PIN\LED_PIN.c</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\LED_PIN\LED_PIN.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\LED_PIN\LED_PIN_aliases.h</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\PWM_1</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\PWM_1\PWM_1.c</v>
+<v>LabExam\LabExam\Generated_Source\PSoC4\PWM_1\PWM_1.h</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>LabExam</v>
+<v>LabExam\LabExam</v>
+<v>LabExam\LabExam\TopDesign</v>
+<v>LabExam\LabExam\TopDesign\TopDesign.cysch</v>
+<v>LabExam\SW</v>
+<v>LabExam\SW\TopDesign</v>
+<v>LabExam\SW\TopDesign\TopDesign.cysch</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>LabExam</v>
+<v>LabExam\LabExam</v>
+<v>LabExam\LabExam\TopDesign</v>
+<v>LabExam\LabExam\TopDesign\TopDesign.cysch</v>
+<v>LabExam\SW</v>
+<v>LabExam\SW\TopDesign</v>
+<v>LabExam\SW\TopDesign\TopDesign.cysch</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>LabExam</v>
+<v>LabExam\LabExam</v>
+<v>LabExam\LabExam\CortexM0</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\Clock_1.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\Cm0Start.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\CyFlash.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\CyLFClk.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\CyLib.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\cymetadata.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\cyPm.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\cyutils.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\isr_1.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\LED_PIN.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\main.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\PWM_1.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\PWM_1_PM.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\Timer_1.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\Timer_1_PM.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\UART_1.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\UART_1_BOOT.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\UART_1_PM.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\UART_1_rx.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\UART_1_SCBCLK.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\UART_1_SPI_UART.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\UART_1_SPI_UART_INT.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\UART_1_tx.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\UART_1_UART.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\UART_1_UART_BOOT.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\LabExam.elf</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\LabExam.hex</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\LabExam.map</v>
+<v>LabExam\LabExam\LabExam.gpdsc</v>
+<v>LabExam\LabExam\LabExam.rpt</v>
+<v>LabExam\LabExam\LabExam_timing.html</v>
+<v>LabExam\SW</v>
+<v>LabExam\SW\CortexM0</v>
+<v>LabExam\SW\CortexM0\ARM_GCC_484</v>
+<v>LabExam\SW\CortexM0\ARM_GCC_484\Debug</v>
+<v>LabExam\SW\CortexM0\ARM_GCC_484\Debug\Listing Files</v>
+<v>LabExam\SW\CortexM0\ARM_GCC_484\Debug\Listing Files\Cm0Start.lst</v>
+<v>LabExam\SW\CortexM0\ARM_GCC_484\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>LabExam\SW\CortexM0\ARM_GCC_484\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>LabExam\SW\CortexM0\ARM_GCC_484\Debug\Listing Files\CyFlash.lst</v>
+<v>LabExam\SW\CortexM0\ARM_GCC_484\Debug\Listing Files\CyLFClk.lst</v>
+<v>LabExam\SW\CortexM0\ARM_GCC_484\Debug\Listing Files\CyLib.lst</v>
+<v>LabExam\SW\CortexM0\ARM_GCC_484\Debug\Listing Files\cymetadata.lst</v>
+<v>LabExam\SW\CortexM0\ARM_GCC_484\Debug\Listing Files\cyPm.lst</v>
+<v>LabExam\SW\CortexM0\ARM_GCC_484\Debug\Listing Files\cyutils.lst</v>
+<v>LabExam\SW\CortexM0\ARM_GCC_484\Debug\Listing Files\isr_1.lst</v>
+<v>LabExam\SW\CortexM0\ARM_GCC_484\Debug\Listing Files\isr_2.lst</v>
+<v>LabExam\SW\CortexM0\ARM_GCC_484\Debug\Listing Files\LED_PIN.lst</v>
+<v>LabExam\SW\CortexM0\ARM_GCC_484\Debug\Listing Files\main.lst</v>
+<v>LabExam\SW\CortexM0\ARM_GCC_484\Debug\Listing Files\SW.lst</v>
+<v>LabExam\SW\CortexM0\ARM_GCC_484\Debug\Listing Files\Timer_1.lst</v>
+<v>LabExam\SW\CortexM0\ARM_GCC_484\Debug\Listing Files\Timer_1_PM.lst</v>
+<v>LabExam\SW\CortexM0\ARM_GCC_484\Debug\Listing Files\timer_clock.lst</v>
+<v>LabExam\SW\CortexM0\ARM_GCC_484\Debug\Listing Files\UART_1.lst</v>
+<v>LabExam\SW\CortexM0\ARM_GCC_484\Debug\Listing Files\UART_1_BOOT.lst</v>
+<v>LabExam\SW\CortexM0\ARM_GCC_484\Debug\Listing Files\UART_1_PM.lst</v>
+<v>LabExam\SW\CortexM0\ARM_GCC_484\Debug\Listing Files\UART_1_rx.lst</v>
+<v>LabExam\SW\CortexM0\ARM_GCC_484\Debug\Listing Files\UART_1_SCBCLK.lst</v>
+<v>LabExam\SW\CortexM0\ARM_GCC_484\Debug\Listing Files\UART_1_SPI_UART.lst</v>
+<v>LabExam\SW\CortexM0\ARM_GCC_484\Debug\Listing Files\UART_1_SPI_UART_INT.lst</v>
+<v>LabExam\SW\CortexM0\ARM_GCC_484\Debug\Listing Files\UART_1_tx.lst</v>
+<v>LabExam\SW\CortexM0\ARM_GCC_484\Debug\Listing Files\UART_1_UART.lst</v>
+<v>LabExam\SW\CortexM0\ARM_GCC_484\Debug\Listing Files\UART_1_UART_BOOT.lst</v>
+<v>LabExam\SW\CortexM0\ARM_GCC_484\Debug\SW.elf</v>
+<v>LabExam\SW\CortexM0\ARM_GCC_484\Debug\SW.hex</v>
+<v>LabExam\SW\CortexM0\ARM_GCC_484\Debug\SW.map</v>
+<v>LabExam\SW\SW.gpdsc</v>
+<v>LabExam\SW\SW.rpt</v>
+<v>LabExam\SW\SW_timing.html</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>LabExam</v>
+<v>LabExam\LabExam</v>
+<v>LabExam\LabExam\CortexM0</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\Clock_1.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\Cm0Start.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\CyFlash.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\CyLFClk.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\CyLib.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\cymetadata.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\cyPm.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\cyutils.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\isr_1.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\LED_PIN.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\main.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\PWM_1.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\PWM_1_PM.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\Timer_1.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\Timer_1_PM.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\UART_1.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\UART_1_BOOT.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\UART_1_PM.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\UART_1_rx.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\UART_1_SCBCLK.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\UART_1_SPI_UART.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\UART_1_SPI_UART_INT.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\UART_1_tx.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\UART_1_UART.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\Listing Files\UART_1_UART_BOOT.lst</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\LabExam.elf</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\LabExam.hex</v>
+<v>LabExam\LabExam\CortexM0\ARM_GCC_484\Debug\LabExam.map</v>
+<v>LabExam\LabExam\LabExam.gpdsc</v>
+<v>LabExam\LabExam\LabExam.rpt</v>
+<v>LabExam\LabExam\LabExam_timing.html</v>
+<v>LabExam\SW</v>
+<v>LabExam\SW\CortexM0</v>
+<v>LabExam\SW\CortexM0\ARM_GCC_484</v>
+<v>LabExam\SW\CortexM0\ARM_GCC_484\Debug</v>
+<v>LabExam\SW\CortexM0\ARM_GCC_484\Debug\Listing Files</v>
+<v>LabExam\SW\CortexM0\ARM_GCC_484\Debug\Listing Files\Cm0Start.lst</v>
+<v>LabExam\SW\CortexM0\ARM_GCC_484\Debug\Listing Files\CyBootAsmGnu.lst</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStates>
+<TreeKeysV2>
+<v>Datasheet</v>
+</TreeKeysV2>
+<TreeStatesV2>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>LabExam</v>
+<v>LabExam\LabExam</v>
+<v>LabExam\LabExam\PSoC 4 Architecture TRM</v>
+<v>LabExam\LabExam\PSoC 4200 Family Datasheet</v>
+<v>LabExam\LabExam\System Reference Guides</v>
+<v>LabExam\LabExam\System Reference Guides\cy_boot_v5_10</v>
+<v>LabExam\LabExam\System Reference Guides\cy_lfclk_v1_0</v>
+<v>LabExam\LabExam\cy_clock_v2_20</v>
+<v>LabExam\LabExam\cy_isr_v1_70</v>
+<v>LabExam\LabExam\cy_pins_v2_10</v>
+<v>LabExam\LabExam\SCB_P4_v3_0</v>
+<v>LabExam\LabExam\TCPWM_P4_v2_0</v>
+<v>LabExam\LabExam\Timer_v2_70</v>
+<v>LabExam\LabExam\ZeroTerminal</v>
+<v>LabExam\SW</v>
+<v>LabExam\SW\PSoC 4 Architecture TRM</v>
+<v>LabExam\SW\PSoC 4200 Family Datasheet</v>
+<v>LabExam\SW\System Reference Guides</v>
+<v>LabExam\SW\System Reference Guides\cy_boot_v5_10</v>
+<v>LabExam\SW\System Reference Guides\cy_lfclk_v1_0</v>
+<v>LabExam\SW\cy_clock_v2_20</v>
+<v>LabExam\SW\cy_isr_v1_70</v>
+<v>LabExam\SW\cy_pins_v2_10</v>
+<v>LabExam\SW\SCB_P4_v3_0</v>
+<v>LabExam\SW\Timer_v2_70</v>
+<v>LabExam\SW\ZeroTerminal</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>LabExam</v>
+<v>LabExam\LabExam</v>
+<v>LabExam\LabExam\PSoC 4 Architecture TRM</v>
+<v>LabExam\LabExam\PSoC 4200 Family Datasheet</v>
+<v>LabExam\LabExam\System Reference Guides</v>
+<v>LabExam\LabExam\System Reference Guides\cy_boot_v5_10</v>
+<v>LabExam\LabExam\System Reference Guides\cy_lfclk_v1_0</v>
+<v>LabExam\LabExam\cy_clock_v2_20</v>
+<v>LabExam\LabExam\cy_isr_v1_70</v>
+<v>LabExam\LabExam\cy_pins_v2_10</v>
+<v>LabExam\LabExam\SCB_P4_v3_0</v>
+<v>LabExam\LabExam\TCPWM_P4_v2_0</v>
+<v>LabExam\LabExam\Timer_v2_70</v>
+<v>LabExam\LabExam\ZeroTerminal</v>
+<v>LabExam\SW</v>
+<v>LabExam\SW\PSoC 4 Architecture TRM</v>
+<v>LabExam\SW\PSoC 4200 Family Datasheet</v>
+<v>LabExam\SW\System Reference Guides</v>
+<v>LabExam\SW\System Reference Guides\cy_boot_v5_10</v>
+<v>LabExam\SW\System Reference Guides\cy_lfclk_v1_0</v>
+<v>LabExam\SW\cy_clock_v2_20</v>
+<v>LabExam\SW\cy_isr_v1_70</v>
+<v>LabExam\SW\cy_pins_v2_10</v>
+<v>LabExam\SW\SCB_P4_v3_0</v>
+<v>LabExam\SW\Timer_v2_70</v>
+<v>LabExam\SW\ZeroTerminal</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStatesV2>
+</CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35>
+</dataGuid>
+<dataGuid v="5f2be1a5-0687-4501-bb8c-cf21cb8211bf">
+<CyGuid_5f2be1a5-0687-4501-bb8c-cf21cb8211bf type_name="CyDesigner.Common.ProjMgmt.GUI.CyBookmarkData" version="1">
+<indicators />
+</CyGuid_5f2be1a5-0687-4501-bb8c-cf21cb8211bf>
+</dataGuid>
+</userData>
+</CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
+<Unloaded />
+<OpenDocs>
+<name v=".\SW.cydsn\main.c" />
+<name v=".\SW.cydsn\TopDesign\TopDesign.cysch" />
+<name v=".\SW.cydsn\SW.cydwr" />
+</OpenDocs>
+<config v="" />
+<AutoUpdate v="true" />
+</CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
+</CyXmlSerializer>

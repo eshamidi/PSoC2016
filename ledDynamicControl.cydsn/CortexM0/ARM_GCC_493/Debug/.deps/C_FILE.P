@@ -1,0 +1,84 @@
+F:/ECEC304/ledDynamicControl.cydsn/CortexM0/ARM_GCC_493/Debug/main.o : F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/CyFlash.h F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/CyLFClk.h F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/CyLib.h F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/I2C.h F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/I2C_BOOT.h F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/I2C_I2C.h F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/I2C_I2C_PVT.h F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/I2C_PINS.h F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/I2C_PVT.h F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/I2C_SCBCLK.h F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/I2C_SCB_IRQ.h F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/I2C_scl.h F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/I2C_scl_aliases.h F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/I2C_sda.h F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/I2C_sda_aliases.h F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/LED_PIN.h F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/LED_PIN_aliases.h F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/UART_1.h F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/UART_1_BOOT.h F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/UART_1_PINS.h F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/UART_1_PVT.h F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/UART_1_SCBCLK.h F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/UART_1_SPI_UART.h F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/UART_1_SPI_UART_PVT.h F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/UART_1_rx.h F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/UART_1_rx_aliases.h F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/UART_1_tx.h F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/UART_1_tx_aliases.h F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/core_cm0.h F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/core_cm0_psoc4.h F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/core_cmFunc.h F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/core_cmInstr.h F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/cyPm.h F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/cydevice_trm.h F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/cydisabledsheets.h F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/cyfitter.h F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/cyfitter_cfg.h F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/cypins.h F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/cytypes.h F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/project.h F:/ECEC304/ledDynamicControl.cydsn/main.c 
+
+F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/CyFlash.h : 
+
+F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/CyLFClk.h : 
+
+F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/CyLib.h : 
+
+F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/I2C.h : 
+
+F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/I2C_BOOT.h : 
+
+F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/I2C_I2C.h : 
+
+F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/I2C_I2C_PVT.h : 
+
+F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/I2C_PINS.h : 
+
+F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/I2C_PVT.h : 
+
+F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/I2C_SCBCLK.h : 
+
+F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/I2C_SCB_IRQ.h : 
+
+F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/I2C_scl.h : 
+
+F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/I2C_scl_aliases.h : 
+
+F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/I2C_sda.h : 
+
+F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/I2C_sda_aliases.h : 
+
+F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/LED_PIN.h : 
+
+F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/LED_PIN_aliases.h : 
+
+F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/UART_1.h : 
+
+F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/UART_1_BOOT.h : 
+
+F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/UART_1_PINS.h : 
+
+F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/UART_1_PVT.h : 
+
+F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/UART_1_SCBCLK.h : 
+
+F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/UART_1_SPI_UART.h : 
+
+F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/UART_1_SPI_UART_PVT.h : 
+
+F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/UART_1_rx.h : 
+
+F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/UART_1_rx_aliases.h : 
+
+F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/UART_1_tx.h : 
+
+F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/UART_1_tx_aliases.h : 
+
+F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/core_cm0.h : 
+
+F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/core_cm0_psoc4.h : 
+
+F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/core_cmFunc.h : 
+
+F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/core_cmInstr.h : 
+
+F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/cyPm.h : 
+
+F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/cydevice_trm.h : 
+
+F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/cydisabledsheets.h : 
+
+F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/cyfitter.h : 
+
+F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/cyfitter_cfg.h : 
+
+F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/cypins.h : 
+
+F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/cytypes.h : 
+
+F:/ECEC304/ledDynamicControl.cydsn/Generated_Source/PSoC4/project.h : 
+
+F:/ECEC304/ledDynamicControl.cydsn/main.c : 
+

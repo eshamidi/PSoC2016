@@ -1,0 +1,20 @@
+E:/school/ECEC304/Lab6/PWMstuff.cydsn/CortexM0/ARM_GCC_484/Debug/PWM_1.o : E:/school/ECEC304/Lab6/PWMstuff.cydsn/Generated_Source/PSoC4/CyLFClk.h E:/school/ECEC304/Lab6/PWMstuff.cydsn/Generated_Source/PSoC4/CyLib.h E:/school/ECEC304/Lab6/PWMstuff.cydsn/Generated_Source/PSoC4/PWM_1.c E:/school/ECEC304/Lab6/PWMstuff.cydsn/Generated_Source/PSoC4/PWM_1.h E:/school/ECEC304/Lab6/PWMstuff.cydsn/Generated_Source/PSoC4/cydevice_trm.h E:/school/ECEC304/Lab6/PWMstuff.cydsn/Generated_Source/PSoC4/cyfitter.h E:/school/ECEC304/Lab6/PWMstuff.cydsn/Generated_Source/PSoC4/cytypes.h 
+
+E:/school/ECEC304/Lab6/PWMstuff.cydsn/Generated_Source/PSoC4/CyLFClk.h : 
+
+E:/school/ECEC304/Lab6/PWMstuff.cydsn/Generated_Source/PSoC4/CyLib.h : 
+
+E:/school/ECEC304/Lab6/PWMstuff.cydsn/Generated_Source/PSoC4/PWM_1.c : 
+
+E:/school/ECEC304/Lab6/PWMstuff.cydsn/Generated_Source/PSoC4/PWM_1.h : 
+
+E:/school/ECEC304/Lab6/PWMstuff.cydsn/Generated_Source/PSoC4/cydevice_trm.h : 
+
+E:/school/ECEC304/Lab6/PWMstuff.cydsn/Generated_Source/PSoC4/cyfitter.h : 
+
+E:/school/ECEC304/Lab6/PWMstuff.cydsn/Generated_Source/PSoC4/cytypes.h : 
+
+E:/school/ECEC304/Lab6/PWMstuff.cydsn/CortexM0/ARM_GCC_484/Debug/PWM_1_PM.o : E:/school/ECEC304/Lab6/PWMstuff.cydsn/Generated_Source/PSoC4/CyLFClk.h E:/school/ECEC304/Lab6/PWMstuff.cydsn/Generated_Source/PSoC4/CyLib.h E:/school/ECEC304/Lab6/PWMstuff.cydsn/Generated_Source/PSoC4/PWM_1.h E:/school/ECEC304/Lab6/PWMstuff.cydsn/Generated_Source/PSoC4/PWM_1_PM.c E:/school/ECEC304/Lab6/PWMstuff.cydsn/Generated_Source/PSoC4/cydevice_trm.h E:/school/ECEC304/Lab6/PWMstuff.cydsn/Generated_Source/PSoC4/cyfitter.h E:/school/ECEC304/Lab6/PWMstuff.cydsn/Generated_Source/PSoC4/cytypes.h 
+
+E:/school/ECEC304/Lab6/PWMstuff.cydsn/Generated_Source/PSoC4/PWM_1_PM.c : 
+

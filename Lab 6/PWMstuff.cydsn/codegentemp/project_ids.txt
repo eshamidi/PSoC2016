@@ -1,0 +1,8 @@
+E:\school\ECEC304\Lab6\DebounceA.cydsn\DebounceA.cyprj|87843d04-af92-444d-9648-d9b1e29bb719
+C:\Program Files (x86)\Cypress\PSoC Creator\3.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|1a7cabd1-e3f5-445b-b8b3-d58b5c58398e
+C:\Program Files (x86)\Cypress\PSoC Creator\3.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|bd1245cd-0c96-465d-94ec-78ee0f552099
+C:\Program Files (x86)\Cypress\PSoC Creator\3.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|cdfdb29a-2408-498d-9751-bd98ee33d235
+C:\Program Files (x86)\Cypress\PSoC Creator\3.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|d41dbd1f-aa9e-4480-bd75-a1f82cc4d06e
+E:\school\ECEC304\Lab6\TimerInt.cydsn\TimerInt.cyprj|1f2d5ad7-2257-4a6c-8fa6-4ddee5e15dda
+E:\school\ECEC304\Lab6\Tic.cydsn\Tic.cyprj|bf9e0f75-50a3-42d8-8b64-60574b0c2836
+E:\school\ECEC304\Lab6\PWMstuff.cydsn\PWMstuff.cyprj|f045b64b-cd01-443b-a3ce-e0db58d279a6

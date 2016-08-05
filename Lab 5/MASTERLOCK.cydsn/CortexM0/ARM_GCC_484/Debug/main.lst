@@ -1,0 +1,3127 @@
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 1
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"main.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.timerISR,"ax",%progbits
+  18              		.align	2
+  19              		.global	timerISR
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	timerISR, %function
+  23              	timerISR:
+  24              	.LFB33:
+  25              		.file 1 ".\\main.c"
+   1:.\main.c      **** /* ========================================
+   2:.\main.c      ****  *
+   3:.\main.c      ****  * Copyright YOUR COMPANY, THE YEAR
+   4:.\main.c      ****  * All Rights Reserved
+   5:.\main.c      ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\main.c      ****  *
+   7:.\main.c      ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\main.c      ****  * WHICH IS THE PROPERTY OF your company.
+   9:.\main.c      ****  *
+  10:.\main.c      ****  * ========================================
+  11:.\main.c      **** */
+  12:.\main.c      **** #include <project.h>
+  13:.\main.c      **** #include <stdio.h>
+  14:.\main.c      **** #include <stdbool.h>
+  15:.\main.c      **** #include <time.h>
+  16:.\main.c      **** 
+  17:.\main.c      **** char combo[5] = {'1', '2', '3', '4', '5'};
+  18:.\main.c      **** int currentState = -1;
+  19:.\main.c      **** bool disable_entry = false;
+  20:.\main.c      **** int tc = 0; 
+  21:.\main.c      **** 
+  22:.\main.c      **** 
+  23:.\main.c      **** 
+  24:.\main.c      **** CY_ISR(timerISR) /* ISR to handle tc interrupts from timer. */
+  25:.\main.c      **** {
+  26              		.loc 1 25 0
+  27              		.cfi_startproc
+  28 0000 08B5     		push	{r3, lr}
+  29              		.cfi_def_cfa_offset 8
+  30              		.cfi_offset 3, -8
+  31              		.cfi_offset 14, -4
+  26:.\main.c      **** 
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 2
+
+
+  27:.\main.c      **** if(currentState == -2){
+  32              		.loc 1 27 0
+  33 0002 094B     		ldr	r3, .L3
+  34 0004 1B68     		ldr	r3, [r3]
+  35 0006 0233     		add	r3, r3, #2
+  36 0008 06D1     		bne	.L2
+  28:.\main.c      ****     
+  29:.\main.c      **** RED_LED_Write(!RED_LED_Read());
+  37              		.loc 1 29 0
+  38 000a FFF7FEFF 		bl	RED_LED_Read
+  39              	.LVL0:
+  40 000e 4342     		neg	r3, r0
+  41 0010 5841     		adc	r0, r0, r3
+  42 0012 C0B2     		uxtb	r0, r0
+  43 0014 FFF7FEFF 		bl	RED_LED_Write
+  44              	.LVL1:
+  45              	.L2:
+  30:.\main.c      ****     
+  31:.\main.c      **** }
+  32:.\main.c      **** 
+  33:.\main.c      **** tc++; //timer triggers every 100 ms, 10 = 1 s
+  46              		.loc 1 33 0
+  47 0018 044B     		ldr	r3, .L3+4
+  48 001a 1A68     		ldr	r2, [r3]
+  49 001c 0132     		add	r2, r2, #1
+  50 001e 1A60     		str	r2, [r3]
+  34:.\main.c      **** 
+  35:.\main.c      **** 
+  36:.\main.c      **** /* Your ISR code. */
+  37:.\main.c      **** /* Reset the interrupt. */
+  38:.\main.c      **** Timer_1_ReadStatusRegister();
+  51              		.loc 1 38 0
+  52 0020 FFF7FEFF 		bl	Timer_1_ReadStatusRegister
+  53              	.LVL2:
+  39:.\main.c      **** }
+  54              		.loc 1 39 0
+  55              		@ sp needed
+  56 0024 08BD     		pop	{r3, pc}
+  57              	.L4:
+  58 0026 C046     		.align	2
+  59              	.L3:
+  60 0028 00000000 		.word	.LANCHOR0
+  61 002c 00000000 		.word	.LANCHOR1
+  62              		.cfi_endproc
+  63              	.LFE33:
+  64              		.size	timerISR, .-timerISR
+  65              		.section	.text.getButton,"ax",%progbits
+  66              		.align	2
+  67              		.global	getButton
+  68              		.code	16
+  69              		.thumb_func
+  70              		.type	getButton, %function
+  71              	getButton:
+  72              	.LFB34:
+  40:.\main.c      **** 
+  41:.\main.c      **** 
+  42:.\main.c      **** 
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 3
+
+
+  43:.\main.c      **** 
+  44:.\main.c      **** 
+  45:.\main.c      **** 
+  46:.\main.c      **** char getButton(){
+  73              		.loc 1 46 0
+  74              		.cfi_startproc
+  75 0000 10B5     		push	{r4, lr}
+  76              		.cfi_def_cfa_offset 8
+  77              		.cfi_offset 4, -8
+  78              		.cfi_offset 14, -4
+  47:.\main.c      ****     char rxData;
+  48:.\main.c      ****     rxData = UART_1_UartGetChar();
+  79              		.loc 1 48 0
+  80 0002 FFF7FEFF 		bl	UART_1_UartGetChar
+  81              	.LVL3:
+  82 0006 031C     		mov	r3, r0
+  83 0008 C4B2     		uxtb	r4, r0
+  84              	.LVL4:
+  49:.\main.c      ****     
+  50:.\main.c      ****     UART_1_UartPutChar(rxData);
+  85              		.loc 1 50 0
+  86 000a FF20     		mov	r0, #255
+  87              	.LVL5:
+  88 000c 1840     		and	r0, r3
+  89 000e FFF7FEFF 		bl	UART_1_SpiUartWriteTxData
+  90              	.LVL6:
+  51:.\main.c      ****     
+  52:.\main.c      ****     return rxData; 
+  53:.\main.c      ****     
+  54:.\main.c      ****     
+  55:.\main.c      **** 
+  56:.\main.c      **** }
+  91              		.loc 1 56 0
+  92 0012 201C     		mov	r0, r4
+  93              		@ sp needed
+  94              	.LVL7:
+  95 0014 10BD     		pop	{r4, pc}
+  96              		.cfi_endproc
+  97              	.LFE34:
+  98              		.size	getButton, .-getButton
+  99 0016 C046     		.section	.text.PrintInt,"ax",%progbits
+ 100              		.align	2
+ 101              		.global	PrintInt
+ 102              		.code	16
+ 103              		.thumb_func
+ 104              		.type	PrintInt, %function
+ 105              	PrintInt:
+ 106              	.LFB35:
+  57:.\main.c      **** void PrintInt(int b){
+ 107              		.loc 1 57 0
+ 108              		.cfi_startproc
+ 109              	.LVL8:
+ 110 0000 00B5     		push	{lr}
+ 111              		.cfi_def_cfa_offset 4
+ 112              		.cfi_offset 14, -4
+ 113 0002 85B0     		sub	sp, sp, #20
+ 114              		.cfi_def_cfa_offset 24
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 4
+
+
+ 115 0004 021C     		mov	r2, r0
+  58:.\main.c      ****     char buf[10];
+  59:.\main.c      ****     sprintf(buf, "%d", b); 
+ 116              		.loc 1 59 0
+ 117 0006 01A8     		add	r0, sp, #4
+ 118              	.LVL9:
+ 119 0008 0349     		ldr	r1, .L7
+ 120 000a FFF7FEFF 		bl	sprintf
+ 121              	.LVL10:
+  60:.\main.c      ****     UART_1_UartPutString(buf);
+ 122              		.loc 1 60 0
+ 123 000e 01A8     		add	r0, sp, #4
+ 124 0010 FFF7FEFF 		bl	UART_1_UartPutString
+ 125              	.LVL11:
+  61:.\main.c      **** 
+  62:.\main.c      **** }
+ 126              		.loc 1 62 0
+ 127 0014 05B0     		add	sp, sp, #20
+ 128              		@ sp needed
+ 129 0016 00BD     		pop	{pc}
+ 130              	.L8:
+ 131              		.align	2
+ 132              	.L7:
+ 133 0018 00000000 		.word	.LC2
+ 134              		.cfi_endproc
+ 135              	.LFE35:
+ 136              		.size	PrintInt, .-PrintInt
+ 137              		.section	.text.Printchar,"ax",%progbits
+ 138              		.align	2
+ 139              		.global	Printchar
+ 140              		.code	16
+ 141              		.thumb_func
+ 142              		.type	Printchar, %function
+ 143              	Printchar:
+ 144              	.LFB36:
+  63:.\main.c      **** void Printchar(char b){
+ 145              		.loc 1 63 0
+ 146              		.cfi_startproc
+ 147              	.LVL12:
+ 148 0000 00B5     		push	{lr}
+ 149              		.cfi_def_cfa_offset 4
+ 150              		.cfi_offset 14, -4
+ 151 0002 85B0     		sub	sp, sp, #20
+ 152              		.cfi_def_cfa_offset 24
+ 153 0004 021C     		mov	r2, r0
+  64:.\main.c      ****     char buf[10];
+  65:.\main.c      ****     sprintf(buf, "%c", b); 
+ 154              		.loc 1 65 0
+ 155 0006 01A8     		add	r0, sp, #4
+ 156              	.LVL13:
+ 157 0008 0349     		ldr	r1, .L10
+ 158 000a FFF7FEFF 		bl	sprintf
+ 159              	.LVL14:
+  66:.\main.c      ****     UART_1_UartPutString(buf);
+ 160              		.loc 1 66 0
+ 161 000e 01A8     		add	r0, sp, #4
+ 162 0010 FFF7FEFF 		bl	UART_1_UartPutString
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 5
+
+
+ 163              	.LVL15:
+  67:.\main.c      **** 
+  68:.\main.c      **** }
+ 164              		.loc 1 68 0
+ 165 0014 05B0     		add	sp, sp, #20
+ 166              		@ sp needed
+ 167 0016 00BD     		pop	{pc}
+ 168              	.L11:
+ 169              		.align	2
+ 170              	.L10:
+ 171 0018 04000000 		.word	.LC4
+ 172              		.cfi_endproc
+ 173              	.LFE36:
+ 174              		.size	Printchar, .-Printchar
+ 175              		.section	.text.InitCode,"ax",%progbits
+ 176              		.align	2
+ 177              		.global	InitCode
+ 178              		.code	16
+ 179              		.thumb_func
+ 180              		.type	InitCode, %function
+ 181              	InitCode:
+ 182              	.LFB37:
+  69:.\main.c      **** 
+  70:.\main.c      **** void InitCode(){
+ 183              		.loc 1 70 0
+ 184              		.cfi_startproc
+ 185 0000 30B5     		push	{r4, r5, lr}
+ 186              		.cfi_def_cfa_offset 12
+ 187              		.cfi_offset 4, -12
+ 188              		.cfi_offset 5, -8
+ 189              		.cfi_offset 14, -4
+ 190 0002 85B0     		sub	sp, sp, #20
+ 191              		.cfi_def_cfa_offset 32
+  71:.\main.c      ****     currentState = -2;
+ 192              		.loc 1 71 0
+ 193 0004 0222     		mov	r2, #2
+ 194 0006 5242     		neg	r2, r2
+ 195 0008 2A4B     		ldr	r3, .L33
+ 196 000a 1A60     		str	r2, [r3]
+ 197              	.LVL16:
+  72:.\main.c      ****     int i = 0;
+  73:.\main.c      ****     char verify;
+  74:.\main.c      ****     char combo1[sizeof(combo)], combo2[sizeof(combo)];
+  75:.\main.c      ****     bool isEqual = true;
+  76:.\main.c      ****     
+  77:.\main.c      ****     UART_1_UartPutString("\n \r Enter code:"); //initial entry of new code
+ 198              		.loc 1 77 0
+ 199 000c 2A48     		ldr	r0, .L33+4
+ 200 000e FFF7FEFF 		bl	UART_1_UartPutString
+ 201              	.LVL17:
+  72:.\main.c      ****     int i = 0;
+ 202              		.loc 1 72 0
+ 203 0012 0024     		mov	r4, #0
+  78:.\main.c      ****     while(i < 5){
+ 204              		.loc 1 78 0
+ 205 0014 06E0     		b	.L30
+ 206              	.LVL18:
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 6
+
+
+ 207              	.L15:
+  79:.\main.c      ****         verify = getButton();
+ 208              		.loc 1 79 0
+ 209 0016 FFF7FEFF 		bl	getButton
+ 210              	.LVL19:
+  80:.\main.c      ****         if(verify > '0'){
+ 211              		.loc 1 80 0
+ 212 001a 3028     		cmp	r0, #48
+ 213 001c 02D9     		bls	.L30
+  81:.\main.c      ****         combo1[i] = verify;
+ 214              		.loc 1 81 0
+ 215 001e 02AB     		add	r3, sp, #8
+ 216 0020 1855     		strb	r0, [r3, r4]
+  82:.\main.c      ****         i++;
+ 217              		.loc 1 82 0
+ 218 0022 0134     		add	r4, r4, #1
+ 219              	.LVL20:
+ 220              	.L30:
+  78:.\main.c      ****     while(i < 5){
+ 221              		.loc 1 78 0 discriminator 1
+ 222 0024 042C     		cmp	r4, #4
+ 223 0026 F6DD     		ble	.L15
+  83:.\main.c      ****         }
+  84:.\main.c      ****         
+  85:.\main.c      ****     }
+  86:.\main.c      ****     
+  87:.\main.c      ****     UART_1_UartPutString("\n \r Enter code again to confirm:"); //second confirmation entry
+ 224              		.loc 1 87 0
+ 225 0028 2448     		ldr	r0, .L33+8
+ 226 002a FFF7FEFF 		bl	UART_1_UartPutString
+ 227              	.LVL21:
+  88:.\main.c      ****     i = 0; 
+ 228              		.loc 1 88 0
+ 229 002e 0024     		mov	r4, #0
+  89:.\main.c      ****     while(i < 5){
+ 230              		.loc 1 89 0
+ 231 0030 06E0     		b	.L31
+ 232              	.LVL22:
+ 233              	.L18:
+  90:.\main.c      ****         verify = getButton();
+ 234              		.loc 1 90 0
+ 235 0032 FFF7FEFF 		bl	getButton
+ 236              	.LVL23:
+  91:.\main.c      ****         if(verify > '0'){
+ 237              		.loc 1 91 0
+ 238 0036 3028     		cmp	r0, #48
+ 239 0038 02D9     		bls	.L31
+  92:.\main.c      ****             combo2[i] = verify;
+ 240              		.loc 1 92 0
+ 241 003a 6B46     		mov	r3, sp
+ 242 003c 1855     		strb	r0, [r3, r4]
+  93:.\main.c      ****             i++;
+ 243              		.loc 1 93 0
+ 244 003e 0134     		add	r4, r4, #1
+ 245              	.LVL24:
+ 246              	.L31:
+  89:.\main.c      ****     while(i < 5){
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 7
+
+
+ 247              		.loc 1 89 0 discriminator 1
+ 248 0040 042C     		cmp	r4, #4
+ 249 0042 F6DD     		ble	.L18
+ 250 0044 0120     		mov	r0, #1
+ 251 0046 0023     		mov	r3, #0
+  94:.\main.c      ****         }
+  95:.\main.c      ****         
+  96:.\main.c      ****     }
+  97:.\main.c      ****     
+  98:.\main.c      ****     i = 0; 
+  99:.\main.c      ****     while(i < 5){
+ 100:.\main.c      ****         if(combo1[i] != combo2[i]){
+ 101:.\main.c      ****             isEqual = false;  
+ 252              		.loc 1 101 0
+ 253 0048 0024     		mov	r4, #0
+ 254              	.LVL25:
+ 255 004a 07E0     		b	.L19
+ 256              	.LVL26:
+ 257              	.L21:
+ 100:.\main.c      ****         if(combo1[i] != combo2[i]){
+ 258              		.loc 1 100 0
+ 259 004c 02AA     		add	r2, sp, #8
+ 260 004e D15C     		ldrb	r1, [r2, r3]
+ 261 0050 6D46     		mov	r5, sp
+ 262 0052 EA5C     		ldrb	r2, [r5, r3]
+ 263 0054 9142     		cmp	r1, r2
+ 264 0056 00D0     		beq	.L20
+ 265              		.loc 1 101 0
+ 266 0058 201C     		mov	r0, r4
+ 267              	.LVL27:
+ 268              	.L20:
+ 102:.\main.c      ****         }
+ 103:.\main.c      ****         i++;
+ 269              		.loc 1 103 0
+ 270 005a 0133     		add	r3, r3, #1
+ 271              	.LVL28:
+ 272              	.L19:
+  99:.\main.c      ****     while(i < 5){
+ 273              		.loc 1 99 0 discriminator 1
+ 274 005c 042B     		cmp	r3, #4
+ 275 005e F5DD     		ble	.L21
+ 276              	.LVL29:
+ 104:.\main.c      ****     }
+ 105:.\main.c      ****     
+ 106:.\main.c      ****     i = 0; 
+ 107:.\main.c      ****     if( isEqual == true){
+ 277              		.loc 1 107 0
+ 278 0060 0028     		cmp	r0, #0
+ 279 0062 06D1     		bne	.L29
+ 280 0064 0AE0     		b	.L32
+ 281              	.LVL30:
+ 282              	.L24:
+ 108:.\main.c      **** 
+ 109:.\main.c      ****         while(i<5){
+ 110:.\main.c      ****             combo[i] =  combo1[i];
+ 283              		.loc 1 110 0
+ 284 0066 02AA     		add	r2, sp, #8
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 8
+
+
+ 285 0068 D15C     		ldrb	r1, [r2, r3]
+ 286 006a C218     		add	r2, r0, r3
+ 287 006c 1171     		strb	r1, [r2, #4]
+ 111:.\main.c      ****             i++;
+ 288              		.loc 1 111 0
+ 289 006e 0133     		add	r3, r3, #1
+ 290              	.LVL31:
+ 291 0070 01E0     		b	.L22
+ 292              	.LVL32:
+ 293              	.L29:
+ 294 0072 0023     		mov	r3, #0
+ 110:.\main.c      ****             combo[i] =  combo1[i];
+ 295              		.loc 1 110 0
+ 296 0074 0F48     		ldr	r0, .L33
+ 297              	.LVL33:
+ 298              	.L22:
+ 109:.\main.c      ****         while(i<5){
+ 299              		.loc 1 109 0 discriminator 1
+ 300 0076 042B     		cmp	r3, #4
+ 301 0078 F5DD     		ble	.L24
+ 302 007a 02E0     		b	.L25
+ 303              	.LVL34:
+ 304              	.L32:
+ 112:.\main.c      ****         }
+ 113:.\main.c      ****     }
+ 114:.\main.c      ****     else{
+ 115:.\main.c      ****             UART_1_UartPutString("\n \r Codes do not match. Exiting and keeping old code...");
+ 305              		.loc 1 115 0
+ 306 007c 1048     		ldr	r0, .L33+12
+ 307              	.LVL35:
+ 308 007e FFF7FEFF 		bl	UART_1_UartPutString
+ 309              	.LVL36:
+ 310              	.L25:
+ 116:.\main.c      ****         
+ 117:.\main.c      ****     }
+ 118:.\main.c      ****     
+ 119:.\main.c      **** UART_1_UartPutString("\n \r Code has been reset to ");
+ 311              		.loc 1 119 0
+ 312 0082 1048     		ldr	r0, .L33+16
+ 313 0084 FFF7FEFF 		bl	UART_1_UartPutString
+ 314              	.LVL37:
+ 120:.\main.c      ****     i = 0; 
+ 315              		.loc 1 120 0
+ 316 0088 0024     		mov	r4, #0
+ 121:.\main.c      ****     while(i<5){
+ 122:.\main.c      **** Printchar(combo[i]);
+ 317              		.loc 1 122 0
+ 318 008a 0A4D     		ldr	r5, .L33
+ 121:.\main.c      ****     while(i<5){
+ 319              		.loc 1 121 0
+ 320 008c 04E0     		b	.L26
+ 321              	.LVL38:
+ 322              	.L27:
+ 323              		.loc 1 122 0
+ 324 008e 2B19     		add	r3, r5, r4
+ 325 0090 1879     		ldrb	r0, [r3, #4]
+ 326 0092 FFF7FEFF 		bl	Printchar
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 9
+
+
+ 327              	.LVL39:
+ 123:.\main.c      ****         i++;
+ 328              		.loc 1 123 0
+ 329 0096 0134     		add	r4, r4, #1
+ 330              	.LVL40:
+ 331              	.L26:
+ 121:.\main.c      ****     while(i<5){
+ 332              		.loc 1 121 0 discriminator 1
+ 333 0098 042C     		cmp	r4, #4
+ 334 009a F8DD     		ble	.L27
+ 124:.\main.c      ****     }
+ 125:.\main.c      ****     
+ 126:.\main.c      ****     UART_1_UartPutString(" Don't forget to lock it again!");
+ 335              		.loc 1 126 0
+ 336 009c 0A48     		ldr	r0, .L33+20
+ 337 009e FFF7FEFF 		bl	UART_1_UartPutString
+ 338              	.LVL41:
+ 127:.\main.c      **** currentState = -1; 
+ 339              		.loc 1 127 0
+ 340 00a2 0122     		mov	r2, #1
+ 341 00a4 5242     		neg	r2, r2
+ 342 00a6 034B     		ldr	r3, .L33
+ 343 00a8 1A60     		str	r2, [r3]
+ 128:.\main.c      **** RED_LED_Write(1); 
+ 344              		.loc 1 128 0
+ 345 00aa 0120     		mov	r0, #1
+ 346 00ac FFF7FEFF 		bl	RED_LED_Write
+ 347              	.LVL42:
+ 129:.\main.c      ****     
+ 130:.\main.c      ****         
+ 131:.\main.c      ****         
+ 132:.\main.c      ****         
+ 133:.\main.c      ****         
+ 134:.\main.c      **** }
+ 348              		.loc 1 134 0
+ 349 00b0 05B0     		add	sp, sp, #20
+ 350              		@ sp needed
+ 351              	.LVL43:
+ 352 00b2 30BD     		pop	{r4, r5, pc}
+ 353              	.L34:
+ 354              		.align	2
+ 355              	.L33:
+ 356 00b4 00000000 		.word	.LANCHOR0
+ 357 00b8 08000000 		.word	.LC7
+ 358 00bc 18000000 		.word	.LC9
+ 359 00c0 3C000000 		.word	.LC11
+ 360 00c4 74000000 		.word	.LC13
+ 361 00c8 90000000 		.word	.LC15
+ 362              		.cfi_endproc
+ 363              	.LFE37:
+ 364              		.size	InitCode, .-InitCode
+ 365              		.section	.text.getCombination,"ax",%progbits
+ 366              		.align	2
+ 367              		.global	getCombination
+ 368              		.code	16
+ 369              		.thumb_func
+ 370              		.type	getCombination, %function
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 10
+
+
+ 371              	getCombination:
+ 372              	.LFB38:
+ 135:.\main.c      ****     
+ 136:.\main.c      **** 
+ 137:.\main.c      **** 
+ 138:.\main.c      **** 
+ 139:.\main.c      **** 
+ 140:.\main.c      **** 
+ 141:.\main.c      **** 
+ 142:.\main.c      **** 
+ 143:.\main.c      **** int getCombination(){
+ 373              		.loc 1 143 0
+ 374              		.cfi_startproc
+ 375 0000 70B5     		push	{r4, r5, r6, lr}
+ 376              		.cfi_def_cfa_offset 16
+ 377              		.cfi_offset 4, -16
+ 378              		.cfi_offset 5, -12
+ 379              		.cfi_offset 6, -8
+ 380              		.cfi_offset 14, -4
+ 144:.\main.c      ****     
+ 145:.\main.c      ****     
+ 146:.\main.c      ****  /* Our start state. */
+ 147:.\main.c      **** char input;
+ 148:.\main.c      **** 
+ 149:.\main.c      **** 
+ 150:.\main.c      **** 
+ 151:.\main.c      **** while(1){
+ 152:.\main.c      ****     /* Get button pushed by user via UART. */
+ 153:.\main.c      **** 
+ 154:.\main.c      ****     input = getButton();
+ 155:.\main.c      ****  
+ 156:.\main.c      ****     if(input == combo[0]){
+ 381              		.loc 1 156 0
+ 382 0002 2C4C     		ldr	r4, .L50
+ 157:.\main.c      ****         if(currentState == 0 ){
+ 383              		.loc 1 157 0
+ 384 0004 251C     		mov	r5, r4
+ 158:.\main.c      ****             tc = 0; //timer set to 0   
+ 385              		.loc 1 158 0
+ 386 0006 2C4E     		ldr	r6, .L50+4
+ 387              	.L43:
+ 154:.\main.c      ****     input = getButton();
+ 388              		.loc 1 154 0
+ 389 0008 FFF7FEFF 		bl	getButton
+ 390              	.LVL44:
+ 156:.\main.c      ****     if(input == combo[0]){
+ 391              		.loc 1 156 0
+ 392 000c 2379     		ldrb	r3, [r4, #4]
+ 393 000e 8342     		cmp	r3, r0
+ 394 0010 06D1     		bne	.L36
+ 157:.\main.c      ****         if(currentState == 0 ){
+ 395              		.loc 1 157 0
+ 396 0012 2B68     		ldr	r3, [r5]
+ 397 0014 002B     		cmp	r3, #0
+ 398 0016 43D1     		bne	.L44
+ 399              		.loc 1 158 0
+ 400 0018 3360     		str	r3, [r6]
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 11
+
+
+ 159:.\main.c      ****             currentState = 1; 
+ 401              		.loc 1 159 0
+ 402 001a 0122     		mov	r2, #1
+ 403 001c 254B     		ldr	r3, .L50
+ 404 001e 1A60     		str	r2, [r3]
+ 405              	.L36:
+ 160:.\main.c      ****           
+ 161:.\main.c      ****         }
+ 162:.\main.c      ****         else{
+ 163:.\main.c      ****         return 0; 
+ 164:.\main.c      ****         }
+ 165:.\main.c      ****        }
+ 166:.\main.c      ****     
+ 167:.\main.c      ****     if(input == combo[1]){
+ 406              		.loc 1 167 0
+ 407 0020 244B     		ldr	r3, .L50
+ 408 0022 5B79     		ldrb	r3, [r3, #5]
+ 409 0024 8342     		cmp	r3, r0
+ 410 0026 06D1     		bne	.L38
+ 168:.\main.c      ****         if(currentState == 1){
+ 411              		.loc 1 168 0
+ 412 0028 224B     		ldr	r3, .L50
+ 413 002a 1B68     		ldr	r3, [r3]
+ 414 002c 012B     		cmp	r3, #1
+ 415 002e 39D1     		bne	.L45
+ 169:.\main.c      ****             currentState = 2;
+ 416              		.loc 1 169 0
+ 417 0030 0222     		mov	r2, #2
+ 418 0032 204B     		ldr	r3, .L50
+ 419 0034 1A60     		str	r2, [r3]
+ 420              	.L38:
+ 170:.\main.c      ****         }
+ 171:.\main.c      ****         else{
+ 172:.\main.c      ****         return 0;
+ 173:.\main.c      ****         }
+ 174:.\main.c      ****     }
+ 175:.\main.c      ****         
+ 176:.\main.c      ****     if(input == combo[2]){
+ 421              		.loc 1 176 0
+ 422 0036 1F4B     		ldr	r3, .L50
+ 423 0038 9B79     		ldrb	r3, [r3, #6]
+ 424 003a 8342     		cmp	r3, r0
+ 425 003c 06D1     		bne	.L39
+ 177:.\main.c      ****         if(currentState == 2){
+ 426              		.loc 1 177 0
+ 427 003e 1D4B     		ldr	r3, .L50
+ 428 0040 1B68     		ldr	r3, [r3]
+ 429 0042 022B     		cmp	r3, #2
+ 430 0044 30D1     		bne	.L46
+ 178:.\main.c      ****             currentState = 3; 
+ 431              		.loc 1 178 0
+ 432 0046 0322     		mov	r2, #3
+ 433 0048 1A4B     		ldr	r3, .L50
+ 434 004a 1A60     		str	r2, [r3]
+ 435              	.L39:
+ 179:.\main.c      ****         }
+ 180:.\main.c      ****         else{
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 12
+
+
+ 181:.\main.c      ****         return 0; 
+ 182:.\main.c      ****         }
+ 183:.\main.c      ****     }
+ 184:.\main.c      ****         
+ 185:.\main.c      ****     if(input == combo[3]){
+ 436              		.loc 1 185 0
+ 437 004c 194B     		ldr	r3, .L50
+ 438 004e DB79     		ldrb	r3, [r3, #7]
+ 439 0050 8342     		cmp	r3, r0
+ 440 0052 06D1     		bne	.L40
+ 186:.\main.c      ****         if(currentState == 3){
+ 441              		.loc 1 186 0
+ 442 0054 174B     		ldr	r3, .L50
+ 443 0056 1B68     		ldr	r3, [r3]
+ 444 0058 032B     		cmp	r3, #3
+ 445 005a 27D1     		bne	.L47
+ 187:.\main.c      ****             currentState = 4; 
+ 446              		.loc 1 187 0
+ 447 005c 0422     		mov	r2, #4
+ 448 005e 154B     		ldr	r3, .L50
+ 449 0060 1A60     		str	r2, [r3]
+ 450              	.L40:
+ 188:.\main.c      ****         }
+ 189:.\main.c      ****         else{
+ 190:.\main.c      ****         return 0; 
+ 191:.\main.c      ****         }
+ 192:.\main.c      ****     }    
+ 193:.\main.c      **** 
+ 194:.\main.c      ****     if(input == combo[4]){
+ 451              		.loc 1 194 0
+ 452 0062 144B     		ldr	r3, .L50
+ 453 0064 1B7A     		ldrb	r3, [r3, #8]
+ 454 0066 8342     		cmp	r3, r0
+ 455 0068 05D1     		bne	.L41
+ 195:.\main.c      ****         if(currentState == 4){
+ 456              		.loc 1 195 0
+ 457 006a 124B     		ldr	r3, .L50
+ 458 006c 1B68     		ldr	r3, [r3]
+ 459 006e 042B     		cmp	r3, #4
+ 460 0070 1ED1     		bne	.L48
+ 196:.\main.c      ****             return 1;  
+ 461              		.loc 1 196 0
+ 462 0072 0120     		mov	r0, #1
+ 463              	.LVL45:
+ 464 0074 1DE0     		b	.L37
+ 465              	.LVL46:
+ 466              	.L41:
+ 197:.\main.c      ****             currentState = -1; 
+ 198:.\main.c      ****         }
+ 199:.\main.c      ****         else{
+ 200:.\main.c      ****         return 0; 
+ 201:.\main.c      ****         }
+ 202:.\main.c      ****     }
+ 203:.\main.c      ****     
+ 204:.\main.c      ****     if(tc > 50 & currentState > 0 ){
+ 467              		.loc 1 204 0
+ 468 0076 0122     		mov	r2, #1
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 13
+
+
+ 469 0078 0F4B     		ldr	r3, .L50+4
+ 470 007a 1B68     		ldr	r3, [r3]
+ 471 007c 322B     		cmp	r3, #50
+ 472 007e 00DC     		bgt	.L42
+ 473 0080 0022     		mov	r2, #0
+ 474              	.L42:
+ 475 0082 0C4B     		ldr	r3, .L50
+ 476 0084 1B68     		ldr	r3, [r3]
+ 477 0086 D917     		asr	r1, r3, #31
+ 478 0088 CB1A     		sub	r3, r1, r3
+ 479 008a DB0F     		lsr	r3, r3, #31
+ 480 008c 1342     		tst	r3, r2
+ 481 008e BBD0     		beq	.L43
+ 205:.\main.c      ****         UART_1_UartPutString("\n \r Out of time!");
+ 482              		.loc 1 205 0
+ 483 0090 0A48     		ldr	r0, .L50+8
+ 484              	.LVL47:
+ 485 0092 FFF7FEFF 		bl	UART_1_UartPutString
+ 486              	.LVL48:
+ 206:.\main.c      ****         tc = 0; 
+ 487              		.loc 1 206 0
+ 488 0096 0022     		mov	r2, #0
+ 489 0098 074B     		ldr	r3, .L50+4
+ 490 009a 1A60     		str	r2, [r3]
+ 207:.\main.c      ****         return 0;
+ 491              		.loc 1 207 0
+ 492 009c 0020     		mov	r0, #0
+ 493 009e 08E0     		b	.L37
+ 494              	.LVL49:
+ 495              	.L44:
+ 163:.\main.c      ****         return 0; 
+ 496              		.loc 1 163 0
+ 497 00a0 0020     		mov	r0, #0
+ 498              	.LVL50:
+ 499 00a2 06E0     		b	.L37
+ 500              	.LVL51:
+ 501              	.L45:
+ 172:.\main.c      ****         return 0;
+ 502              		.loc 1 172 0
+ 503 00a4 0020     		mov	r0, #0
+ 504              	.LVL52:
+ 505 00a6 04E0     		b	.L37
+ 506              	.LVL53:
+ 507              	.L46:
+ 181:.\main.c      ****         return 0; 
+ 508              		.loc 1 181 0
+ 509 00a8 0020     		mov	r0, #0
+ 510              	.LVL54:
+ 511 00aa 02E0     		b	.L37
+ 512              	.LVL55:
+ 513              	.L47:
+ 190:.\main.c      ****         return 0; 
+ 514              		.loc 1 190 0
+ 515 00ac 0020     		mov	r0, #0
+ 516              	.LVL56:
+ 517 00ae 00E0     		b	.L37
+ 518              	.LVL57:
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 14
+
+
+ 519              	.L48:
+ 200:.\main.c      ****         return 0; 
+ 520              		.loc 1 200 0
+ 521 00b0 0020     		mov	r0, #0
+ 522              	.LVL58:
+ 523              	.L37:
+ 208:.\main.c      ****     }
+ 209:.\main.c      **** 
+ 210:.\main.c      **** }
+ 211:.\main.c      **** }
+ 524              		.loc 1 211 0
+ 525              		@ sp needed
+ 526 00b2 70BD     		pop	{r4, r5, r6, pc}
+ 527              	.L51:
+ 528              		.align	2
+ 529              	.L50:
+ 530 00b4 00000000 		.word	.LANCHOR0
+ 531 00b8 00000000 		.word	.LANCHOR1
+ 532 00bc B0000000 		.word	.LC19
+ 533              		.cfi_endproc
+ 534              	.LFE38:
+ 535              		.size	getCombination, .-getCombination
+ 536              		.section	.text.main,"ax",%progbits
+ 537              		.align	2
+ 538              		.global	main
+ 539              		.code	16
+ 540              		.thumb_func
+ 541              		.type	main, %function
+ 542              	main:
+ 543              	.LFB39:
+ 212:.\main.c      **** 
+ 213:.\main.c      **** 
+ 214:.\main.c      ****     
+ 215:.\main.c      ****     
+ 216:.\main.c      ****     
+ 217:.\main.c      **** int main()
+ 218:.\main.c      **** {
+ 544              		.loc 1 218 0
+ 545              		.cfi_startproc
+ 546 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 547              		.cfi_def_cfa_offset 24
+ 548              		.cfi_offset 3, -24
+ 549              		.cfi_offset 4, -20
+ 550              		.cfi_offset 5, -16
+ 551              		.cfi_offset 6, -12
+ 552              		.cfi_offset 7, -8
+ 553              		.cfi_offset 14, -4
+ 554 0002 4F46     		mov	r7, r9
+ 555 0004 4646     		mov	r6, r8
+ 556 0006 C0B4     		push	{r6, r7}
+ 557              		.cfi_def_cfa_offset 32
+ 558              		.cfi_offset 8, -32
+ 559              		.cfi_offset 9, -28
+ 219:.\main.c      ****     
+ 220:.\main.c      **** CyGlobalIntDisable; /* Disable global interrupts. */    
+ 560              		.loc 1 220 0
+ 561              	@ 220 ".\main.c" 1
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 15
+
+
+ 562 0008 72B6     		CPSID   i
+ 563              	@ 0 "" 2
+ 221:.\main.c      **** timerISR_StartEx(timerISR);
+ 564              		.loc 1 221 0
+ 565              		.code	16
+ 566 000a 3248     		ldr	r0, .L66
+ 567 000c FFF7FEFF 		bl	timerISR_StartEx
+ 568              	.LVL59:
+ 222:.\main.c      ****     
+ 223:.\main.c      **** 
+ 224:.\main.c      **** CyGlobalIntEnable; /* Enable global interrupts. */
+ 569              		.loc 1 224 0
+ 570              	@ 224 ".\main.c" 1
+ 571 0010 62B6     		CPSIE   i
+ 572              	@ 0 "" 2
+ 225:.\main.c      **** Timer_1_Start(); 
+ 573              		.loc 1 225 0
+ 574              		.code	16
+ 575 0012 FFF7FEFF 		bl	Timer_1_Start
+ 576              	.LVL60:
+ 226:.\main.c      **** 
+ 227:.\main.c      **** int failed = 0; 
+ 228:.\main.c      **** int returnval = 0;     
+ 229:.\main.c      **** UART_1_Start();    
+ 577              		.loc 1 229 0
+ 578 0016 FFF7FEFF 		bl	UART_1_Start
+ 579              	.LVL61:
+ 230:.\main.c      **** UART_1_UartPutString("\n \r Combination Lock Program");
+ 580              		.loc 1 230 0
+ 581 001a 2F48     		ldr	r0, .L66+4
+ 582 001c FFF7FEFF 		bl	UART_1_UartPutString
+ 583              	.LVL62:
+ 231:.\main.c      **** UART_1_UartPutString("\n \r Stock Combination is ");
+ 584              		.loc 1 231 0
+ 585 0020 2E48     		ldr	r0, .L66+8
+ 586 0022 FFF7FEFF 		bl	UART_1_UartPutString
+ 587              	.LVL63:
+ 232:.\main.c      ****    int  i = 0; 
+ 588              		.loc 1 232 0
+ 589 0026 0024     		mov	r4, #0
+ 233:.\main.c      ****     while(i<5){
+ 234:.\main.c      **** Printchar(combo[i]);
+ 590              		.loc 1 234 0
+ 591 0028 2D4D     		ldr	r5, .L66+12
+ 233:.\main.c      ****     while(i<5){
+ 592              		.loc 1 233 0
+ 593 002a 04E0     		b	.L53
+ 594              	.LVL64:
+ 595              	.L54:
+ 596              		.loc 1 234 0
+ 597 002c 2B19     		add	r3, r5, r4
+ 598 002e 1879     		ldrb	r0, [r3, #4]
+ 599 0030 FFF7FEFF 		bl	Printchar
+ 600              	.LVL65:
+ 235:.\main.c      ****         i++;
+ 601              		.loc 1 235 0
+ 602 0034 0134     		add	r4, r4, #1
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 16
+
+
+ 603              	.LVL66:
+ 604              	.L53:
+ 233:.\main.c      ****     while(i<5){
+ 605              		.loc 1 233 0 discriminator 1
+ 606 0036 042C     		cmp	r4, #4
+ 607 0038 F8DD     		ble	.L54
+ 236:.\main.c      ****     }
+ 237:.\main.c      **** 
+ 238:.\main.c      **** RED_LED_Write(1);
+ 608              		.loc 1 238 0
+ 609 003a 0120     		mov	r0, #1
+ 610 003c FFF7FEFF 		bl	RED_LED_Write
+ 611              	.LVL67:
+ 239:.\main.c      **** 
+ 240:.\main.c      **** 
+ 241:.\main.c      **** char locked = '0'; 
+ 242:.\main.c      **** UART_1_UartPutString("\n \r Initial status: Unlocked. Press 1 to lock, or 2 to reset the code:");
+ 612              		.loc 1 242 0
+ 613 0040 2848     		ldr	r0, .L66+16
+ 614 0042 FFF7FEFF 		bl	UART_1_UartPutString
+ 615              	.LVL68:
+ 227:.\main.c      **** int failed = 0; 
+ 616              		.loc 1 227 0
+ 617 0046 0024     		mov	r4, #0
+ 618              	.LVL69:
+ 243:.\main.c      **** 
+ 244:.\main.c      **** 
+ 245:.\main.c      **** for(;;){
+ 246:.\main.c      **** 
+ 247:.\main.c      **** 
+ 248:.\main.c      ****     
+ 249:.\main.c      **** locked = getButton();
+ 250:.\main.c      **** if(failed >3){
+ 251:.\main.c      ****     break;
+ 252:.\main.c      **** }
+ 253:.\main.c      **** 
+ 254:.\main.c      **** 
+ 255:.\main.c      **** switch (locked){ //state if locked
+ 256:.\main.c      ****     case '1':
+ 257:.\main.c      ****     currentState = 0;
+ 619              		.loc 1 257 0
+ 620 0048 254A     		ldr	r2, .L66+12
+ 621 004a 9146     		mov	r9, r2
+ 258:.\main.c      ****     RED_LED_Write(100); //turns on LED 
+ 259:.\main.c      ****     UART_1_UartPutString("\n \r Locked. Enter in the code:");
+ 622              		.loc 1 259 0
+ 623 004c 264B     		ldr	r3, .L66+20
+ 624 004e 9846     		mov	r8, r3
+ 260:.\main.c      ****     for(;;){
+ 261:.\main.c      ****         returnval = getCombination();
+ 262:.\main.c      ****         if(returnval == 1){
+ 263:.\main.c      ****             locked = '0'; 
+ 264:.\main.c      ****             RED_LED_Write(1); //turn off LED 
+ 265:.\main.c      ****             currentState = -1; //reset lock state to unlocked, or -1 
+ 266:.\main.c      ****             UART_1_UartPutString("\n \r Unlocked! Press 1 to lock again, or 2 to reset the code:");
+ 267:.\main.c      ****             failed = 0; //failed attempts back to 0
+ 268:.\main.c      ****             break;
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 17
+
+
+ 269:.\main.c      ****         }
+ 270:.\main.c      ****         else{
+ 271:.\main.c      ****             failed++; //increment fail state 
+ 272:.\main.c      ****             if(failed > 3){
+ 273:.\main.c      ****             UART_1_UartPutString("\n \r You have failed 3 attempts. System is locked.");
+ 274:.\main.c      ****             break;
+ 275:.\main.c      ****             }
+ 276:.\main.c      ****         else{    
+ 277:.\main.c      ****         UART_1_UartPutString("\n \r Incorrect. Try again. Fail attempt ");
+ 625              		.loc 1 277 0
+ 626 0050 264F     		ldr	r7, .L66+24
+ 627              	.LVL70:
+ 628              	.L65:
+ 249:.\main.c      **** locked = getButton();
+ 629              		.loc 1 249 0
+ 630 0052 FFF7FEFF 		bl	getButton
+ 631              	.LVL71:
+ 250:.\main.c      **** if(failed >3){
+ 632              		.loc 1 250 0
+ 633 0056 032C     		cmp	r4, #3
+ 634 0058 37DC     		bgt	.L64
+ 255:.\main.c      **** switch (locked){ //state if locked
+ 635              		.loc 1 255 0
+ 636 005a 3128     		cmp	r0, #49
+ 637 005c 02D0     		beq	.L58
+ 638 005e 3228     		cmp	r0, #50
+ 639 0060 2DD0     		beq	.L59
+ 640 0062 F6E7     		b	.L65
+ 641              	.L58:
+ 257:.\main.c      ****     currentState = 0;
+ 642              		.loc 1 257 0
+ 643 0064 0023     		mov	r3, #0
+ 644 0066 4A46     		mov	r2, r9
+ 645 0068 1360     		str	r3, [r2]
+ 258:.\main.c      ****     RED_LED_Write(100); //turns on LED 
+ 646              		.loc 1 258 0
+ 647 006a 6420     		mov	r0, #100
+ 648              	.LVL72:
+ 649 006c FFF7FEFF 		bl	RED_LED_Write
+ 650              	.LVL73:
+ 259:.\main.c      ****     UART_1_UartPutString("\n \r Locked. Enter in the code:");
+ 651              		.loc 1 259 0
+ 652 0070 4046     		mov	r0, r8
+ 653 0072 FFF7FEFF 		bl	UART_1_UartPutString
+ 654              	.LVL74:
+ 278:.\main.c      **** 
+ 279:.\main.c      ****         PrintInt(failed);
+ 280:.\main.c      ****         UART_1_UartPutString("\n \r");
+ 655              		.loc 1 280 0
+ 656 0076 1E4E     		ldr	r6, .L66+28
+ 281:.\main.c      ****             }
+ 282:.\main.c      ****         currentState = 0; //reset lock state to beginning 
+ 657              		.loc 1 282 0
+ 658 0078 194D     		ldr	r5, .L66+12
+ 659              	.L63:
+ 261:.\main.c      ****         returnval = getCombination();
+ 660              		.loc 1 261 0
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 18
+
+
+ 661 007a FFF7FEFF 		bl	getCombination
+ 662              	.LVL75:
+ 262:.\main.c      ****         if(returnval == 1){
+ 663              		.loc 1 262 0
+ 664 007e 0128     		cmp	r0, #1
+ 665 0080 0AD1     		bne	.L60
+ 666              	.LVL76:
+ 264:.\main.c      ****             RED_LED_Write(1); //turn off LED 
+ 667              		.loc 1 264 0
+ 668 0082 FFF7FEFF 		bl	RED_LED_Write
+ 669              	.LVL77:
+ 265:.\main.c      ****             currentState = -1; //reset lock state to unlocked, or -1 
+ 670              		.loc 1 265 0
+ 671 0086 0122     		mov	r2, #1
+ 672 0088 5242     		neg	r2, r2
+ 673 008a 154B     		ldr	r3, .L66+12
+ 674 008c 1A60     		str	r2, [r3]
+ 266:.\main.c      ****             UART_1_UartPutString("\n \r Unlocked! Press 1 to lock again, or 2 to reset the code:");
+ 675              		.loc 1 266 0
+ 676 008e 1948     		ldr	r0, .L66+32
+ 677 0090 FFF7FEFF 		bl	UART_1_UartPutString
+ 678              	.LVL78:
+ 267:.\main.c      ****             failed = 0; //failed attempts back to 0
+ 679              		.loc 1 267 0
+ 680 0094 0024     		mov	r4, #0
+ 268:.\main.c      ****             break;
+ 681              		.loc 1 268 0
+ 682 0096 DCE7     		b	.L65
+ 683              	.LVL79:
+ 684              	.L60:
+ 271:.\main.c      ****             failed++; //increment fail state 
+ 685              		.loc 1 271 0
+ 686 0098 0134     		add	r4, r4, #1
+ 687              	.LVL80:
+ 272:.\main.c      ****             if(failed > 3){
+ 688              		.loc 1 272 0
+ 689 009a 032C     		cmp	r4, #3
+ 690 009c 03DD     		ble	.L62
+ 273:.\main.c      ****             UART_1_UartPutString("\n \r You have failed 3 attempts. System is locked.");
+ 691              		.loc 1 273 0
+ 692 009e 1648     		ldr	r0, .L66+36
+ 693              	.LVL81:
+ 694 00a0 FFF7FEFF 		bl	UART_1_UartPutString
+ 695              	.LVL82:
+ 274:.\main.c      ****             break;
+ 696              		.loc 1 274 0
+ 697 00a4 D5E7     		b	.L65
+ 698              	.LVL83:
+ 699              	.L62:
+ 277:.\main.c      ****         UART_1_UartPutString("\n \r Incorrect. Try again. Fail attempt ");
+ 700              		.loc 1 277 0
+ 701 00a6 381C     		mov	r0, r7
+ 702              	.LVL84:
+ 703 00a8 FFF7FEFF 		bl	UART_1_UartPutString
+ 704              	.LVL85:
+ 279:.\main.c      ****         PrintInt(failed);
+ 705              		.loc 1 279 0
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 19
+
+
+ 706 00ac 201C     		mov	r0, r4
+ 707 00ae FFF7FEFF 		bl	PrintInt
+ 708              	.LVL86:
+ 280:.\main.c      ****         UART_1_UartPutString("\n \r");
+ 709              		.loc 1 280 0
+ 710 00b2 301C     		mov	r0, r6
+ 711 00b4 FFF7FEFF 		bl	UART_1_UartPutString
+ 712              	.LVL87:
+ 713              		.loc 1 282 0
+ 714 00b8 0023     		mov	r3, #0
+ 715 00ba 2B60     		str	r3, [r5]
+ 283:.\main.c      **** 
+ 284:.\main.c      ****         }
+ 285:.\main.c      ****     }
+ 716              		.loc 1 285 0
+ 717 00bc DDE7     		b	.L63
+ 718              	.LVL88:
+ 719              	.L59:
+ 286:.\main.c      ****     break;
+ 287:.\main.c      **** 
+ 288:.\main.c      ****     
+ 289:.\main.c      ****     case '2':
+ 290:.\main.c      ****     UART_1_UartPutString("\n \r Code Reset. Enter in your new code:");
+ 720              		.loc 1 290 0
+ 721 00be 0F48     		ldr	r0, .L66+40
+ 722              	.LVL89:
+ 723 00c0 FFF7FEFF 		bl	UART_1_UartPutString
+ 724              	.LVL90:
+ 291:.\main.c      ****     InitCode();
+ 725              		.loc 1 291 0
+ 726 00c4 FFF7FEFF 		bl	InitCode
+ 727              	.LVL91:
+ 292:.\main.c      ****     break;
+ 728              		.loc 1 292 0
+ 729 00c8 C3E7     		b	.L65
+ 730              	.LVL92:
+ 731              	.L64:
+ 732              	.LVL93:
+ 293:.\main.c      ****     
+ 294:.\main.c      ****     
+ 295:.\main.c      ****     default:
+ 296:.\main.c      ****     
+ 297:.\main.c      ****     break;
+ 298:.\main.c      ****     
+ 299:.\main.c      ****     
+ 300:.\main.c      ****     
+ 301:.\main.c      **** }
+ 302:.\main.c      **** }
+ 303:.\main.c      **** 
+ 304:.\main.c      **** 
+ 305:.\main.c      ****     
+ 306:.\main.c      **** 
+ 307:.\main.c      **** 
+ 308:.\main.c      **** 
+ 309:.\main.c      **** 
+ 310:.\main.c      **** 
+ 311:.\main.c      **** 
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 20
+
+
+ 312:.\main.c      **** 
+ 313:.\main.c      ****     
+ 314:.\main.c      ****     
+ 315:.\main.c      ****     
+ 316:.\main.c      ****     
+ 317:.\main.c      ****     
+ 318:.\main.c      ****     
+ 319:.\main.c      **** }
+ 733              		.loc 1 319 0
+ 734              		@ sp needed
+ 735              	.LVL94:
+ 736 00ca 0CBC     		pop	{r2, r3}
+ 737 00cc 9046     		mov	r8, r2
+ 738 00ce 9946     		mov	r9, r3
+ 739 00d0 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 740              	.L67:
+ 741 00d2 C046     		.align	2
+ 742              	.L66:
+ 743 00d4 00000000 		.word	timerISR
+ 744 00d8 C4000000 		.word	.LC22
+ 745 00dc E4000000 		.word	.LC24
+ 746 00e0 00000000 		.word	.LANCHOR0
+ 747 00e4 00010000 		.word	.LC27
+ 748 00e8 48010000 		.word	.LC29
+ 749 00ec DC010000 		.word	.LC35
+ 750 00f0 04020000 		.word	.LC37
+ 751 00f4 68010000 		.word	.LC31
+ 752 00f8 A8010000 		.word	.LC33
+ 753 00fc 08020000 		.word	.LC39
+ 754              		.cfi_endproc
+ 755              	.LFE39:
+ 756              		.size	main, .-main
+ 757              		.global	tc
+ 758              		.global	disable_entry
+ 759              		.global	currentState
+ 760              		.global	combo
+ 761              		.data
+ 762              		.align	2
+ 763              		.set	.LANCHOR0,. + 0
+ 764              		.type	currentState, %object
+ 765              		.size	currentState, 4
+ 766              	currentState:
+ 767 0000 FFFFFFFF 		.word	-1
+ 768              		.type	combo, %object
+ 769              		.size	combo, 5
+ 770              	combo:
+ 771 0004 31       		.byte	49
+ 772 0005 32       		.byte	50
+ 773 0006 33       		.byte	51
+ 774 0007 34       		.byte	52
+ 775 0008 35       		.byte	53
+ 776 0009 000000   		.section	.rodata.str1.4,"aMS",%progbits,1
+ 777              		.align	2
+ 778              	.LC2:
+ 779 0000 256400   		.ascii	"%d\000"
+ 780 0003 00       		.space	1
+ 781              	.LC4:
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 21
+
+
+ 782 0004 256300   		.ascii	"%c\000"
+ 783 0007 00       		.space	1
+ 784              	.LC7:
+ 785 0008 0A200D20 		.ascii	"\012 \015 Enter code:\000"
+ 785      456E7465 
+ 785      7220636F 
+ 785      64653A00 
+ 786              	.LC9:
+ 787 0018 0A200D20 		.ascii	"\012 \015 Enter code again to confirm:\000"
+ 787      456E7465 
+ 787      7220636F 
+ 787      64652061 
+ 787      6761696E 
+ 788 0039 000000   		.space	3
+ 789              	.LC11:
+ 790 003c 0A200D20 		.ascii	"\012 \015 Codes do not match. Exiting and keeping o"
+ 790      436F6465 
+ 790      7320646F 
+ 790      206E6F74 
+ 790      206D6174 
+ 791 0069 6C642063 		.ascii	"ld code...\000"
+ 791      6F64652E 
+ 791      2E2E00
+ 792              	.LC13:
+ 793 0074 0A200D20 		.ascii	"\012 \015 Code has been reset to \000"
+ 793      436F6465 
+ 793      20686173 
+ 793      20626565 
+ 793      6E207265 
+ 794              	.LC15:
+ 795 0090 20446F6E 		.ascii	" Don't forget to lock it again!\000"
+ 795      27742066 
+ 795      6F726765 
+ 795      7420746F 
+ 795      206C6F63 
+ 796              	.LC19:
+ 797 00b0 0A200D20 		.ascii	"\012 \015 Out of time!\000"
+ 797      4F757420 
+ 797      6F662074 
+ 797      696D6521 
+ 797      00
+ 798 00c1 000000   		.space	3
+ 799              	.LC22:
+ 800 00c4 0A200D20 		.ascii	"\012 \015 Combination Lock Program\000"
+ 800      436F6D62 
+ 800      696E6174 
+ 800      696F6E20 
+ 800      4C6F636B 
+ 801 00e1 000000   		.space	3
+ 802              	.LC24:
+ 803 00e4 0A200D20 		.ascii	"\012 \015 Stock Combination is \000"
+ 803      53746F63 
+ 803      6B20436F 
+ 803      6D62696E 
+ 803      6174696F 
+ 804 00fe 0000     		.space	2
+ 805              	.LC27:
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 22
+
+
+ 806 0100 0A200D20 		.ascii	"\012 \015 Initial status: Unlocked. Press 1 to lock"
+ 806      496E6974 
+ 806      69616C20 
+ 806      73746174 
+ 806      75733A20 
+ 807 012d 2C206F72 		.ascii	", or 2 to reset the code:\000"
+ 807      20322074 
+ 807      6F207265 
+ 807      73657420 
+ 807      74686520 
+ 808 0147 00       		.space	1
+ 809              	.LC29:
+ 810 0148 0A200D20 		.ascii	"\012 \015 Locked. Enter in the code:\000"
+ 810      4C6F636B 
+ 810      65642E20 
+ 810      456E7465 
+ 810      7220696E 
+ 811 0167 00       		.space	1
+ 812              	.LC31:
+ 813 0168 0A200D20 		.ascii	"\012 \015 Unlocked! Press 1 to lock again, or 2 to "
+ 813      556E6C6F 
+ 813      636B6564 
+ 813      21205072 
+ 813      65737320 
+ 814 0195 72657365 		.ascii	"reset the code:\000"
+ 814      74207468 
+ 814      6520636F 
+ 814      64653A00 
+ 815 01a5 000000   		.space	3
+ 816              	.LC33:
+ 817 01a8 0A200D20 		.ascii	"\012 \015 You have failed 3 attempts. System is loc"
+ 817      596F7520 
+ 817      68617665 
+ 817      20666169 
+ 817      6C656420 
+ 818 01d5 6B65642E 		.ascii	"ked.\000"
+ 818      00
+ 819 01da 0000     		.space	2
+ 820              	.LC35:
+ 821 01dc 0A200D20 		.ascii	"\012 \015 Incorrect. Try again. Fail attempt \000"
+ 821      496E636F 
+ 821      72726563 
+ 821      742E2054 
+ 821      72792061 
+ 822              	.LC37:
+ 823 0204 0A200D00 		.ascii	"\012 \015\000"
+ 824              	.LC39:
+ 825 0208 0A200D20 		.ascii	"\012 \015 Code Reset. Enter in your new code:\000"
+ 825      436F6465 
+ 825      20526573 
+ 825      65742E20 
+ 825      456E7465 
+ 826              		.bss
+ 827              		.align	2
+ 828              		.set	.LANCHOR1,. + 0
+ 829              		.type	tc, %object
+ 830              		.size	tc, 4
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 23
+
+
+ 831              	tc:
+ 832 0000 00000000 		.space	4
+ 833              		.type	disable_entry, %object
+ 834              		.size	disable_entry, 1
+ 835              	disable_entry:
+ 836 0004 00       		.space	1
+ 837 0005 000000   		.text
+ 838              	.Letext0:
+ 839              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 840              		.file 3 "Generated_Source\\PSoC4/RED_LED.h"
+ 841              		.file 4 "Generated_Source\\PSoC4/Timer_1.h"
+ 842              		.file 5 "Generated_Source\\PSoC4/UART_1_SPI_UART.h"
+ 843              		.file 6 "Generated_Source\\PSoC4/timerISR.h"
+ 844              		.file 7 "Generated_Source\\PSoC4/UART_1.h"
+ 845              		.file 8 "c:\\program files (x86)\\cypress\\psoc creator\\3.2\\psoc creator\\import\\gnu\\arm\\4.8.
+ 846              		.section	.debug_info,"",%progbits
+ 847              	.Ldebug_info0:
+ 848 0000 E8050000 		.4byte	0x5e8
+ 849 0004 0400     		.2byte	0x4
+ 850 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 851 000a 04       		.byte	0x4
+ 852 000b 01       		.uleb128 0x1
+ 853 000c 66010000 		.4byte	.LASF45
+ 854 0010 01       		.byte	0x1
+ 855 0011 51000000 		.4byte	.LASF46
+ 856 0015 15020000 		.4byte	.LASF47
+ 857 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 858 001d 00000000 		.4byte	0
+ 859 0021 00000000 		.4byte	.Ldebug_line0
+ 860 0025 02       		.uleb128 0x2
+ 861 0026 01       		.byte	0x1
+ 862 0027 06       		.byte	0x6
+ 863 0028 71000000 		.4byte	.LASF0
+ 864 002c 02       		.uleb128 0x2
+ 865 002d 01       		.byte	0x1
+ 866 002e 08       		.byte	0x8
+ 867 002f 7D000000 		.4byte	.LASF1
+ 868 0033 02       		.uleb128 0x2
+ 869 0034 02       		.byte	0x2
+ 870 0035 05       		.byte	0x5
+ 871 0036 3E020000 		.4byte	.LASF2
+ 872 003a 02       		.uleb128 0x2
+ 873 003b 02       		.byte	0x2
+ 874 003c 07       		.byte	0x7
+ 875 003d B2000000 		.4byte	.LASF3
+ 876 0041 02       		.uleb128 0x2
+ 877 0042 04       		.byte	0x4
+ 878 0043 05       		.byte	0x5
+ 879 0044 30000000 		.4byte	.LASF4
+ 880 0048 02       		.uleb128 0x2
+ 881 0049 04       		.byte	0x4
+ 882 004a 07       		.byte	0x7
+ 883 004b A0000000 		.4byte	.LASF5
+ 884 004f 02       		.uleb128 0x2
+ 885 0050 08       		.byte	0x8
+ 886 0051 05       		.byte	0x5
+ 887 0052 F8010000 		.4byte	.LASF6
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 24
+
+
+ 888 0056 02       		.uleb128 0x2
+ 889 0057 08       		.byte	0x8
+ 890 0058 07       		.byte	0x7
+ 891 0059 4F010000 		.4byte	.LASF7
+ 892 005d 03       		.uleb128 0x3
+ 893 005e 04       		.byte	0x4
+ 894 005f 05       		.byte	0x5
+ 895 0060 696E7400 		.ascii	"int\000"
+ 896 0064 02       		.uleb128 0x2
+ 897 0065 04       		.byte	0x4
+ 898 0066 07       		.byte	0x7
+ 899 0067 34010000 		.4byte	.LASF8
+ 900 006b 04       		.uleb128 0x4
+ 901 006c 57020000 		.4byte	.LASF9
+ 902 0070 02       		.byte	0x2
+ 903 0071 C1       		.byte	0xc1
+ 904 0072 2C000000 		.4byte	0x2c
+ 905 0076 04       		.uleb128 0x4
+ 906 0077 2D010000 		.4byte	.LASF10
+ 907 007b 02       		.byte	0x2
+ 908 007c C3       		.byte	0xc3
+ 909 007d 48000000 		.4byte	0x48
+ 910 0081 02       		.uleb128 0x2
+ 911 0082 04       		.byte	0x4
+ 912 0083 04       		.byte	0x4
+ 913 0084 5A000000 		.4byte	.LASF11
+ 914 0088 02       		.uleb128 0x2
+ 915 0089 08       		.byte	0x8
+ 916 008a 04       		.byte	0x4
+ 917 008b 42000000 		.4byte	.LASF12
+ 918 008f 04       		.uleb128 0x4
+ 919 0090 91000000 		.4byte	.LASF13
+ 920 0094 02       		.byte	0x2
+ 921 0095 D2       		.byte	0xd2
+ 922 0096 9A000000 		.4byte	0x9a
+ 923 009a 02       		.uleb128 0x2
+ 924 009b 01       		.byte	0x1
+ 925 009c 08       		.byte	0x8
+ 926 009d 10020000 		.4byte	.LASF14
+ 927 00a1 05       		.uleb128 0x5
+ 928 00a2 E2010000 		.4byte	.LASF15
+ 929 00a6 02       		.byte	0x2
+ 930 00a7 7D01     		.2byte	0x17d
+ 931 00a9 AD000000 		.4byte	0xad
+ 932 00ad 06       		.uleb128 0x6
+ 933 00ae 04       		.byte	0x4
+ 934 00af B3000000 		.4byte	0xb3
+ 935 00b3 07       		.uleb128 0x7
+ 936 00b4 02       		.uleb128 0x2
+ 937 00b5 04       		.byte	0x4
+ 938 00b6 07       		.byte	0x7
+ 939 00b7 EF010000 		.4byte	.LASF16
+ 940 00bb 06       		.uleb128 0x6
+ 941 00bc 04       		.byte	0x4
+ 942 00bd 9A000000 		.4byte	0x9a
+ 943 00c1 06       		.uleb128 0x6
+ 944 00c2 04       		.byte	0x4
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 25
+
+
+ 945 00c3 C7000000 		.4byte	0xc7
+ 946 00c7 08       		.uleb128 0x8
+ 947 00c8 9A000000 		.4byte	0x9a
+ 948 00cc 09       		.uleb128 0x9
+ 949 00cd 9B020000 		.4byte	.LASF17
+ 950 00d1 01       		.byte	0x1
+ 951 00d2 18       		.byte	0x18
+ 952 00d3 00000000 		.4byte	.LFB33
+ 953 00d7 30000000 		.4byte	.LFE33-.LFB33
+ 954 00db 01       		.uleb128 0x1
+ 955 00dc 9C       		.byte	0x9c
+ 956 00dd FD000000 		.4byte	0xfd
+ 957 00e1 0A       		.uleb128 0xa
+ 958 00e2 0E000000 		.4byte	.LVL0
+ 959 00e6 4F050000 		.4byte	0x54f
+ 960 00ea 0A       		.uleb128 0xa
+ 961 00eb 18000000 		.4byte	.LVL1
+ 962 00ef 5A050000 		.4byte	0x55a
+ 963 00f3 0A       		.uleb128 0xa
+ 964 00f4 24000000 		.4byte	.LVL2
+ 965 00f8 6B050000 		.4byte	0x56b
+ 966 00fc 00       		.byte	0
+ 967 00fd 0B       		.uleb128 0xb
+ 968 00fe F3000000 		.4byte	.LASF18
+ 969 0102 01       		.byte	0x1
+ 970 0103 2E       		.byte	0x2e
+ 971 0104 9A000000 		.4byte	0x9a
+ 972 0108 00000000 		.4byte	.LFB34
+ 973 010c 16000000 		.4byte	.LFE34-.LFB34
+ 974 0110 01       		.uleb128 0x1
+ 975 0111 9C       		.byte	0x9c
+ 976 0112 38010000 		.4byte	0x138
+ 977 0116 0C       		.uleb128 0xc
+ 978 0117 E5000000 		.4byte	.LASF20
+ 979 011b 01       		.byte	0x1
+ 980 011c 2F       		.byte	0x2f
+ 981 011d 9A000000 		.4byte	0x9a
+ 982 0121 00000000 		.4byte	.LLST0
+ 983 0125 0A       		.uleb128 0xa
+ 984 0126 06000000 		.4byte	.LVL3
+ 985 012a 76050000 		.4byte	0x576
+ 986 012e 0A       		.uleb128 0xa
+ 987 012f 12000000 		.4byte	.LVL6
+ 988 0133 82050000 		.4byte	0x582
+ 989 0137 00       		.byte	0
+ 990 0138 09       		.uleb128 0x9
+ 991 0139 97000000 		.4byte	.LASF19
+ 992 013d 01       		.byte	0x1
+ 993 013e 39       		.byte	0x39
+ 994 013f 00000000 		.4byte	.LFB35
+ 995 0143 1C000000 		.4byte	.LFE35-.LFB35
+ 996 0147 01       		.uleb128 0x1
+ 997 0148 9C       		.byte	0x9c
+ 998 0149 9D010000 		.4byte	0x19d
+ 999 014d 0D       		.uleb128 0xd
+ 1000 014e 6200     		.ascii	"b\000"
+ 1001 0150 01       		.byte	0x1
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 26
+
+
+ 1002 0151 39       		.byte	0x39
+ 1003 0152 5D000000 		.4byte	0x5d
+ 1004 0156 29000000 		.4byte	.LLST1
+ 1005 015a 0E       		.uleb128 0xe
+ 1006 015b 62756600 		.ascii	"buf\000"
+ 1007 015f 01       		.byte	0x1
+ 1008 0160 3A       		.byte	0x3a
+ 1009 0161 9D010000 		.4byte	0x19d
+ 1010 0165 02       		.uleb128 0x2
+ 1011 0166 91       		.byte	0x91
+ 1012 0167 6C       		.sleb128 -20
+ 1013 0168 0F       		.uleb128 0xf
+ 1014 0169 0E000000 		.4byte	.LVL10
+ 1015 016d 94050000 		.4byte	0x594
+ 1016 0171 8C010000 		.4byte	0x18c
+ 1017 0175 10       		.uleb128 0x10
+ 1018 0176 01       		.uleb128 0x1
+ 1019 0177 52       		.byte	0x52
+ 1020 0178 03       		.uleb128 0x3
+ 1021 0179 F3       		.byte	0xf3
+ 1022 017a 01       		.uleb128 0x1
+ 1023 017b 50       		.byte	0x50
+ 1024 017c 10       		.uleb128 0x10
+ 1025 017d 01       		.uleb128 0x1
+ 1026 017e 51       		.byte	0x51
+ 1027 017f 05       		.uleb128 0x5
+ 1028 0180 03       		.byte	0x3
+ 1029 0181 00000000 		.4byte	.LC2
+ 1030 0185 10       		.uleb128 0x10
+ 1031 0186 01       		.uleb128 0x1
+ 1032 0187 50       		.byte	0x50
+ 1033 0188 02       		.uleb128 0x2
+ 1034 0189 91       		.byte	0x91
+ 1035 018a 6C       		.sleb128 -20
+ 1036 018b 00       		.byte	0
+ 1037 018c 11       		.uleb128 0x11
+ 1038 018d 14000000 		.4byte	.LVL11
+ 1039 0191 AF050000 		.4byte	0x5af
+ 1040 0195 10       		.uleb128 0x10
+ 1041 0196 01       		.uleb128 0x1
+ 1042 0197 50       		.byte	0x50
+ 1043 0198 02       		.uleb128 0x2
+ 1044 0199 91       		.byte	0x91
+ 1045 019a 6C       		.sleb128 -20
+ 1046 019b 00       		.byte	0
+ 1047 019c 00       		.byte	0
+ 1048 019d 12       		.uleb128 0x12
+ 1049 019e 9A000000 		.4byte	0x9a
+ 1050 01a2 AD010000 		.4byte	0x1ad
+ 1051 01a6 13       		.uleb128 0x13
+ 1052 01a7 B4000000 		.4byte	0xb4
+ 1053 01ab 09       		.byte	0x9
+ 1054 01ac 00       		.byte	0
+ 1055 01ad 09       		.uleb128 0x9
+ 1056 01ae 06020000 		.4byte	.LASF21
+ 1057 01b2 01       		.byte	0x1
+ 1058 01b3 3F       		.byte	0x3f
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 27
+
+
+ 1059 01b4 00000000 		.4byte	.LFB36
+ 1060 01b8 1C000000 		.4byte	.LFE36-.LFB36
+ 1061 01bc 01       		.uleb128 0x1
+ 1062 01bd 9C       		.byte	0x9c
+ 1063 01be 0B020000 		.4byte	0x20b
+ 1064 01c2 0D       		.uleb128 0xd
+ 1065 01c3 6200     		.ascii	"b\000"
+ 1066 01c5 01       		.byte	0x1
+ 1067 01c6 3F       		.byte	0x3f
+ 1068 01c7 9A000000 		.4byte	0x9a
+ 1069 01cb 55000000 		.4byte	.LLST2
+ 1070 01cf 0E       		.uleb128 0xe
+ 1071 01d0 62756600 		.ascii	"buf\000"
+ 1072 01d4 01       		.byte	0x1
+ 1073 01d5 40       		.byte	0x40
+ 1074 01d6 9D010000 		.4byte	0x19d
+ 1075 01da 02       		.uleb128 0x2
+ 1076 01db 91       		.byte	0x91
+ 1077 01dc 6C       		.sleb128 -20
+ 1078 01dd 0F       		.uleb128 0xf
+ 1079 01de 0E000000 		.4byte	.LVL14
+ 1080 01e2 94050000 		.4byte	0x594
+ 1081 01e6 FA010000 		.4byte	0x1fa
+ 1082 01ea 10       		.uleb128 0x10
+ 1083 01eb 01       		.uleb128 0x1
+ 1084 01ec 51       		.byte	0x51
+ 1085 01ed 05       		.uleb128 0x5
+ 1086 01ee 03       		.byte	0x3
+ 1087 01ef 04000000 		.4byte	.LC4
+ 1088 01f3 10       		.uleb128 0x10
+ 1089 01f4 01       		.uleb128 0x1
+ 1090 01f5 50       		.byte	0x50
+ 1091 01f6 02       		.uleb128 0x2
+ 1092 01f7 91       		.byte	0x91
+ 1093 01f8 6C       		.sleb128 -20
+ 1094 01f9 00       		.byte	0
+ 1095 01fa 11       		.uleb128 0x11
+ 1096 01fb 14000000 		.4byte	.LVL15
+ 1097 01ff AF050000 		.4byte	0x5af
+ 1098 0203 10       		.uleb128 0x10
+ 1099 0204 01       		.uleb128 0x1
+ 1100 0205 50       		.byte	0x50
+ 1101 0206 02       		.uleb128 0x2
+ 1102 0207 91       		.byte	0x91
+ 1103 0208 6C       		.sleb128 -20
+ 1104 0209 00       		.byte	0
+ 1105 020a 00       		.byte	0
+ 1106 020b 14       		.uleb128 0x14
+ 1107 020c 39000000 		.4byte	.LASF48
+ 1108 0210 01       		.byte	0x1
+ 1109 0211 46       		.byte	0x46
+ 1110 0212 00000000 		.4byte	.LFB37
+ 1111 0216 CC000000 		.4byte	.LFE37-.LFB37
+ 1112 021a 01       		.uleb128 0x1
+ 1113 021b 9C       		.byte	0x9c
+ 1114 021c 05030000 		.4byte	0x305
+ 1115 0220 15       		.uleb128 0x15
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 28
+
+
+ 1116 0221 6900     		.ascii	"i\000"
+ 1117 0223 01       		.byte	0x1
+ 1118 0224 48       		.byte	0x48
+ 1119 0225 5D000000 		.4byte	0x5d
+ 1120 0229 76000000 		.4byte	.LLST3
+ 1121 022d 0C       		.uleb128 0xc
+ 1122 022e EC000000 		.4byte	.LASF22
+ 1123 0232 01       		.byte	0x1
+ 1124 0233 49       		.byte	0x49
+ 1125 0234 9A000000 		.4byte	0x9a
+ 1126 0238 08010000 		.4byte	.LLST4
+ 1127 023c 16       		.uleb128 0x16
+ 1128 023d 41010000 		.4byte	.LASF23
+ 1129 0241 01       		.byte	0x1
+ 1130 0242 4A       		.byte	0x4a
+ 1131 0243 05030000 		.4byte	0x305
+ 1132 0247 02       		.uleb128 0x2
+ 1133 0248 91       		.byte	0x91
+ 1134 0249 68       		.sleb128 -24
+ 1135 024a 16       		.uleb128 0x16
+ 1136 024b 48010000 		.4byte	.LASF24
+ 1137 024f 01       		.byte	0x1
+ 1138 0250 4A       		.byte	0x4a
+ 1139 0251 05030000 		.4byte	0x305
+ 1140 0255 02       		.uleb128 0x2
+ 1141 0256 91       		.byte	0x91
+ 1142 0257 60       		.sleb128 -32
+ 1143 0258 0C       		.uleb128 0xc
+ 1144 0259 49000000 		.4byte	.LASF25
+ 1145 025d 01       		.byte	0x1
+ 1146 025e 4B       		.byte	0x4b
+ 1147 025f 15030000 		.4byte	0x315
+ 1148 0263 26010000 		.4byte	.LLST5
+ 1149 0267 0F       		.uleb128 0xf
+ 1150 0268 12000000 		.4byte	.LVL17
+ 1151 026c AF050000 		.4byte	0x5af
+ 1152 0270 7E020000 		.4byte	0x27e
+ 1153 0274 10       		.uleb128 0x10
+ 1154 0275 01       		.uleb128 0x1
+ 1155 0276 50       		.byte	0x50
+ 1156 0277 05       		.uleb128 0x5
+ 1157 0278 03       		.byte	0x3
+ 1158 0279 08000000 		.4byte	.LC7
+ 1159 027d 00       		.byte	0
+ 1160 027e 0A       		.uleb128 0xa
+ 1161 027f 1A000000 		.4byte	.LVL19
+ 1162 0283 FD000000 		.4byte	0xfd
+ 1163 0287 0F       		.uleb128 0xf
+ 1164 0288 2E000000 		.4byte	.LVL21
+ 1165 028c AF050000 		.4byte	0x5af
+ 1166 0290 9E020000 		.4byte	0x29e
+ 1167 0294 10       		.uleb128 0x10
+ 1168 0295 01       		.uleb128 0x1
+ 1169 0296 50       		.byte	0x50
+ 1170 0297 05       		.uleb128 0x5
+ 1171 0298 03       		.byte	0x3
+ 1172 0299 18000000 		.4byte	.LC9
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 29
+
+
+ 1173 029d 00       		.byte	0
+ 1174 029e 0A       		.uleb128 0xa
+ 1175 029f 36000000 		.4byte	.LVL23
+ 1176 02a3 FD000000 		.4byte	0xfd
+ 1177 02a7 0F       		.uleb128 0xf
+ 1178 02a8 82000000 		.4byte	.LVL36
+ 1179 02ac AF050000 		.4byte	0x5af
+ 1180 02b0 BE020000 		.4byte	0x2be
+ 1181 02b4 10       		.uleb128 0x10
+ 1182 02b5 01       		.uleb128 0x1
+ 1183 02b6 50       		.byte	0x50
+ 1184 02b7 05       		.uleb128 0x5
+ 1185 02b8 03       		.byte	0x3
+ 1186 02b9 3C000000 		.4byte	.LC11
+ 1187 02bd 00       		.byte	0
+ 1188 02be 0F       		.uleb128 0xf
+ 1189 02bf 88000000 		.4byte	.LVL37
+ 1190 02c3 AF050000 		.4byte	0x5af
+ 1191 02c7 D5020000 		.4byte	0x2d5
+ 1192 02cb 10       		.uleb128 0x10
+ 1193 02cc 01       		.uleb128 0x1
+ 1194 02cd 50       		.byte	0x50
+ 1195 02ce 05       		.uleb128 0x5
+ 1196 02cf 03       		.byte	0x3
+ 1197 02d0 74000000 		.4byte	.LC13
+ 1198 02d4 00       		.byte	0
+ 1199 02d5 0A       		.uleb128 0xa
+ 1200 02d6 96000000 		.4byte	.LVL39
+ 1201 02da AD010000 		.4byte	0x1ad
+ 1202 02de 0F       		.uleb128 0xf
+ 1203 02df A2000000 		.4byte	.LVL41
+ 1204 02e3 AF050000 		.4byte	0x5af
+ 1205 02e7 F5020000 		.4byte	0x2f5
+ 1206 02eb 10       		.uleb128 0x10
+ 1207 02ec 01       		.uleb128 0x1
+ 1208 02ed 50       		.byte	0x50
+ 1209 02ee 05       		.uleb128 0x5
+ 1210 02ef 03       		.byte	0x3
+ 1211 02f0 90000000 		.4byte	.LC15
+ 1212 02f4 00       		.byte	0
+ 1213 02f5 11       		.uleb128 0x11
+ 1214 02f6 B0000000 		.4byte	.LVL42
+ 1215 02fa 5A050000 		.4byte	0x55a
+ 1216 02fe 10       		.uleb128 0x10
+ 1217 02ff 01       		.uleb128 0x1
+ 1218 0300 50       		.byte	0x50
+ 1219 0301 01       		.uleb128 0x1
+ 1220 0302 31       		.byte	0x31
+ 1221 0303 00       		.byte	0
+ 1222 0304 00       		.byte	0
+ 1223 0305 12       		.uleb128 0x12
+ 1224 0306 9A000000 		.4byte	0x9a
+ 1225 030a 15030000 		.4byte	0x315
+ 1226 030e 13       		.uleb128 0x13
+ 1227 030f B4000000 		.4byte	0xb4
+ 1228 0313 04       		.byte	0x4
+ 1229 0314 00       		.byte	0
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 30
+
+
+ 1230 0315 02       		.uleb128 0x2
+ 1231 0316 01       		.byte	0x1
+ 1232 0317 02       		.byte	0x2
+ 1233 0318 A4020000 		.4byte	.LASF26
+ 1234 031c 0B       		.uleb128 0xb
+ 1235 031d 48020000 		.4byte	.LASF27
+ 1236 0321 01       		.byte	0x1
+ 1237 0322 8F       		.byte	0x8f
+ 1238 0323 5D000000 		.4byte	0x5d
+ 1239 0327 00000000 		.4byte	.LFB38
+ 1240 032b C0000000 		.4byte	.LFE38-.LFB38
+ 1241 032f 01       		.uleb128 0x1
+ 1242 0330 9C       		.byte	0x9c
+ 1243 0331 61030000 		.4byte	0x361
+ 1244 0335 0C       		.uleb128 0xc
+ 1245 0336 8B000000 		.4byte	.LASF28
+ 1246 033a 01       		.byte	0x1
+ 1247 033b 93       		.byte	0x93
+ 1248 033c 9A000000 		.4byte	0x9a
+ 1249 0340 5B010000 		.4byte	.LLST6
+ 1250 0344 0A       		.uleb128 0xa
+ 1251 0345 0C000000 		.4byte	.LVL44
+ 1252 0349 FD000000 		.4byte	0xfd
+ 1253 034d 11       		.uleb128 0x11
+ 1254 034e 96000000 		.4byte	.LVL48
+ 1255 0352 AF050000 		.4byte	0x5af
+ 1256 0356 10       		.uleb128 0x10
+ 1257 0357 01       		.uleb128 0x1
+ 1258 0358 50       		.byte	0x50
+ 1259 0359 05       		.uleb128 0x5
+ 1260 035a 03       		.byte	0x3
+ 1261 035b B0000000 		.4byte	.LC19
+ 1262 035f 00       		.byte	0
+ 1263 0360 00       		.byte	0
+ 1264 0361 0B       		.uleb128 0xb
+ 1265 0362 07010000 		.4byte	.LASF29
+ 1266 0366 01       		.byte	0x1
+ 1267 0367 D9       		.byte	0xd9
+ 1268 0368 5D000000 		.4byte	0x5d
+ 1269 036c 00000000 		.4byte	.LFB39
+ 1270 0370 00010000 		.4byte	.LFE39-.LFB39
+ 1271 0374 01       		.uleb128 0x1
+ 1272 0375 9C       		.byte	0x9c
+ 1273 0376 0C050000 		.4byte	0x50c
+ 1274 037a 0C       		.uleb128 0xc
+ 1275 037b 5D020000 		.4byte	.LASF30
+ 1276 037f 01       		.byte	0x1
+ 1277 0380 E3       		.byte	0xe3
+ 1278 0381 5D000000 		.4byte	0x5d
+ 1279 0385 B0010000 		.4byte	.LLST7
+ 1280 0389 0C       		.uleb128 0xc
+ 1281 038a FD000000 		.4byte	.LASF31
+ 1282 038e 01       		.byte	0x1
+ 1283 038f E4       		.byte	0xe4
+ 1284 0390 5D000000 		.4byte	0x5d
+ 1285 0394 E6010000 		.4byte	.LLST8
+ 1286 0398 15       		.uleb128 0x15
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 31
+
+
+ 1287 0399 6900     		.ascii	"i\000"
+ 1288 039b 01       		.byte	0x1
+ 1289 039c E8       		.byte	0xe8
+ 1290 039d 5D000000 		.4byte	0x5d
+ 1291 03a1 1B020000 		.4byte	.LLST9
+ 1292 03a5 0C       		.uleb128 0xc
+ 1293 03a6 26010000 		.4byte	.LASF32
+ 1294 03aa 01       		.byte	0x1
+ 1295 03ab F1       		.byte	0xf1
+ 1296 03ac 9A000000 		.4byte	0x9a
+ 1297 03b0 3A020000 		.4byte	.LLST10
+ 1298 03b4 0F       		.uleb128 0xf
+ 1299 03b5 10000000 		.4byte	.LVL59
+ 1300 03b9 CC050000 		.4byte	0x5cc
+ 1301 03bd CB030000 		.4byte	0x3cb
+ 1302 03c1 10       		.uleb128 0x10
+ 1303 03c2 01       		.uleb128 0x1
+ 1304 03c3 50       		.byte	0x50
+ 1305 03c4 05       		.uleb128 0x5
+ 1306 03c5 03       		.byte	0x3
+ 1307 03c6 00000000 		.4byte	timerISR
+ 1308 03ca 00       		.byte	0
+ 1309 03cb 0A       		.uleb128 0xa
+ 1310 03cc 16000000 		.4byte	.LVL60
+ 1311 03d0 DD050000 		.4byte	0x5dd
+ 1312 03d4 0A       		.uleb128 0xa
+ 1313 03d5 1A000000 		.4byte	.LVL61
+ 1314 03d9 E4050000 		.4byte	0x5e4
+ 1315 03dd 0F       		.uleb128 0xf
+ 1316 03de 20000000 		.4byte	.LVL62
+ 1317 03e2 AF050000 		.4byte	0x5af
+ 1318 03e6 F4030000 		.4byte	0x3f4
+ 1319 03ea 10       		.uleb128 0x10
+ 1320 03eb 01       		.uleb128 0x1
+ 1321 03ec 50       		.byte	0x50
+ 1322 03ed 05       		.uleb128 0x5
+ 1323 03ee 03       		.byte	0x3
+ 1324 03ef C4000000 		.4byte	.LC22
+ 1325 03f3 00       		.byte	0
+ 1326 03f4 0F       		.uleb128 0xf
+ 1327 03f5 26000000 		.4byte	.LVL63
+ 1328 03f9 AF050000 		.4byte	0x5af
+ 1329 03fd 0B040000 		.4byte	0x40b
+ 1330 0401 10       		.uleb128 0x10
+ 1331 0402 01       		.uleb128 0x1
+ 1332 0403 50       		.byte	0x50
+ 1333 0404 05       		.uleb128 0x5
+ 1334 0405 03       		.byte	0x3
+ 1335 0406 E4000000 		.4byte	.LC24
+ 1336 040a 00       		.byte	0
+ 1337 040b 0A       		.uleb128 0xa
+ 1338 040c 34000000 		.4byte	.LVL65
+ 1339 0410 AD010000 		.4byte	0x1ad
+ 1340 0414 0F       		.uleb128 0xf
+ 1341 0415 40000000 		.4byte	.LVL67
+ 1342 0419 5A050000 		.4byte	0x55a
+ 1343 041d 27040000 		.4byte	0x427
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 32
+
+
+ 1344 0421 10       		.uleb128 0x10
+ 1345 0422 01       		.uleb128 0x1
+ 1346 0423 50       		.byte	0x50
+ 1347 0424 01       		.uleb128 0x1
+ 1348 0425 31       		.byte	0x31
+ 1349 0426 00       		.byte	0
+ 1350 0427 0F       		.uleb128 0xf
+ 1351 0428 46000000 		.4byte	.LVL68
+ 1352 042c AF050000 		.4byte	0x5af
+ 1353 0430 3E040000 		.4byte	0x43e
+ 1354 0434 10       		.uleb128 0x10
+ 1355 0435 01       		.uleb128 0x1
+ 1356 0436 50       		.byte	0x50
+ 1357 0437 05       		.uleb128 0x5
+ 1358 0438 03       		.byte	0x3
+ 1359 0439 00010000 		.4byte	.LC27
+ 1360 043d 00       		.byte	0
+ 1361 043e 0A       		.uleb128 0xa
+ 1362 043f 56000000 		.4byte	.LVL71
+ 1363 0443 FD000000 		.4byte	0xfd
+ 1364 0447 0F       		.uleb128 0xf
+ 1365 0448 70000000 		.4byte	.LVL73
+ 1366 044c 5A050000 		.4byte	0x55a
+ 1367 0450 5B040000 		.4byte	0x45b
+ 1368 0454 10       		.uleb128 0x10
+ 1369 0455 01       		.uleb128 0x1
+ 1370 0456 50       		.byte	0x50
+ 1371 0457 02       		.uleb128 0x2
+ 1372 0458 08       		.byte	0x8
+ 1373 0459 64       		.byte	0x64
+ 1374 045a 00       		.byte	0
+ 1375 045b 0F       		.uleb128 0xf
+ 1376 045c 76000000 		.4byte	.LVL74
+ 1377 0460 AF050000 		.4byte	0x5af
+ 1378 0464 6F040000 		.4byte	0x46f
+ 1379 0468 10       		.uleb128 0x10
+ 1380 0469 01       		.uleb128 0x1
+ 1381 046a 50       		.byte	0x50
+ 1382 046b 02       		.uleb128 0x2
+ 1383 046c 78       		.byte	0x78
+ 1384 046d 00       		.sleb128 0
+ 1385 046e 00       		.byte	0
+ 1386 046f 0A       		.uleb128 0xa
+ 1387 0470 7E000000 		.4byte	.LVL75
+ 1388 0474 1C030000 		.4byte	0x31c
+ 1389 0478 0A       		.uleb128 0xa
+ 1390 0479 86000000 		.4byte	.LVL77
+ 1391 047d 5A050000 		.4byte	0x55a
+ 1392 0481 0F       		.uleb128 0xf
+ 1393 0482 94000000 		.4byte	.LVL78
+ 1394 0486 AF050000 		.4byte	0x5af
+ 1395 048a 98040000 		.4byte	0x498
+ 1396 048e 10       		.uleb128 0x10
+ 1397 048f 01       		.uleb128 0x1
+ 1398 0490 50       		.byte	0x50
+ 1399 0491 05       		.uleb128 0x5
+ 1400 0492 03       		.byte	0x3
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 33
+
+
+ 1401 0493 68010000 		.4byte	.LC31
+ 1402 0497 00       		.byte	0
+ 1403 0498 0F       		.uleb128 0xf
+ 1404 0499 A4000000 		.4byte	.LVL82
+ 1405 049d AF050000 		.4byte	0x5af
+ 1406 04a1 AF040000 		.4byte	0x4af
+ 1407 04a5 10       		.uleb128 0x10
+ 1408 04a6 01       		.uleb128 0x1
+ 1409 04a7 50       		.byte	0x50
+ 1410 04a8 05       		.uleb128 0x5
+ 1411 04a9 03       		.byte	0x3
+ 1412 04aa A8010000 		.4byte	.LC33
+ 1413 04ae 00       		.byte	0
+ 1414 04af 0F       		.uleb128 0xf
+ 1415 04b0 AC000000 		.4byte	.LVL85
+ 1416 04b4 AF050000 		.4byte	0x5af
+ 1417 04b8 C3040000 		.4byte	0x4c3
+ 1418 04bc 10       		.uleb128 0x10
+ 1419 04bd 01       		.uleb128 0x1
+ 1420 04be 50       		.byte	0x50
+ 1421 04bf 02       		.uleb128 0x2
+ 1422 04c0 77       		.byte	0x77
+ 1423 04c1 00       		.sleb128 0
+ 1424 04c2 00       		.byte	0
+ 1425 04c3 0F       		.uleb128 0xf
+ 1426 04c4 B2000000 		.4byte	.LVL86
+ 1427 04c8 38010000 		.4byte	0x138
+ 1428 04cc D7040000 		.4byte	0x4d7
+ 1429 04d0 10       		.uleb128 0x10
+ 1430 04d1 01       		.uleb128 0x1
+ 1431 04d2 50       		.byte	0x50
+ 1432 04d3 02       		.uleb128 0x2
+ 1433 04d4 74       		.byte	0x74
+ 1434 04d5 00       		.sleb128 0
+ 1435 04d6 00       		.byte	0
+ 1436 04d7 0F       		.uleb128 0xf
+ 1437 04d8 B8000000 		.4byte	.LVL87
+ 1438 04dc AF050000 		.4byte	0x5af
+ 1439 04e0 EB040000 		.4byte	0x4eb
+ 1440 04e4 10       		.uleb128 0x10
+ 1441 04e5 01       		.uleb128 0x1
+ 1442 04e6 50       		.byte	0x50
+ 1443 04e7 02       		.uleb128 0x2
+ 1444 04e8 76       		.byte	0x76
+ 1445 04e9 00       		.sleb128 0
+ 1446 04ea 00       		.byte	0
+ 1447 04eb 0F       		.uleb128 0xf
+ 1448 04ec C4000000 		.4byte	.LVL90
+ 1449 04f0 AF050000 		.4byte	0x5af
+ 1450 04f4 02050000 		.4byte	0x502
+ 1451 04f8 10       		.uleb128 0x10
+ 1452 04f9 01       		.uleb128 0x1
+ 1453 04fa 50       		.byte	0x50
+ 1454 04fb 05       		.uleb128 0x5
+ 1455 04fc 03       		.byte	0x3
+ 1456 04fd 08020000 		.4byte	.LC39
+ 1457 0501 00       		.byte	0
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 34
+
+
+ 1458 0502 0A       		.uleb128 0xa
+ 1459 0503 C8000000 		.4byte	.LVL91
+ 1460 0507 0B020000 		.4byte	0x20b
+ 1461 050b 00       		.byte	0
+ 1462 050c 17       		.uleb128 0x17
+ 1463 050d B2020000 		.4byte	.LASF33
+ 1464 0511 01       		.byte	0x1
+ 1465 0512 11       		.byte	0x11
+ 1466 0513 05030000 		.4byte	0x305
+ 1467 0517 05       		.uleb128 0x5
+ 1468 0518 03       		.byte	0x3
+ 1469 0519 00000000 		.4byte	combo
+ 1470 051d 17       		.uleb128 0x17
+ 1471 051e B8020000 		.4byte	.LASF34
+ 1472 0522 01       		.byte	0x1
+ 1473 0523 12       		.byte	0x12
+ 1474 0524 5D000000 		.4byte	0x5d
+ 1475 0528 05       		.uleb128 0x5
+ 1476 0529 03       		.byte	0x3
+ 1477 052a 00000000 		.4byte	currentState
+ 1478 052e 17       		.uleb128 0x17
+ 1479 052f 7F020000 		.4byte	.LASF35
+ 1480 0533 01       		.byte	0x1
+ 1481 0534 13       		.byte	0x13
+ 1482 0535 15030000 		.4byte	0x315
+ 1483 0539 05       		.uleb128 0x5
+ 1484 053a 03       		.byte	0x3
+ 1485 053b 00000000 		.4byte	disable_entry
+ 1486 053f 18       		.uleb128 0x18
+ 1487 0540 746300   		.ascii	"tc\000"
+ 1488 0543 01       		.byte	0x1
+ 1489 0544 14       		.byte	0x14
+ 1490 0545 5D000000 		.4byte	0x5d
+ 1491 0549 05       		.uleb128 0x5
+ 1492 054a 03       		.byte	0x3
+ 1493 054b 00000000 		.4byte	tc
+ 1494 054f 19       		.uleb128 0x19
+ 1495 0550 D8000000 		.4byte	.LASF36
+ 1496 0554 03       		.byte	0x3
+ 1497 0555 20       		.byte	0x20
+ 1498 0556 6B000000 		.4byte	0x6b
+ 1499 055a 1A       		.uleb128 0x1a
+ 1500 055b 8D020000 		.4byte	.LASF39
+ 1501 055f 03       		.byte	0x3
+ 1502 0560 1D       		.byte	0x1d
+ 1503 0561 6B050000 		.4byte	0x56b
+ 1504 0565 1B       		.uleb128 0x1b
+ 1505 0566 6B000000 		.4byte	0x6b
+ 1506 056a 00       		.byte	0
+ 1507 056b 19       		.uleb128 0x19
+ 1508 056c 64020000 		.4byte	.LASF37
+ 1509 0570 04       		.byte	0x4
+ 1510 0571 5E       		.byte	0x5e
+ 1511 0572 6B000000 		.4byte	0x6b
+ 1512 0576 1C       		.uleb128 0x1c
+ 1513 0577 C5000000 		.4byte	.LASF38
+ 1514 057b 05       		.byte	0x5
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 35
+
+
+ 1515 057c 6A01     		.2byte	0x16a
+ 1516 057e 76000000 		.4byte	0x76
+ 1517 0582 1D       		.uleb128 0x1d
+ 1518 0583 0C010000 		.4byte	.LASF40
+ 1519 0587 05       		.byte	0x5
+ 1520 0588 8C01     		.2byte	0x18c
+ 1521 058a 94050000 		.4byte	0x594
+ 1522 058e 1B       		.uleb128 0x1b
+ 1523 058f 76000000 		.4byte	0x76
+ 1524 0593 00       		.byte	0
+ 1525 0594 1E       		.uleb128 0x1e
+ 1526 0595 AA020000 		.4byte	.LASF49
+ 1527 0599 08       		.byte	0x8
+ 1528 059a D9       		.byte	0xd9
+ 1529 059b 5D000000 		.4byte	0x5d
+ 1530 059f AF050000 		.4byte	0x5af
+ 1531 05a3 1B       		.uleb128 0x1b
+ 1532 05a4 BB000000 		.4byte	0xbb
+ 1533 05a8 1B       		.uleb128 0x1b
+ 1534 05a9 C1000000 		.4byte	0xc1
+ 1535 05ad 1F       		.uleb128 0x1f
+ 1536 05ae 00       		.byte	0
+ 1537 05af 1D       		.uleb128 0x1d
+ 1538 05b0 1B000000 		.4byte	.LASF41
+ 1539 05b4 05       		.byte	0x5
+ 1540 05b5 7701     		.2byte	0x177
+ 1541 05b7 C1050000 		.4byte	0x5c1
+ 1542 05bb 1B       		.uleb128 0x1b
+ 1543 05bc C1050000 		.4byte	0x5c1
+ 1544 05c0 00       		.byte	0
+ 1545 05c1 06       		.uleb128 0x6
+ 1546 05c2 04       		.byte	0x4
+ 1547 05c3 C7050000 		.4byte	0x5c7
+ 1548 05c7 08       		.uleb128 0x8
+ 1549 05c8 8F000000 		.4byte	0x8f
+ 1550 05cc 1A       		.uleb128 0x1a
+ 1551 05cd 60000000 		.4byte	.LASF42
+ 1552 05d1 06       		.byte	0x6
+ 1553 05d2 18       		.byte	0x18
+ 1554 05d3 DD050000 		.4byte	0x5dd
+ 1555 05d7 1B       		.uleb128 0x1b
+ 1556 05d8 A1000000 		.4byte	0xa1
+ 1557 05dc 00       		.byte	0
+ 1558 05dd 20       		.uleb128 0x20
+ 1559 05de 0D000000 		.4byte	.LASF43
+ 1560 05e2 04       		.byte	0x4
+ 1561 05e3 5A       		.byte	0x5a
+ 1562 05e4 20       		.uleb128 0x20
+ 1563 05e5 00000000 		.4byte	.LASF44
+ 1564 05e9 07       		.byte	0x7
+ 1565 05ea 68       		.byte	0x68
+ 1566 05eb 00       		.byte	0
+ 1567              		.section	.debug_abbrev,"",%progbits
+ 1568              	.Ldebug_abbrev0:
+ 1569 0000 01       		.uleb128 0x1
+ 1570 0001 11       		.uleb128 0x11
+ 1571 0002 01       		.byte	0x1
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 36
+
+
+ 1572 0003 25       		.uleb128 0x25
+ 1573 0004 0E       		.uleb128 0xe
+ 1574 0005 13       		.uleb128 0x13
+ 1575 0006 0B       		.uleb128 0xb
+ 1576 0007 03       		.uleb128 0x3
+ 1577 0008 0E       		.uleb128 0xe
+ 1578 0009 1B       		.uleb128 0x1b
+ 1579 000a 0E       		.uleb128 0xe
+ 1580 000b 55       		.uleb128 0x55
+ 1581 000c 17       		.uleb128 0x17
+ 1582 000d 11       		.uleb128 0x11
+ 1583 000e 01       		.uleb128 0x1
+ 1584 000f 10       		.uleb128 0x10
+ 1585 0010 17       		.uleb128 0x17
+ 1586 0011 00       		.byte	0
+ 1587 0012 00       		.byte	0
+ 1588 0013 02       		.uleb128 0x2
+ 1589 0014 24       		.uleb128 0x24
+ 1590 0015 00       		.byte	0
+ 1591 0016 0B       		.uleb128 0xb
+ 1592 0017 0B       		.uleb128 0xb
+ 1593 0018 3E       		.uleb128 0x3e
+ 1594 0019 0B       		.uleb128 0xb
+ 1595 001a 03       		.uleb128 0x3
+ 1596 001b 0E       		.uleb128 0xe
+ 1597 001c 00       		.byte	0
+ 1598 001d 00       		.byte	0
+ 1599 001e 03       		.uleb128 0x3
+ 1600 001f 24       		.uleb128 0x24
+ 1601 0020 00       		.byte	0
+ 1602 0021 0B       		.uleb128 0xb
+ 1603 0022 0B       		.uleb128 0xb
+ 1604 0023 3E       		.uleb128 0x3e
+ 1605 0024 0B       		.uleb128 0xb
+ 1606 0025 03       		.uleb128 0x3
+ 1607 0026 08       		.uleb128 0x8
+ 1608 0027 00       		.byte	0
+ 1609 0028 00       		.byte	0
+ 1610 0029 04       		.uleb128 0x4
+ 1611 002a 16       		.uleb128 0x16
+ 1612 002b 00       		.byte	0
+ 1613 002c 03       		.uleb128 0x3
+ 1614 002d 0E       		.uleb128 0xe
+ 1615 002e 3A       		.uleb128 0x3a
+ 1616 002f 0B       		.uleb128 0xb
+ 1617 0030 3B       		.uleb128 0x3b
+ 1618 0031 0B       		.uleb128 0xb
+ 1619 0032 49       		.uleb128 0x49
+ 1620 0033 13       		.uleb128 0x13
+ 1621 0034 00       		.byte	0
+ 1622 0035 00       		.byte	0
+ 1623 0036 05       		.uleb128 0x5
+ 1624 0037 16       		.uleb128 0x16
+ 1625 0038 00       		.byte	0
+ 1626 0039 03       		.uleb128 0x3
+ 1627 003a 0E       		.uleb128 0xe
+ 1628 003b 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 37
+
+
+ 1629 003c 0B       		.uleb128 0xb
+ 1630 003d 3B       		.uleb128 0x3b
+ 1631 003e 05       		.uleb128 0x5
+ 1632 003f 49       		.uleb128 0x49
+ 1633 0040 13       		.uleb128 0x13
+ 1634 0041 00       		.byte	0
+ 1635 0042 00       		.byte	0
+ 1636 0043 06       		.uleb128 0x6
+ 1637 0044 0F       		.uleb128 0xf
+ 1638 0045 00       		.byte	0
+ 1639 0046 0B       		.uleb128 0xb
+ 1640 0047 0B       		.uleb128 0xb
+ 1641 0048 49       		.uleb128 0x49
+ 1642 0049 13       		.uleb128 0x13
+ 1643 004a 00       		.byte	0
+ 1644 004b 00       		.byte	0
+ 1645 004c 07       		.uleb128 0x7
+ 1646 004d 15       		.uleb128 0x15
+ 1647 004e 00       		.byte	0
+ 1648 004f 27       		.uleb128 0x27
+ 1649 0050 19       		.uleb128 0x19
+ 1650 0051 00       		.byte	0
+ 1651 0052 00       		.byte	0
+ 1652 0053 08       		.uleb128 0x8
+ 1653 0054 26       		.uleb128 0x26
+ 1654 0055 00       		.byte	0
+ 1655 0056 49       		.uleb128 0x49
+ 1656 0057 13       		.uleb128 0x13
+ 1657 0058 00       		.byte	0
+ 1658 0059 00       		.byte	0
+ 1659 005a 09       		.uleb128 0x9
+ 1660 005b 2E       		.uleb128 0x2e
+ 1661 005c 01       		.byte	0x1
+ 1662 005d 3F       		.uleb128 0x3f
+ 1663 005e 19       		.uleb128 0x19
+ 1664 005f 03       		.uleb128 0x3
+ 1665 0060 0E       		.uleb128 0xe
+ 1666 0061 3A       		.uleb128 0x3a
+ 1667 0062 0B       		.uleb128 0xb
+ 1668 0063 3B       		.uleb128 0x3b
+ 1669 0064 0B       		.uleb128 0xb
+ 1670 0065 27       		.uleb128 0x27
+ 1671 0066 19       		.uleb128 0x19
+ 1672 0067 11       		.uleb128 0x11
+ 1673 0068 01       		.uleb128 0x1
+ 1674 0069 12       		.uleb128 0x12
+ 1675 006a 06       		.uleb128 0x6
+ 1676 006b 40       		.uleb128 0x40
+ 1677 006c 18       		.uleb128 0x18
+ 1678 006d 9742     		.uleb128 0x2117
+ 1679 006f 19       		.uleb128 0x19
+ 1680 0070 01       		.uleb128 0x1
+ 1681 0071 13       		.uleb128 0x13
+ 1682 0072 00       		.byte	0
+ 1683 0073 00       		.byte	0
+ 1684 0074 0A       		.uleb128 0xa
+ 1685 0075 898201   		.uleb128 0x4109
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 38
+
+
+ 1686 0078 00       		.byte	0
+ 1687 0079 11       		.uleb128 0x11
+ 1688 007a 01       		.uleb128 0x1
+ 1689 007b 31       		.uleb128 0x31
+ 1690 007c 13       		.uleb128 0x13
+ 1691 007d 00       		.byte	0
+ 1692 007e 00       		.byte	0
+ 1693 007f 0B       		.uleb128 0xb
+ 1694 0080 2E       		.uleb128 0x2e
+ 1695 0081 01       		.byte	0x1
+ 1696 0082 3F       		.uleb128 0x3f
+ 1697 0083 19       		.uleb128 0x19
+ 1698 0084 03       		.uleb128 0x3
+ 1699 0085 0E       		.uleb128 0xe
+ 1700 0086 3A       		.uleb128 0x3a
+ 1701 0087 0B       		.uleb128 0xb
+ 1702 0088 3B       		.uleb128 0x3b
+ 1703 0089 0B       		.uleb128 0xb
+ 1704 008a 49       		.uleb128 0x49
+ 1705 008b 13       		.uleb128 0x13
+ 1706 008c 11       		.uleb128 0x11
+ 1707 008d 01       		.uleb128 0x1
+ 1708 008e 12       		.uleb128 0x12
+ 1709 008f 06       		.uleb128 0x6
+ 1710 0090 40       		.uleb128 0x40
+ 1711 0091 18       		.uleb128 0x18
+ 1712 0092 9742     		.uleb128 0x2117
+ 1713 0094 19       		.uleb128 0x19
+ 1714 0095 01       		.uleb128 0x1
+ 1715 0096 13       		.uleb128 0x13
+ 1716 0097 00       		.byte	0
+ 1717 0098 00       		.byte	0
+ 1718 0099 0C       		.uleb128 0xc
+ 1719 009a 34       		.uleb128 0x34
+ 1720 009b 00       		.byte	0
+ 1721 009c 03       		.uleb128 0x3
+ 1722 009d 0E       		.uleb128 0xe
+ 1723 009e 3A       		.uleb128 0x3a
+ 1724 009f 0B       		.uleb128 0xb
+ 1725 00a0 3B       		.uleb128 0x3b
+ 1726 00a1 0B       		.uleb128 0xb
+ 1727 00a2 49       		.uleb128 0x49
+ 1728 00a3 13       		.uleb128 0x13
+ 1729 00a4 02       		.uleb128 0x2
+ 1730 00a5 17       		.uleb128 0x17
+ 1731 00a6 00       		.byte	0
+ 1732 00a7 00       		.byte	0
+ 1733 00a8 0D       		.uleb128 0xd
+ 1734 00a9 05       		.uleb128 0x5
+ 1735 00aa 00       		.byte	0
+ 1736 00ab 03       		.uleb128 0x3
+ 1737 00ac 08       		.uleb128 0x8
+ 1738 00ad 3A       		.uleb128 0x3a
+ 1739 00ae 0B       		.uleb128 0xb
+ 1740 00af 3B       		.uleb128 0x3b
+ 1741 00b0 0B       		.uleb128 0xb
+ 1742 00b1 49       		.uleb128 0x49
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 39
+
+
+ 1743 00b2 13       		.uleb128 0x13
+ 1744 00b3 02       		.uleb128 0x2
+ 1745 00b4 17       		.uleb128 0x17
+ 1746 00b5 00       		.byte	0
+ 1747 00b6 00       		.byte	0
+ 1748 00b7 0E       		.uleb128 0xe
+ 1749 00b8 34       		.uleb128 0x34
+ 1750 00b9 00       		.byte	0
+ 1751 00ba 03       		.uleb128 0x3
+ 1752 00bb 08       		.uleb128 0x8
+ 1753 00bc 3A       		.uleb128 0x3a
+ 1754 00bd 0B       		.uleb128 0xb
+ 1755 00be 3B       		.uleb128 0x3b
+ 1756 00bf 0B       		.uleb128 0xb
+ 1757 00c0 49       		.uleb128 0x49
+ 1758 00c1 13       		.uleb128 0x13
+ 1759 00c2 02       		.uleb128 0x2
+ 1760 00c3 18       		.uleb128 0x18
+ 1761 00c4 00       		.byte	0
+ 1762 00c5 00       		.byte	0
+ 1763 00c6 0F       		.uleb128 0xf
+ 1764 00c7 898201   		.uleb128 0x4109
+ 1765 00ca 01       		.byte	0x1
+ 1766 00cb 11       		.uleb128 0x11
+ 1767 00cc 01       		.uleb128 0x1
+ 1768 00cd 31       		.uleb128 0x31
+ 1769 00ce 13       		.uleb128 0x13
+ 1770 00cf 01       		.uleb128 0x1
+ 1771 00d0 13       		.uleb128 0x13
+ 1772 00d1 00       		.byte	0
+ 1773 00d2 00       		.byte	0
+ 1774 00d3 10       		.uleb128 0x10
+ 1775 00d4 8A8201   		.uleb128 0x410a
+ 1776 00d7 00       		.byte	0
+ 1777 00d8 02       		.uleb128 0x2
+ 1778 00d9 18       		.uleb128 0x18
+ 1779 00da 9142     		.uleb128 0x2111
+ 1780 00dc 18       		.uleb128 0x18
+ 1781 00dd 00       		.byte	0
+ 1782 00de 00       		.byte	0
+ 1783 00df 11       		.uleb128 0x11
+ 1784 00e0 898201   		.uleb128 0x4109
+ 1785 00e3 01       		.byte	0x1
+ 1786 00e4 11       		.uleb128 0x11
+ 1787 00e5 01       		.uleb128 0x1
+ 1788 00e6 31       		.uleb128 0x31
+ 1789 00e7 13       		.uleb128 0x13
+ 1790 00e8 00       		.byte	0
+ 1791 00e9 00       		.byte	0
+ 1792 00ea 12       		.uleb128 0x12
+ 1793 00eb 01       		.uleb128 0x1
+ 1794 00ec 01       		.byte	0x1
+ 1795 00ed 49       		.uleb128 0x49
+ 1796 00ee 13       		.uleb128 0x13
+ 1797 00ef 01       		.uleb128 0x1
+ 1798 00f0 13       		.uleb128 0x13
+ 1799 00f1 00       		.byte	0
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 40
+
+
+ 1800 00f2 00       		.byte	0
+ 1801 00f3 13       		.uleb128 0x13
+ 1802 00f4 21       		.uleb128 0x21
+ 1803 00f5 00       		.byte	0
+ 1804 00f6 49       		.uleb128 0x49
+ 1805 00f7 13       		.uleb128 0x13
+ 1806 00f8 2F       		.uleb128 0x2f
+ 1807 00f9 0B       		.uleb128 0xb
+ 1808 00fa 00       		.byte	0
+ 1809 00fb 00       		.byte	0
+ 1810 00fc 14       		.uleb128 0x14
+ 1811 00fd 2E       		.uleb128 0x2e
+ 1812 00fe 01       		.byte	0x1
+ 1813 00ff 3F       		.uleb128 0x3f
+ 1814 0100 19       		.uleb128 0x19
+ 1815 0101 03       		.uleb128 0x3
+ 1816 0102 0E       		.uleb128 0xe
+ 1817 0103 3A       		.uleb128 0x3a
+ 1818 0104 0B       		.uleb128 0xb
+ 1819 0105 3B       		.uleb128 0x3b
+ 1820 0106 0B       		.uleb128 0xb
+ 1821 0107 11       		.uleb128 0x11
+ 1822 0108 01       		.uleb128 0x1
+ 1823 0109 12       		.uleb128 0x12
+ 1824 010a 06       		.uleb128 0x6
+ 1825 010b 40       		.uleb128 0x40
+ 1826 010c 18       		.uleb128 0x18
+ 1827 010d 9742     		.uleb128 0x2117
+ 1828 010f 19       		.uleb128 0x19
+ 1829 0110 01       		.uleb128 0x1
+ 1830 0111 13       		.uleb128 0x13
+ 1831 0112 00       		.byte	0
+ 1832 0113 00       		.byte	0
+ 1833 0114 15       		.uleb128 0x15
+ 1834 0115 34       		.uleb128 0x34
+ 1835 0116 00       		.byte	0
+ 1836 0117 03       		.uleb128 0x3
+ 1837 0118 08       		.uleb128 0x8
+ 1838 0119 3A       		.uleb128 0x3a
+ 1839 011a 0B       		.uleb128 0xb
+ 1840 011b 3B       		.uleb128 0x3b
+ 1841 011c 0B       		.uleb128 0xb
+ 1842 011d 49       		.uleb128 0x49
+ 1843 011e 13       		.uleb128 0x13
+ 1844 011f 02       		.uleb128 0x2
+ 1845 0120 17       		.uleb128 0x17
+ 1846 0121 00       		.byte	0
+ 1847 0122 00       		.byte	0
+ 1848 0123 16       		.uleb128 0x16
+ 1849 0124 34       		.uleb128 0x34
+ 1850 0125 00       		.byte	0
+ 1851 0126 03       		.uleb128 0x3
+ 1852 0127 0E       		.uleb128 0xe
+ 1853 0128 3A       		.uleb128 0x3a
+ 1854 0129 0B       		.uleb128 0xb
+ 1855 012a 3B       		.uleb128 0x3b
+ 1856 012b 0B       		.uleb128 0xb
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 41
+
+
+ 1857 012c 49       		.uleb128 0x49
+ 1858 012d 13       		.uleb128 0x13
+ 1859 012e 02       		.uleb128 0x2
+ 1860 012f 18       		.uleb128 0x18
+ 1861 0130 00       		.byte	0
+ 1862 0131 00       		.byte	0
+ 1863 0132 17       		.uleb128 0x17
+ 1864 0133 34       		.uleb128 0x34
+ 1865 0134 00       		.byte	0
+ 1866 0135 03       		.uleb128 0x3
+ 1867 0136 0E       		.uleb128 0xe
+ 1868 0137 3A       		.uleb128 0x3a
+ 1869 0138 0B       		.uleb128 0xb
+ 1870 0139 3B       		.uleb128 0x3b
+ 1871 013a 0B       		.uleb128 0xb
+ 1872 013b 49       		.uleb128 0x49
+ 1873 013c 13       		.uleb128 0x13
+ 1874 013d 3F       		.uleb128 0x3f
+ 1875 013e 19       		.uleb128 0x19
+ 1876 013f 02       		.uleb128 0x2
+ 1877 0140 18       		.uleb128 0x18
+ 1878 0141 00       		.byte	0
+ 1879 0142 00       		.byte	0
+ 1880 0143 18       		.uleb128 0x18
+ 1881 0144 34       		.uleb128 0x34
+ 1882 0145 00       		.byte	0
+ 1883 0146 03       		.uleb128 0x3
+ 1884 0147 08       		.uleb128 0x8
+ 1885 0148 3A       		.uleb128 0x3a
+ 1886 0149 0B       		.uleb128 0xb
+ 1887 014a 3B       		.uleb128 0x3b
+ 1888 014b 0B       		.uleb128 0xb
+ 1889 014c 49       		.uleb128 0x49
+ 1890 014d 13       		.uleb128 0x13
+ 1891 014e 3F       		.uleb128 0x3f
+ 1892 014f 19       		.uleb128 0x19
+ 1893 0150 02       		.uleb128 0x2
+ 1894 0151 18       		.uleb128 0x18
+ 1895 0152 00       		.byte	0
+ 1896 0153 00       		.byte	0
+ 1897 0154 19       		.uleb128 0x19
+ 1898 0155 2E       		.uleb128 0x2e
+ 1899 0156 00       		.byte	0
+ 1900 0157 3F       		.uleb128 0x3f
+ 1901 0158 19       		.uleb128 0x19
+ 1902 0159 03       		.uleb128 0x3
+ 1903 015a 0E       		.uleb128 0xe
+ 1904 015b 3A       		.uleb128 0x3a
+ 1905 015c 0B       		.uleb128 0xb
+ 1906 015d 3B       		.uleb128 0x3b
+ 1907 015e 0B       		.uleb128 0xb
+ 1908 015f 27       		.uleb128 0x27
+ 1909 0160 19       		.uleb128 0x19
+ 1910 0161 49       		.uleb128 0x49
+ 1911 0162 13       		.uleb128 0x13
+ 1912 0163 3C       		.uleb128 0x3c
+ 1913 0164 19       		.uleb128 0x19
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 42
+
+
+ 1914 0165 00       		.byte	0
+ 1915 0166 00       		.byte	0
+ 1916 0167 1A       		.uleb128 0x1a
+ 1917 0168 2E       		.uleb128 0x2e
+ 1918 0169 01       		.byte	0x1
+ 1919 016a 3F       		.uleb128 0x3f
+ 1920 016b 19       		.uleb128 0x19
+ 1921 016c 03       		.uleb128 0x3
+ 1922 016d 0E       		.uleb128 0xe
+ 1923 016e 3A       		.uleb128 0x3a
+ 1924 016f 0B       		.uleb128 0xb
+ 1925 0170 3B       		.uleb128 0x3b
+ 1926 0171 0B       		.uleb128 0xb
+ 1927 0172 27       		.uleb128 0x27
+ 1928 0173 19       		.uleb128 0x19
+ 1929 0174 3C       		.uleb128 0x3c
+ 1930 0175 19       		.uleb128 0x19
+ 1931 0176 01       		.uleb128 0x1
+ 1932 0177 13       		.uleb128 0x13
+ 1933 0178 00       		.byte	0
+ 1934 0179 00       		.byte	0
+ 1935 017a 1B       		.uleb128 0x1b
+ 1936 017b 05       		.uleb128 0x5
+ 1937 017c 00       		.byte	0
+ 1938 017d 49       		.uleb128 0x49
+ 1939 017e 13       		.uleb128 0x13
+ 1940 017f 00       		.byte	0
+ 1941 0180 00       		.byte	0
+ 1942 0181 1C       		.uleb128 0x1c
+ 1943 0182 2E       		.uleb128 0x2e
+ 1944 0183 00       		.byte	0
+ 1945 0184 3F       		.uleb128 0x3f
+ 1946 0185 19       		.uleb128 0x19
+ 1947 0186 03       		.uleb128 0x3
+ 1948 0187 0E       		.uleb128 0xe
+ 1949 0188 3A       		.uleb128 0x3a
+ 1950 0189 0B       		.uleb128 0xb
+ 1951 018a 3B       		.uleb128 0x3b
+ 1952 018b 05       		.uleb128 0x5
+ 1953 018c 27       		.uleb128 0x27
+ 1954 018d 19       		.uleb128 0x19
+ 1955 018e 49       		.uleb128 0x49
+ 1956 018f 13       		.uleb128 0x13
+ 1957 0190 3C       		.uleb128 0x3c
+ 1958 0191 19       		.uleb128 0x19
+ 1959 0192 00       		.byte	0
+ 1960 0193 00       		.byte	0
+ 1961 0194 1D       		.uleb128 0x1d
+ 1962 0195 2E       		.uleb128 0x2e
+ 1963 0196 01       		.byte	0x1
+ 1964 0197 3F       		.uleb128 0x3f
+ 1965 0198 19       		.uleb128 0x19
+ 1966 0199 03       		.uleb128 0x3
+ 1967 019a 0E       		.uleb128 0xe
+ 1968 019b 3A       		.uleb128 0x3a
+ 1969 019c 0B       		.uleb128 0xb
+ 1970 019d 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 43
+
+
+ 1971 019e 05       		.uleb128 0x5
+ 1972 019f 27       		.uleb128 0x27
+ 1973 01a0 19       		.uleb128 0x19
+ 1974 01a1 3C       		.uleb128 0x3c
+ 1975 01a2 19       		.uleb128 0x19
+ 1976 01a3 01       		.uleb128 0x1
+ 1977 01a4 13       		.uleb128 0x13
+ 1978 01a5 00       		.byte	0
+ 1979 01a6 00       		.byte	0
+ 1980 01a7 1E       		.uleb128 0x1e
+ 1981 01a8 2E       		.uleb128 0x2e
+ 1982 01a9 01       		.byte	0x1
+ 1983 01aa 3F       		.uleb128 0x3f
+ 1984 01ab 19       		.uleb128 0x19
+ 1985 01ac 03       		.uleb128 0x3
+ 1986 01ad 0E       		.uleb128 0xe
+ 1987 01ae 3A       		.uleb128 0x3a
+ 1988 01af 0B       		.uleb128 0xb
+ 1989 01b0 3B       		.uleb128 0x3b
+ 1990 01b1 0B       		.uleb128 0xb
+ 1991 01b2 27       		.uleb128 0x27
+ 1992 01b3 19       		.uleb128 0x19
+ 1993 01b4 49       		.uleb128 0x49
+ 1994 01b5 13       		.uleb128 0x13
+ 1995 01b6 3C       		.uleb128 0x3c
+ 1996 01b7 19       		.uleb128 0x19
+ 1997 01b8 01       		.uleb128 0x1
+ 1998 01b9 13       		.uleb128 0x13
+ 1999 01ba 00       		.byte	0
+ 2000 01bb 00       		.byte	0
+ 2001 01bc 1F       		.uleb128 0x1f
+ 2002 01bd 18       		.uleb128 0x18
+ 2003 01be 00       		.byte	0
+ 2004 01bf 00       		.byte	0
+ 2005 01c0 00       		.byte	0
+ 2006 01c1 20       		.uleb128 0x20
+ 2007 01c2 2E       		.uleb128 0x2e
+ 2008 01c3 00       		.byte	0
+ 2009 01c4 3F       		.uleb128 0x3f
+ 2010 01c5 19       		.uleb128 0x19
+ 2011 01c6 03       		.uleb128 0x3
+ 2012 01c7 0E       		.uleb128 0xe
+ 2013 01c8 3A       		.uleb128 0x3a
+ 2014 01c9 0B       		.uleb128 0xb
+ 2015 01ca 3B       		.uleb128 0x3b
+ 2016 01cb 0B       		.uleb128 0xb
+ 2017 01cc 27       		.uleb128 0x27
+ 2018 01cd 19       		.uleb128 0x19
+ 2019 01ce 3C       		.uleb128 0x3c
+ 2020 01cf 19       		.uleb128 0x19
+ 2021 01d0 00       		.byte	0
+ 2022 01d1 00       		.byte	0
+ 2023 01d2 00       		.byte	0
+ 2024              		.section	.debug_loc,"",%progbits
+ 2025              	.Ldebug_loc0:
+ 2026              	.LLST0:
+ 2027 0000 0A000000 		.4byte	.LVL4
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 44
+
+
+ 2028 0004 0C000000 		.4byte	.LVL5
+ 2029 0008 0100     		.2byte	0x1
+ 2030 000a 50       		.byte	0x50
+ 2031 000b 0C000000 		.4byte	.LVL5
+ 2032 000f 14000000 		.4byte	.LVL7
+ 2033 0013 0100     		.2byte	0x1
+ 2034 0015 54       		.byte	0x54
+ 2035 0016 14000000 		.4byte	.LVL7
+ 2036 001a 16000000 		.4byte	.LFE34
+ 2037 001e 0100     		.2byte	0x1
+ 2038 0020 50       		.byte	0x50
+ 2039 0021 00000000 		.4byte	0
+ 2040 0025 00000000 		.4byte	0
+ 2041              	.LLST1:
+ 2042 0029 00000000 		.4byte	.LVL8
+ 2043 002d 08000000 		.4byte	.LVL9
+ 2044 0031 0100     		.2byte	0x1
+ 2045 0033 50       		.byte	0x50
+ 2046 0034 08000000 		.4byte	.LVL9
+ 2047 0038 0D000000 		.4byte	.LVL10-1
+ 2048 003c 0100     		.2byte	0x1
+ 2049 003e 52       		.byte	0x52
+ 2050 003f 0D000000 		.4byte	.LVL10-1
+ 2051 0043 1C000000 		.4byte	.LFE35
+ 2052 0047 0400     		.2byte	0x4
+ 2053 0049 F3       		.byte	0xf3
+ 2054 004a 01       		.uleb128 0x1
+ 2055 004b 50       		.byte	0x50
+ 2056 004c 9F       		.byte	0x9f
+ 2057 004d 00000000 		.4byte	0
+ 2058 0051 00000000 		.4byte	0
+ 2059              	.LLST2:
+ 2060 0055 00000000 		.4byte	.LVL12
+ 2061 0059 08000000 		.4byte	.LVL13
+ 2062 005d 0100     		.2byte	0x1
+ 2063 005f 50       		.byte	0x50
+ 2064 0060 08000000 		.4byte	.LVL13
+ 2065 0064 1C000000 		.4byte	.LFE36
+ 2066 0068 0400     		.2byte	0x4
+ 2067 006a F3       		.byte	0xf3
+ 2068 006b 01       		.uleb128 0x1
+ 2069 006c 50       		.byte	0x50
+ 2070 006d 9F       		.byte	0x9f
+ 2071 006e 00000000 		.4byte	0
+ 2072 0072 00000000 		.4byte	0
+ 2073              	.LLST3:
+ 2074 0076 0C000000 		.4byte	.LVL16
+ 2075 007a 16000000 		.4byte	.LVL18
+ 2076 007e 0200     		.2byte	0x2
+ 2077 0080 30       		.byte	0x30
+ 2078 0081 9F       		.byte	0x9f
+ 2079 0082 16000000 		.4byte	.LVL18
+ 2080 0086 2E000000 		.4byte	.LVL21
+ 2081 008a 0100     		.2byte	0x1
+ 2082 008c 54       		.byte	0x54
+ 2083 008d 2E000000 		.4byte	.LVL21
+ 2084 0091 32000000 		.4byte	.LVL22
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 45
+
+
+ 2085 0095 0200     		.2byte	0x2
+ 2086 0097 30       		.byte	0x30
+ 2087 0098 9F       		.byte	0x9f
+ 2088 0099 32000000 		.4byte	.LVL22
+ 2089 009d 4A000000 		.4byte	.LVL25
+ 2090 00a1 0100     		.2byte	0x1
+ 2091 00a3 54       		.byte	0x54
+ 2092 00a4 4C000000 		.4byte	.LVL26
+ 2093 00a8 60000000 		.4byte	.LVL29
+ 2094 00ac 0100     		.2byte	0x1
+ 2095 00ae 53       		.byte	0x53
+ 2096 00af 60000000 		.4byte	.LVL29
+ 2097 00b3 66000000 		.4byte	.LVL30
+ 2098 00b7 0200     		.2byte	0x2
+ 2099 00b9 30       		.byte	0x30
+ 2100 00ba 9F       		.byte	0x9f
+ 2101 00bb 66000000 		.4byte	.LVL30
+ 2102 00bf 72000000 		.4byte	.LVL32
+ 2103 00c3 0100     		.2byte	0x1
+ 2104 00c5 53       		.byte	0x53
+ 2105 00c6 72000000 		.4byte	.LVL32
+ 2106 00ca 76000000 		.4byte	.LVL33
+ 2107 00ce 0200     		.2byte	0x2
+ 2108 00d0 30       		.byte	0x30
+ 2109 00d1 9F       		.byte	0x9f
+ 2110 00d2 76000000 		.4byte	.LVL33
+ 2111 00d6 7C000000 		.4byte	.LVL34
+ 2112 00da 0100     		.2byte	0x1
+ 2113 00dc 53       		.byte	0x53
+ 2114 00dd 7C000000 		.4byte	.LVL34
+ 2115 00e1 82000000 		.4byte	.LVL36
+ 2116 00e5 0200     		.2byte	0x2
+ 2117 00e7 30       		.byte	0x30
+ 2118 00e8 9F       		.byte	0x9f
+ 2119 00e9 88000000 		.4byte	.LVL37
+ 2120 00ed 8E000000 		.4byte	.LVL38
+ 2121 00f1 0200     		.2byte	0x2
+ 2122 00f3 30       		.byte	0x30
+ 2123 00f4 9F       		.byte	0x9f
+ 2124 00f5 8E000000 		.4byte	.LVL38
+ 2125 00f9 B2000000 		.4byte	.LVL43
+ 2126 00fd 0100     		.2byte	0x1
+ 2127 00ff 54       		.byte	0x54
+ 2128 0100 00000000 		.4byte	0
+ 2129 0104 00000000 		.4byte	0
+ 2130              	.LLST4:
+ 2131 0108 1A000000 		.4byte	.LVL19
+ 2132 010c 24000000 		.4byte	.LVL20
+ 2133 0110 0100     		.2byte	0x1
+ 2134 0112 50       		.byte	0x50
+ 2135 0113 36000000 		.4byte	.LVL23
+ 2136 0117 40000000 		.4byte	.LVL24
+ 2137 011b 0100     		.2byte	0x1
+ 2138 011d 50       		.byte	0x50
+ 2139 011e 00000000 		.4byte	0
+ 2140 0122 00000000 		.4byte	0
+ 2141              	.LLST5:
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 46
+
+
+ 2142 0126 0C000000 		.4byte	.LVL16
+ 2143 012a 4C000000 		.4byte	.LVL26
+ 2144 012e 0200     		.2byte	0x2
+ 2145 0130 31       		.byte	0x31
+ 2146 0131 9F       		.byte	0x9f
+ 2147 0132 4C000000 		.4byte	.LVL26
+ 2148 0136 66000000 		.4byte	.LVL30
+ 2149 013a 0100     		.2byte	0x1
+ 2150 013c 50       		.byte	0x50
+ 2151 013d 72000000 		.4byte	.LVL32
+ 2152 0141 76000000 		.4byte	.LVL33
+ 2153 0145 0100     		.2byte	0x1
+ 2154 0147 50       		.byte	0x50
+ 2155 0148 7C000000 		.4byte	.LVL34
+ 2156 014c 7E000000 		.4byte	.LVL35
+ 2157 0150 0100     		.2byte	0x1
+ 2158 0152 50       		.byte	0x50
+ 2159 0153 00000000 		.4byte	0
+ 2160 0157 00000000 		.4byte	0
+ 2161              	.LLST6:
+ 2162 015b 0C000000 		.4byte	.LVL44
+ 2163 015f 74000000 		.4byte	.LVL45
+ 2164 0163 0100     		.2byte	0x1
+ 2165 0165 50       		.byte	0x50
+ 2166 0166 76000000 		.4byte	.LVL46
+ 2167 016a 92000000 		.4byte	.LVL47
+ 2168 016e 0100     		.2byte	0x1
+ 2169 0170 50       		.byte	0x50
+ 2170 0171 A0000000 		.4byte	.LVL49
+ 2171 0175 A2000000 		.4byte	.LVL50
+ 2172 0179 0100     		.2byte	0x1
+ 2173 017b 50       		.byte	0x50
+ 2174 017c A4000000 		.4byte	.LVL51
+ 2175 0180 A6000000 		.4byte	.LVL52
+ 2176 0184 0100     		.2byte	0x1
+ 2177 0186 50       		.byte	0x50
+ 2178 0187 A8000000 		.4byte	.LVL53
+ 2179 018b AA000000 		.4byte	.LVL54
+ 2180 018f 0100     		.2byte	0x1
+ 2181 0191 50       		.byte	0x50
+ 2182 0192 AC000000 		.4byte	.LVL55
+ 2183 0196 AE000000 		.4byte	.LVL56
+ 2184 019a 0100     		.2byte	0x1
+ 2185 019c 50       		.byte	0x50
+ 2186 019d B0000000 		.4byte	.LVL57
+ 2187 01a1 B2000000 		.4byte	.LVL58
+ 2188 01a5 0100     		.2byte	0x1
+ 2189 01a7 50       		.byte	0x50
+ 2190 01a8 00000000 		.4byte	0
+ 2191 01ac 00000000 		.4byte	0
+ 2192              	.LLST7:
+ 2193 01b0 16000000 		.4byte	.LVL60
+ 2194 01b4 52000000 		.4byte	.LVL70
+ 2195 01b8 0200     		.2byte	0x2
+ 2196 01ba 30       		.byte	0x30
+ 2197 01bb 9F       		.byte	0x9f
+ 2198 01bc 52000000 		.4byte	.LVL70
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 47
+
+
+ 2199 01c0 94000000 		.4byte	.LVL78
+ 2200 01c4 0100     		.2byte	0x1
+ 2201 01c6 54       		.byte	0x54
+ 2202 01c7 94000000 		.4byte	.LVL78
+ 2203 01cb 98000000 		.4byte	.LVL79
+ 2204 01cf 0200     		.2byte	0x2
+ 2205 01d1 30       		.byte	0x30
+ 2206 01d2 9F       		.byte	0x9f
+ 2207 01d3 98000000 		.4byte	.LVL79
+ 2208 01d7 CA000000 		.4byte	.LVL94
+ 2209 01db 0100     		.2byte	0x1
+ 2210 01dd 54       		.byte	0x54
+ 2211 01de 00000000 		.4byte	0
+ 2212 01e2 00000000 		.4byte	0
+ 2213              	.LLST8:
+ 2214 01e6 16000000 		.4byte	.LVL60
+ 2215 01ea 52000000 		.4byte	.LVL70
+ 2216 01ee 0200     		.2byte	0x2
+ 2217 01f0 30       		.byte	0x30
+ 2218 01f1 9F       		.byte	0x9f
+ 2219 01f2 7E000000 		.4byte	.LVL75
+ 2220 01f6 85000000 		.4byte	.LVL77-1
+ 2221 01fa 0100     		.2byte	0x1
+ 2222 01fc 50       		.byte	0x50
+ 2223 01fd 98000000 		.4byte	.LVL79
+ 2224 0201 A0000000 		.4byte	.LVL81
+ 2225 0205 0100     		.2byte	0x1
+ 2226 0207 50       		.byte	0x50
+ 2227 0208 A6000000 		.4byte	.LVL83
+ 2228 020c A8000000 		.4byte	.LVL84
+ 2229 0210 0100     		.2byte	0x1
+ 2230 0212 50       		.byte	0x50
+ 2231 0213 00000000 		.4byte	0
+ 2232 0217 00000000 		.4byte	0
+ 2233              	.LLST9:
+ 2234 021b 26000000 		.4byte	.LVL63
+ 2235 021f 2C000000 		.4byte	.LVL64
+ 2236 0223 0200     		.2byte	0x2
+ 2237 0225 30       		.byte	0x30
+ 2238 0226 9F       		.byte	0x9f
+ 2239 0227 2C000000 		.4byte	.LVL64
+ 2240 022b 48000000 		.4byte	.LVL69
+ 2241 022f 0100     		.2byte	0x1
+ 2242 0231 54       		.byte	0x54
+ 2243 0232 00000000 		.4byte	0
+ 2244 0236 00000000 		.4byte	0
+ 2245              	.LLST10:
+ 2246 023a 40000000 		.4byte	.LVL67
+ 2247 023e 52000000 		.4byte	.LVL70
+ 2248 0242 0300     		.2byte	0x3
+ 2249 0244 08       		.byte	0x8
+ 2250 0245 30       		.byte	0x30
+ 2251 0246 9F       		.byte	0x9f
+ 2252 0247 56000000 		.4byte	.LVL71
+ 2253 024b 6C000000 		.4byte	.LVL72
+ 2254 024f 0100     		.2byte	0x1
+ 2255 0251 50       		.byte	0x50
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 48
+
+
+ 2256 0252 82000000 		.4byte	.LVL76
+ 2257 0256 98000000 		.4byte	.LVL79
+ 2258 025a 0300     		.2byte	0x3
+ 2259 025c 08       		.byte	0x8
+ 2260 025d 30       		.byte	0x30
+ 2261 025e 9F       		.byte	0x9f
+ 2262 025f BE000000 		.4byte	.LVL88
+ 2263 0263 C0000000 		.4byte	.LVL89
+ 2264 0267 0100     		.2byte	0x1
+ 2265 0269 50       		.byte	0x50
+ 2266 026a CA000000 		.4byte	.LVL92
+ 2267 026e CA000000 		.4byte	.LVL93
+ 2268 0272 0100     		.2byte	0x1
+ 2269 0274 50       		.byte	0x50
+ 2270 0275 00000000 		.4byte	0
+ 2271 0279 00000000 		.4byte	0
+ 2272              		.section	.debug_aranges,"",%progbits
+ 2273 0000 4C000000 		.4byte	0x4c
+ 2274 0004 0200     		.2byte	0x2
+ 2275 0006 00000000 		.4byte	.Ldebug_info0
+ 2276 000a 04       		.byte	0x4
+ 2277 000b 00       		.byte	0
+ 2278 000c 0000     		.2byte	0
+ 2279 000e 0000     		.2byte	0
+ 2280 0010 00000000 		.4byte	.LFB33
+ 2281 0014 30000000 		.4byte	.LFE33-.LFB33
+ 2282 0018 00000000 		.4byte	.LFB34
+ 2283 001c 16000000 		.4byte	.LFE34-.LFB34
+ 2284 0020 00000000 		.4byte	.LFB35
+ 2285 0024 1C000000 		.4byte	.LFE35-.LFB35
+ 2286 0028 00000000 		.4byte	.LFB36
+ 2287 002c 1C000000 		.4byte	.LFE36-.LFB36
+ 2288 0030 00000000 		.4byte	.LFB37
+ 2289 0034 CC000000 		.4byte	.LFE37-.LFB37
+ 2290 0038 00000000 		.4byte	.LFB38
+ 2291 003c C0000000 		.4byte	.LFE38-.LFB38
+ 2292 0040 00000000 		.4byte	.LFB39
+ 2293 0044 00010000 		.4byte	.LFE39-.LFB39
+ 2294 0048 00000000 		.4byte	0
+ 2295 004c 00000000 		.4byte	0
+ 2296              		.section	.debug_ranges,"",%progbits
+ 2297              	.Ldebug_ranges0:
+ 2298 0000 00000000 		.4byte	.LFB33
+ 2299 0004 30000000 		.4byte	.LFE33
+ 2300 0008 00000000 		.4byte	.LFB34
+ 2301 000c 16000000 		.4byte	.LFE34
+ 2302 0010 00000000 		.4byte	.LFB35
+ 2303 0014 1C000000 		.4byte	.LFE35
+ 2304 0018 00000000 		.4byte	.LFB36
+ 2305 001c 1C000000 		.4byte	.LFE36
+ 2306 0020 00000000 		.4byte	.LFB37
+ 2307 0024 CC000000 		.4byte	.LFE37
+ 2308 0028 00000000 		.4byte	.LFB38
+ 2309 002c C0000000 		.4byte	.LFE38
+ 2310 0030 00000000 		.4byte	.LFB39
+ 2311 0034 00010000 		.4byte	.LFE39
+ 2312 0038 00000000 		.4byte	0
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 49
+
+
+ 2313 003c 00000000 		.4byte	0
+ 2314              		.section	.debug_line,"",%progbits
+ 2315              	.Ldebug_line0:
+ 2316 0000 2B020000 		.section	.debug_str,"MS",%progbits,1
+ 2316      0200FF00 
+ 2316      00000201 
+ 2316      FB0E0D00 
+ 2316      01010101 
+ 2317              	.LASF44:
+ 2318 0000 55415254 		.ascii	"UART_1_Start\000"
+ 2318      5F315F53 
+ 2318      74617274 
+ 2318      00
+ 2319              	.LASF43:
+ 2320 000d 54696D65 		.ascii	"Timer_1_Start\000"
+ 2320      725F315F 
+ 2320      53746172 
+ 2320      7400
+ 2321              	.LASF41:
+ 2322 001b 55415254 		.ascii	"UART_1_UartPutString\000"
+ 2322      5F315F55 
+ 2322      61727450 
+ 2322      75745374 
+ 2322      72696E67 
+ 2323              	.LASF4:
+ 2324 0030 6C6F6E67 		.ascii	"long int\000"
+ 2324      20696E74 
+ 2324      00
+ 2325              	.LASF48:
+ 2326 0039 496E6974 		.ascii	"InitCode\000"
+ 2326      436F6465 
+ 2326      00
+ 2327              	.LASF12:
+ 2328 0042 646F7562 		.ascii	"double\000"
+ 2328      6C6500
+ 2329              	.LASF25:
+ 2330 0049 69734571 		.ascii	"isEqual\000"
+ 2330      75616C00 
+ 2331              	.LASF46:
+ 2332 0051 2E5C6D61 		.ascii	".\\main.c\000"
+ 2332      696E2E63 
+ 2332      00
+ 2333              	.LASF11:
+ 2334 005a 666C6F61 		.ascii	"float\000"
+ 2334      7400
+ 2335              	.LASF42:
+ 2336 0060 74696D65 		.ascii	"timerISR_StartEx\000"
+ 2336      72495352 
+ 2336      5F537461 
+ 2336      72744578 
+ 2336      00
+ 2337              	.LASF0:
+ 2338 0071 7369676E 		.ascii	"signed char\000"
+ 2338      65642063 
+ 2338      68617200 
+ 2339              	.LASF1:
+ 2340 007d 756E7369 		.ascii	"unsigned char\000"
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 50
+
+
+ 2340      676E6564 
+ 2340      20636861 
+ 2340      7200
+ 2341              	.LASF28:
+ 2342 008b 696E7075 		.ascii	"input\000"
+ 2342      7400
+ 2343              	.LASF13:
+ 2344 0091 63686172 		.ascii	"char8\000"
+ 2344      3800
+ 2345              	.LASF19:
+ 2346 0097 5072696E 		.ascii	"PrintInt\000"
+ 2346      74496E74 
+ 2346      00
+ 2347              	.LASF5:
+ 2348 00a0 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2348      20756E73 
+ 2348      69676E65 
+ 2348      6420696E 
+ 2348      7400
+ 2349              	.LASF3:
+ 2350 00b2 73686F72 		.ascii	"short unsigned int\000"
+ 2350      7420756E 
+ 2350      7369676E 
+ 2350      65642069 
+ 2350      6E7400
+ 2351              	.LASF38:
+ 2352 00c5 55415254 		.ascii	"UART_1_UartGetChar\000"
+ 2352      5F315F55 
+ 2352      61727447 
+ 2352      65744368 
+ 2352      617200
+ 2353              	.LASF36:
+ 2354 00d8 5245445F 		.ascii	"RED_LED_Read\000"
+ 2354      4C45445F 
+ 2354      52656164 
+ 2354      00
+ 2355              	.LASF20:
+ 2356 00e5 72784461 		.ascii	"rxData\000"
+ 2356      746100
+ 2357              	.LASF22:
+ 2358 00ec 76657269 		.ascii	"verify\000"
+ 2358      667900
+ 2359              	.LASF18:
+ 2360 00f3 67657442 		.ascii	"getButton\000"
+ 2360      7574746F 
+ 2360      6E00
+ 2361              	.LASF31:
+ 2362 00fd 72657475 		.ascii	"returnval\000"
+ 2362      726E7661 
+ 2362      6C00
+ 2363              	.LASF29:
+ 2364 0107 6D61696E 		.ascii	"main\000"
+ 2364      00
+ 2365              	.LASF40:
+ 2366 010c 55415254 		.ascii	"UART_1_SpiUartWriteTxData\000"
+ 2366      5F315F53 
+ 2366      70695561 
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 51
+
+
+ 2366      72745772 
+ 2366      69746554 
+ 2367              	.LASF32:
+ 2368 0126 6C6F636B 		.ascii	"locked\000"
+ 2368      656400
+ 2369              	.LASF10:
+ 2370 012d 75696E74 		.ascii	"uint32\000"
+ 2370      333200
+ 2371              	.LASF8:
+ 2372 0134 756E7369 		.ascii	"unsigned int\000"
+ 2372      676E6564 
+ 2372      20696E74 
+ 2372      00
+ 2373              	.LASF23:
+ 2374 0141 636F6D62 		.ascii	"combo1\000"
+ 2374      6F3100
+ 2375              	.LASF24:
+ 2376 0148 636F6D62 		.ascii	"combo2\000"
+ 2376      6F3200
+ 2377              	.LASF7:
+ 2378 014f 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2378      206C6F6E 
+ 2378      6720756E 
+ 2378      7369676E 
+ 2378      65642069 
+ 2379              	.LASF45:
+ 2380 0166 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 2380      4320342E 
+ 2380      382E3420 
+ 2380      32303134 
+ 2380      30353236 
+ 2381 0199 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 2381      20726576 
+ 2381      6973696F 
+ 2381      6E203231 
+ 2381      31333538 
+ 2382 01cc 67202D66 		.ascii	"g -ffunction-sections\000"
+ 2382      66756E63 
+ 2382      74696F6E 
+ 2382      2D736563 
+ 2382      74696F6E 
+ 2383              	.LASF15:
+ 2384 01e2 63796973 		.ascii	"cyisraddress\000"
+ 2384      72616464 
+ 2384      72657373 
+ 2384      00
+ 2385              	.LASF16:
+ 2386 01ef 73697A65 		.ascii	"sizetype\000"
+ 2386      74797065 
+ 2386      00
+ 2387              	.LASF6:
+ 2388 01f8 6C6F6E67 		.ascii	"long long int\000"
+ 2388      206C6F6E 
+ 2388      6720696E 
+ 2388      7400
+ 2389              	.LASF21:
+ 2390 0206 5072696E 		.ascii	"Printchar\000"
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 52
+
+
+ 2390      74636861 
+ 2390      7200
+ 2391              	.LASF14:
+ 2392 0210 63686172 		.ascii	"char\000"
+ 2392      00
+ 2393              	.LASF47:
+ 2394 0215 453A5C73 		.ascii	"E:\\school\\ECEC304\\Lab55\\MASTERLOCK.cydsn\000"
+ 2394      63686F6F 
+ 2394      6C5C4543 
+ 2394      45433330 
+ 2394      345C4C61 
+ 2395              	.LASF2:
+ 2396 023e 73686F72 		.ascii	"short int\000"
+ 2396      7420696E 
+ 2396      7400
+ 2397              	.LASF27:
+ 2398 0248 67657443 		.ascii	"getCombination\000"
+ 2398      6F6D6269 
+ 2398      6E617469 
+ 2398      6F6E00
+ 2399              	.LASF9:
+ 2400 0257 75696E74 		.ascii	"uint8\000"
+ 2400      3800
+ 2401              	.LASF30:
+ 2402 025d 6661696C 		.ascii	"failed\000"
+ 2402      656400
+ 2403              	.LASF37:
+ 2404 0264 54696D65 		.ascii	"Timer_1_ReadStatusRegister\000"
+ 2404      725F315F 
+ 2404      52656164 
+ 2404      53746174 
+ 2404      75735265 
+ 2405              	.LASF35:
+ 2406 027f 64697361 		.ascii	"disable_entry\000"
+ 2406      626C655F 
+ 2406      656E7472 
+ 2406      7900
+ 2407              	.LASF39:
+ 2408 028d 5245445F 		.ascii	"RED_LED_Write\000"
+ 2408      4C45445F 
+ 2408      57726974 
+ 2408      6500
+ 2409              	.LASF17:
+ 2410 029b 74696D65 		.ascii	"timerISR\000"
+ 2410      72495352 
+ 2410      00
+ 2411              	.LASF26:
+ 2412 02a4 5F426F6F 		.ascii	"_Bool\000"
+ 2412      6C00
+ 2413              	.LASF49:
+ 2414 02aa 73707269 		.ascii	"sprintf\000"
+ 2414      6E746600 
+ 2415              	.LASF33:
+ 2416 02b2 636F6D62 		.ascii	"combo\000"
+ 2416      6F00
+ 2417              	.LASF34:
+ 2418 02b8 63757272 		.ascii	"currentState\000"
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\ccckhMba.s 			page 53
+
+
+ 2418      656E7453 
+ 2418      74617465 
+ 2418      00
+ 2419              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

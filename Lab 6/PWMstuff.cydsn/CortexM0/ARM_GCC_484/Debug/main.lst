@@ -1,0 +1,1332 @@
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\cc50dwVl.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 1
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"main.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.TimerISR,"ax",%progbits
+  18              		.align	2
+  19              		.global	TimerISR
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	TimerISR, %function
+  23              	TimerISR:
+  24              	.LFB33:
+  25              		.file 1 ".\\main.c"
+   1:.\main.c      **** /* ========================================
+   2:.\main.c      ****  *
+   3:.\main.c      ****  * Copyright YOUR COMPANY, THE YEAR
+   4:.\main.c      ****  * All Rights Reserved
+   5:.\main.c      ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\main.c      ****  *
+   7:.\main.c      ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\main.c      ****  * WHICH IS THE PROPERTY OF your company.
+   9:.\main.c      ****  *
+  10:.\main.c      ****  * ========================================
+  11:.\main.c      **** */
+  12:.\main.c      **** #include <project.h>
+  13:.\main.c      **** #include <stdbool.h>
+  14:.\main.c      **** 
+  15:.\main.c      **** int inc = 1; 
+  16:.\main.c      **** bool updown = false;
+  17:.\main.c      **** uint16 PWMCompare = 0; 
+  18:.\main.c      **** 
+  19:.\main.c      **** 
+  20:.\main.c      **** 
+  21:.\main.c      **** 
+  22:.\main.c      **** CY_ISR(TimerISR){
+  26              		.loc 1 22 0
+  27              		.cfi_startproc
+  28 0000 08B5     		push	{r3, lr}
+  29              		.cfi_def_cfa_offset 8
+  30              		.cfi_offset 3, -8
+  31              		.cfi_offset 14, -4
+  23:.\main.c      ****             
+  24:.\main.c      ****        if(updown == false)
+  32              		.loc 1 24 0
+  33 0002 104B     		ldr	r3, .L6
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\cc50dwVl.s 			page 2
+
+
+  34 0004 1B78     		ldrb	r3, [r3]
+  35 0006 002B     		cmp	r3, #0
+  36 0008 03D1     		bne	.L2
+  25:.\main.c      ****          {
+  26:.\main.c      ****             PWMCompare+=1; 
+  37              		.loc 1 26 0
+  38 000a 0E4A     		ldr	r2, .L6
+  39 000c 5188     		ldrh	r1, [r2, #2]
+  40 000e 0131     		add	r1, r1, #1
+  41 0010 5180     		strh	r1, [r2, #2]
+  42              	.L2:
+  27:.\main.c      ****         }
+  28:.\main.c      ****        if(updown == true){
+  43              		.loc 1 28 0
+  44 0012 002B     		cmp	r3, #0
+  45 0014 03D0     		beq	.L3
+  29:.\main.c      ****         PWMCompare-= 1; 
+  46              		.loc 1 29 0
+  47 0016 0B4B     		ldr	r3, .L6
+  48 0018 5A88     		ldrh	r2, [r3, #2]
+  49 001a 013A     		sub	r2, r2, #1
+  50 001c 5A80     		strh	r2, [r3, #2]
+  51              	.L3:
+  30:.\main.c      ****     }
+  31:.\main.c      ****     
+  32:.\main.c      ****     if(PWMCompare >= 1000){
+  52              		.loc 1 32 0
+  53 001e 094B     		ldr	r3, .L6
+  54 0020 5B88     		ldrh	r3, [r3, #2]
+  55 0022 094A     		ldr	r2, .L6+4
+  56 0024 9342     		cmp	r3, r2
+  57 0026 02D9     		bls	.L4
+  33:.\main.c      ****         updown = true;
+  58              		.loc 1 33 0
+  59 0028 0121     		mov	r1, #1
+  60 002a 064A     		ldr	r2, .L6
+  61 002c 1170     		strb	r1, [r2]
+  62              	.L4:
+  34:.\main.c      ****     }
+  35:.\main.c      ****     if(PWMCompare <= 100){
+  63              		.loc 1 35 0
+  64 002e 642B     		cmp	r3, #100
+  65 0030 02D8     		bhi	.L5
+  36:.\main.c      ****         updown = false;
+  66              		.loc 1 36 0
+  67 0032 0022     		mov	r2, #0
+  68 0034 034B     		ldr	r3, .L6
+  69 0036 1A70     		strb	r2, [r3]
+  70              	.L5:
+  37:.\main.c      ****     }
+  38:.\main.c      ****    
+  39:.\main.c      ****            
+  40:.\main.c      ****     UART_1_UartPutString(" \n \r");
+  71              		.loc 1 40 0
+  72 0038 0448     		ldr	r0, .L6+8
+  73 003a FFF7FEFF 		bl	UART_1_UartPutString
+  74              	.LVL0:
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\cc50dwVl.s 			page 3
+
+
+  41:.\main.c      ****     Timer_1_ReadStatusRegister();
+  75              		.loc 1 41 0
+  76 003e FFF7FEFF 		bl	Timer_1_ReadStatusRegister
+  77              	.LVL1:
+  42:.\main.c      ****         
+  43:.\main.c      ****     
+  44:.\main.c      **** }
+  78              		.loc 1 44 0
+  79              		@ sp needed
+  80 0042 08BD     		pop	{r3, pc}
+  81              	.L7:
+  82              		.align	2
+  83              	.L6:
+  84 0044 00000000 		.word	.LANCHOR0
+  85 0048 E7030000 		.word	999
+  86 004c 00000000 		.word	.LC1
+  87              		.cfi_endproc
+  88              	.LFE33:
+  89              		.size	TimerISR, .-TimerISR
+  90              		.section	.text.PrintInt,"ax",%progbits
+  91              		.align	2
+  92              		.global	PrintInt
+  93              		.code	16
+  94              		.thumb_func
+  95              		.type	PrintInt, %function
+  96              	PrintInt:
+  97              	.LFB34:
+  45:.\main.c      **** 
+  46:.\main.c      **** 
+  47:.\main.c      **** void PrintInt(int b){
+  98              		.loc 1 47 0
+  99              		.cfi_startproc
+ 100              	.LVL2:
+ 101 0000 00B5     		push	{lr}
+ 102              		.cfi_def_cfa_offset 4
+ 103              		.cfi_offset 14, -4
+ 104 0002 85B0     		sub	sp, sp, #20
+ 105              		.cfi_def_cfa_offset 24
+ 106 0004 021C     		mov	r2, r0
+  48:.\main.c      ****     char buf[10];
+  49:.\main.c      ****     sprintf(buf, "%d", b); 
+ 107              		.loc 1 49 0
+ 108 0006 01A8     		add	r0, sp, #4
+ 109              	.LVL3:
+ 110 0008 0349     		ldr	r1, .L9
+ 111 000a FFF7FEFF 		bl	sprintf
+ 112              	.LVL4:
+  50:.\main.c      ****     UART_1_UartPutString(buf);
+ 113              		.loc 1 50 0
+ 114 000e 01A8     		add	r0, sp, #4
+ 115 0010 FFF7FEFF 		bl	UART_1_UartPutString
+ 116              	.LVL5:
+  51:.\main.c      **** 
+  52:.\main.c      **** }
+ 117              		.loc 1 52 0
+ 118 0014 05B0     		add	sp, sp, #20
+ 119              		@ sp needed
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\cc50dwVl.s 			page 4
+
+
+ 120 0016 00BD     		pop	{pc}
+ 121              	.L10:
+ 122              		.align	2
+ 123              	.L9:
+ 124 0018 08000000 		.word	.LC3
+ 125              		.cfi_endproc
+ 126              	.LFE34:
+ 127              		.size	PrintInt, .-PrintInt
+ 128              		.section	.text.main,"ax",%progbits
+ 129              		.align	2
+ 130              		.global	main
+ 131              		.code	16
+ 132              		.thumb_func
+ 133              		.type	main, %function
+ 134              	main:
+ 135              	.LFB35:
+  53:.\main.c      **** 
+  54:.\main.c      **** int main()
+  55:.\main.c      **** {
+ 136              		.loc 1 55 0
+ 137              		.cfi_startproc
+ 138 0000 10B5     		push	{r4, lr}
+ 139              		.cfi_def_cfa_offset 8
+ 140              		.cfi_offset 4, -8
+ 141              		.cfi_offset 14, -4
+  56:.\main.c      **** isr_1_StartEx(TimerISR);
+ 142              		.loc 1 56 0
+ 143 0002 0A48     		ldr	r0, .L13
+ 144 0004 FFF7FEFF 		bl	isr_1_StartEx
+ 145              	.LVL6:
+  57:.\main.c      ****     CyGlobalIntEnable; /* Enable global interrupts. */
+ 146              		.loc 1 57 0
+ 147              	@ 57 ".\main.c" 1
+ 148 0008 62B6     		CPSIE   i
+ 149              	@ 0 "" 2
+  58:.\main.c      **** 
+  59:.\main.c      **** PWM_1_Start(); 
+ 150              		.loc 1 59 0
+ 151              		.code	16
+ 152 000a FFF7FEFF 		bl	PWM_1_Start
+ 153              	.LVL7:
+  60:.\main.c      **** UART_1_Start();
+ 154              		.loc 1 60 0
+ 155 000e FFF7FEFF 		bl	UART_1_Start
+ 156              	.LVL8:
+  61:.\main.c      **** Timer_1_Start();
+ 157              		.loc 1 61 0
+ 158 0012 FFF7FEFF 		bl	Timer_1_Start
+ 159              	.LVL9:
+  62:.\main.c      ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+  63:.\main.c      **** // PWM Triangle wave - part 1
+  64:.\main.c      ****     for(;;)
+  65:.\main.c      ****     {
+  66:.\main.c      ****         
+  67:.\main.c      **** 
+  68:.\main.c      ****         PrintInt(PWMCompare);
+ 160              		.loc 1 68 0
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\cc50dwVl.s 			page 5
+
+
+ 161 0016 064C     		ldr	r4, .L13+4
+ 162              	.L12:
+ 163              		.loc 1 68 0 is_stmt 0 discriminator 1
+ 164 0018 6088     		ldrh	r0, [r4, #2]
+ 165 001a FFF7FEFF 		bl	PrintInt
+ 166              	.LVL10:
+  69:.\main.c      ****         PWM_1_WriteCompare(PWMCompare);
+ 167              		.loc 1 69 0 is_stmt 1 discriminator 1
+ 168 001e 6088     		ldrh	r0, [r4, #2]
+ 169 0020 FFF7FEFF 		bl	PWM_1_WriteCompare
+ 170              	.LVL11:
+  70:.\main.c      ****         CyDelay(1);
+ 171              		.loc 1 70 0 discriminator 1
+ 172 0024 0120     		mov	r0, #1
+ 173 0026 FFF7FEFF 		bl	CyDelay
+ 174              	.LVL12:
+ 175 002a F5E7     		b	.L12
+ 176              	.L14:
+ 177              		.align	2
+ 178              	.L13:
+ 179 002c 00000000 		.word	TimerISR
+ 180 0030 00000000 		.word	.LANCHOR0
+ 181              		.cfi_endproc
+ 182              	.LFE35:
+ 183              		.size	main, .-main
+ 184              		.global	PWMCompare
+ 185              		.global	updown
+ 186              		.global	inc
+ 187              		.data
+ 188              		.align	2
+ 189              		.type	inc, %object
+ 190              		.size	inc, 4
+ 191              	inc:
+ 192 0000 01000000 		.word	1
+ 193              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 194              		.align	2
+ 195              	.LC1:
+ 196 0000 200A200D 		.ascii	" \012 \015\000"
+ 196      00
+ 197 0005 000000   		.space	3
+ 198              	.LC3:
+ 199 0008 256400   		.ascii	"%d\000"
+ 200 000b 00       		.bss
+ 201              		.align	1
+ 202              		.set	.LANCHOR0,. + 0
+ 203              		.type	updown, %object
+ 204              		.size	updown, 1
+ 205              	updown:
+ 206 0000 00       		.space	1
+ 207 0001 00       		.space	1
+ 208              		.type	PWMCompare, %object
+ 209              		.size	PWMCompare, 2
+ 210              	PWMCompare:
+ 211 0002 0000     		.space	2
+ 212              		.text
+ 213              	.Letext0:
+ 214              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\cc50dwVl.s 			page 6
+
+
+ 215              		.file 3 "<built-in>"
+ 216              		.file 4 "Generated_Source\\PSoC4/UART_1_SPI_UART.h"
+ 217              		.file 5 "Generated_Source\\PSoC4/isr_1.h"
+ 218              		.file 6 "Generated_Source\\PSoC4/PWM_1.h"
+ 219              		.file 7 "Generated_Source\\PSoC4/UART_1.h"
+ 220              		.file 8 "Generated_Source\\PSoC4/Timer_1.h"
+ 221              		.file 9 "Generated_Source\\PSoC4/CyLib.h"
+ 222              		.section	.debug_info,"",%progbits
+ 223              	.Ldebug_info0:
+ 224 0000 CA020000 		.4byte	0x2ca
+ 225 0004 0400     		.2byte	0x4
+ 226 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 227 000a 04       		.byte	0x4
+ 228 000b 01       		.uleb128 0x1
+ 229 000c D0000000 		.4byte	.LASF31
+ 230 0010 01       		.byte	0x1
+ 231 0011 8F000000 		.4byte	.LASF32
+ 232 0015 59010000 		.4byte	.LASF33
+ 233 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 234 001d 00000000 		.4byte	0
+ 235 0021 00000000 		.4byte	.Ldebug_line0
+ 236 0025 02       		.uleb128 0x2
+ 237 0026 01       		.byte	0x1
+ 238 0027 06       		.byte	0x6
+ 239 0028 EC010000 		.4byte	.LASF0
+ 240 002c 02       		.uleb128 0x2
+ 241 002d 01       		.byte	0x1
+ 242 002e 08       		.byte	0x8
+ 243 002f 48000000 		.4byte	.LASF1
+ 244 0033 02       		.uleb128 0x2
+ 245 0034 02       		.byte	0x2
+ 246 0035 05       		.byte	0x5
+ 247 0036 BE010000 		.4byte	.LASF2
+ 248 003a 02       		.uleb128 0x2
+ 249 003b 02       		.byte	0x2
+ 250 003c 07       		.byte	0x7
+ 251 003d 22000000 		.4byte	.LASF3
+ 252 0041 02       		.uleb128 0x2
+ 253 0042 04       		.byte	0x4
+ 254 0043 05       		.byte	0x5
+ 255 0044 E3010000 		.4byte	.LASF4
+ 256 0048 02       		.uleb128 0x2
+ 257 0049 04       		.byte	0x4
+ 258 004a 07       		.byte	0x7
+ 259 004b 65000000 		.4byte	.LASF5
+ 260 004f 02       		.uleb128 0x2
+ 261 0050 08       		.byte	0x8
+ 262 0051 05       		.byte	0x5
+ 263 0052 A4010000 		.4byte	.LASF6
+ 264 0056 02       		.uleb128 0x2
+ 265 0057 08       		.byte	0x8
+ 266 0058 07       		.byte	0x7
+ 267 0059 B9000000 		.4byte	.LASF7
+ 268 005d 03       		.uleb128 0x3
+ 269 005e 04       		.byte	0x4
+ 270 005f 05       		.byte	0x5
+ 271 0060 696E7400 		.ascii	"int\000"
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\cc50dwVl.s 			page 7
+
+
+ 272 0064 02       		.uleb128 0x2
+ 273 0065 04       		.byte	0x4
+ 274 0066 07       		.byte	0x7
+ 275 0067 35000000 		.4byte	.LASF8
+ 276 006b 04       		.uleb128 0x4
+ 277 006c 77000000 		.4byte	.LASF9
+ 278 0070 02       		.byte	0x2
+ 279 0071 C1       		.byte	0xc1
+ 280 0072 2C000000 		.4byte	0x2c
+ 281 0076 04       		.uleb128 0x4
+ 282 0077 98000000 		.4byte	.LASF10
+ 283 007b 02       		.byte	0x2
+ 284 007c C2       		.byte	0xc2
+ 285 007d 3A000000 		.4byte	0x3a
+ 286 0081 04       		.uleb128 0x4
+ 287 0082 9F000000 		.4byte	.LASF11
+ 288 0086 02       		.byte	0x2
+ 289 0087 C3       		.byte	0xc3
+ 290 0088 48000000 		.4byte	0x48
+ 291 008c 02       		.uleb128 0x2
+ 292 008d 04       		.byte	0x4
+ 293 008e 04       		.byte	0x4
+ 294 008f 42000000 		.4byte	.LASF12
+ 295 0093 02       		.uleb128 0x2
+ 296 0094 08       		.byte	0x8
+ 297 0095 04       		.byte	0x4
+ 298 0096 88000000 		.4byte	.LASF13
+ 299 009a 04       		.uleb128 0x4
+ 300 009b 56000000 		.4byte	.LASF14
+ 301 009f 02       		.byte	0x2
+ 302 00a0 D2       		.byte	0xd2
+ 303 00a1 A5000000 		.4byte	0xa5
+ 304 00a5 02       		.uleb128 0x2
+ 305 00a6 01       		.byte	0x1
+ 306 00a7 08       		.byte	0x8
+ 307 00a8 B9010000 		.4byte	.LASF15
+ 308 00ac 05       		.uleb128 0x5
+ 309 00ad 4C010000 		.4byte	.LASF16
+ 310 00b1 02       		.byte	0x2
+ 311 00b2 7D01     		.2byte	0x17d
+ 312 00b4 B8000000 		.4byte	0xb8
+ 313 00b8 06       		.uleb128 0x6
+ 314 00b9 04       		.byte	0x4
+ 315 00ba BE000000 		.4byte	0xbe
+ 316 00be 07       		.uleb128 0x7
+ 317 00bf 02       		.uleb128 0x2
+ 318 00c0 04       		.byte	0x4
+ 319 00c1 07       		.byte	0x7
+ 320 00c2 88010000 		.4byte	.LASF17
+ 321 00c6 06       		.uleb128 0x6
+ 322 00c7 04       		.byte	0x4
+ 323 00c8 A5000000 		.4byte	0xa5
+ 324 00cc 06       		.uleb128 0x6
+ 325 00cd 04       		.byte	0x4
+ 326 00ce D2000000 		.4byte	0xd2
+ 327 00d2 08       		.uleb128 0x8
+ 328 00d3 A5000000 		.4byte	0xa5
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\cc50dwVl.s 			page 8
+
+
+ 329 00d7 09       		.uleb128 0x9
+ 330 00d8 7F010000 		.4byte	.LASF18
+ 331 00dc 01       		.byte	0x1
+ 332 00dd 16       		.byte	0x16
+ 333 00de 00000000 		.4byte	.LFB33
+ 334 00e2 50000000 		.4byte	.LFE33-.LFB33
+ 335 00e6 01       		.uleb128 0x1
+ 336 00e7 9C       		.byte	0x9c
+ 337 00e8 0D010000 		.4byte	0x10d
+ 338 00ec 0A       		.uleb128 0xa
+ 339 00ed 3E000000 		.4byte	.LVL0
+ 340 00f1 44020000 		.4byte	0x244
+ 341 00f5 03010000 		.4byte	0x103
+ 342 00f9 0B       		.uleb128 0xb
+ 343 00fa 01       		.uleb128 0x1
+ 344 00fb 50       		.byte	0x50
+ 345 00fc 05       		.uleb128 0x5
+ 346 00fd 03       		.byte	0x3
+ 347 00fe 00000000 		.4byte	.LC1
+ 348 0102 00       		.byte	0
+ 349 0103 0C       		.uleb128 0xc
+ 350 0104 42000000 		.4byte	.LVL1
+ 351 0108 61020000 		.4byte	0x261
+ 352 010c 00       		.byte	0
+ 353 010d 09       		.uleb128 0x9
+ 354 010e 5C000000 		.4byte	.LASF19
+ 355 0112 01       		.byte	0x1
+ 356 0113 2F       		.byte	0x2f
+ 357 0114 00000000 		.4byte	.LFB34
+ 358 0118 1C000000 		.4byte	.LFE34-.LFB34
+ 359 011c 01       		.uleb128 0x1
+ 360 011d 9C       		.byte	0x9c
+ 361 011e 8D010000 		.4byte	0x18d
+ 362 0122 0D       		.uleb128 0xd
+ 363 0123 6200     		.ascii	"b\000"
+ 364 0125 01       		.byte	0x1
+ 365 0126 2F       		.byte	0x2f
+ 366 0127 5D000000 		.4byte	0x5d
+ 367 012b 00000000 		.4byte	.LLST0
+ 368 012f 0E       		.uleb128 0xe
+ 369 0130 62756600 		.ascii	"buf\000"
+ 370 0134 01       		.byte	0x1
+ 371 0135 30       		.byte	0x30
+ 372 0136 8D010000 		.4byte	0x18d
+ 373 013a 02       		.uleb128 0x2
+ 374 013b 91       		.byte	0x91
+ 375 013c 6C       		.sleb128 -20
+ 376 013d 0F       		.uleb128 0xf
+ 377 013e 0C020000 		.4byte	.LASF24
+ 378 0142 03       		.byte	0x3
+ 379 0143 00       		.byte	0
+ 380 0144 5D000000 		.4byte	0x5d
+ 381 0148 58010000 		.4byte	0x158
+ 382 014c 10       		.uleb128 0x10
+ 383 014d C6000000 		.4byte	0xc6
+ 384 0151 10       		.uleb128 0x10
+ 385 0152 CC000000 		.4byte	0xcc
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\cc50dwVl.s 			page 9
+
+
+ 386 0156 11       		.uleb128 0x11
+ 387 0157 00       		.byte	0
+ 388 0158 0A       		.uleb128 0xa
+ 389 0159 0E000000 		.4byte	.LVL4
+ 390 015d 6C020000 		.4byte	0x26c
+ 391 0161 7C010000 		.4byte	0x17c
+ 392 0165 0B       		.uleb128 0xb
+ 393 0166 01       		.uleb128 0x1
+ 394 0167 52       		.byte	0x52
+ 395 0168 03       		.uleb128 0x3
+ 396 0169 F3       		.byte	0xf3
+ 397 016a 01       		.uleb128 0x1
+ 398 016b 50       		.byte	0x50
+ 399 016c 0B       		.uleb128 0xb
+ 400 016d 01       		.uleb128 0x1
+ 401 016e 51       		.byte	0x51
+ 402 016f 05       		.uleb128 0x5
+ 403 0170 03       		.byte	0x3
+ 404 0171 08000000 		.4byte	.LC3
+ 405 0175 0B       		.uleb128 0xb
+ 406 0176 01       		.uleb128 0x1
+ 407 0177 50       		.byte	0x50
+ 408 0178 02       		.uleb128 0x2
+ 409 0179 91       		.byte	0x91
+ 410 017a 6C       		.sleb128 -20
+ 411 017b 00       		.byte	0
+ 412 017c 12       		.uleb128 0x12
+ 413 017d 14000000 		.4byte	.LVL5
+ 414 0181 44020000 		.4byte	0x244
+ 415 0185 0B       		.uleb128 0xb
+ 416 0186 01       		.uleb128 0x1
+ 417 0187 50       		.byte	0x50
+ 418 0188 02       		.uleb128 0x2
+ 419 0189 91       		.byte	0x91
+ 420 018a 6C       		.sleb128 -20
+ 421 018b 00       		.byte	0
+ 422 018c 00       		.byte	0
+ 423 018d 13       		.uleb128 0x13
+ 424 018e A5000000 		.4byte	0xa5
+ 425 0192 9D010000 		.4byte	0x19d
+ 426 0196 14       		.uleb128 0x14
+ 427 0197 BF000000 		.4byte	0xbf
+ 428 019b 09       		.byte	0x9
+ 429 019c 00       		.byte	0
+ 430 019d 15       		.uleb128 0x15
+ 431 019e A6000000 		.4byte	.LASF20
+ 432 01a2 01       		.byte	0x1
+ 433 01a3 36       		.byte	0x36
+ 434 01a4 5D000000 		.4byte	0x5d
+ 435 01a8 00000000 		.4byte	.LFB35
+ 436 01ac 34000000 		.4byte	.LFE35-.LFB35
+ 437 01b0 01       		.uleb128 0x1
+ 438 01b1 9C       		.byte	0x9c
+ 439 01b2 0A020000 		.4byte	0x20a
+ 440 01b6 0A       		.uleb128 0xa
+ 441 01b7 08000000 		.4byte	.LVL6
+ 442 01bb 87020000 		.4byte	0x287
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\cc50dwVl.s 			page 10
+
+
+ 443 01bf CD010000 		.4byte	0x1cd
+ 444 01c3 0B       		.uleb128 0xb
+ 445 01c4 01       		.uleb128 0x1
+ 446 01c5 50       		.byte	0x50
+ 447 01c6 05       		.uleb128 0x5
+ 448 01c7 03       		.byte	0x3
+ 449 01c8 00000000 		.4byte	TimerISR
+ 450 01cc 00       		.byte	0
+ 451 01cd 0C       		.uleb128 0xc
+ 452 01ce 0E000000 		.4byte	.LVL7
+ 453 01d2 98020000 		.4byte	0x298
+ 454 01d6 0C       		.uleb128 0xc
+ 455 01d7 12000000 		.4byte	.LVL8
+ 456 01db A0020000 		.4byte	0x2a0
+ 457 01df 0C       		.uleb128 0xc
+ 458 01e0 16000000 		.4byte	.LVL9
+ 459 01e4 A7020000 		.4byte	0x2a7
+ 460 01e8 0C       		.uleb128 0xc
+ 461 01e9 1E000000 		.4byte	.LVL10
+ 462 01ed 0D010000 		.4byte	0x10d
+ 463 01f1 0C       		.uleb128 0xc
+ 464 01f2 24000000 		.4byte	.LVL11
+ 465 01f6 AE020000 		.4byte	0x2ae
+ 466 01fa 12       		.uleb128 0x12
+ 467 01fb 2A000000 		.4byte	.LVL12
+ 468 01ff C0020000 		.4byte	0x2c0
+ 469 0203 0B       		.uleb128 0xb
+ 470 0204 01       		.uleb128 0x1
+ 471 0205 50       		.byte	0x50
+ 472 0206 01       		.uleb128 0x1
+ 473 0207 31       		.byte	0x31
+ 474 0208 00       		.byte	0
+ 475 0209 00       		.byte	0
+ 476 020a 16       		.uleb128 0x16
+ 477 020b 696E6300 		.ascii	"inc\000"
+ 478 020f 01       		.byte	0x1
+ 479 0210 0F       		.byte	0xf
+ 480 0211 5D000000 		.4byte	0x5d
+ 481 0215 05       		.uleb128 0x5
+ 482 0216 03       		.byte	0x3
+ 483 0217 00000000 		.4byte	inc
+ 484 021b 17       		.uleb128 0x17
+ 485 021c B2010000 		.4byte	.LASF21
+ 486 0220 01       		.byte	0x1
+ 487 0221 10       		.byte	0x10
+ 488 0222 2C020000 		.4byte	0x22c
+ 489 0226 05       		.uleb128 0x5
+ 490 0227 03       		.byte	0x3
+ 491 0228 00000000 		.4byte	updown
+ 492 022c 02       		.uleb128 0x2
+ 493 022d 01       		.byte	0x1
+ 494 022e 02       		.byte	0x2
+ 495 022f 06020000 		.4byte	.LASF22
+ 496 0233 17       		.uleb128 0x17
+ 497 0234 7D000000 		.4byte	.LASF23
+ 498 0238 01       		.byte	0x1
+ 499 0239 11       		.byte	0x11
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\cc50dwVl.s 			page 11
+
+
+ 500 023a 76000000 		.4byte	0x76
+ 501 023e 05       		.uleb128 0x5
+ 502 023f 03       		.byte	0x3
+ 503 0240 00000000 		.4byte	PWMCompare
+ 504 0244 18       		.uleb128 0x18
+ 505 0245 0D000000 		.4byte	.LASF25
+ 506 0249 04       		.byte	0x4
+ 507 024a 7701     		.2byte	0x177
+ 508 024c 56020000 		.4byte	0x256
+ 509 0250 10       		.uleb128 0x10
+ 510 0251 56020000 		.4byte	0x256
+ 511 0255 00       		.byte	0
+ 512 0256 06       		.uleb128 0x6
+ 513 0257 04       		.byte	0x4
+ 514 0258 5C020000 		.4byte	0x25c
+ 515 025c 08       		.uleb128 0x8
+ 516 025d 9A000000 		.4byte	0x9a
+ 517 0261 19       		.uleb128 0x19
+ 518 0262 C8010000 		.4byte	.LASF34
+ 519 0266 08       		.byte	0x8
+ 520 0267 5E       		.byte	0x5e
+ 521 0268 6B000000 		.4byte	0x6b
+ 522 026c 0F       		.uleb128 0xf
+ 523 026d 0C020000 		.4byte	.LASF24
+ 524 0271 03       		.byte	0x3
+ 525 0272 00       		.byte	0
+ 526 0273 5D000000 		.4byte	0x5d
+ 527 0277 87020000 		.4byte	0x287
+ 528 027b 10       		.uleb128 0x10
+ 529 027c C6000000 		.4byte	0xc6
+ 530 0280 10       		.uleb128 0x10
+ 531 0281 CC000000 		.4byte	0xcc
+ 532 0285 11       		.uleb128 0x11
+ 533 0286 00       		.byte	0
+ 534 0287 1A       		.uleb128 0x1a
+ 535 0288 F8010000 		.4byte	.LASF26
+ 536 028c 05       		.byte	0x5
+ 537 028d 18       		.byte	0x18
+ 538 028e 98020000 		.4byte	0x298
+ 539 0292 10       		.uleb128 0x10
+ 540 0293 AC000000 		.4byte	0xac
+ 541 0297 00       		.byte	0
+ 542 0298 1B       		.uleb128 0x1b
+ 543 0299 1C020000 		.4byte	.LASF27
+ 544 029d 06       		.byte	0x6
+ 545 029e 3101     		.2byte	0x131
+ 546 02a0 1C       		.uleb128 0x1c
+ 547 02a1 00000000 		.4byte	.LASF28
+ 548 02a5 07       		.byte	0x7
+ 549 02a6 68       		.byte	0x68
+ 550 02a7 1C       		.uleb128 0x1c
+ 551 02a8 AB000000 		.4byte	.LASF29
+ 552 02ac 08       		.byte	0x8
+ 553 02ad 5A       		.byte	0x5a
+ 554 02ae 18       		.uleb128 0x18
+ 555 02af 91010000 		.4byte	.LASF30
+ 556 02b3 06       		.byte	0x6
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\cc50dwVl.s 			page 12
+
+
+ 557 02b4 5401     		.2byte	0x154
+ 558 02b6 C0020000 		.4byte	0x2c0
+ 559 02ba 10       		.uleb128 0x10
+ 560 02bb 81000000 		.4byte	0x81
+ 561 02bf 00       		.byte	0
+ 562 02c0 1D       		.uleb128 0x1d
+ 563 02c1 14020000 		.4byte	.LASF35
+ 564 02c5 09       		.byte	0x9
+ 565 02c6 57       		.byte	0x57
+ 566 02c7 10       		.uleb128 0x10
+ 567 02c8 81000000 		.4byte	0x81
+ 568 02cc 00       		.byte	0
+ 569 02cd 00       		.byte	0
+ 570              		.section	.debug_abbrev,"",%progbits
+ 571              	.Ldebug_abbrev0:
+ 572 0000 01       		.uleb128 0x1
+ 573 0001 11       		.uleb128 0x11
+ 574 0002 01       		.byte	0x1
+ 575 0003 25       		.uleb128 0x25
+ 576 0004 0E       		.uleb128 0xe
+ 577 0005 13       		.uleb128 0x13
+ 578 0006 0B       		.uleb128 0xb
+ 579 0007 03       		.uleb128 0x3
+ 580 0008 0E       		.uleb128 0xe
+ 581 0009 1B       		.uleb128 0x1b
+ 582 000a 0E       		.uleb128 0xe
+ 583 000b 55       		.uleb128 0x55
+ 584 000c 17       		.uleb128 0x17
+ 585 000d 11       		.uleb128 0x11
+ 586 000e 01       		.uleb128 0x1
+ 587 000f 10       		.uleb128 0x10
+ 588 0010 17       		.uleb128 0x17
+ 589 0011 00       		.byte	0
+ 590 0012 00       		.byte	0
+ 591 0013 02       		.uleb128 0x2
+ 592 0014 24       		.uleb128 0x24
+ 593 0015 00       		.byte	0
+ 594 0016 0B       		.uleb128 0xb
+ 595 0017 0B       		.uleb128 0xb
+ 596 0018 3E       		.uleb128 0x3e
+ 597 0019 0B       		.uleb128 0xb
+ 598 001a 03       		.uleb128 0x3
+ 599 001b 0E       		.uleb128 0xe
+ 600 001c 00       		.byte	0
+ 601 001d 00       		.byte	0
+ 602 001e 03       		.uleb128 0x3
+ 603 001f 24       		.uleb128 0x24
+ 604 0020 00       		.byte	0
+ 605 0021 0B       		.uleb128 0xb
+ 606 0022 0B       		.uleb128 0xb
+ 607 0023 3E       		.uleb128 0x3e
+ 608 0024 0B       		.uleb128 0xb
+ 609 0025 03       		.uleb128 0x3
+ 610 0026 08       		.uleb128 0x8
+ 611 0027 00       		.byte	0
+ 612 0028 00       		.byte	0
+ 613 0029 04       		.uleb128 0x4
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\cc50dwVl.s 			page 13
+
+
+ 614 002a 16       		.uleb128 0x16
+ 615 002b 00       		.byte	0
+ 616 002c 03       		.uleb128 0x3
+ 617 002d 0E       		.uleb128 0xe
+ 618 002e 3A       		.uleb128 0x3a
+ 619 002f 0B       		.uleb128 0xb
+ 620 0030 3B       		.uleb128 0x3b
+ 621 0031 0B       		.uleb128 0xb
+ 622 0032 49       		.uleb128 0x49
+ 623 0033 13       		.uleb128 0x13
+ 624 0034 00       		.byte	0
+ 625 0035 00       		.byte	0
+ 626 0036 05       		.uleb128 0x5
+ 627 0037 16       		.uleb128 0x16
+ 628 0038 00       		.byte	0
+ 629 0039 03       		.uleb128 0x3
+ 630 003a 0E       		.uleb128 0xe
+ 631 003b 3A       		.uleb128 0x3a
+ 632 003c 0B       		.uleb128 0xb
+ 633 003d 3B       		.uleb128 0x3b
+ 634 003e 05       		.uleb128 0x5
+ 635 003f 49       		.uleb128 0x49
+ 636 0040 13       		.uleb128 0x13
+ 637 0041 00       		.byte	0
+ 638 0042 00       		.byte	0
+ 639 0043 06       		.uleb128 0x6
+ 640 0044 0F       		.uleb128 0xf
+ 641 0045 00       		.byte	0
+ 642 0046 0B       		.uleb128 0xb
+ 643 0047 0B       		.uleb128 0xb
+ 644 0048 49       		.uleb128 0x49
+ 645 0049 13       		.uleb128 0x13
+ 646 004a 00       		.byte	0
+ 647 004b 00       		.byte	0
+ 648 004c 07       		.uleb128 0x7
+ 649 004d 15       		.uleb128 0x15
+ 650 004e 00       		.byte	0
+ 651 004f 27       		.uleb128 0x27
+ 652 0050 19       		.uleb128 0x19
+ 653 0051 00       		.byte	0
+ 654 0052 00       		.byte	0
+ 655 0053 08       		.uleb128 0x8
+ 656 0054 26       		.uleb128 0x26
+ 657 0055 00       		.byte	0
+ 658 0056 49       		.uleb128 0x49
+ 659 0057 13       		.uleb128 0x13
+ 660 0058 00       		.byte	0
+ 661 0059 00       		.byte	0
+ 662 005a 09       		.uleb128 0x9
+ 663 005b 2E       		.uleb128 0x2e
+ 664 005c 01       		.byte	0x1
+ 665 005d 3F       		.uleb128 0x3f
+ 666 005e 19       		.uleb128 0x19
+ 667 005f 03       		.uleb128 0x3
+ 668 0060 0E       		.uleb128 0xe
+ 669 0061 3A       		.uleb128 0x3a
+ 670 0062 0B       		.uleb128 0xb
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\cc50dwVl.s 			page 14
+
+
+ 671 0063 3B       		.uleb128 0x3b
+ 672 0064 0B       		.uleb128 0xb
+ 673 0065 27       		.uleb128 0x27
+ 674 0066 19       		.uleb128 0x19
+ 675 0067 11       		.uleb128 0x11
+ 676 0068 01       		.uleb128 0x1
+ 677 0069 12       		.uleb128 0x12
+ 678 006a 06       		.uleb128 0x6
+ 679 006b 40       		.uleb128 0x40
+ 680 006c 18       		.uleb128 0x18
+ 681 006d 9742     		.uleb128 0x2117
+ 682 006f 19       		.uleb128 0x19
+ 683 0070 01       		.uleb128 0x1
+ 684 0071 13       		.uleb128 0x13
+ 685 0072 00       		.byte	0
+ 686 0073 00       		.byte	0
+ 687 0074 0A       		.uleb128 0xa
+ 688 0075 898201   		.uleb128 0x4109
+ 689 0078 01       		.byte	0x1
+ 690 0079 11       		.uleb128 0x11
+ 691 007a 01       		.uleb128 0x1
+ 692 007b 31       		.uleb128 0x31
+ 693 007c 13       		.uleb128 0x13
+ 694 007d 01       		.uleb128 0x1
+ 695 007e 13       		.uleb128 0x13
+ 696 007f 00       		.byte	0
+ 697 0080 00       		.byte	0
+ 698 0081 0B       		.uleb128 0xb
+ 699 0082 8A8201   		.uleb128 0x410a
+ 700 0085 00       		.byte	0
+ 701 0086 02       		.uleb128 0x2
+ 702 0087 18       		.uleb128 0x18
+ 703 0088 9142     		.uleb128 0x2111
+ 704 008a 18       		.uleb128 0x18
+ 705 008b 00       		.byte	0
+ 706 008c 00       		.byte	0
+ 707 008d 0C       		.uleb128 0xc
+ 708 008e 898201   		.uleb128 0x4109
+ 709 0091 00       		.byte	0
+ 710 0092 11       		.uleb128 0x11
+ 711 0093 01       		.uleb128 0x1
+ 712 0094 31       		.uleb128 0x31
+ 713 0095 13       		.uleb128 0x13
+ 714 0096 00       		.byte	0
+ 715 0097 00       		.byte	0
+ 716 0098 0D       		.uleb128 0xd
+ 717 0099 05       		.uleb128 0x5
+ 718 009a 00       		.byte	0
+ 719 009b 03       		.uleb128 0x3
+ 720 009c 08       		.uleb128 0x8
+ 721 009d 3A       		.uleb128 0x3a
+ 722 009e 0B       		.uleb128 0xb
+ 723 009f 3B       		.uleb128 0x3b
+ 724 00a0 0B       		.uleb128 0xb
+ 725 00a1 49       		.uleb128 0x49
+ 726 00a2 13       		.uleb128 0x13
+ 727 00a3 02       		.uleb128 0x2
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\cc50dwVl.s 			page 15
+
+
+ 728 00a4 17       		.uleb128 0x17
+ 729 00a5 00       		.byte	0
+ 730 00a6 00       		.byte	0
+ 731 00a7 0E       		.uleb128 0xe
+ 732 00a8 34       		.uleb128 0x34
+ 733 00a9 00       		.byte	0
+ 734 00aa 03       		.uleb128 0x3
+ 735 00ab 08       		.uleb128 0x8
+ 736 00ac 3A       		.uleb128 0x3a
+ 737 00ad 0B       		.uleb128 0xb
+ 738 00ae 3B       		.uleb128 0x3b
+ 739 00af 0B       		.uleb128 0xb
+ 740 00b0 49       		.uleb128 0x49
+ 741 00b1 13       		.uleb128 0x13
+ 742 00b2 02       		.uleb128 0x2
+ 743 00b3 18       		.uleb128 0x18
+ 744 00b4 00       		.byte	0
+ 745 00b5 00       		.byte	0
+ 746 00b6 0F       		.uleb128 0xf
+ 747 00b7 2E       		.uleb128 0x2e
+ 748 00b8 01       		.byte	0x1
+ 749 00b9 3F       		.uleb128 0x3f
+ 750 00ba 19       		.uleb128 0x19
+ 751 00bb 03       		.uleb128 0x3
+ 752 00bc 0E       		.uleb128 0xe
+ 753 00bd 3A       		.uleb128 0x3a
+ 754 00be 0B       		.uleb128 0xb
+ 755 00bf 3B       		.uleb128 0x3b
+ 756 00c0 0B       		.uleb128 0xb
+ 757 00c1 27       		.uleb128 0x27
+ 758 00c2 19       		.uleb128 0x19
+ 759 00c3 49       		.uleb128 0x49
+ 760 00c4 13       		.uleb128 0x13
+ 761 00c5 3C       		.uleb128 0x3c
+ 762 00c6 19       		.uleb128 0x19
+ 763 00c7 01       		.uleb128 0x1
+ 764 00c8 13       		.uleb128 0x13
+ 765 00c9 00       		.byte	0
+ 766 00ca 00       		.byte	0
+ 767 00cb 10       		.uleb128 0x10
+ 768 00cc 05       		.uleb128 0x5
+ 769 00cd 00       		.byte	0
+ 770 00ce 49       		.uleb128 0x49
+ 771 00cf 13       		.uleb128 0x13
+ 772 00d0 00       		.byte	0
+ 773 00d1 00       		.byte	0
+ 774 00d2 11       		.uleb128 0x11
+ 775 00d3 18       		.uleb128 0x18
+ 776 00d4 00       		.byte	0
+ 777 00d5 00       		.byte	0
+ 778 00d6 00       		.byte	0
+ 779 00d7 12       		.uleb128 0x12
+ 780 00d8 898201   		.uleb128 0x4109
+ 781 00db 01       		.byte	0x1
+ 782 00dc 11       		.uleb128 0x11
+ 783 00dd 01       		.uleb128 0x1
+ 784 00de 31       		.uleb128 0x31
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\cc50dwVl.s 			page 16
+
+
+ 785 00df 13       		.uleb128 0x13
+ 786 00e0 00       		.byte	0
+ 787 00e1 00       		.byte	0
+ 788 00e2 13       		.uleb128 0x13
+ 789 00e3 01       		.uleb128 0x1
+ 790 00e4 01       		.byte	0x1
+ 791 00e5 49       		.uleb128 0x49
+ 792 00e6 13       		.uleb128 0x13
+ 793 00e7 01       		.uleb128 0x1
+ 794 00e8 13       		.uleb128 0x13
+ 795 00e9 00       		.byte	0
+ 796 00ea 00       		.byte	0
+ 797 00eb 14       		.uleb128 0x14
+ 798 00ec 21       		.uleb128 0x21
+ 799 00ed 00       		.byte	0
+ 800 00ee 49       		.uleb128 0x49
+ 801 00ef 13       		.uleb128 0x13
+ 802 00f0 2F       		.uleb128 0x2f
+ 803 00f1 0B       		.uleb128 0xb
+ 804 00f2 00       		.byte	0
+ 805 00f3 00       		.byte	0
+ 806 00f4 15       		.uleb128 0x15
+ 807 00f5 2E       		.uleb128 0x2e
+ 808 00f6 01       		.byte	0x1
+ 809 00f7 3F       		.uleb128 0x3f
+ 810 00f8 19       		.uleb128 0x19
+ 811 00f9 03       		.uleb128 0x3
+ 812 00fa 0E       		.uleb128 0xe
+ 813 00fb 3A       		.uleb128 0x3a
+ 814 00fc 0B       		.uleb128 0xb
+ 815 00fd 3B       		.uleb128 0x3b
+ 816 00fe 0B       		.uleb128 0xb
+ 817 00ff 49       		.uleb128 0x49
+ 818 0100 13       		.uleb128 0x13
+ 819 0101 11       		.uleb128 0x11
+ 820 0102 01       		.uleb128 0x1
+ 821 0103 12       		.uleb128 0x12
+ 822 0104 06       		.uleb128 0x6
+ 823 0105 40       		.uleb128 0x40
+ 824 0106 18       		.uleb128 0x18
+ 825 0107 9742     		.uleb128 0x2117
+ 826 0109 19       		.uleb128 0x19
+ 827 010a 01       		.uleb128 0x1
+ 828 010b 13       		.uleb128 0x13
+ 829 010c 00       		.byte	0
+ 830 010d 00       		.byte	0
+ 831 010e 16       		.uleb128 0x16
+ 832 010f 34       		.uleb128 0x34
+ 833 0110 00       		.byte	0
+ 834 0111 03       		.uleb128 0x3
+ 835 0112 08       		.uleb128 0x8
+ 836 0113 3A       		.uleb128 0x3a
+ 837 0114 0B       		.uleb128 0xb
+ 838 0115 3B       		.uleb128 0x3b
+ 839 0116 0B       		.uleb128 0xb
+ 840 0117 49       		.uleb128 0x49
+ 841 0118 13       		.uleb128 0x13
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\cc50dwVl.s 			page 17
+
+
+ 842 0119 3F       		.uleb128 0x3f
+ 843 011a 19       		.uleb128 0x19
+ 844 011b 02       		.uleb128 0x2
+ 845 011c 18       		.uleb128 0x18
+ 846 011d 00       		.byte	0
+ 847 011e 00       		.byte	0
+ 848 011f 17       		.uleb128 0x17
+ 849 0120 34       		.uleb128 0x34
+ 850 0121 00       		.byte	0
+ 851 0122 03       		.uleb128 0x3
+ 852 0123 0E       		.uleb128 0xe
+ 853 0124 3A       		.uleb128 0x3a
+ 854 0125 0B       		.uleb128 0xb
+ 855 0126 3B       		.uleb128 0x3b
+ 856 0127 0B       		.uleb128 0xb
+ 857 0128 49       		.uleb128 0x49
+ 858 0129 13       		.uleb128 0x13
+ 859 012a 3F       		.uleb128 0x3f
+ 860 012b 19       		.uleb128 0x19
+ 861 012c 02       		.uleb128 0x2
+ 862 012d 18       		.uleb128 0x18
+ 863 012e 00       		.byte	0
+ 864 012f 00       		.byte	0
+ 865 0130 18       		.uleb128 0x18
+ 866 0131 2E       		.uleb128 0x2e
+ 867 0132 01       		.byte	0x1
+ 868 0133 3F       		.uleb128 0x3f
+ 869 0134 19       		.uleb128 0x19
+ 870 0135 03       		.uleb128 0x3
+ 871 0136 0E       		.uleb128 0xe
+ 872 0137 3A       		.uleb128 0x3a
+ 873 0138 0B       		.uleb128 0xb
+ 874 0139 3B       		.uleb128 0x3b
+ 875 013a 05       		.uleb128 0x5
+ 876 013b 27       		.uleb128 0x27
+ 877 013c 19       		.uleb128 0x19
+ 878 013d 3C       		.uleb128 0x3c
+ 879 013e 19       		.uleb128 0x19
+ 880 013f 01       		.uleb128 0x1
+ 881 0140 13       		.uleb128 0x13
+ 882 0141 00       		.byte	0
+ 883 0142 00       		.byte	0
+ 884 0143 19       		.uleb128 0x19
+ 885 0144 2E       		.uleb128 0x2e
+ 886 0145 00       		.byte	0
+ 887 0146 3F       		.uleb128 0x3f
+ 888 0147 19       		.uleb128 0x19
+ 889 0148 03       		.uleb128 0x3
+ 890 0149 0E       		.uleb128 0xe
+ 891 014a 3A       		.uleb128 0x3a
+ 892 014b 0B       		.uleb128 0xb
+ 893 014c 3B       		.uleb128 0x3b
+ 894 014d 0B       		.uleb128 0xb
+ 895 014e 27       		.uleb128 0x27
+ 896 014f 19       		.uleb128 0x19
+ 897 0150 49       		.uleb128 0x49
+ 898 0151 13       		.uleb128 0x13
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\cc50dwVl.s 			page 18
+
+
+ 899 0152 3C       		.uleb128 0x3c
+ 900 0153 19       		.uleb128 0x19
+ 901 0154 00       		.byte	0
+ 902 0155 00       		.byte	0
+ 903 0156 1A       		.uleb128 0x1a
+ 904 0157 2E       		.uleb128 0x2e
+ 905 0158 01       		.byte	0x1
+ 906 0159 3F       		.uleb128 0x3f
+ 907 015a 19       		.uleb128 0x19
+ 908 015b 03       		.uleb128 0x3
+ 909 015c 0E       		.uleb128 0xe
+ 910 015d 3A       		.uleb128 0x3a
+ 911 015e 0B       		.uleb128 0xb
+ 912 015f 3B       		.uleb128 0x3b
+ 913 0160 0B       		.uleb128 0xb
+ 914 0161 27       		.uleb128 0x27
+ 915 0162 19       		.uleb128 0x19
+ 916 0163 3C       		.uleb128 0x3c
+ 917 0164 19       		.uleb128 0x19
+ 918 0165 01       		.uleb128 0x1
+ 919 0166 13       		.uleb128 0x13
+ 920 0167 00       		.byte	0
+ 921 0168 00       		.byte	0
+ 922 0169 1B       		.uleb128 0x1b
+ 923 016a 2E       		.uleb128 0x2e
+ 924 016b 00       		.byte	0
+ 925 016c 3F       		.uleb128 0x3f
+ 926 016d 19       		.uleb128 0x19
+ 927 016e 03       		.uleb128 0x3
+ 928 016f 0E       		.uleb128 0xe
+ 929 0170 3A       		.uleb128 0x3a
+ 930 0171 0B       		.uleb128 0xb
+ 931 0172 3B       		.uleb128 0x3b
+ 932 0173 05       		.uleb128 0x5
+ 933 0174 27       		.uleb128 0x27
+ 934 0175 19       		.uleb128 0x19
+ 935 0176 3C       		.uleb128 0x3c
+ 936 0177 19       		.uleb128 0x19
+ 937 0178 00       		.byte	0
+ 938 0179 00       		.byte	0
+ 939 017a 1C       		.uleb128 0x1c
+ 940 017b 2E       		.uleb128 0x2e
+ 941 017c 00       		.byte	0
+ 942 017d 3F       		.uleb128 0x3f
+ 943 017e 19       		.uleb128 0x19
+ 944 017f 03       		.uleb128 0x3
+ 945 0180 0E       		.uleb128 0xe
+ 946 0181 3A       		.uleb128 0x3a
+ 947 0182 0B       		.uleb128 0xb
+ 948 0183 3B       		.uleb128 0x3b
+ 949 0184 0B       		.uleb128 0xb
+ 950 0185 27       		.uleb128 0x27
+ 951 0186 19       		.uleb128 0x19
+ 952 0187 3C       		.uleb128 0x3c
+ 953 0188 19       		.uleb128 0x19
+ 954 0189 00       		.byte	0
+ 955 018a 00       		.byte	0
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\cc50dwVl.s 			page 19
+
+
+ 956 018b 1D       		.uleb128 0x1d
+ 957 018c 2E       		.uleb128 0x2e
+ 958 018d 01       		.byte	0x1
+ 959 018e 3F       		.uleb128 0x3f
+ 960 018f 19       		.uleb128 0x19
+ 961 0190 03       		.uleb128 0x3
+ 962 0191 0E       		.uleb128 0xe
+ 963 0192 3A       		.uleb128 0x3a
+ 964 0193 0B       		.uleb128 0xb
+ 965 0194 3B       		.uleb128 0x3b
+ 966 0195 0B       		.uleb128 0xb
+ 967 0196 27       		.uleb128 0x27
+ 968 0197 19       		.uleb128 0x19
+ 969 0198 3C       		.uleb128 0x3c
+ 970 0199 19       		.uleb128 0x19
+ 971 019a 00       		.byte	0
+ 972 019b 00       		.byte	0
+ 973 019c 00       		.byte	0
+ 974              		.section	.debug_loc,"",%progbits
+ 975              	.Ldebug_loc0:
+ 976              	.LLST0:
+ 977 0000 00000000 		.4byte	.LVL2
+ 978 0004 08000000 		.4byte	.LVL3
+ 979 0008 0100     		.2byte	0x1
+ 980 000a 50       		.byte	0x50
+ 981 000b 08000000 		.4byte	.LVL3
+ 982 000f 0D000000 		.4byte	.LVL4-1
+ 983 0013 0100     		.2byte	0x1
+ 984 0015 52       		.byte	0x52
+ 985 0016 0D000000 		.4byte	.LVL4-1
+ 986 001a 1C000000 		.4byte	.LFE34
+ 987 001e 0400     		.2byte	0x4
+ 988 0020 F3       		.byte	0xf3
+ 989 0021 01       		.uleb128 0x1
+ 990 0022 50       		.byte	0x50
+ 991 0023 9F       		.byte	0x9f
+ 992 0024 00000000 		.4byte	0
+ 993 0028 00000000 		.4byte	0
+ 994              		.section	.debug_aranges,"",%progbits
+ 995 0000 2C000000 		.4byte	0x2c
+ 996 0004 0200     		.2byte	0x2
+ 997 0006 00000000 		.4byte	.Ldebug_info0
+ 998 000a 04       		.byte	0x4
+ 999 000b 00       		.byte	0
+ 1000 000c 0000     		.2byte	0
+ 1001 000e 0000     		.2byte	0
+ 1002 0010 00000000 		.4byte	.LFB33
+ 1003 0014 50000000 		.4byte	.LFE33-.LFB33
+ 1004 0018 00000000 		.4byte	.LFB34
+ 1005 001c 1C000000 		.4byte	.LFE34-.LFB34
+ 1006 0020 00000000 		.4byte	.LFB35
+ 1007 0024 34000000 		.4byte	.LFE35-.LFB35
+ 1008 0028 00000000 		.4byte	0
+ 1009 002c 00000000 		.4byte	0
+ 1010              		.section	.debug_ranges,"",%progbits
+ 1011              	.Ldebug_ranges0:
+ 1012 0000 00000000 		.4byte	.LFB33
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\cc50dwVl.s 			page 20
+
+
+ 1013 0004 50000000 		.4byte	.LFE33
+ 1014 0008 00000000 		.4byte	.LFB34
+ 1015 000c 1C000000 		.4byte	.LFE34
+ 1016 0010 00000000 		.4byte	.LFB35
+ 1017 0014 34000000 		.4byte	.LFE35
+ 1018 0018 00000000 		.4byte	0
+ 1019 001c 00000000 		.4byte	0
+ 1020              		.section	.debug_line,"",%progbits
+ 1021              	.Ldebug_line0:
+ 1022 0000 F8000000 		.section	.debug_str,"MS",%progbits,1
+ 1022      0200A000 
+ 1022      00000201 
+ 1022      FB0E0D00 
+ 1022      01010101 
+ 1023              	.LASF28:
+ 1024 0000 55415254 		.ascii	"UART_1_Start\000"
+ 1024      5F315F53 
+ 1024      74617274 
+ 1024      00
+ 1025              	.LASF25:
+ 1026 000d 55415254 		.ascii	"UART_1_UartPutString\000"
+ 1026      5F315F55 
+ 1026      61727450 
+ 1026      75745374 
+ 1026      72696E67 
+ 1027              	.LASF3:
+ 1028 0022 73686F72 		.ascii	"short unsigned int\000"
+ 1028      7420756E 
+ 1028      7369676E 
+ 1028      65642069 
+ 1028      6E7400
+ 1029              	.LASF8:
+ 1030 0035 756E7369 		.ascii	"unsigned int\000"
+ 1030      676E6564 
+ 1030      20696E74 
+ 1030      00
+ 1031              	.LASF12:
+ 1032 0042 666C6F61 		.ascii	"float\000"
+ 1032      7400
+ 1033              	.LASF1:
+ 1034 0048 756E7369 		.ascii	"unsigned char\000"
+ 1034      676E6564 
+ 1034      20636861 
+ 1034      7200
+ 1035              	.LASF14:
+ 1036 0056 63686172 		.ascii	"char8\000"
+ 1036      3800
+ 1037              	.LASF19:
+ 1038 005c 5072696E 		.ascii	"PrintInt\000"
+ 1038      74496E74 
+ 1038      00
+ 1039              	.LASF5:
+ 1040 0065 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1040      20756E73 
+ 1040      69676E65 
+ 1040      6420696E 
+ 1040      7400
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\cc50dwVl.s 			page 21
+
+
+ 1041              	.LASF9:
+ 1042 0077 75696E74 		.ascii	"uint8\000"
+ 1042      3800
+ 1043              	.LASF23:
+ 1044 007d 50574D43 		.ascii	"PWMCompare\000"
+ 1044      6F6D7061 
+ 1044      726500
+ 1045              	.LASF13:
+ 1046 0088 646F7562 		.ascii	"double\000"
+ 1046      6C6500
+ 1047              	.LASF32:
+ 1048 008f 2E5C6D61 		.ascii	".\\main.c\000"
+ 1048      696E2E63 
+ 1048      00
+ 1049              	.LASF10:
+ 1050 0098 75696E74 		.ascii	"uint16\000"
+ 1050      313600
+ 1051              	.LASF11:
+ 1052 009f 75696E74 		.ascii	"uint32\000"
+ 1052      333200
+ 1053              	.LASF20:
+ 1054 00a6 6D61696E 		.ascii	"main\000"
+ 1054      00
+ 1055              	.LASF29:
+ 1056 00ab 54696D65 		.ascii	"Timer_1_Start\000"
+ 1056      725F315F 
+ 1056      53746172 
+ 1056      7400
+ 1057              	.LASF7:
+ 1058 00b9 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1058      206C6F6E 
+ 1058      6720756E 
+ 1058      7369676E 
+ 1058      65642069 
+ 1059              	.LASF31:
+ 1060 00d0 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 1060      4320342E 
+ 1060      382E3420 
+ 1060      32303134 
+ 1060      30353236 
+ 1061 0103 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 1061      20726576 
+ 1061      6973696F 
+ 1061      6E203231 
+ 1061      31333538 
+ 1062 0136 67202D66 		.ascii	"g -ffunction-sections\000"
+ 1062      66756E63 
+ 1062      74696F6E 
+ 1062      2D736563 
+ 1062      74696F6E 
+ 1063              	.LASF16:
+ 1064 014c 63796973 		.ascii	"cyisraddress\000"
+ 1064      72616464 
+ 1064      72657373 
+ 1064      00
+ 1065              	.LASF33:
+ 1066 0159 453A5C73 		.ascii	"E:\\school\\ECEC304\\Lab6\\PWMstuff.cydsn\000"
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\cc50dwVl.s 			page 22
+
+
+ 1066      63686F6F 
+ 1066      6C5C4543 
+ 1066      45433330 
+ 1066      345C4C61 
+ 1067              	.LASF18:
+ 1068 017f 54696D65 		.ascii	"TimerISR\000"
+ 1068      72495352 
+ 1068      00
+ 1069              	.LASF17:
+ 1070 0188 73697A65 		.ascii	"sizetype\000"
+ 1070      74797065 
+ 1070      00
+ 1071              	.LASF30:
+ 1072 0191 50574D5F 		.ascii	"PWM_1_WriteCompare\000"
+ 1072      315F5772 
+ 1072      69746543 
+ 1072      6F6D7061 
+ 1072      726500
+ 1073              	.LASF6:
+ 1074 01a4 6C6F6E67 		.ascii	"long long int\000"
+ 1074      206C6F6E 
+ 1074      6720696E 
+ 1074      7400
+ 1075              	.LASF21:
+ 1076 01b2 7570646F 		.ascii	"updown\000"
+ 1076      776E00
+ 1077              	.LASF15:
+ 1078 01b9 63686172 		.ascii	"char\000"
+ 1078      00
+ 1079              	.LASF2:
+ 1080 01be 73686F72 		.ascii	"short int\000"
+ 1080      7420696E 
+ 1080      7400
+ 1081              	.LASF34:
+ 1082 01c8 54696D65 		.ascii	"Timer_1_ReadStatusRegister\000"
+ 1082      725F315F 
+ 1082      52656164 
+ 1082      53746174 
+ 1082      75735265 
+ 1083              	.LASF4:
+ 1084 01e3 6C6F6E67 		.ascii	"long int\000"
+ 1084      20696E74 
+ 1084      00
+ 1085              	.LASF0:
+ 1086 01ec 7369676E 		.ascii	"signed char\000"
+ 1086      65642063 
+ 1086      68617200 
+ 1087              	.LASF26:
+ 1088 01f8 6973725F 		.ascii	"isr_1_StartEx\000"
+ 1088      315F5374 
+ 1088      61727445 
+ 1088      7800
+ 1089              	.LASF22:
+ 1090 0206 5F426F6F 		.ascii	"_Bool\000"
+ 1090      6C00
+ 1091              	.LASF24:
+ 1092 020c 73707269 		.ascii	"sprintf\000"
+ARM GAS  C:\Users\egh35\AppData\Local\Temp\cc50dwVl.s 			page 23
+
+
+ 1092      6E746600 
+ 1093              	.LASF35:
+ 1094 0214 43794465 		.ascii	"CyDelay\000"
+ 1094      6C617900 
+ 1095              	.LASF27:
+ 1096 021c 50574D5F 		.ascii	"PWM_1_Start\000"
+ 1096      315F5374 
+ 1096      61727400 
+ 1097              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

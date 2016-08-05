@@ -1,0 +1,6 @@
+E:\school\ECEC304\Lab55\MASTERLOCK.cydsn\MASTERLOCK.cyprj|3e11883c-7e4b-438c-8ef9-ff340d3da0b3
+C:\Program Files (x86)\Cypress\PSoC Creator\3.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|ed7c9fac-a154-4344-b82c-78f758a5ac12
+C:\Program Files (x86)\Cypress\PSoC Creator\3.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|1dfc6989-2b2a-43a1-ab01-16ca53293e89
+C:\Program Files (x86)\Cypress\PSoC Creator\3.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|4cf0fa9a-d3b9-4a53-8709-239fb4894587
+C:\Program Files (x86)\Cypress\PSoC Creator\3.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|9360d023-a68d-400f-b62d-3b60ac1dab64
+E:\school\ECEC304\Lab55\PWM.cydsn\PWM.cyprj|cdc776ef-0d44-4f7d-ad05-3f3689ac39cb
